@@ -560,7 +560,7 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
             title={(
                 <>
                     <Text strong>
-                        {`将${resource === 'dataset' ? '数据集' : '标注'}导入到${TYPE_LABEL[instanceType] ?? instanceType} #${instance.id}`}
+                        {`将${resource === 'dataset' ? '数据集' : '标注'}导入到${TYPE_LABEL[instanceType] ?? instanceType}${instance ? ` #${instance.id}` : ''}`}
                     </Text>
                     {
                         instance instanceof core.classes.Project && (

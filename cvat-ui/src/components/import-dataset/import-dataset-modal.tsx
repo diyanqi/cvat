@@ -33,6 +33,8 @@ import StorageField from 'components/storage/storage-field';
 import { createAction, ActionUnion } from 'utils/redux';
 import { tt } from 'i18n';
 
+const TYPE_LABEL: Record<string, string> = { project: '项目', task: '任务', job: '作业' };
+
 const { confirm } = Modal;
 
 const core = getCore();
@@ -368,7 +370,7 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
             } else if (isTask()) {
                 type = 'task';
             }
-            dispatch(reducerActions.setInstanceType(`${type === 'project' ? '项目' : type === 'task' ? '任务' : '作业'} #${instance.id}`));
+            dispatch(reducerActions.setInstanceType(type));
         }
     }, [instance, resource]);
 
@@ -498,7 +500,7 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
                     uploadParams.importMode,
                 ));
             const resToPrint = uploadParams.resource === 'dataset' ? '数据集' : '标注';
-            const description = `已开始为 ${instanceType} 导入${resToPrint}。` +
+            const description = `已开始为${TYPE_LABEL[instanceType] ?? instanceType} #${instance.id} 导入${resToPrint}。` +
             tt("You can check progress [here](/requests).");
             Notification.info({
                 message: `${resToPrint}导入已开始`,
@@ -523,7 +525,7 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
         confirm({
             title,
             content,
-            className: `cvat-modal-content-load-${instanceType.startsWith('项目') ? 'project' : instanceType.startsWith('任务') ? 'task' : 'job'}-annotation`,
+            className: `cvat-modal-content-load-${instanceType}-annotation`,
             onOk: () => {
                 onUpload();
             },
@@ -558,7 +560,7 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
             title={(
                 <>
                     <Text strong>
-                        {`将${resource === 'dataset' ? '数据集' : '标注'}导入到 ${instanceType}`}
+                        {`将${resource === 'dataset' ? '数据集' : '标注'}导入到${TYPE_LABEL[instanceType] ?? instanceType} #${instance.id}`}
                     </Text>
                     {
                         instance instanceof core.classes.Project && (

@@ -10,6 +10,7 @@ import Layout from 'antd/lib/layout';
 import { Col, Row } from 'antd/lib/grid';
 import Title from 'antd/lib/typography/Title';
 import CVATLogo from 'components/common/cvat-logo';
+import { tt } from 'i18n';
 import SVGSigningBackground from '../../assets/signing-background.svg';
 
 interface SignInLayoutComponentProps {
@@ -84,7 +85,7 @@ function SignInLayout(props: SignInLayoutComponentProps): JSX.Element {
                 <Content>
                     <Row justify='center' align='middle' style={{ height: '100%' }}>
                         <Col {...titleSizes} className='cvat-signing-title'>
-                            <Title>{subtitle}</Title>
+                            <Title>{tt(subtitle)}</Title>
                         </Col>
                         {children}
                     </Row>

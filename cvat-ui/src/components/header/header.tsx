@@ -48,6 +48,7 @@ import { ShortcutScope } from 'utils/enums';
 import { subKeyMap } from 'utils/component-subkeymap';
 import SettingsModal from './settings-modal/settings-modal';
 import { tt } from 'i18n';
+import { localizeText } from 'i18n/localize';
 
 interface StateToProps {
     user: any;
@@ -243,10 +244,10 @@ function HeaderComponent(props: Props): JSX.Element {
 
     const showAboutModal = useCallback((): void => {
         Modal.info({
-            title: `${about.server.name}`,
+            title: tt(about.server.name),
             content: (
                 <div>
-                    <p>{`${about.server.description}`}</p>
+                    <p>{localizeText(about.server.description)}</p>
                     <p>
                         <Text strong>{tt("Server version:")}</Text>
                         <Text type='secondary'>{` ${about.server.version}`}</Text>

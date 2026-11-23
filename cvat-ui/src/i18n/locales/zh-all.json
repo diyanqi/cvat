@@ -1905,5 +1905,7 @@
   "Cancelled": "已取消",
   "Queued": "排队中",
   "Failed": "失败",
-  "Download": "下载"
+  "Download": "下载",
+  "Computer Vision Annotation Tool": "计算机视觉标注工具",
+  "Open Data Annotation Platform": "开放数据标注平台"
 }

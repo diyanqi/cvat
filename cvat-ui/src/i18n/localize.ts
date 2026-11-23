@@ -12,6 +12,11 @@ type Rule = [RegExp, string | ((...args: string[]) => string)];
 // them centrally, keeping markdown links intact.
 const RULES: Rule[] = [
     // ------------------------------------------------------------------
+    // server-provided strings (about endpoint)
+    // ------------------------------------------------------------------
+    [/^CVAT is completely re-designed and re-implemented version of Video Annotation Tool from Irvine, California tool\. It is free, online, interactive video and image annotation tool for computer vision\. It is being used by our team to annotate million of objects with different properties\. Many UI and UX decisions are based on feedbacks from professional data annotation team\.$/,
+        'CVAT 是完全重新设计与实现的视频标注工具（源自加州尔湾的工具）。它是免费、在线、可交互的视频与图像标注工具，用于计算机视觉。我们的团队用它标注了数以百万计、带不同属性的对象。许多界面与交互决策都来自专业数据标注团队的反馈。'],
+    // ------------------------------------------------------------------
     // messages from notifications-reducer
     // ------------------------------------------------------------------
     [/^To use your account, you need to confirm the email address\. We have sent an email with a confirmation link to (.+)\.$/,

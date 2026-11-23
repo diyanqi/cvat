@@ -19,10 +19,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - image: cvat-server
+          - image: cvat-server-zh
             dockerfile: Dockerfile
             scope: server
-          - image: cvat-ui
+          - image: cvat-ui-zh
             dockerfile: Dockerfile.ui
             scope: ui
     steps:

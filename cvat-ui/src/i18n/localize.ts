@@ -57,6 +57,7 @@ const RULES: Rule[] = [
     // common phrasing in server/core errors
     // ------------------------------------------------------------------
     [/^Not found\.?$/i, '未找到。'],
+    [/^(?:Error: )?No (.+) matches the given query\.?$/i, '未找到匹配的$1。'],
     [/^Permission denied\.?$/i, '权限被拒绝。'],
     [/^Invalid value\.?$/i, '值无效。'],
     [/^This field is required\.?$/i, '此字段为必填项。'],

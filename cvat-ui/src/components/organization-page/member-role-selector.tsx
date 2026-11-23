@@ -10,10 +10,10 @@ export interface MemberRoleSelectorProps {
 }
 
 const roleOptions = [
-    { value: 'worker', label: 'Worker' },
-    { value: 'supervisor', label: 'Supervisor' },
-    { value: 'maintainer', label: 'Maintainer' },
-    { value: 'owner', label: 'Owner' },
+    { value: 'worker', label: tt("Worker") },
+    { value: 'supervisor', label: tt("Supervisor") },
+    { value: 'maintainer', label: tt("Maintainer") },
+    { value: 'owner', label: tt("Owner") },
 ];
 
 export default function MemberRoleSelector(props: Readonly<MemberRoleSelectorProps>): JSX.Element {

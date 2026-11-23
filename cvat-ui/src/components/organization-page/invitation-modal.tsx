@@ -70,8 +70,8 @@ function InvitationModal(props: Props): JSX.Element {
                                             name={[field.name, 'email']}
                                             fieldKey={[field.fieldKey, 'email']}
                                             rules={[
-                                                { required: true, message: 'This field is required' },
-                                                { type: 'email', message: 'The input is not a valid email' },
+                                                { required: true, message: tt("This field is required") },
+                                                { type: 'email', message: tt("The input is not a valid email") },
                                             ]}
                                         >
                                             <Input placeholder={tt("Enter an email address")} />
@@ -83,7 +83,7 @@ function InvitationModal(props: Props): JSX.Element {
                                             name={[field.name, 'role']}
                                             fieldKey={[field.fieldKey, 'role']}
                                             initialValue='worker'
-                                            rules={[{ required: true, message: 'This field is required' }]}
+                                            rules={[{ required: true, message: tt("This field is required") }]}
                                         >
                                             <Select>
                                                 <Select.Option value='worker'>{tt("Worker")}</Select.Option>

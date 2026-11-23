@@ -35,6 +35,7 @@ import {
 } from 'reducers';
 import { updateJobAsync } from './jobs-actions';
 import { loadAudioDataAsync } from './audio-actions';
+import { tt } from 'i18n';
 
 interface AnnotationsParameters {
     filters: object[];
@@ -564,7 +565,7 @@ export function propagateObjectAsync(from: number, to: number): ThunkAction {
         try {
             const objectState = objectStates.find((_state: any) => _state.clientID === activatedStateID);
             if (!objectState) {
-                throw new Error('There is not an activated object state to be propagated');
+                throw new Error(tt("There is not an activated object state to be propagated"));
             }
 
             if (!sessionInstance) {
@@ -613,7 +614,7 @@ export function removeObjectAsync(objectState: ObjectState, force: boolean): Thu
                     },
                 });
             } else {
-                throw new Error('Could not remove the locked object');
+                throw new Error(tt("Could not remove the locked object"));
             }
         } catch (error) {
             dispatch({
@@ -1406,7 +1407,7 @@ export function getJobAsync({
             });
 
             if (!Number.isInteger(taskID) || !Number.isInteger(jobID)) {
-                throw new Error('Requested resource id is not valid');
+                throw new Error(tt("Requested resource id is not valid"));
             }
 
             const start = Date.now();

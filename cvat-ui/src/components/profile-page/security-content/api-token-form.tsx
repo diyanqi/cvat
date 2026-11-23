@@ -57,7 +57,7 @@ function ApiTokenForm({
     };
 
     const initialValues = {
-        name: token?.name || (tokenCount === 0 ? 'New token' : `New token ${tokenCount + 1}`),
+        name: token?.name || (tokenCount === 0 ? tt("New token") : `New token ${tokenCount + 1}`),
         expirationDate: getInitialExpirationDate(),
         isReadOnly: token?.readOnly || false,
     };
@@ -70,16 +70,16 @@ function ApiTokenForm({
             initialValues={initialValues}
         >
             <Typography.Title level={5}>
-                {isEditing ? 'Edit API Token' : 'Create API Token'}
+                {isEditing ? tt("Edit API Token") : tt("Create API Token")}
             </Typography.Title>
             <Form.Item
                 className='cvat-api-token-form-name'
                 label={tt("Token Name")}
                 name='name'
                 rules={[
-                    { required: true, message: 'Please enter a token name' },
-                    { min: 3, message: 'Token name must be at least 3 characters' },
-                    { max: 50, message: 'Token name must not exceed 50 characters' },
+                    { required: true, message: tt("Please enter a token name") },
+                    { min: 3, message: tt("Token name must be at least 3 characters") },
+                    { max: 50, message: tt("Token name must not exceed 50 characters") },
                 ]}
             >
                 <Input placeholder={tt("Enter a descriptive name for this token")} allowClear />

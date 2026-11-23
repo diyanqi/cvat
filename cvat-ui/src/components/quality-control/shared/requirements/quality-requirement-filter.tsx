@@ -41,24 +41,24 @@ interface StoredFilter {
 }
 
 const ANNOTATION_TYPE_VALUES = [
-    { value: 'tag', title: 'Tag' },
-    { value: 'rectangle', title: 'Rectangle' },
-    { value: 'points', title: 'Points' },
-    { value: 'polyline', title: 'Polyline' },
-    { value: 'polygon', title: 'Polygon' },
-    { value: 'cuboid', title: 'Cuboid' },
-    { value: 'ellipse', title: 'Ellipse' },
-    { value: 'skeleton', title: 'Skeleton' },
-    { value: 'skeleton_keypoint', title: 'Skeleton keypoint' },
-    { value: 'mask', title: 'Mask' },
+    { value: 'tag', title: tt("Tag") },
+    { value: 'rectangle', title: tt("Rectangle") },
+    { value: 'points', title: tt("Points") },
+    { value: 'polyline', title: tt("Polyline") },
+    { value: 'polygon', title: tt("Polygon") },
+    { value: 'cuboid', title: tt("Cuboid") },
+    { value: 'ellipse', title: tt("Ellipse") },
+    { value: 'skeleton', title: tt("Skeleton") },
+    { value: 'skeleton_keypoint', title: tt("Skeleton keypoint") },
+    { value: 'mask', title: tt("Mask") },
 ];
 
 const SOURCE_VALUES = [
-    { value: 'manual', title: 'Manual' },
-    { value: 'ground_truth', title: 'Ground truth' },
-    { value: 'semi-auto', title: 'Semi-auto' },
-    { value: 'auto', title: 'Auto' },
-    { value: 'file', title: 'File' },
+    { value: 'manual', title: tt("Manual") },
+    { value: 'ground_truth', title: tt("Ground truth") },
+    { value: 'semi-auto', title: tt("Semi-auto") },
+    { value: 'auto', title: tt("Auto") },
+    { value: 'file', title: tt("File") },
 ];
 
 const getLabelOptions = (labels: Label[]): { value: string; title: string }[] => labels.map((label) => ({
@@ -138,47 +138,47 @@ const getAttributesSubfields = (labels: Label[], includeSublabels = true): Recor
 
 const getShapeSubfields = (labels: Label[]): Record<string, unknown> => ({
     label: {
-        label: 'Label',
+        label: tt("Label"),
         type: 'text',
     },
     type: {
-        label: 'Type',
+        label: tt("Type"),
         type: 'select',
         fieldSettings: {
             listValues: ANNOTATION_TYPE_VALUES,
         },
     },
     area: {
-        label: 'Area',
+        label: tt("Area"),
         type: 'number',
         fieldSettings: { min: 0 },
     },
     source: {
-        label: 'Source',
+        label: tt("Source"),
         type: 'select',
         fieldSettings: {
             listValues: SOURCE_VALUES,
         },
     },
     occluded: {
-        label: 'Occluded',
+        label: tt("Occluded"),
         type: 'boolean',
     },
     track_id: {
-        label: 'Track Id',
+        label: tt("Track Id"),
         type: 'number',
         fieldSettings: { min: 0 },
     },
     outside: {
-        label: 'Outside',
+        label: tt("Outside"),
         type: 'boolean',
     },
     keyframe: {
-        label: 'Keyframe',
+        label: tt("Keyframe"),
         type: 'boolean',
     },
     attribute: {
-        label: 'Attributes',
+        label: tt("Attributes"),
         type: '!struct',
         subfields: getAttributesSubfields(labels),
         fieldSettings: {
@@ -457,7 +457,7 @@ export default function QualityRequirementFilter(props: Readonly<Props>): JSX.El
             ...AntdConfig,
             fields: {
                 'shape.label': {
-                    label: 'Label',
+                    label: tt("Label"),
                     type: 'select',
                     valueSources: ['value'] as 'value'[],
                     fieldSettings: {
@@ -465,26 +465,26 @@ export default function QualityRequirementFilter(props: Readonly<Props>): JSX.El
                     },
                 },
                 'shape.type': {
-                    label: 'Type',
+                    label: tt("Type"),
                     type: 'select',
                     fieldSettings: {
                         listValues: ANNOTATION_TYPE_VALUES,
                     },
                 },
                 'shape.area': {
-                    label: 'Area',
+                    label: tt("Area"),
                     type: 'number',
                     fieldSettings: { min: 0 },
                 },
                 'shape.source': {
-                    label: 'Source',
+                    label: tt("Source"),
                     type: 'select',
                     fieldSettings: {
                         listValues: SOURCE_VALUES,
                     },
                 },
                 'shape.skeleton': {
-                    label: 'Skeleton',
+                    label: tt("Skeleton"),
                     type: '!struct',
                     subfields: shapeSubfields,
                     fieldSettings: {
@@ -494,7 +494,7 @@ export default function QualityRequirementFilter(props: Readonly<Props>): JSX.El
                     },
                 },
                 'shape.track': {
-                    label: 'Track',
+                    label: tt("Track"),
                     type: '!struct',
                     subfields: shapeSubfields,
                     fieldSettings: {
@@ -504,7 +504,7 @@ export default function QualityRequirementFilter(props: Readonly<Props>): JSX.El
                     },
                 },
                 'shape.attribute': {
-                    label: 'Attributes',
+                    label: tt("Attributes"),
                     type: '!struct',
                     subfields: attributeSubfields,
                     fieldSettings: {
@@ -514,50 +514,50 @@ export default function QualityRequirementFilter(props: Readonly<Props>): JSX.El
                     },
                 },
                 'shape.attribute.name': {
-                    label: 'Attribute name',
+                    label: tt("Attribute name"),
                     type: 'text',
                     hideForSelect: true,
                 },
                 'shape.attribute.value': {
-                    label: 'Attribute value',
+                    label: tt("Attribute value"),
                     type: 'text',
                     hideForSelect: true,
                 },
                 'shape.track.attribute.name': {
-                    label: 'Track attribute name',
+                    label: tt("Track attribute name"),
                     type: 'text',
                     hideForSelect: true,
                 },
                 'shape.track.attribute.value': {
-                    label: 'Track attribute value',
+                    label: tt("Track attribute value"),
                     type: 'text',
                     hideForSelect: true,
                 },
                 'shape.skeleton.attribute.name': {
-                    label: 'Skeleton attribute name',
+                    label: tt("Skeleton attribute name"),
                     type: 'text',
                     hideForSelect: true,
                 },
                 'shape.skeleton.attribute.value': {
-                    label: 'Skeleton attribute value',
+                    label: tt("Skeleton attribute value"),
                     type: 'text',
                     hideForSelect: true,
                 },
                 'shape.occluded': {
-                    label: 'Occluded',
+                    label: tt("Occluded"),
                     type: 'boolean',
                 },
                 'shape.track_id': {
-                    label: 'Track Id',
+                    label: tt("Track Id"),
                     type: 'number',
                     fieldSettings: { min: 0 },
                 },
                 'shape.outside': {
-                    label: 'Outside',
+                    label: tt("Outside"),
                     type: 'boolean',
                 },
                 'shape.keyframe': {
-                    label: 'Keyframe',
+                    label: tt("Keyframe"),
                     type: 'boolean',
                 },
             },

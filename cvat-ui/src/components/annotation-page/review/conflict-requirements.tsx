@@ -50,7 +50,7 @@ export default function ConflictRequirements(props: Readonly<Props>): JSX.Elemen
                     aria-expanded={expanded}
                     onClick={() => setExpanded(!expanded)}
                 >
-                    {expanded ? 'Show less' : `Show all (${requirements.length})`}
+                    {expanded ? tt("Show less") : `Show all (${requirements.length})`}
                 </Button>
             )}
         </div>

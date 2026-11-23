@@ -128,14 +128,14 @@ function ObjectsSideBar(props: StateToProps & DispatchToProps & OwnProps): JSX.E
                 className='cvat-objects-sidebar-tabs'
                 items={[{
                     key: 'objects',
-                    label: 'Objects',
+                    label: tt("Objects"),
                     children: objectsList,
                 }, {
                     key: 'labels',
-                    label: 'Labels',
+                    label: tt("Labels"),
                     forceRender: true,
                     children: <LabelsList />,
-                }, ...(is2D ? [{ key: 'issues', label: 'Issues', children: <IssuesListComponent /> }] : [])]}
+                }, ...(is2D ? [{ key: 'issues', label: tt("Issues"), children: <IssuesListComponent /> }] : [])]}
             />
             {!sidebarCollapsed && <AppearanceBlock />}
         </Layout.Sider>

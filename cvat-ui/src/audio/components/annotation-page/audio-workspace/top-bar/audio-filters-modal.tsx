@@ -87,7 +87,7 @@ function AudioFiltersModalComponent(): JSX.Element {
     useEffect(() => {
         const fields: Record<string, any> = {
             label: {
-                label: 'Label',
+                label: tt("Label"),
                 type: 'select',
                 valueSources: ['value'] as ('value')[],
                 fieldSettings: {
@@ -98,13 +98,13 @@ function AudioFiltersModalComponent(): JSX.Element {
                 },
             },
             serverID: {
-                label: 'ServerID',
+                label: tt("ServerID"),
                 type: 'number',
                 hideForCompare: true,
                 fieldSettings: { min: 0 },
             },
             attr: {
-                label: 'Attributes',
+                label: tt("Attributes"),
                 type: '!struct',
                 subfields: getAttributesSubfields(labels),
                 fieldSettings: {
@@ -112,30 +112,30 @@ function AudioFiltersModalComponent(): JSX.Element {
                 },
             },
             duration: {
-                label: 'Duration (ms)',
+                label: tt("Duration (ms)"),
                 type: 'number',
                 fieldSettings: { min: 0 },
             },
             start: {
-                label: 'Start (ms)',
+                label: tt("Start (ms)"),
                 type: 'number',
                 fieldSettings: { min: 0 },
             },
             end: {
-                label: 'End (ms)',
+                label: tt("End (ms)"),
                 type: 'number',
                 fieldSettings: { min: 0 },
             },
             source: {
-                label: 'Source',
+                label: tt("Source"),
                 type: 'select',
                 fieldSettings: {
                     listValues: [
-                        { value: 'manual', title: 'manual' },
-                        { value: 'auto', title: 'auto' },
-                        { value: 'consensus', title: 'consensus' },
-                        { value: 'semi-auto', title: 'semi-auto' },
-                        { value: 'file', title: 'file' },
+                        { value: 'manual', title: tt("manual") },
+                        { value: 'auto', title: tt("auto") },
+                        { value: 'consensus', title: tt("consensus") },
+                        { value: 'semi-auto', title: tt("semi-auto") },
+                        { value: 'file', title: tt("file") },
                     ],
                 },
             },

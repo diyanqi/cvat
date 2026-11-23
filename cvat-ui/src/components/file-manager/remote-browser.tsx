@@ -297,7 +297,7 @@ function RemoteBrowser(props: Props): JSX.Element {
 
     const columns = [
         {
-            title: 'Name',
+            title: tt("Name"),
             dataIndex: 'name',
             key: 'name',
             render: (name: string, node: Node) => {

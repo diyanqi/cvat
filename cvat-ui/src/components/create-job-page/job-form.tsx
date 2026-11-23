@@ -137,13 +137,13 @@ function JobForm(props: Props): JSX.Element {
         onQuantityChange(currentQuantity);
     }, [form, frameSelectionMethod, onQuantityChange, supportsFrameSelection]);
 
-    const description = 'A representative set, 5-15% of randomly chosen frames is recommended';
+    const description = tt("A representative set, 5-15% of randomly chosen frames is recommended");
     const jobTypeItem = (
         <Col key={JobFormSection.JOB_TYPE}>
             <Form.Item
                 name='type'
                 label={tt("Job type")}
-                rules={[{ required: true, message: 'Please, specify Job type' }]}
+                rules={[{ required: true, message: tt("Please, specify Job type") }]}
             >
                 <Select
                     virtual={false}
@@ -163,7 +163,7 @@ function JobForm(props: Props): JSX.Element {
             <Form.Item
                 name='frameSelectionMethod'
                 label={tt("Frame selection method")}
-                rules={[{ required: true, message: 'Please, specify frame selection method' }]}
+                rules={[{ required: true, message: tt("Please, specify frame selection method") }]}
             >
                 <Select
                     virtual={false}
@@ -192,7 +192,7 @@ function JobForm(props: Props): JSX.Element {
                         label={(
                             <Space>
                                 {frameSelectionMethod === FrameSelectionMethod.RANDOM ?
-                                    'Quantity' : 'Quantity per job'}
+                                    'Quantity' : tt("Quantity per job")}
                                 <CVATTooltip title={description}>
                                     <QuestionCircleOutlined
                                         style={{ opacity: 0.5 }}
@@ -200,7 +200,7 @@ function JobForm(props: Props): JSX.Element {
                                 </CVATTooltip>
                             </Space>
                         )}
-                        rules={[{ required: true, message: 'Please, specify quantity' }]}
+                        rules={[{ required: true, message: tt("Please, specify quantity") }]}
                     >
                         <InputNumber
                             className='cvat-input-frame-quantity'
@@ -227,7 +227,7 @@ function JobForm(props: Props): JSX.Element {
                                         </CVATTooltip>
                                     </Space>
                                 )}
-                                rules={[{ required: true, message: 'Please, specify frame count' }]}
+                                rules={[{ required: true, message: tt("Please, specify frame count") }]}
                             >
                                 <InputNumber
                                     className='cvat-input-frame-count'

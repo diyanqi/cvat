@@ -170,9 +170,9 @@ function ExportBackupModal(): JSX.Element {
                 ));
                 closeModal();
                 const description =
-                    'Bulk backup export was started. You can check progress [here](/requests).';
+                    tt("Bulk backup export was started. You can check progress [here](/requests).");
                 Notification.info({
-                    message: 'Bulk backup export started',
+                    message: tt("Bulk backup export started"),
                     description: (
                         <CVATMarkdown history={history}>{description}</CVATMarkdown>
                     ),
@@ -201,10 +201,10 @@ function ExportBackupModal(): JSX.Element {
                 closeModal();
 
                 const description = isBulkMode ?
-                    'Bulk backup export was started. You can check progress [here](/requests).' :
-                    'Backup export was started. You can check progress [here](/requests).';
+                    tt("Bulk backup export was started. You can check progress [here](/requests).") :
+                    tt("Backup export was started. You can check progress [here](/requests).");
                 Notification.info({
-                    message: isBulkMode ? 'Bulk backup export started' : 'Backup export started',
+                    message: isBulkMode ? tt("Bulk backup export started") : tt("Backup export started"),
                     description: (
                         <CVATMarkdown history={history}>{description}</CVATMarkdown>
                     ),

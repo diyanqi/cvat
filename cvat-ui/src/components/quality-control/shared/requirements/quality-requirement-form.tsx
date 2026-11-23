@@ -232,12 +232,12 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
 
             await onReload();
             notification.info({
-                message: requirement ? 'Requirement has been updated' : 'Requirement has been created',
+                message: requirement ? tt("Requirement has been updated") : tt("Requirement has been created"),
             });
             onCancel();
         } catch (error: unknown) {
             notification.error({
-                message: requirement ? 'Could not update requirement' : 'Could not create requirement',
+                message: requirement ? tt("Could not update requirement") : tt("Could not create requirement"),
                 description: error instanceof Error ? error.message : '',
             });
             throw error;
@@ -425,7 +425,7 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
             label={renderOverrideControl(name, label)}
             tooltip={getTooltipDescription(description)}
             rules={[
-                { required: true, message: 'This field is required' },
+                { required: true, message: tt("This field is required") },
                 {
                     validator: (_, value: number | null | undefined): Promise<void> => {
                         if (value === null || typeof value === 'undefined') {
@@ -434,7 +434,7 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
 
                         return value >= 0 && value <= 100 ?
                             Promise.resolve() :
-                            Promise.reject(new Error('Value must be from 0 to 100'));
+                            Promise.reject(new Error(tt("Value must be from 0 to 100")));
                     },
                 },
             ]}
@@ -457,7 +457,7 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
             name={name}
             label={renderOverrideControl(name, label)}
             tooltip={getTooltipDescription(description)}
-            rules={[{ required: true, message: 'This field is required' }]}
+            rules={[{ required: true, message: tt("This field is required") }]}
         >
             <InputNumber
                 min={0}
@@ -475,12 +475,12 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                         <Col span={24}>
                             <Form.Item
                                 name='iouThreshold'
-                                label={renderOverrideControl('iouThreshold', 'IoU threshold')}
+                                label={renderOverrideControl('iouThreshold', tt("IoU threshold"))}
                                 tooltip={getTooltipDescription(requirementDescriptions.iouThreshold)}
                                 rules={[{
                                     validator: async (_, value) => {
                                         if (!thresholdPolicyValid) {
-                                            throw new Error('Correct the IoU threshold fields before saving.');
+                                            throw new Error(tt("Correct the IoU threshold fields before saving."));
                                         }
                                         validateThresholdPolicy(value);
                                     },
@@ -498,7 +498,7 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                 return (
                     <Col span={12}>
                         {renderPercentInput(
-                            'iouThreshold', 'IoU threshold (%)', requirementDescriptions.iouThreshold,
+                            'iouThreshold', tt("IoU threshold (%)"), requirementDescriptions.iouThreshold,
                         )}
                     </Col>
                 );
@@ -507,18 +507,18 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                     <>
                         <Col span={12}>
                             {renderPercentInput(
-                                'oksThreshold', 'OKS threshold (%)', requirementDescriptions.oksThreshold,
+                                'oksThreshold', tt("OKS threshold (%)"), requirementDescriptions.oksThreshold,
                             )}
                         </Col>
                         <Col span={12}>
                             {renderPercentInput(
-                                'pointSize', 'Point size (%)', requirementDescriptions.pointSize,
+                                'pointSize', tt("Point size (%)"), requirementDescriptions.pointSize,
                             )}
                         </Col>
                         <Col span={12}>
                             <Form.Item
                                 name='pointSizeBase'
-                                label={renderOverrideControl('pointSizeBase', 'Point size base')}
+                                label={renderOverrideControl('pointSizeBase', tt("Point size base"))}
                                 tooltip={getTooltipDescription(
                                     getChoiceFieldDescription(requirementDescriptions.pointSizeBase),
                                 )}
@@ -527,9 +527,9 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                                     {POINT_SIZE_BASE_OPTIONS.map((value) => (
                                         <Select.Option key={value} value={value}>
                                             {value === QualityRequirementPointSizeBase.GROUP_BBOX_SIZE ? (
-                                                'Group bbox size'
+                                                tt("Group bbox size")
                                             ) : (
-                                                'Image size'
+                                                tt("Image size")
                                             )}
                                         </Select.Option>
                                     ))}
@@ -544,14 +544,14 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                         <Col span={12}>
                             {renderPercentInput(
                                 'boundaryFThreshold',
-                                'Boundary F threshold (%)',
+                                tt("Boundary F threshold (%)"),
                                 requirementDescriptions.boundaryFThreshold,
                             )}
                         </Col>
                         <Col span={12}>
                             {renderPixelInput(
                                 'boundaryFTolerance',
-                                'Boundary tolerance (px)',
+                                tt("Boundary tolerance (px)"),
                                 requirementDescriptions.boundaryFTolerance,
                             )}
                         </Col>
@@ -579,11 +579,11 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                     <Col span={12}>
                         <Form.Item
                             name='similarityMetric'
-                            label={renderOverrideControl('similarityMetric', 'Similarity metric')}
+                            label={renderOverrideControl('similarityMetric', tt("Similarity metric"))}
                             tooltip={getTooltipDescription(
                                 getChoiceFieldDescription(requirementDescriptions.similarityMetric),
                             )}
-                            rules={[{ required: true, message: 'This field is required' }]}
+                            rules={[{ required: true, message: tt("This field is required") }]}
                         >
                             <Select disabled={SUPPORTED_SIMILARITY_METRICS[annotationType].length < 2}>
                                 {SUPPORTED_SIMILARITY_METRICS[annotationType].map((value) => (
@@ -600,14 +600,14 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                         similarityMetric === QualityRequirementSimilarityMetric.IOU && (
                         <Col span={12}>
                             {renderPercentInput(
-                                'lineThickness', 'Line thickness (%)', requirementDescriptions.lineThickness,
+                                'lineThickness', tt("Line thickness (%)"), requirementDescriptions.lineThickness,
                             )}
                         </Col>
                     )}
                     {SEGMENTATION_ANNOTATION_TYPES.has(annotationType) && (
                         <Col span={12}>
                             {renderCheckbox(
-                                'panopticComparison', 'Panoptic comparison', requirementDescriptions.panopticComparison,
+                                'panopticComparison', tt("Panoptic comparison"), requirementDescriptions.panopticComparison,
                             )}
                         </Col>
                     )}
@@ -618,13 +618,13 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                         <Row gutter={16}>
                             <Col span={12}>
                                 {renderCheckbox(
-                                    'matchOrientation', 'Match orientation', requirementDescriptions.matchOrientation,
+                                    'matchOrientation', tt("Match orientation"), requirementDescriptions.matchOrientation,
                                 )}
                             </Col>
                             <Col span={12}>
                                 {renderPercentInput(
                                     'lineOrientationThreshold',
-                                    'Line orientation threshold (%)',
+                                    tt("Line orientation threshold (%)"),
                                     requirementDescriptions.lineOrientationThreshold,
                                 )}
                             </Col>
@@ -638,14 +638,14 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                             <Col span={12}>
                                 {renderCheckbox(
                                     'checkCoveredAnnotations',
-                                    'Check covered annotations',
+                                    tt("Check covered annotations"),
                                     requirementDescriptions.checkCoveredAnnotations,
                                 )}
                             </Col>
                             <Col span={12}>
                                 {renderPercentInput(
                                     'objectVisibilityThreshold',
-                                    'Object visibility threshold (%)',
+                                    tt("Object visibility threshold (%)"),
                                     requirementDescriptions.objectVisibilityThreshold,
                                 )}
                             </Col>
@@ -655,12 +655,12 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                 <Divider />
                 <Row gutter={16}>
                     <Col span={12}>
-                        {renderCheckbox('matchGroups', 'Match groups', requirementDescriptions.matchGroups)}
+                        {renderCheckbox('matchGroups', tt("Match groups"), requirementDescriptions.matchGroups)}
                     </Col>
                     <Col span={12}>
                         {renderPercentInput(
                             'groupMatchThreshold',
-                            'Min group match threshold (%)',
+                            tt("Min group match threshold (%)"),
                             requirementDescriptions.groupMatchThreshold,
                         )}
                     </Col>
@@ -689,7 +689,7 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
             </Row>
             <Row className='cvat-quality-requirement-form-header' align='middle'>
                 <Col>
-                    <Text strong>{requirement ? 'Edit requirement' : 'Create requirement'}</Text>
+                    <Text strong>{requirement ? tt("Edit requirement") : tt("Create requirement")}</Text>
                 </Col>
             </Row>
             <Form.Item
@@ -697,10 +697,10 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                 label={tt("Name")}
                 rules={[{
                     required: true,
-                    message: 'This field is required',
+                    message: tt("This field is required"),
                 }, {
                     max: 250,
-                    message: 'Name must be at most 250 characters',
+                    message: tt("Name must be at most 250 characters"),
                 }, {
                     validator: (_, value: string): Promise<void> => {
                         const trimmedValue = value?.trim();
@@ -709,7 +709,7 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                         ));
 
                         return duplicate ?
-                            Promise.reject(new Error('Requirement name must be unique')) :
+                            Promise.reject(new Error(tt("Requirement name must be unique"))) :
                             Promise.resolve();
                     },
                 }]}
@@ -722,7 +722,7 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                 rules={[
                     ...(parentRequirementRequired ? [{
                         required: true,
-                        message: 'This field is required',
+                        message: tt("This field is required"),
                     }] : []),
                 ]}
             >
@@ -747,7 +747,7 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                     <Form.Item
                         name='annotationType'
                         label={tt("Target")}
-                        rules={[{ required: true, message: 'This field is required' }]}
+                        rules={[{ required: true, message: tt("This field is required") }]}
                     >
                         <Select disabled>
                             {ANNOTATION_TYPES.map((value) => (
@@ -797,12 +797,12 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                 <Col span={12}>
                     <Form.Item
                         name='metric'
-                        label={renderOverrideControl('metric', 'Target metric')}
+                        label={renderOverrideControl('metric', tt("Target metric"))}
                         tooltip={{
                             title: targetMetricTooltip,
                             overlayStyle: { maxWidth: 480 },
                         }}
-                        rules={[{ required: true, message: 'This field is required' }]}
+                        rules={[{ required: true, message: tt("This field is required") }]}
                     >
                         <Select
                             optionLabelProp='label'
@@ -822,7 +822,7 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                     </Form.Item>
                 </Col>
                 <Col span={12}>
-                    {renderPercentInput('requiredScore', 'Target metric threshold (%)')}
+                    {renderPercentInput('requiredScore', tt("Target metric threshold (%)"))}
                 </Col>
                 <Col span={12}>
                     <Form.Item name='enabled' valuePropName='checked'>

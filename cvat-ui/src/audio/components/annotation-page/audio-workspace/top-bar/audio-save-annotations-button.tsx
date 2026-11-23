@@ -16,11 +16,12 @@ import { ShortcutScope } from 'utils/enums';
 import { subKeyMap } from 'utils/component-subkeymap';
 import { saveAnnotationsAsync } from 'actions/annotation-actions';
 import { SaveIcon } from 'icons';
+import { tt } from 'i18n';
 
 const componentShortcuts = {
     SAVE_JOB: {
-        name: 'Save the job',
-        description: 'Submit unsaved changes of annotations to the server',
+        name: tt("Save the job"),
+        description: tt("Submit unsaved changes of annotations to the server"),
         sequences: ['ctrl+s', 'command+s'],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },

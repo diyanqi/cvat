@@ -225,7 +225,7 @@ function ExportDatasetModal(props: Readonly<StateToProps>): JSX.Element {
                 const resource = values.saveImages ? 'Dataset' : 'Annotations';
                 const description =
                     `Bulk ${resource.toLowerCase()} export was started. ` +
-                    'You can check progress and download the file [here](/requests).';
+                    tt("You can check progress and download the file [here](/requests).");
                 Notification.info({
                     message: `Bulk ${resource.toLowerCase()} export started`,
                     description: (
@@ -252,7 +252,7 @@ function ExportDatasetModal(props: Readonly<StateToProps>): JSX.Element {
             closeModal();
             const resource = values.saveImages ? 'Dataset' : 'Annotations';
             const description = `${resource} export was started for ${instanceType}. ` +
-            'You can check progress and download the file [here](/requests).';
+            tt("You can check progress and download the file [here](/requests).");
             Notification.info({
                 message: `${resource} export started`,
                 description: (
@@ -322,7 +322,7 @@ function ExportDatasetModal(props: Readonly<StateToProps>): JSX.Element {
                 <Form.Item
                     name='selectedFormat'
                     label={<Text strong>{tt("Export format")}</Text>}
-                    rules={[{ required: true, message: 'Format must be selected' }]}
+                    rules={[{ required: true, message: tt("Format must be selected") }]}
                 >
                     <Select virtual={false} placeholder={tt("Select dataset format")} className='cvat-modal-export-select'>
                         {sortedDumpers

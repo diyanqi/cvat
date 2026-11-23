@@ -40,17 +40,17 @@ const ATTRIBUTE_RULE_DEFAULT_THRESHOLD = 0.8;
 const attributeRulesFilterConfig: Partial<Config> = {
     fields: {
         name: {
-            label: 'Name',
+            label: tt("Name"),
             type: 'text',
             valueSources: ['value'],
         },
         enabled: {
-            label: 'Enabled',
+            label: tt("Enabled"),
             type: 'boolean',
             valueSources: ['value'],
         },
         comparator: {
-            label: 'Comparator',
+            label: tt("Comparator"),
             type: 'select',
             valueSources: ['value'],
             fieldSettings: {
@@ -283,7 +283,7 @@ export default function QualityRequirementAttributeRules(props: Readonly<Props>)
                                 getAttributeComparisonStateClassName(record.isLocal, record.hasInheritedCounterpart)
                             )}
                             columns={[{
-                                title: 'Name',
+                                title: tt("Name"),
                                 dataIndex: 'name',
                                 sorter: (first: AttributeRuleRow, second: AttributeRuleRow) => (
                                     first.name.localeCompare(second.name)
@@ -292,13 +292,13 @@ export default function QualityRequirementAttributeRules(props: Readonly<Props>)
                                     <Form.Item
                                         name={[record.fieldName, 'specId']}
                                         className='cvat-quality-requirement-attribute-rule-field'
-                                        rules={[{ required: true, message: 'This field is required' }]}
+                                        rules={[{ required: true, message: tt("This field is required") }]}
                                         {...(record.isUnknownAttribute ? {
                                             validateStatus: 'warning',
                                             help: record.enabled ?
-                                                'The attribute was deleted. ' +
-                                                'The requirement is not computed while the rule is enabled' :
-                                                'The attribute was deleted. The rule is ignored',
+                                                tt("The attribute was deleted.") +
+                                                tt("The requirement is not computed while the rule is enabled") :
+                                                tt("The attribute was deleted. The rule is ignored"),
                                         } : {})}
                                     >
                                         <Select
@@ -328,7 +328,7 @@ export default function QualityRequirementAttributeRules(props: Readonly<Props>)
                                     </Form.Item>
                                 ),
                             }, {
-                                title: 'Enabled',
+                                title: tt("Enabled"),
                                 dataIndex: 'enabled',
                                 sorter: (first: AttributeRuleRow, second: AttributeRuleRow) => (
                                     Number(first.enabled) - Number(second.enabled)
@@ -346,7 +346,7 @@ export default function QualityRequirementAttributeRules(props: Readonly<Props>)
                                     </Form.Item>
                                 ),
                             }, {
-                                title: 'Comparator',
+                                title: tt("Comparator"),
                                 dataIndex: 'comparator',
                                 sorter: (first: AttributeRuleRow, second: AttributeRuleRow) => (
                                     first.comparator.localeCompare(second.comparator)
@@ -379,7 +379,7 @@ export default function QualityRequirementAttributeRules(props: Readonly<Props>)
                                     </Form.Item>
                                 ),
                             }, {
-                                title: 'Actions',
+                                title: tt("Actions"),
                                 dataIndex: 'actions',
                                 render: (_: unknown, record: AttributeRuleRow): JSX.Element => {
                                     if (parentRequirementId !== null && !record.isLocal) {
@@ -470,7 +470,7 @@ export default function QualityRequirementAttributeRules(props: Readonly<Props>)
 
                                                         return value >= 0 && value <= 1 ?
                                                             Promise.resolve() :
-                                                            Promise.reject(new Error('Value must be from 0 to 1'));
+                                                            Promise.reject(new Error(tt("Value must be from 0 to 1")));
                                                     },
                                                 }]}
                                             >
@@ -488,7 +488,7 @@ export default function QualityRequirementAttributeRules(props: Readonly<Props>)
                                     </Row>
                                 ),
                             }}
-                            locale={{ emptyText: 'No attribute rules configured' }}
+                            locale={{ emptyText: tt("No attribute rules configured") }}
                         />
                     );
                 }}

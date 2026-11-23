@@ -58,7 +58,7 @@ function TaskItemComponent(props: TaskItemProps): JSX.Element {
     const [importingState, setImportingState] = useState<ImportingState | null>(
         taskInstance.size > 0 ? null : {
             state: null,
-            message: 'Request current progress',
+            message: tt("Request current progress"),
             progress: 0,
         },
     );

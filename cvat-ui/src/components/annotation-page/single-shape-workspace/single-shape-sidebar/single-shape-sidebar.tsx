@@ -62,9 +62,9 @@ function cancelCurrentCanvasOp(state: CombinedState): void {
 function makeMessage(label: Label, labelType: State['labelType'], pointsCount: number): JSX.Element {
     let readableShape = '';
     if (labelType === LabelType.POINTS) {
-        readableShape = pointsCount === 1 ? 'one point' : `${pointsCount} points`;
+        readableShape = pointsCount === 1 ? tt("one point") : `${pointsCount} points`;
     } else if (labelType === LabelType.ELLIPSE) {
-        readableShape = 'an ellipse';
+        readableShape = tt("an ellipse");
     } else {
         readableShape = `a ${labelType}`;
     }
@@ -189,27 +189,27 @@ const reducer = (state: State, action: ActionUnion<typeof actionCreators>): Stat
 
 const componentShortcuts = {
     SWITCH_DRAW_MODE_SINGLE_SHAPE: {
-        name: 'Draw mode',
+        name: tt("Draw mode"),
         description:
-            'Repeat the latest procedure of drawing with the same parameters',
+            tt("Repeat the latest procedure of drawing with the same parameters"),
         sequences: ['n'],
         scope: ShortcutScope.SINGLE_SHAPE_ANNOTATION_WORKSPACE,
     },
     CANCEL_SINGLE_SHAPE: {
-        name: 'Cancel',
-        description: 'Cancel any active canvas mode',
+        name: tt("Cancel"),
+        description: tt("Cancel any active canvas mode"),
         sequences: ['esc'],
         scope: ShortcutScope.SINGLE_SHAPE_ANNOTATION_WORKSPACE,
     },
     DELETE_OBJECT_SINGLE_SHAPE: {
-        name: 'Delete object',
-        description: 'Delete an active object. Use shift to force delete of locked objects',
+        name: tt("Delete object"),
+        description: tt("Delete an active object. Use shift to force delete of locked objects"),
         sequences: ['del', 'shift+del'],
         scope: ShortcutScope.SINGLE_SHAPE_ANNOTATION_WORKSPACE,
     },
     HIDE_MASK_SINGLE_SHAPE: {
-        name: 'Hide mask',
-        description: 'Hide currently edited mask',
+        name: tt("Hide mask"),
+        description: tt("Hide currently edited mask"),
         sequences: ['h'],
         scope: ShortcutScope.SINGLE_SHAPE_ANNOTATION_WORKSPACE,
     },
@@ -360,7 +360,7 @@ function SingleShapeSidebar(): JSX.Element {
                 message.open({
                     duration: 1,
                     type: 'success',
-                    content: 'You tagged the job as completed',
+                    content: tt("You tagged the job as completed"),
                     className: 'cvat-annotation-job-finished-success',
                 });
             })).finally(() => {
@@ -539,7 +539,7 @@ function SingleShapeSidebar(): JSX.Element {
                                             <Text>
                                                 
                                                 {tt("Click")}
-                                                <Text strong>{' Submit Results '}</Text>
+                                                <Text strong>{tt("Submit Results")}</Text>
                                                 
                                                 {tt("to finish the job")}
                                             </Text>

@@ -340,7 +340,7 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                     <Form.Item
                         label={tt("Access key ID")}
                         name='key'
-                        rules={[{ required: true, message: 'Please, specify your access key ID' }]}
+                        rules={[{ required: true, message: tt("Please, specify your access key ID") }]}
                         {...internalCommonProps}
                     >
                         <Input.Password
@@ -354,7 +354,7 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                     <Form.Item
                         label={tt("Secret access key")}
                         name='secret_key'
-                        rules={[{ required: true, message: 'Please, specify your secret access key' }]}
+                        rules={[{ required: true, message: tt("Please, specify your secret access key") }]}
                         {...internalCommonProps}
                     >
                         <Input.Password
@@ -378,7 +378,7 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                     <Form.Item
                         label={tt("Account name")}
                         name='account_name'
-                        rules={[{ required: true, message: 'Please, specify your account name' }]}
+                        rules={[{ required: true, message: tt("Please, specify your account name") }]}
                         {...internalCommonProps}
                     >
                         <Input.Password
@@ -393,7 +393,7 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                     <Form.Item
                         label={tt("SAS token")}
                         name='SAS_token'
-                        rules={[{ required: true, message: 'Please, specify your SAS token' }]}
+                        rules={[{ required: true, message: tt("Please, specify your SAS token") }]}
                         {...internalCommonProps}
                     >
                         <Input.Password
@@ -413,7 +413,7 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                 <Form.Item
                     label={tt("Account name")}
                     name='account_name'
-                    rules={[{ required: true, message: 'Please, specify your account name' }]}
+                    rules={[{ required: true, message: tt("Please, specify your account name") }]}
                     {...internalCommonProps}
                 >
                     <Input.Password
@@ -431,7 +431,7 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                 <Form.Item
                     label={tt("Connection string")}
                     name='connection_string'
-                    rules={[{ required: true, message: 'Please, specify your connection string' }]}
+                    rules={[{ required: true, message: tt("Please, specify your connection string") }]}
                     {...internalCommonProps}
                 >
                     <Input.Password
@@ -504,7 +504,7 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                 <Form.Item
                     label={tt("Bucket name")}
                     name='resource'
-                    rules={[{ required: true, message: 'Please, specify a bucket name' }]}
+                    rules={[{ required: true, message: tt("Please, specify a bucket name") }]}
                     {...internalCommonProps}
                 >
                     <Input disabled={!!cloudStorage} maxLength={63} />
@@ -512,7 +512,7 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                 <Form.Item
                     label={tt("Authentication type")}
                     name='credentials_type'
-                    rules={[{ required: true, message: 'Please, specify credentials type' }]}
+                    rules={[{ required: true, message: tt("Please, specify credentials type") }]}
                     {...internalCommonProps}
                 >
                     <Select onSelect={(value: CredentialsType) => onChangeCredentialsType(value)}>
@@ -551,7 +551,7 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                 <Form.Item
                     label={tt("Container name")}
                     name='resource'
-                    rules={[{ required: true, message: 'Please, specify a container name' }]}
+                    rules={[{ required: true, message: tt("Please, specify a container name") }]}
                     {...internalCommonProps}
                 >
                     <Input disabled={!!cloudStorage} maxLength={63} />
@@ -559,7 +559,7 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                 <Form.Item
                     label={tt("Authentication type")}
                     name='credentials_type'
-                    rules={[{ required: true, message: 'Please, specify credentials type' }]}
+                    rules={[{ required: true, message: tt("Please, specify credentials type") }]}
                     {...internalCommonProps}
                 >
                     <Select onSelect={(value: CredentialsType) => onChangeCredentialsType(value)}>
@@ -587,7 +587,7 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                 <Form.Item
                     label={tt("Bucket name")}
                     name='resource'
-                    rules={[{ required: true, message: 'Please, specify a bucket name' }]}
+                    rules={[{ required: true, message: tt("Please, specify a bucket name") }]}
                     {...internalCommonProps}
                 >
                     {/* maxlength https://cloud.google.com/storage/docs/naming-buckets#requirements */}
@@ -596,7 +596,7 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                 <Form.Item
                     label={tt("Authentication type")}
                     name='credentials_type'
-                    rules={[{ required: true, message: 'Please, specify credentials type' }]}
+                    rules={[{ required: true, message: tt("Please, specify credentials type") }]}
                     {...internalCommonProps}
                 >
                     <Select onSelect={(value: CredentialsType) => onChangeCredentialsType(value)}>
@@ -635,7 +635,7 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                 {...commonProps}
                 label={tt("Display name")}
                 name='display_name'
-                rules={[{ required: true, message: 'Please, specify a display name' }]}
+                rules={[{ required: true, message: tt("Please, specify a display name") }]}
             >
                 <Input maxLength={63} />
             </Form.Item>
@@ -646,7 +646,7 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                 {...commonProps}
                 label={tt("Provider")}
                 name='provider_type'
-                rules={[{ required: true, message: 'Please, specify a cloud storage provider' }]}
+                rules={[{ required: true, message: tt("Please, specify a cloud storage provider") }]}
             >
                 <Select
                     disabled={!!cloudStorage}

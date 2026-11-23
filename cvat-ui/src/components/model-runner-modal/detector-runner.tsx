@@ -156,7 +156,7 @@ function DetectorRunner(props: Props): JSX.Element {
                 <Col span={24}>
                     <Select
                         dropdownRender={(menu) => <ModelSelectorDropdownContent>{menu}</ModelSelectorDropdownContent>}
-                        placeholder={dimension === DimensionType.DIMENSION_2D ? 'Select a model' : 'No models available'}
+                        placeholder={dimension === DimensionType.DIMENSION_2D ? tt("Select a model") : tt("No models available")}
                         disabled={dimension !== DimensionType.DIMENSION_2D}
                         style={{ width: '100%' }}
                         onChange={(_modelID: string): void => {

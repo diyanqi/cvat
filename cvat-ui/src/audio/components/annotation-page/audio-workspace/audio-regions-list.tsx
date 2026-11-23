@@ -17,6 +17,7 @@ import { AudioIntervalActionShortcuts } from './audio-interval-actions';
 import AudioIntervalHeader from './audio-interval-header';
 import AudioRegionsListHeader from './audio-regions-list-header';
 import { AudioRegionsOrdering, intervalID, sortAudioIntervals } from './utils/audio-interval';
+import { tt } from 'i18n';
 
 interface ItemProps {
     clientID: number;
@@ -236,7 +237,7 @@ export default function AudioRegionsList(props: Props): JSX.Element {
     );
 
     if (!intervals.length) {
-        const description = filtersActive ? 'No intervals match filters' : 'No intervals created';
+        const description = filtersActive ? tt("No intervals match filters") : tt("No intervals created");
         return (
             <div className='cvat-audio-regions-list-wrapper'>
                 {header}

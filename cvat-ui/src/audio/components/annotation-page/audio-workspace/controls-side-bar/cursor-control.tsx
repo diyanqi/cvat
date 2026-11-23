@@ -13,6 +13,7 @@ import { ShortcutScope } from 'utils/enums';
 import { registerComponentShortcuts } from 'actions/shortcuts-actions';
 import { subKeyMap } from 'utils/component-subkeymap';
 import { useSelector } from 'react-redux';
+import { tt } from 'i18n';
 
 export interface Props {
     cursorShortkey: string;
@@ -22,8 +23,8 @@ export interface Props {
 
 const componentShortcuts = {
     CANCEL_AUDIO: {
-        name: 'Cancel',
-        description: 'Cancel any active audio control mode',
+        name: tt("Cancel"),
+        description: tt("Cancel any active audio control mode"),
         sequences: ['esc'],
         scope: ShortcutScope.AUDIO_WORKSPACE_CONTROLS,
     },

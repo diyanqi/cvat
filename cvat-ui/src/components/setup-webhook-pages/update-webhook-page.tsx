@@ -37,7 +37,7 @@ function UpdateWebhookPage(): JSX.Element {
             }).catch((error: unknown) => {
                 notification.error({
                     message: tt("Failed to fetch the webhook"),
-                    description: error instanceof Error ? error.message : 'Unknown error',
+                    description: error instanceof Error ? error.message : tt("Unknown error"),
                 });
             });
         } else {

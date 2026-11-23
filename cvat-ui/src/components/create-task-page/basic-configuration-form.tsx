@@ -56,7 +56,7 @@ export default class BasicConfigurationForm extends React.PureComponent<Props> {
             return this.formRef.current.validateFields();
         }
 
-        return Promise.reject(new Error('Form ref is empty'));
+        return Promise.reject(new Error(tt("Form ref is empty")));
     }
 
     public resetFields(): void {
@@ -84,7 +84,7 @@ export default class BasicConfigurationForm extends React.PureComponent<Props> {
                     rules={[
                         {
                             required: true,
-                            message: 'Task name cannot be empty',
+                            message: tt("Task name cannot be empty"),
                         },
                     ]}
                     initialValue={this.initialName}

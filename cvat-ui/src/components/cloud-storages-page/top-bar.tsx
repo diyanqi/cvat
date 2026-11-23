@@ -69,7 +69,7 @@ export default function StoragesTopBar(props: Readonly<Props>): JSX.Element {
                                 setVisibility({ ...defaultVisibility, sorting: visible })
                             )}
                             defaultFields={query.sort?.split(',') || ['-ID']}
-                            sortingFields={['ID', 'Provider type', 'Updated date', 'Display name', 'Resource', 'Credentials type', 'Owner', 'Description']}
+                            sortingFields={['ID', tt("Provider type"), tt("Updated date"), tt("Display name"), 'Resource', tt("Credentials type"), 'Owner', 'Description']}
                             onApplySorting={(sorting: string | null) => {
                                 onApplySorting(sorting);
                             }}

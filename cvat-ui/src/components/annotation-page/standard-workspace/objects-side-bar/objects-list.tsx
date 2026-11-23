@@ -628,7 +628,7 @@ function ObjectListComponent(props: Props): JSX.Element {
                                     onClick={compactLayerStack}
                                 />
                             </CVATTooltip>
-                            <CVATTooltip title={allLayersCollapsed ? 'Expand all layers' : 'Collapse all layers'}>
+                            <CVATTooltip title={allLayersCollapsed ? tt("Expand all layers") : tt("Collapse all layers")}>
                                 <Button
                                     className='cvat-objects-sidebar-z-layers-collapse-all-button'
                                     type='text'

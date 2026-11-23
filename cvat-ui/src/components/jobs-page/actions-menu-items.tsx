@@ -9,6 +9,7 @@ import { usePlugins } from 'utils/hooks';
 import { CVATMenuEditLabel } from 'components/common/cvat-menu-edit-label';
 import { LabelWithCountHOF } from 'components/common/label-with-count';
 import { Job, JobType } from 'cvat-core-wrapper';
+import { tt } from 'i18n';
 
 interface MenuItemsData {
     jobId: number;
@@ -104,7 +105,7 @@ export default function JobActionsItems(
 
     menuItems.push([{
         key: MenuKeys.TASK,
-        label: withCount('Go to the task', MenuKeys.TASK, `/tasks/${taskId}`),
+        label: withCount(tt("Go to the task"), MenuKeys.TASK, `/tasks/${taskId}`),
         disabled: isDisabled(MenuKeys.TASK),
     }, 0]);
 
@@ -112,7 +113,7 @@ export default function JobActionsItems(
         menuItems.push([{
             key: MenuKeys.GO_TO_PARENT,
             onClick: onGoToParent,
-            label: withCount('Go to parent', MenuKeys.GO_TO_PARENT),
+            label: withCount(tt("Go to parent"), MenuKeys.GO_TO_PARENT),
             disabled: isDisabled(MenuKeys.GO_TO_PARENT),
         }, 10]);
     }
@@ -120,7 +121,7 @@ export default function JobActionsItems(
         menuItems.push([{
             key: MenuKeys.GO_TO_REPLICAS,
             onClick: onGoToReplicas,
-            label: withCount('Go to replicas', MenuKeys.GO_TO_REPLICAS),
+            label: withCount(tt("Go to replicas"), MenuKeys.GO_TO_REPLICAS),
             disabled: isDisabled(MenuKeys.GO_TO_REPLICAS),
         }, 20]);
     }
@@ -128,7 +129,7 @@ export default function JobActionsItems(
     if (projectId) {
         menuItems.push([{
             key: MenuKeys.PROJECT,
-            label: withCount('Go to the project', MenuKeys.PROJECT, `/projects/${projectId}`),
+            label: withCount(tt("Go to the project"), MenuKeys.PROJECT, `/projects/${projectId}`),
             disabled: isDisabled(MenuKeys.PROJECT),
         }, 30]);
     }
@@ -137,7 +138,7 @@ export default function JobActionsItems(
         menuItems.push([{
             key: MenuKeys.BUG_TRACKER,
             onClick: onOpenBugTracker,
-            label: withCount('Go to the bug tracker', MenuKeys.BUG_TRACKER),
+            label: withCount(tt("Go to the bug tracker"), MenuKeys.BUG_TRACKER),
             disabled: isDisabled(MenuKeys.BUG_TRACKER),
         }, 40]);
     }
@@ -145,14 +146,14 @@ export default function JobActionsItems(
     menuItems.push([{
         key: MenuKeys.IMPORT_JOB,
         onClick: onImportAnnotations,
-        label: withCount('Import annotations', MenuKeys.IMPORT_JOB),
+        label: withCount(tt("Import annotations"), MenuKeys.IMPORT_JOB),
         disabled: isDisabled(MenuKeys.IMPORT_JOB),
     }, 50]);
 
     menuItems.push([{
         key: MenuKeys.EXPORT_JOB,
         onClick: onExportAnnotations,
-        label: withCount('Export annotations', MenuKeys.EXPORT_JOB),
+        label: withCount(tt("Export annotations"), MenuKeys.EXPORT_JOB),
         disabled: isExportAnnotationsDisabled || isDisabled(MenuKeys.EXPORT_JOB),
     }, 60]);
 
@@ -160,7 +161,7 @@ export default function JobActionsItems(
         menuItems.push([{
             key: MenuKeys.MERGE_SPECIFIC_CONSENSUS_JOBS,
             onClick: onMergeConsensusJob,
-            label: withCount('Merge consensus job', MenuKeys.MERGE_SPECIFIC_CONSENSUS_JOBS),
+            label: withCount(tt("Merge consensus job"), MenuKeys.MERGE_SPECIFIC_CONSENSUS_JOBS),
             disabled: isMergingConsensusEnabled || isDisabled(MenuKeys.MERGE_SPECIFIC_CONSENSUS_JOBS),
             itemIcon: isMergingConsensusEnabled ? <LoadingOutlined /> : undefined,
         }, 70]);
@@ -170,7 +171,7 @@ export default function JobActionsItems(
         menuItems.push([{
             key: MenuKeys.ADD_REPLICAS,
             onClick: onAddReplicas,
-            label: withCount('Add replicas', MenuKeys.ADD_REPLICAS),
+            label: withCount(tt("Add replicas"), MenuKeys.ADD_REPLICAS),
             disabled: isDisabled(MenuKeys.ADD_REPLICAS),
         }, 75]);
     }
@@ -186,7 +187,7 @@ export default function JobActionsItems(
         menuItems.push([{
             key: MenuKeys.DISTRIBUTE_JOBS,
             onClick: onDistributeJobs,
-            label: withCount('Distribute among users', MenuKeys.DISTRIBUTE_JOBS),
+            label: withCount(tt("Distribute among users"), MenuKeys.DISTRIBUTE_JOBS),
             disabled: isDisabled(MenuKeys.DISTRIBUTE_JOBS),
         }, 85]);
     }
@@ -207,7 +208,7 @@ export default function JobActionsItems(
 
     menuItems.push([{
         key: MenuKeys.VIEW_ANALYTICS,
-        label: withCount('View analytics', MenuKeys.VIEW_ANALYTICS, `/tasks/${taskId}/jobs/${jobId}/analytics`),
+        label: withCount(tt("View analytics"), MenuKeys.VIEW_ANALYTICS, `/tasks/${taskId}/jobs/${jobId}/analytics`),
         disabled: isDisabled(MenuKeys.VIEW_ANALYTICS),
     }, 110]);
 

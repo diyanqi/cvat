@@ -52,6 +52,12 @@ export function tt(key: string): string {
     return typeof value === 'string' ? value : key;
 }
 
+// Interpolation-aware helper: tf('Value must be less than {{max}}', { max })
+export function tf(key: string, vars: Record<string, string | number>): string {
+    const value = i18n.t(key, vars);
+    return typeof value === 'string' ? value : key;
+}
+
 export function changeLanguage(language: AppLanguage): void {
     try {
         localStorage.setItem(LANGUAGE_STORAGE_KEY, language);

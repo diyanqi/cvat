@@ -6,6 +6,7 @@
 import {
     SerializedLabel, SerializedAttribute, getCore, LabelType,
 } from 'cvat-core-wrapper';
+import { tt } from 'i18n';
 
 export interface SkeletonConfiguration {
     type: 'skeleton';
@@ -22,7 +23,7 @@ let id = 0;
 // instead of a list of options.
 export function validateNumberAttributeValues(values: string[]): void {
     if (values.length !== 3) {
-        throw new Error('three numbers are expected');
+        throw new Error(tt("three numbers are expected"));
     }
 
     const trimmed = values.map((value: string) => value.trim());
@@ -35,29 +36,29 @@ export function validateNumberAttributeValues(values: string[]): void {
     const [min, max, step] = numbers;
 
     if (min >= max) {
-        throw new Error('minimum must be less than maximum');
+        throw new Error(tt("minimum must be less than maximum"));
     }
 
     if (max - min < step) {
-        throw new Error('step must be less than minmax difference');
+        throw new Error(tt("step must be less than minmax difference"));
     }
 
     if (step <= 0) {
-        throw new Error('step must be a positive number');
+        throw new Error(tt("step must be a positive number"));
     }
 }
 
 function validateParsedAttribute(attr: SerializedAttribute): void {
     if (typeof attr !== 'object' || attr === null) {
-        throw new Error('Attribute must be a JSON object');
+        throw new Error(tt("Attribute must be a JSON object"));
     }
 
     if (typeof attr.name !== 'string') {
-        throw new Error('Attribute name must be a string');
+        throw new Error(tt("Attribute name must be a string"));
     }
 
     if (attr.name.trim().length === 0) {
-        throw new Error('Attribute name must not be empty');
+        throw new Error(tt("Attribute name must not be empty"));
     }
 
     if (typeof attr.id !== 'undefined' && !Number.isInteger(attr.id)) {
@@ -104,15 +105,15 @@ function validateParsedAttribute(attr: SerializedAttribute): void {
 
 export function validateParsedLabel(label: SerializedLabel): void {
     if (typeof label !== 'object' || label === null) {
-        throw new Error('Label must be a JSON object');
+        throw new Error(tt("Label must be a JSON object"));
     }
 
     if (typeof label.name !== 'string') {
-        throw new Error('Label name must be a string');
+        throw new Error(tt("Label name must be a string"));
     }
 
     if (label.name.trim().length === 0) {
-        throw new Error('Label name must not be empty');
+        throw new Error(tt("Label name must not be empty"));
     }
 
     if (typeof label.id !== 'undefined' && !Number.isInteger(label.id)) {
@@ -171,7 +172,7 @@ export function validateParsedLabel(label: SerializedLabel): void {
             if (!sublabelIds.includes(refersToId)) {
                 throw new Error(
                     `Label "${label.name}": skeletons SVG refers to sublabel with id ${refersToId}, ` +
-                    'which is not present in the sublabels array',
+                    tt("which is not present in the sublabels array"),
                 );
             }
         }

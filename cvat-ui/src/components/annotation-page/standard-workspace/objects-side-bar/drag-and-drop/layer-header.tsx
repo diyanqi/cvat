@@ -49,7 +49,7 @@ function LayerHeader(props: LayerHeaderProps): JSX.Element {
     ].join(' ');
 
     const visibilityTooltip = `${visible ? 'Hide' : 'Show'} layer. Hold Shift when clicking to apply for lower layers`;
-    const selectLayerTooltip = selected ? 'Current layer' : 'Set as current layer';
+    const selectLayerTooltip = selected ? tt("Current layer") : tt("Set as current layer");
     return (
         <div
             ref={setNodeRef}
@@ -62,7 +62,7 @@ function LayerHeader(props: LayerHeaderProps): JSX.Element {
             onKeyDown={onKeyDown}
         >
             <div>
-                <CVATTooltip title={collapsed ? 'Expand layer' : 'Collapse layer'}>
+                <CVATTooltip title={collapsed ? tt("Expand layer") : tt("Collapse layer")}>
                     <Button
                         className='cvat-objects-sidebar-z-layer-collapse-button'
                         type='text'

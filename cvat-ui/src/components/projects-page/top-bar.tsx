@@ -83,7 +83,7 @@ function TopBarComponent(props: Readonly<Props>): JSX.Element {
                                 setVisibility({ ...defaultVisibility, sorting: visible })
                             )}
                             defaultFields={query.sort?.split(',') || ['-ID']}
-                            sortingFields={['ID', 'Assignee', 'Owner', 'Status', 'Name', 'Updated date']}
+                            sortingFields={['ID', 'Assignee', 'Owner', 'Status', 'Name', tt("Updated date")]}
                             onApplySorting={onApplySorting}
                         />
                         <FilteringComponent

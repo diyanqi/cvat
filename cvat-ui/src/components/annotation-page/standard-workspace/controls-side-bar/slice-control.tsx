@@ -16,6 +16,7 @@ import { ShortcutScope } from 'utils/enums';
 import { registerComponentShortcuts } from 'actions/shortcuts-actions';
 import { subKeyMap } from 'utils/component-subkeymap';
 import { useSelector } from 'react-redux';
+import { tt } from 'i18n';
 
 export interface Props {
     updateActiveControl(activeControl: ActiveControl): void;
@@ -26,8 +27,8 @@ export interface Props {
 
 const componentShortcuts = {
     SWITCH_SLICE_MODE_STANDARD_CONTROLS: {
-        name: 'Slice mode',
-        description: 'Activate or deactivate a mode to slice a polygon/mask',
+        name: tt("Slice mode"),
+        description: tt("Activate or deactivate a mode to slice a polygon/mask"),
         sequences: ['alt+j'],
         scope: ShortcutScope.STANDARD_WORKSPACE_CONTROLS,
     },

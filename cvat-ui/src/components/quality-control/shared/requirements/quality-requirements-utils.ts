@@ -11,6 +11,7 @@ import {
     QualityMetric, QualityMetricAggregation, QualityRequirementAnnotationType,
     QualityRequirementMetric, SerializedQualityRequirementSaveData,
 } from 'cvat-core/src/quality/server-response-types';
+import { tt } from 'i18n';
 
 export {
     parseQualityTargetMetric,
@@ -23,7 +24,7 @@ export const ANNOTATION_TYPE_LABELS: Record<string, string> = {
     [QualityRequirementAnnotationType.TAG]: 'Tag',
     [QualityRequirementAnnotationType.RECTANGLE]: 'Rectangle',
     [QualityRequirementAnnotationType.SKELETON]: 'Skeleton',
-    [QualityRequirementAnnotationType.SKELETON_KEYPOINT]: 'Skeleton keypoint',
+    [QualityRequirementAnnotationType.SKELETON_KEYPOINT]: tt("Skeleton keypoint"),
     [QualityRequirementAnnotationType.POINTS]: 'Points',
     [QualityRequirementAnnotationType.POLYLINE]: 'Polyline',
     [QualityRequirementAnnotationType.MASK]: 'Mask',
@@ -35,8 +36,8 @@ const BASE_METRIC_LABELS: Record<QualityMetric, string> = {
     [QualityMetric.ACCURACY]: 'Accuracy',
     [QualityMetric.PRECISION]: 'Precision',
     [QualityMetric.RECALL]: 'Recall',
-    [QualityMetric.JACCARD_INDEX]: 'Jaccard Index',
-    [QualityMetric.DICE]: 'Dice Coefficient',
+    [QualityMetric.JACCARD_INDEX]: tt("Jaccard Index"),
+    [QualityMetric.DICE]: tt("Dice Coefficient"),
 };
 
 export function formatBaseMetric(value: QualityRequirementMetric): string {

@@ -57,7 +57,7 @@ function CreateOrganizationForm(): JSX.Element {
                 name='slug'
                 label={tt("Short name")}
                 rules={[
-                    { required: true, message: 'Short name is a required field' },
+                    { required: true, message: tt("Short name is a required field") },
                     { max: MAX_SLUG_LEN, message: `Short name must not exceed ${MAX_SLUG_LEN} characters` },
                     { ...validationPatterns.validateOrganizationSlug },
                 ]}
@@ -75,7 +75,7 @@ function CreateOrganizationForm(): JSX.Element {
             <Form.Item hasFeedback name='description' label={tt("Description")}>
                 <Input.TextArea rows={3} />
             </Form.Item>
-            <Form.Item hasFeedback name='email' label={tt("Email")} rules={[{ type: 'email', message: 'The input is not a valid E-mail' }]}>
+            <Form.Item hasFeedback name='email' label={tt("Email")} rules={[{ type: 'email', message: tt("The input is not a valid E-mail") }]}>
                 <Input autoComplete='email' placeholder={tt("support@organization.com")} />
             </Form.Item>
             <Form.Item hasFeedback name='phoneNumber' label={tt("Phone number")} rules={[{ ...validationPatterns.validatePhoneNumber }]}>

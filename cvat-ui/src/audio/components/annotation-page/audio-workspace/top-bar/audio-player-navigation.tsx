@@ -17,6 +17,7 @@ import {
     BackJumpIcon, FirstIcon, ForwardJumpIcon, LastIcon,
     NextIcon, PauseIcon, PlayIcon, PreviousIcon,
 } from 'icons';
+import { tt } from 'i18n';
 
 interface Props {
     playing: boolean;
@@ -34,32 +35,32 @@ interface Props {
 
 const componentShortcuts = {
     PLAY_PAUSE_AUDIO: {
-        name: 'Play/Pause audio',
-        description: 'Play or pause audio playback',
+        name: tt("Play/Pause audio"),
+        description: tt("Play or pause audio playback"),
         sequences: ['space'],
         scope: ShortcutScope.AUDIO_WORKSPACE_CONTROLS,
     },
     AUDIO_BACKWARD: {
-        name: 'Audio backward',
-        description: 'Rewind audio by a short step',
+        name: tt("Audio backward"),
+        description: tt("Rewind audio by a short step"),
         sequences: ['d'],
         scope: ShortcutScope.AUDIO_WORKSPACE_CONTROLS,
     },
     AUDIO_FORWARD: {
-        name: 'Audio forward',
-        description: 'Forward audio by a short step',
+        name: tt("Audio forward"),
+        description: tt("Forward audio by a short step"),
         sequences: ['f'],
         scope: ShortcutScope.AUDIO_WORKSPACE_CONTROLS,
     },
     AUDIO_FAST_BACKWARD: {
-        name: 'Audio fast backward',
-        description: 'Rewind audio by a long step',
+        name: tt("Audio fast backward"),
+        description: tt("Rewind audio by a long step"),
         sequences: ['c'],
         scope: ShortcutScope.AUDIO_WORKSPACE_CONTROLS,
     },
     AUDIO_FAST_FORWARD: {
-        name: 'Audio fast forward',
-        description: 'Forward audio by a long step',
+        name: tt("Audio fast forward"),
+        description: tt("Forward audio by a long step"),
         sequences: ['v'],
         scope: ShortcutScope.AUDIO_WORKSPACE_CONTROLS,
     },
@@ -89,20 +90,20 @@ type SeekButton = {
 
 const LEFT_BUTTONS: SeekButton[] = [
     {
-        title: 'Jump to start',
+        title: tt("Jump to start"),
         className: 'cvat-player-begin-button',
         icon: FirstIcon,
         request: AUDIO_SEEK_REQUESTS.START,
     },
     {
-        title: 'long-backward',
+        title: tt("long-backward"),
         className: 'cvat-player-long-jump-backward-button',
         icon: BackJumpIcon,
         request: AUDIO_SEEK_REQUESTS.LONG_BACKWARD,
         shortcut: 'fastBackwardShortcut',
     },
     {
-        title: 'short-backward',
+        title: tt("short-backward"),
         className: 'cvat-player-short-jump-backward-button',
         icon: PreviousIcon,
         request: AUDIO_SEEK_REQUESTS.SHORT_BACKWARD,
@@ -112,21 +113,21 @@ const LEFT_BUTTONS: SeekButton[] = [
 
 const RIGHT_BUTTONS: SeekButton[] = [
     {
-        title: 'short-forward',
+        title: tt("short-forward"),
         className: 'cvat-player-short-jump-forward-button',
         icon: NextIcon,
         request: AUDIO_SEEK_REQUESTS.SHORT_FORWARD,
         shortcut: 'forwardShortcut',
     },
     {
-        title: 'long-forward',
+        title: tt("long-forward"),
         className: 'cvat-player-long-jump-forward-button',
         icon: ForwardJumpIcon,
         request: AUDIO_SEEK_REQUESTS.LONG_FORWARD,
         shortcut: 'fastForwardShortcut',
     },
     {
-        title: 'Jump to end',
+        title: tt("Jump to end"),
         className: 'cvat-player-end-button',
         icon: LastIcon,
         request: AUDIO_SEEK_REQUESTS.END,
@@ -190,10 +191,10 @@ function AudioPlayerNavigation(props: Props): JSX.Element {
         title, icon, request, className, shortcut,
     }: SeekButton): JSX.Element => {
         let tooltip = title;
-        if (title === 'short-backward') tooltip = 'Short step backward';
-        if (title === 'short-forward') tooltip = 'Short step forward';
-        if (title === 'long-backward') tooltip = 'Long step backward';
-        if (title === 'long-forward') tooltip = 'Long step forward';
+        if (title === 'short-backward') tooltip = tt("Short step backward");
+        if (title === 'short-forward') tooltip = tt("Short step forward");
+        if (title === 'long-backward') tooltip = tt("Long step backward");
+        if (title === 'long-forward') tooltip = tt("Long step forward");
 
         const shortcutValue = shortcut ? {
             backwardShortcut,

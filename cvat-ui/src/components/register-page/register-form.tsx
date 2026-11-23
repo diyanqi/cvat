@@ -68,7 +68,7 @@ export const validateConfirmation: ((firstFieldName: string) => RuleRender) = (
 ): RuleRender => ({ getFieldValue }): RuleObject => ({
     validator(_: RuleObject, value: string): Promise<void> {
         if (value && value !== getFieldValue(firstFieldName)) {
-            return Promise.reject(new Error('Two passwords that you enter is inconsistent!'));
+            return Promise.reject(new Error(tt("Two passwords that you enter is inconsistent!")));
         }
 
         return Promise.resolve();
@@ -208,7 +208,7 @@ function RegisterFormComponent(props: Props): JSX.Element {
                     rules={[
                         {
                             required: true,
-                            message: 'Please input your password!',
+                            message: tt("Please input your password!"),
                         }, validatePassword,
                     ]}
                 >
@@ -229,7 +229,7 @@ function RegisterFormComponent(props: Props): JSX.Element {
                         rules={[
                             {
                                 required: true,
-                                message: 'You must accept to continue!',
+                                message: tt("You must accept to continue!"),
                             }, validateAgreement(userAgreements),
                         ]}
                     >

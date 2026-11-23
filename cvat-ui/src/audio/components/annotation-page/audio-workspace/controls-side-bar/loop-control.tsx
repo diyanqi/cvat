@@ -12,6 +12,7 @@ import GlobalHotKeys from 'utils/mousetrap-react';
 import { ShortcutScope } from 'utils/enums';
 import { registerComponentShortcuts } from 'actions/shortcuts-actions';
 import { subKeyMap } from 'utils/component-subkeymap';
+import { tt } from 'i18n';
 
 export interface Props {
     loop: boolean;
@@ -21,8 +22,8 @@ export interface Props {
 
 const componentShortcuts = {
     TOGGLE_AUDIO_LOOP: {
-        name: 'Toggle interval loop playback',
-        description: 'Toggle loop playback for the active audio interval',
+        name: tt("Toggle interval loop playback"),
+        description: tt("Toggle loop playback for the active audio interval"),
         sequences: ['r'],
         scope: ShortcutScope.AUDIO_WORKSPACE_CONTROLS,
     },

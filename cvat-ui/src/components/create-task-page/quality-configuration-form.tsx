@@ -91,7 +91,7 @@ export default class QualityConfigurationForm extends React.PureComponent<Props>
             ));
         }
 
-        return Promise.reject(new Error('Quality form ref is empty'));
+        return Promise.reject(new Error(tt("Quality form ref is empty")));
     }
 
     public resetFields(): void {
@@ -123,7 +123,7 @@ export default class QualityConfigurationForm extends React.PureComponent<Props>
                         <Form.Item
                             name='frameSelectionMethod'
                             label={tt("Frame selection method")}
-                            rules={[{ required: true, message: 'Please, specify frame selection method' }]}
+                            rules={[{ required: true, message: tt("Please, specify frame selection method") }]}
                         >
                             <Select
                                 className='cvat-select-frame-selection-method'
@@ -147,9 +147,9 @@ export default class QualityConfigurationForm extends React.PureComponent<Props>
                                 name='validationFramesPercent'
                                 normalize={(value) => +value}
                                 rules={[
-                                    { required: true, message: 'The field is required' },
+                                    { required: true, message: tt("The field is required") },
                                     {
-                                        type: 'number', min: 0, max: 100, message: 'Value is not valid',
+                                        type: 'number', min: 0, max: 100, message: tt("Value is not valid"),
                                     },
                                 ]}
                             >
@@ -172,9 +172,9 @@ export default class QualityConfigurationForm extends React.PureComponent<Props>
                                 name='validationFramesPerJobPercent'
                                 normalize={(value) => +value}
                                 rules={[
-                                    { required: true, message: 'The field is required' },
+                                    { required: true, message: tt("The field is required") },
                                     {
-                                        type: 'number', min: 0, max: 100, message: 'Value is not valid',
+                                        type: 'number', min: 0, max: 100, message: tt("Value is not valid"),
                                     },
                                 ]}
                             >
@@ -202,9 +202,9 @@ export default class QualityConfigurationForm extends React.PureComponent<Props>
                         name='validationFramesPercent'
                         normalize={(value) => +value}
                         rules={[
-                            { required: true, message: 'The field is required' },
+                            { required: true, message: tt("The field is required") },
                             {
-                                type: 'number', min: 0, max: 100, message: 'Value is not valid',
+                                type: 'number', min: 0, max: 100, message: tt("Value is not valid"),
                             },
                         ]}
                     >
@@ -217,9 +217,9 @@ export default class QualityConfigurationForm extends React.PureComponent<Props>
                         name='validationFramesPerJobPercent'
                         normalize={(value) => +value}
                         rules={[
-                            { required: true, message: 'The field is required' },
+                            { required: true, message: tt("The field is required") },
                             {
-                                type: 'number', min: 0, max: 100, message: 'Value is not valid',
+                                type: 'number', min: 0, max: 100, message: tt("Value is not valid"),
                             },
                         ]}
                     >

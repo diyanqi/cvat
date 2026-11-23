@@ -100,13 +100,13 @@ const defaultState: State = {
 };
 
 const UploadFileErrorMessages = {
-    one: 'Wrong list of files. You can upload an archive with images, a video, a pdf file or multiple images. ',
-    multi: 'Wrong list of files. You can upload one or more videos. ',
+    one: tt("Wrong list of files. You can upload an archive with images, a video, a pdf file or multiple images."),
+    multi: tt("Wrong list of files. You can upload one or more videos."),
 };
 
 const UploadFileHints = {
-    one: 'You can upload an archive with images, a video, or multiple images',
-    multi: 'You can upload one or more videos',
+    one: tt("You can upload an archive with images, a video, or multiple images"),
+    multi: tt("You can upload one or more videos"),
 };
 
 function receiveExtensions(files: RemoteFile[]): string[] {
@@ -479,8 +479,8 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
                                 _resolve();
                                 notification.info({
                                     message: tt("Task parameters were automatically updated"),
-                                    description: 'Sorting method has been updated as Honeypots' +
-                                        ' quality method only supports RANDOM sorting',
+                                    description: tt("Sorting method has been updated as Honeypots") +
+                                        tt("quality method only supports RANDOM sorting"),
                                 });
                             });
                         } else {

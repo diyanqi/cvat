@@ -29,6 +29,7 @@ import {
 } from 'utils/multi-selection';
 import { filterAnnotations } from 'utils/filter-annotations';
 import getHiddenZLayers from 'utils/get-hidden-z-layers';
+import { tt } from 'i18n';
 
 const INTERACTIVE_ELEMENT_SELECTOR = 'a, button, input, textarea, [role="button"], .ant-select, .anticon';
 
@@ -38,8 +39,8 @@ const makeKey = (index: number): string => `SWITCH_LABEL_${index}`;
 
 for (const index of [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) {
     componentShortcuts[makeKey(index)] = {
-        name: 'Switch label',
-        description: 'Change label of selected objects, an activated object, or the next created object',
+        name: tt("Switch label"),
+        description: tt("Change label of selected objects, an activated object, or the next created object"),
         sequences: [`ctrl+${index}`],
         nonActive: true,
         scope: ShortcutScope.OBJECTS_SIDEBAR,

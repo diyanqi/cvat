@@ -77,14 +77,14 @@ interface DispatchToProps {
 
 const componentShortcuts = {
     SWITCH_SHORTCUTS: {
-        name: 'Show shortcuts',
-        description: 'Open/hide the list of available shortcuts',
+        name: tt("Show shortcuts"),
+        description: tt("Open/hide the list of available shortcuts"),
         sequences: ['f1'],
         scope: ShortcutScope.GENERAL,
     },
     SWITCH_SETTINGS: {
-        name: 'Show settings',
-        description: 'Open/hide settings dialog',
+        name: tt("Show settings"),
+        description: tt("Open/hide settings dialog"),
         sequences: ['f2'],
         scope: ShortcutScope.GENERAL,
     },
@@ -307,7 +307,7 @@ function HeaderComponent(props: Props): JSX.Element {
             onClick: (): void => {
                 window.open('/admin', '_blank');
             },
-            label: 'Admin page',
+            label: tt("Admin page"),
         }, 0]);
     }
 
@@ -317,7 +317,7 @@ function HeaderComponent(props: Props): JSX.Element {
         onClick: (): void => {
             history.push('/profile');
         },
-        label: 'Profile',
+        label: tt("Profile"),
     }, 10]);
 
     const viewType: 'menu' | 'list' = (organizationsList?.length || 0) > 5 ? 'list' : 'menu';
@@ -325,31 +325,31 @@ function HeaderComponent(props: Props): JSX.Element {
     menuItems.push([{
         key: 'organization',
         icon: organizationFetching || organizationsListFetching ? <LoadingOutlined /> : <TeamOutlined />,
-        label: 'Organization',
+        label: tt("Organization"),
         disabled: organizationFetching || organizationsListFetching,
         children: [
             ...(currentOrganization ? [{
                 key: 'open_organization',
                 icon: <SettingOutlined />,
-                label: 'Settings',
+                label: tt("Settings"),
                 className: 'cvat-header-menu-open-organization',
                 onClick: () => history.push('/organization'),
             }] : []), {
                 key: 'invitations',
                 icon: <MailOutlined />,
-                label: 'Invitations',
+                label: tt("Invitations"),
                 className: 'cvat-header-menu-organization-invitations-item',
                 onClick: () => history.push('/invitations'),
             }, {
                 key: 'create_organization',
                 icon: <PlusOutlined />,
-                label: 'Create',
+                label: tt("Create"),
                 className: 'cvat-header-menu-create-organization',
                 onClick: () => history.push('/organizations/create'),
             },
             ...(!!organizationsList && viewType === 'list' ? [{
                 key: 'switch_organization',
-                label: 'Switch organization',
+                label: tt("Switch organization"),
                 onClick: () => {
                     openSelectOrganizationModal(setNewOrganization);
                 },
@@ -358,7 +358,7 @@ function HeaderComponent(props: Props): JSX.Element {
                 type: 'divider' as const,
             }, {
                 key: '$personal',
-                label: 'Personal workspace',
+                label: tt("Personal workspace"),
                 className: !currentOrganization ? 'cvat-header-menu-active-organization-item' : 'cvat-header-menu-organization-item',
                 onClick: resetOrganization,
             }, ...organizationsList.map((organization: Organization) => ({
@@ -375,21 +375,21 @@ function HeaderComponent(props: Props): JSX.Element {
         icon: <SettingOutlined />,
         onClick: () => switchSettingsModalVisible(true),
         title: `Press ${switchSettingsShortcut} to switch`,
-        label: 'Settings',
+        label: tt("Settings"),
     }, 30]);
 
     menuItems.push([{
         key: 'about',
         icon: <InfoCircleOutlined />,
         onClick: () => showAboutModal(),
-        label: 'About',
+        label: tt("About"),
     }, 40]);
 
     menuItems.push([{
         key: 'logout',
         icon: logoutFetching ? <LoadingOutlined /> : <LogoutOutlined />,
         onClick: () => history.push('/auth/logout'),
-        label: 'Logout',
+        label: tt("Logout"),
         disabled: logoutFetching,
     }, 50]);
 

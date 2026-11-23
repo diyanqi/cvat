@@ -1,4 +1,5 @@
-// Copyright (C) CVAT.ai Corporation
+
+import { tt } from 'i18n';// Copyright (C) CVAT.ai Corporation
 //
 // SPDX-License-Identifier: MIT
 
@@ -21,7 +22,7 @@ export function formatMilliseconds(value: number): string {
 
 export function formatSecondsWithPrecision(precision: number): (value: number) => string {
     if (!Number.isInteger(precision) || precision < 0) {
-        throw new RangeError('Precision must be a non-negative integer');
+        throw new RangeError(tt("Precision must be a non-negative integer"));
     }
 
     return (value: number): string => {

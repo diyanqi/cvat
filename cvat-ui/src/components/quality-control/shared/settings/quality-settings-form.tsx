@@ -104,11 +104,11 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
     );
 
     const generalTooltip = makeTooltip(
-        makeTooltipFragment('Job selection filter', settings.descriptions.jobFilter),
+        makeTooltipFragment(tt("Job selection filter"), settings.descriptions.jobFilter),
     );
 
     const jobValidationTooltip = makeTooltip(
-        makeTooltipFragment('Max validations per job', settings.descriptions.maxValidationsPerJob),
+        makeTooltipFragment(tt("Max validations per job"), settings.descriptions.maxValidationsPerJob),
     );
 
     if (requirementFormMode.type !== 'list') {
@@ -200,7 +200,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
                     <Form.Item
                         name='maxValidationsPerJob'
                         label={tt("Max validations per job")}
-                        rules={[{ required: true, message: 'This field is required' }]}
+                        rules={[{ required: true, message: tt("This field is required") }]}
                     >
                         <InputNumber
                             min={0}

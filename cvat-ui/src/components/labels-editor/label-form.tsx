@@ -161,7 +161,7 @@ export default class LabelForm extends React.Component<Props> {
                 rules={[
                     {
                         required: true,
-                        message: 'Please specify a name',
+                        message: tt("Please specify a name"),
                     },
                     {
                         pattern: patterns.validateAttributeName.pattern,
@@ -170,7 +170,7 @@ export default class LabelForm extends React.Component<Props> {
                     {
                         validator: (_rule: any, attrName: string) => {
                             if (attrNames.includes(attrName) && attr.name !== attrName) {
-                                return Promise.reject(new Error('Attribute name must be unique for the label'));
+                                return Promise.reject(new Error(tt("Attribute name must be unique for the label")));
                             }
                             return Promise.resolve();
                         },
@@ -240,7 +240,7 @@ export default class LabelForm extends React.Component<Props> {
         const validator = (_: any, values: string[]): Promise<void> => {
             if (locked && existingValues) {
                 if (!equalArrayHead(existingValues, values)) {
-                    return Promise.reject(new Error('You can only append new values'));
+                    return Promise.reject(new Error(tt("You can only append new values")));
                 }
             }
 
@@ -260,7 +260,7 @@ export default class LabelForm extends React.Component<Props> {
                     rules={[
                         {
                             required: true,
-                            message: 'Please specify values',
+                            message: tt("Please specify values"),
                         },
                         {
                             validator,
@@ -278,7 +278,7 @@ export default class LabelForm extends React.Component<Props> {
                             return (
                                 <CVATTooltip
                                     placement='bottom'
-                                    title={isDefault ? 'This value is default' : 'Click to set default value'}
+                                    title={isDefault ? tt("This value is default") : tt("Click to set default value")}
                                 >
                                     <Tag
                                         visible
@@ -323,7 +323,7 @@ export default class LabelForm extends React.Component<Props> {
                     rules={[
                         {
                             required: true,
-                            message: 'Please, specify a default value',
+                            message: tt("Please, specify a default value"),
                         }]}
                     name={[key, 'values']}
                 >
@@ -358,7 +358,7 @@ export default class LabelForm extends React.Component<Props> {
                 rules={[
                     {
                         required: true,
-                        message: 'Please set a range',
+                        message: tt("Please set a range"),
                     },
                     {
                         validator,
@@ -414,8 +414,8 @@ export default class LabelForm extends React.Component<Props> {
                                     className: 'cvat-modal-delete-label-attribute',
                                     icon: <ExclamationCircleOutlined />,
                                     title: `Do you want to remove the "${attr.name}" attribute?`,
-                                    content: 'This action cannot be undone. ' +
-                                        'Corresponding attribute annotation values will be removed.',
+                                    content: tt("This action cannot be undone.") +
+                                        tt("Corresponding attribute annotation values will be removed."),
                                     type: 'warning',
                                     okButtonProps: { type: 'primary', danger: true },
                                     onOk: () => {
@@ -485,7 +485,7 @@ export default class LabelForm extends React.Component<Props> {
                 rules={[
                     {
                         required: true,
-                        message: 'Please specify a name',
+                        message: tt("Please specify a name"),
                     },
                     {
                         pattern: patterns.validateAttributeName.pattern,
@@ -494,7 +494,7 @@ export default class LabelForm extends React.Component<Props> {
                     {
                         validator: (_rule: any, labelName: string) => {
                             if (labelNames.includes(labelName) && label?.name !== labelName) {
-                                return Promise.reject(new Error('Label name must be unique'));
+                                return Promise.reject(new Error(tt("Label name must be unique")));
                             }
                             return Promise.resolve();
                         },
@@ -565,7 +565,7 @@ export default class LabelForm extends React.Component<Props> {
 
     private renderSaveButton(): JSX.Element {
         const { label } = this.props;
-        const tooltipTitle = label ? 'Save the label and return' : 'Save the label and create one more';
+        const tooltipTitle = label ? tt("Save the label and return") : tt("Save the label and create one more");
         const buttonText = label ? 'Done' : 'Continue';
 
         return (

@@ -158,7 +158,7 @@ function FiltersModalComponent(): JSX.Element {
             ...AntdConfig,
             fields: {
                 label: {
-                    label: 'Label',
+                    label: tt("Label"),
                     type: 'select',
                     valueSources: ['value'] as 'value'[],
                     fieldSettings: {
@@ -169,92 +169,92 @@ function FiltersModalComponent(): JSX.Element {
                     },
                 },
                 type: {
-                    label: 'Type',
+                    label: tt("Type"),
                     type: 'select',
                     fieldSettings: {
                         listValues: [
-                            { value: 'shape', title: 'Shape' },
-                            { value: 'track', title: 'Track' },
-                            { value: 'tag', title: 'Tag' },
+                            { value: 'shape', title: tt("Shape") },
+                            { value: 'track', title: tt("Track") },
+                            { value: 'tag', title: tt("Tag") },
                         ],
                     },
                 },
                 shape: {
-                    label: 'Shape',
+                    label: tt("Shape"),
                     type: 'select',
                     fieldSettings: {
                         listValues: [
-                            { value: 'rectangle', title: 'Rectangle' },
-                            { value: 'points', title: 'Points' },
-                            { value: 'polyline', title: 'Polyline' },
-                            { value: 'polygon', title: 'Polygon' },
-                            { value: 'cuboid', title: 'Cuboid' },
-                            { value: 'ellipse', title: 'Ellipse' },
-                            { value: 'skeleton', title: 'Skeleton' },
-                            { value: 'mask', title: 'Mask' },
+                            { value: 'rectangle', title: tt("Rectangle") },
+                            { value: 'points', title: tt("Points") },
+                            { value: 'polyline', title: tt("Polyline") },
+                            { value: 'polygon', title: tt("Polygon") },
+                            { value: 'cuboid', title: tt("Cuboid") },
+                            { value: 'ellipse', title: tt("Ellipse") },
+                            { value: 'skeleton', title: tt("Skeleton") },
+                            { value: 'mask', title: tt("Mask") },
                         ],
                     },
                 },
                 occluded: {
-                    label: 'Occluded',
+                    label: tt("Occluded"),
                     type: 'boolean',
                 },
                 source: {
-                    label: 'Source',
+                    label: tt("Source"),
                     type: 'select',
                     fieldSettings: {
                         listValues: [
-                            { value: 'auto', title: 'Auto' },
-                            { value: 'semi-auto', title: 'Semi-auto' },
-                            { value: 'manual', title: 'Manual' },
-                            { value: 'file', title: 'File' },
-                            { value: 'consensus', title: 'Consensus' },
+                            { value: 'auto', title: tt("Auto") },
+                            { value: 'semi-auto', title: tt("Semi-auto") },
+                            { value: 'manual', title: tt("Manual") },
+                            { value: 'file', title: tt("File") },
+                            { value: 'consensus', title: tt("Consensus") },
                         ],
                     },
                 },
                 width: {
-                    label: 'Width',
+                    label: tt("Width"),
                     type: 'number',
                     fieldSettings: { min: 0 },
                 },
                 height: {
-                    label: 'Height',
+                    label: tt("Height"),
                     type: 'number',
                     fieldSettings: { min: 0 },
                 },
                 rotation: {
-                    label: 'Rotation',
+                    label: tt("Rotation"),
                     type: 'number',
                     fieldSettings: { min: 0 },
                 },
                 objectID: {
-                    label: 'ObjectID',
+                    label: tt("ObjectID"),
                     type: 'number',
                     hideForCompare: true,
                     fieldSettings: { min: 0 },
                 },
                 serverID: {
-                    label: 'ServerID',
+                    label: tt("ServerID"),
                     type: 'number',
                     hideForCompare: true,
                     fieldSettings: { min: 0 },
                 },
                 score: {
-                    label: 'Score',
+                    label: tt("Score"),
                     type: 'number',
                     fieldSettings: { min: 0, max: 1 },
                 },
                 votes: {
-                    label: 'Votes',
+                    label: tt("Votes"),
                     type: 'number',
                     fieldSettings: { min: 0 },
                 },
                 zOrder: {
-                    label: 'Z order',
+                    label: tt("Z order"),
                     type: 'number',
                 },
                 attr: {
-                    label: 'Attributes',
+                    label: tt("Attributes"),
                     type: '!struct',
                     subfields: getAttributesSubfields(labels),
                     fieldSettings: {
@@ -275,7 +275,7 @@ function FiltersModalComponent(): JSX.Element {
             ...AntdConfig,
             fields: {
                 label: {
-                    label: 'Label',
+                    label: tt("Label"),
                     type: 'select',
                     operators: ['select_equals', 'select_any_in'],
                     valueSources: ['value'] as 'value'[],
@@ -284,12 +284,12 @@ function FiltersModalComponent(): JSX.Element {
                     },
                 },
                 occluded: {
-                    label: 'Occluded',
+                    label: tt("Occluded"),
                     type: 'boolean',
                 },
                 ...(Object.keys(keypointAttributesSubfields).length ? {
                     attr: {
-                        label: 'Attributes',
+                        label: tt("Attributes"),
                         type: '!struct',
                         subfields: keypointAttributesSubfields,
                         fieldSettings: {

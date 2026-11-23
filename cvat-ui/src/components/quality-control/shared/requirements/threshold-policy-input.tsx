@@ -5,6 +5,7 @@
 import React, { useId } from 'react';
 import Form from 'antd/lib/form';
 import InputNumber from 'antd/lib/input-number';
+import { tt } from 'i18n';
 
 export const formatThresholdCoordinate = (value: number): string => (
     Number.isFinite(value) ? value.toLocaleString(undefined, {
@@ -15,7 +16,7 @@ export const formatThresholdCoordinate = (value: number): string => (
 export const thresholdPercent = (value: number): number => Number((value * 100).toPrecision(15));
 
 export const thresholdValueError = (value: number): string => (
-    Number.isFinite(value) && value >= 0 && value <= 1 ? '' : 'IoU must be between 0 and 100%.'
+    Number.isFinite(value) && value >= 0 && value <= 1 ? '' : tt("IoU must be between 0 and 100%.")
 );
 
 const parseThresholdCoordinate = (input: string | number | null | undefined, percentage = false): number | null => {

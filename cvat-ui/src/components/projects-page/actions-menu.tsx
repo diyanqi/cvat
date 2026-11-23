@@ -25,6 +25,7 @@ import { confirmTransferModal } from 'utils/modals';
 
 import { makeBulkOperationAsync } from 'actions/bulk-actions';
 import ProjectActionsItems from './actions-menu-items';
+import { tt } from 'i18n';
 
 interface Props {
     projectInstance: Project;
@@ -176,8 +177,8 @@ function ProjectActionsComponent(props: Readonly<Props>): JSX.Element {
                 `Delete ${projectsToDelete.length} selected projects` :
                 `The project ${projectInstance.id} will be deleted`,
             content: isBulkMode ?
-                'All related data (images, annotations) for all selected projects will be lost. Continue?' :
-                'All related data (images, annotations) will be lost. Continue?',
+                tt("All related data (images, annotations) for all selected projects will be lost. Continue?") :
+                tt("All related data (images, annotations) will be lost. Continue?"),
             className: 'cvat-modal-confirm-remove-project',
             onOk: () => {
                 dispatch(makeBulkOperationAsync<Project>(
@@ -192,7 +193,7 @@ function ProjectActionsComponent(props: Readonly<Props>): JSX.Element {
                 type: 'primary',
                 danger: true,
             },
-            okText: isBulkMode ? 'Delete selected' : 'Delete',
+            okText: isBulkMode ? tt("Delete selected") : 'Delete',
         });
     }, [projectInstance, currentProjects, selectedIds, isBulkMode]);
     let menuItems;

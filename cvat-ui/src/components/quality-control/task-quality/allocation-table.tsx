@@ -18,6 +18,7 @@ import {
 import CVATTooltip from 'components/common/cvat-tooltip';
 import CVATTable from 'components/common/cvat-table';
 import { sorter, tablePaginationPageSize } from 'utils/quality';
+import { tt } from 'i18n';
 
 interface Props {
     task: Task;
@@ -95,7 +96,7 @@ function AllocationTable(props: Readonly<Props>): JSX.Element | null {
 
     const columns = [
         {
-            title: 'Frame',
+            title: tt("Frame"),
             dataIndex: 'frame',
             key: 'frame',
             align: 'center' as const,
@@ -116,7 +117,7 @@ function AllocationTable(props: Readonly<Props>): JSX.Element | null {
             ),
         },
         {
-            title: 'Name',
+            title: tt("Name"),
             dataIndex: 'name',
             key: 'name',
             align: 'center' as const,
@@ -143,12 +144,12 @@ function AllocationTable(props: Readonly<Props>): JSX.Element | null {
             },
         },
         {
-            title: 'Actions',
+            title: tt("Actions"),
             dataIndex: 'active',
             key: 'actions',
             filters: [
-                { text: 'Active', value: true },
-                { text: 'Excluded', value: false },
+                { text: tt("Active"), value: true },
+                { text: tt("Excluded"), value: false },
             ],
             align: 'center' as const,
             sorter: sorter('active'),

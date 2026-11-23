@@ -137,7 +137,7 @@ function SetupWebhookContent(props: Props): JSX.Element {
         try {
             const values: Store = await form.validateFields();
             let notificationConfig = {
-                message: 'Webhook has been successfully updated',
+                message: tt("Webhook has been successfully updated"),
                 className: 'cvat-notification-update-webhook-success',
             };
             if (webhook) {
@@ -164,7 +164,7 @@ function SetupWebhookContent(props: Props): JSX.Element {
                     type: projectId ? WebhookSourceType.PROJECT : WebhookSourceType.ORGANIZATION,
                 };
                 notificationConfig = {
-                    message: 'Webhook has been successfully added',
+                    message: tt("Webhook has been successfully added"),
                     className: 'cvat-notification-create-webhook-success',
                 };
                 await dispatch(createWebhookAsync(rawWebhookData));
@@ -207,7 +207,7 @@ function SetupWebhookContent(props: Props): JSX.Element {
                         rules={[
                             {
                                 required: true,
-                                message: 'Target URL cannot be empty',
+                                message: tt("Target URL cannot be empty"),
                             },
                         ]}
                     >
@@ -278,7 +278,7 @@ function SetupWebhookContent(props: Props): JSX.Element {
                         name='eventsMethod'
                         rules={[{
                             required: true,
-                            message: 'The field is required',
+                            message: tt("The field is required"),
                         }]}
                     >
                         <Radio.Group onChange={onEventsMethodChange}>

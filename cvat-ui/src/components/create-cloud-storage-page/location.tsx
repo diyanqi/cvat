@@ -12,6 +12,7 @@ import Form from 'antd/lib/form';
 import notification from 'antd/lib/notification';
 import Tooltip from 'antd/lib/tooltip';
 import { tt } from 'i18n';
+import { localizeText } from 'i18n/localize';
 
 const { Option } = Select;
 interface Props {
@@ -79,7 +80,7 @@ export default function Location(props: Props): JSX.Element {
             {...internalCommonProps}
         >
             <Select
-                placeholder={name}
+                placeholder={name === 'location' ? tt('Location') : tt('Region')}
                 defaultValue={selectedRegion ? locations[selectedRegion] : undefined}
                 dropdownRender={(menu) => (
                     <div>
@@ -115,7 +116,7 @@ export default function Location(props: Props): JSX.Element {
                     Array.from(Object.entries(locations)).map(
                         ([key, value]): JSX.Element => (
                             <Option key={key} value={value}>
-                                {value}
+                                {localizeText(value)}
                             </Option>
                         ),
                     )

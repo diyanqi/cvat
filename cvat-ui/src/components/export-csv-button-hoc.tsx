@@ -86,7 +86,7 @@ function createCSVExportButton<T, Q>(
                 onError: (error: Error) => {
                     notification.error({
                         message: tt("CSV export failed"),
-                        description: error.message || 'An unknown error occurred during export',
+                        description: error.message || tt("An unknown error occurred during export"),
                     });
                 },
             }));

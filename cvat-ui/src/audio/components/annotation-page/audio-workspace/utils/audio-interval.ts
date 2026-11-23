@@ -5,6 +5,7 @@
 import { AudioIntervalState } from 'cvat-core-wrapper';
 import { toClipboard } from 'utils/to-clipboard';
 import { clamp } from 'utils/math';
+import { tt } from 'i18n';
 
 export interface AudioTimeRange {
     start: number;
@@ -18,10 +19,10 @@ export interface AudioPlaybackRange extends AudioTimeRange {
 export enum AudioRegionsOrdering {
     ID_ASCENT = 'ID - ascent',
     ID_DESCENT = 'ID - descent',
-    START_TIME = 'Start time',
-    END_TIME = 'End time',
+    START_TIME = '开始时间',
+    END_TIME = '结束时间',
     DURATION = 'Duration',
-    LABEL_NAME = 'Label name',
+    LABEL_NAME = '标签名称',
 }
 
 export function intervalID(interval: AudioIntervalState): number {

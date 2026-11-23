@@ -70,7 +70,7 @@ function AnnotationMenuComponent(props: Props): JSX.Element {
             message.open({
                 duration: 1,
                 type: 'success',
-                content: 'You tagged the job as completed',
+                content: tt("You tagged the job as completed"),
                 className: 'cvat-annotation-job-finished-success',
             });
         }));
@@ -110,25 +110,25 @@ function AnnotationMenuComponent(props: Props): JSX.Element {
 
     menuItems.push([{
         key: Actions.LOAD_JOB_ANNO,
-        label: 'Upload annotations',
+        label: tt("Upload annotations"),
         onClick: uploadAnnotations,
     }, 10]);
 
     menuItems.push([{
         key: Actions.EXPORT_JOB_DATASET,
-        label: 'Export job dataset',
+        label: tt("Export job dataset"),
         onClick: exportDataset,
     }, 20]);
 
     menuItems.push([{
         key: Actions.REMOVE_ANNOTATIONS,
-        label: 'Remove annotations',
+        label: tt("Remove annotations"),
         onClick: () => setRemoveAnnotationsConfirmOpen(true),
     }, 30]);
 
     menuItems.push([{
         key: Actions.RUN_ACTIONS,
-        label: 'Run actions',
+        label: tt("Run actions"),
         onClick: () => {
             openAnnotationsActionModal();
         },
@@ -136,14 +136,14 @@ function AnnotationMenuComponent(props: Props): JSX.Element {
 
     menuItems.push([{
         key: Actions.OPEN_TASK,
-        label: 'Open the task',
+        label: tt("Open the task"),
         onClick: openTask,
     }, 50]);
 
     menuItems.push([{
         key: 'job-state-submenu',
         popupClassName: 'cvat-annotation-menu-job-state-submenu',
-        label: 'Change job state',
+        label: tt("Change job state"),
         children: [{
             key: `state:${JobState.NEW}`,
             label: JobState.NEW,
@@ -169,7 +169,7 @@ function AnnotationMenuComponent(props: Props): JSX.Element {
 
     menuItems.push([{
         key: Actions.FINISH_JOB,
-        label: 'Finish the job',
+        label: tt("Finish the job"),
         onClick: () => {
             Modal.confirm({
                 title: tt("Would you like to finish the job?"),

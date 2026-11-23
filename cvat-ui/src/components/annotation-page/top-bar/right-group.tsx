@@ -69,7 +69,7 @@ function RightGroup(props: Props): JSX.Element {
         }).catch((error: unknown) => {
             notification.error({
                 message: tt("Could not receive annotation guide"),
-                description: error instanceof Error ? error.message : 'Unknown error',
+                description: error instanceof Error ? error.message : tt("Unknown error"),
             });
         });
     }, [jobInstance]);
@@ -86,7 +86,7 @@ function RightGroup(props: Props): JSX.Element {
                 try {
                     seenGuides = JSON.parse(localStorage.getItem('seenGuides') || '[]');
                     if (!Array.isArray(seenGuides) || seenGuides.some((el) => !Number.isInteger(el))) {
-                        throw new Error('Wrong structure stored in local storage');
+                        throw new Error(tt("Wrong structure stored in local storage"));
                     }
                 } catch (_error: unknown) {
                     seenGuides = [];

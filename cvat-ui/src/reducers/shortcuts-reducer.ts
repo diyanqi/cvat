@@ -9,26 +9,27 @@ import { KeyMap, KeyMapItem } from 'utils/mousetrap-react';
 import { conflictDetector } from 'utils/conflict-detector';
 import { isMacOS } from 'utils/platform-checker';
 import { ShortcutsState } from '.';
+import { tt } from 'i18n';
 
 const capitalize = (text: string): string => text.slice(0, 1).toUpperCase() + text.slice(1);
 const prettify = (key: string): string => {
     switch (key.toLowerCase()) {
         case 'up':
-            return 'Arrow Up';
+            return tt("Arrow Up");
         case 'down':
-            return 'Arrow Down';
+            return tt("Arrow Down");
         case 'left':
-            return 'Arrow Left';
+            return tt("Arrow Left");
         case 'right':
-            return 'Arrow Right';
+            return tt("Arrow Right");
         case 'arrowup':
-            return 'Arrow Up';
+            return tt("Arrow Up");
         case 'arrowdown':
-            return 'Arrow Down';
+            return tt("Arrow Down");
         case 'arrowleft':
-            return 'Arrow Left';
+            return tt("Arrow Left");
         case 'arrowright':
-            return 'Arrow Right';
+            return tt("Arrow Right");
         case 'command':
             return 'Cmd';
         default:

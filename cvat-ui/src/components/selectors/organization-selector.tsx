@@ -90,7 +90,7 @@ function OrganizationSelector(props: Props): JSX.Element {
                 ...(
                     (currentOrg) ? [{
                         value: '',
-                        label: 'Personal workspace',
+                        label: tt("Personal workspace"),
                     }] : []
                 ),
                 ...searchResults

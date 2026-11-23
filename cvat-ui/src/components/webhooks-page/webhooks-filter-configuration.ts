@@ -4,23 +4,24 @@
 
 import { Config } from '@react-awesome-query-builder/antd';
 import asyncFetchUsers from 'components/resource-sorting-filtering/request-users';
+import { tt } from 'i18n';
 
 export const config: Partial<Config> = {
     fields: {
         description: {
-            label: 'Description',
+            label: tt("Description"),
             type: 'text',
             valueSources: ['value'],
             operators: ['like'],
         },
         target_url: {
-            label: 'Target URL',
+            label: tt("Target URL"),
             type: 'text',
             valueSources: ['value'],
             operators: ['like'],
         },
         owner: {
-            label: 'Owner',
+            label: tt("Owner"),
             type: 'select',
             valueSources: ['value'],
             operators: ['select_equals'],
@@ -31,23 +32,23 @@ export const config: Partial<Config> = {
             },
         },
         updated_date: {
-            label: 'Last updated',
+            label: tt("Last updated"),
             type: 'datetime',
             operators: ['between', 'greater', 'greater_or_equal', 'less', 'less_or_equal'],
         },
         type: {
-            label: 'Type',
+            label: tt("Type"),
             type: 'select',
             valueSources: ['value'],
             fieldSettings: {
                 listValues: [
-                    { value: 'organization', title: 'Organization' },
-                    { value: 'project', title: 'Project' },
+                    { value: 'organization', title: tt("Organization") },
+                    { value: 'project', title: tt("Project") },
                 ],
             },
         },
         id: {
-            label: 'ID',
+            label: tt("ID"),
             type: 'number',
             operators: ['equal', 'between', 'greater', 'greater_or_equal', 'less', 'less_or_equal'],
             fieldSettings: { min: 0 },

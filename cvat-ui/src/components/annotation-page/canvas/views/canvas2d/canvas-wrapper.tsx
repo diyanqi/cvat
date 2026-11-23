@@ -299,26 +299,26 @@ function mapStateToProps(state: CombinedState): StateToProps {
 
 const componentShortcuts = {
     SWITCH_AUTOMATIC_BORDERING: {
-        name: 'Toggle snap to contour',
-        description: 'Toggle automatic snap to contour for polygons and polylines during drawing/editing',
+        name: tt("Toggle snap to contour"),
+        description: tt("Toggle automatic snap to contour for polygons and polylines during drawing/editing"),
         sequences: [],
         scope: ShortcutScope.STANDARD_WORKSPACE,
     },
     SWITCH_SNAP_TO_POINT: {
-        name: 'Toggle snap to point',
-        description: 'Toggle automatic snapping to nearby points',
+        name: tt("Toggle snap to point"),
+        description: tt("Toggle automatic snapping to nearby points"),
         sequences: [],
         scope: ShortcutScope.STANDARD_WORKSPACE,
     },
     NEXT_OBJECT: {
-        name: 'Next object',
-        description: 'Go to the next object and center it on the canvas',
+        name: tt("Next object"),
+        description: tt("Go to the next object and center it on the canvas"),
         sequences: ['tab'],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },
     PREVIOUS_OBJECT: {
-        name: 'Previous object',
-        description: 'Go to the previous object and center it on the canvas',
+        name: tt("Previous object"),
+        description: tt("Go to the previous object and center it on the canvas"),
         sequences: ['shift+tab'],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },

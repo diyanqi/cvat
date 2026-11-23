@@ -5,11 +5,12 @@
 
 import { Config } from '@react-awesome-query-builder/antd';
 import asyncFetchUsers from 'components/resource-sorting-filtering/request-users';
+import { tt } from 'i18n';
 
 export const config: Partial<Config> = {
     fields: {
         dimension: {
-            label: 'Dimension',
+            label: tt("Dimension"),
             type: 'select',
             operators: ['select_equals'],
             valueSources: ['value'],
@@ -22,37 +23,37 @@ export const config: Partial<Config> = {
             },
         },
         status: {
-            label: 'Status',
+            label: tt("Status"),
             type: 'select',
             valueSources: ['value'],
             operators: ['select_equals', 'select_any_in', 'select_not_any_in'],
             fieldSettings: {
                 listValues: [
-                    { value: 'annotation', title: 'Annotation' },
-                    { value: 'validation', title: 'Validation' },
-                    { value: 'completed', title: 'Completed' },
+                    { value: 'annotation', title: tt("Annotation") },
+                    { value: 'validation', title: tt("Validation") },
+                    { value: 'completed', title: tt("Completed") },
                 ],
             },
         },
         mode: {
-            label: 'Data',
+            label: tt("Data"),
             type: 'select',
             valueSources: ['value'],
             fieldSettings: {
                 listValues: [
-                    { value: 'interpolation', title: 'Video' },
-                    { value: 'annotation', title: 'Images' },
+                    { value: 'interpolation', title: tt("Video") },
+                    { value: 'annotation', title: tt("Images") },
                 ],
             },
         },
         subset: {
-            label: 'Subset',
+            label: tt("Subset"),
             type: 'text',
             valueSources: ['value'],
             operators: ['equal'],
         },
         assignee: {
-            label: 'Assignee',
+            label: tt("Assignee"),
             type: 'select',
             valueSources: ['value'],
             operators: ['select_equals'],
@@ -63,7 +64,7 @@ export const config: Partial<Config> = {
             },
         },
         owner: {
-            label: 'Owner',
+            label: tt("Owner"),
             type: 'select',
             valueSources: ['value'],
             operators: ['select_equals'],
@@ -74,37 +75,37 @@ export const config: Partial<Config> = {
             },
         },
         created_date: {
-            label: 'Created at',
+            label: tt("Created at"),
             type: 'datetime',
             operators: ['between', 'greater', 'greater_or_equal', 'less', 'less_or_equal'],
         },
         updated_date: {
-            label: 'Last updated',
+            label: tt("Last updated"),
             type: 'datetime',
             operators: ['between', 'greater', 'greater_or_equal', 'less', 'less_or_equal'],
         },
         id: {
-            label: 'ID',
+            label: tt("ID"),
             type: 'number',
             operators: ['equal', 'between', 'greater', 'greater_or_equal', 'less', 'less_or_equal'],
             fieldSettings: { min: 0 },
             valueSources: ['value'],
         },
         project_id: {
-            label: 'Project ID',
+            label: tt("Project ID"),
             type: 'number',
             operators: ['equal', 'between', 'greater', 'greater_or_equal', 'less', 'less_or_equal'],
             fieldSettings: { min: 0 },
             valueSources: ['value'],
         },
         name: {
-            label: 'Name',
+            label: tt("Name"),
             type: 'text',
             valueSources: ['value'],
             operators: ['like'],
         },
         project_name: {
-            label: 'Project name',
+            label: tt("Project name"),
             type: 'text',
             valueSources: ['value'],
             operators: ['like'],

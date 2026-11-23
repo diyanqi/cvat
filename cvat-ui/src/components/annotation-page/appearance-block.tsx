@@ -36,14 +36,14 @@ import { tt } from 'i18n';
 
 const componentShortcuts = {
     SWITCH_COLOR_BY_APPEARANCE: {
-        name: 'Switch objects appearance setting "Color by"',
-        description: 'Objects color mode may be by object, label, or group',
+        name: tt("Switch objects appearance setting \"Color by\""),
+        description: tt("Objects color mode may be by object, label, or group"),
         sequences: [],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },
     TOGGLE_SHOW_BITMAP_APPEARANCE: {
-        name: 'Switch objects appearance setting "Show bitmap"',
-        description: 'Show or hide the bitmap layer on the canvas',
+        name: tt("Switch objects appearance setting \"Show bitmap\""),
+        description: tt("Show or hide the bitmap layer on the canvas"),
         sequences: [],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },

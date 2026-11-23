@@ -114,7 +114,7 @@ function AudioStatisticsModalComponent(props: StateToProps & DispatchToProps): J
 
     rows.push({
         key: '___total',
-        label: 'Total',
+        label: tt("Total"),
         count: data.total.interval.count,
         totalDuration: formatMilliseconds(data.total.interval.duration),
         coverage: formatCoverage(data.total.interval.coverage),

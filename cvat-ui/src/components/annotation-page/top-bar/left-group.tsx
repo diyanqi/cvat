@@ -21,6 +21,7 @@ import { subKeyMap } from 'utils/component-subkeymap';
 import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
 import { finishDrawAvailable } from 'utils/drawing';
 import SaveAnnotationsButton from './save-annotations-button';
+import { localizeText } from 'i18n/localize';
 import { tt } from 'i18n';
 
 interface Props {
@@ -40,14 +41,14 @@ interface Props {
 
 const componentShortcuts = {
     UNDO: {
-        name: 'Undo action',
-        description: 'Cancel the latest action related with objects',
+        name: tt("Undo action"),
+        description: tt("Cancel the latest action related with objects"),
         sequences: ['ctrl+z', 'command+z'],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },
     REDO: {
-        name: 'Redo action',
-        description: 'Cancel undo action',
+        name: tt("Redo action"),
+        description: tt("Cancel undo action"),
         sequences: ['ctrl+shift+z', 'command+shift+z', 'ctrl+y'],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },
@@ -102,7 +103,7 @@ function LeftGroup(props: Props): JSX.Element {
             <Col className='cvat-annotation-header-left-group'>
                 <AnnotationMenuComponent />
                 <SaveAnnotationsButton />
-                <CVATTooltip overlay={`Undo: ${undoAction} ${undoShortcut}`}>
+                <CVATTooltip overlay={`${tt('Undo')}: ${localizeText(undoAction || '')} ${undoShortcut}`}>
                     <Button
                         style={{ pointerEvents: undoAction ? 'initial' : 'none', opacity: undoAction ? 1 : 0.5 }}
                         type='link'
@@ -113,7 +114,7 @@ function LeftGroup(props: Props): JSX.Element {
                         <span>{tt("Undo")}</span>
                     </Button>
                 </CVATTooltip>
-                <CVATTooltip overlay={`Redo: ${redoAction} ${redoShortcut}`}>
+                <CVATTooltip overlay={`${tt('Redo')}: ${localizeText(redoAction || '')} ${redoShortcut}`}>
                     <Button
                         style={{ pointerEvents: redoAction ? 'initial' : 'none', opacity: redoAction ? 1 : 0.5 }}
                         type='link'

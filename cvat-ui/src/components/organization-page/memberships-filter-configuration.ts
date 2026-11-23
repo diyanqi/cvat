@@ -4,11 +4,12 @@
 
 import { Config } from '@react-awesome-query-builder/antd';
 import asyncFetchUsers from 'components/resource-sorting-filtering/request-users';
+import { tt } from 'i18n';
 
 export const config: Partial<Config> = {
     fields: {
         user: {
-            label: 'User',
+            label: tt("User"),
             type: 'select',
             valueSources: ['value'],
             operators: ['select_equals'],
@@ -19,16 +20,16 @@ export const config: Partial<Config> = {
             },
         },
         role: {
-            label: 'Role',
+            label: tt("Role"),
             type: 'select',
             operators: ['select_equals'],
             valueSources: ['value'],
             fieldSettings: {
                 listValues: [
-                    { value: 'worker', title: 'Worker' },
-                    { value: 'supervisor', title: 'Supervisor' },
-                    { value: 'maintainer', title: 'Maintainer' },
-                    { value: 'owner', title: 'Owner' },
+                    { value: 'worker', title: tt("Worker") },
+                    { value: 'supervisor', title: tt("Supervisor") },
+                    { value: 'maintainer', title: tt("Maintainer") },
+                    { value: 'owner', title: tt("Owner") },
                 ],
             },
         },

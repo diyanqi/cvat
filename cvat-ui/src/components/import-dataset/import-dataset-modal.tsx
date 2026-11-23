@@ -388,7 +388,7 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
                 return e?.fileList[0];
             }}
             name='dragger'
-            rules={[{ required: true, message: 'The file is required' }]}
+            rules={[{ required: true, message: tt("The file is required") }]}
         >
             <Upload.Dragger
                 listType='text'
@@ -446,7 +446,7 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
             }
             if (isDataset()) {
                 if (extension !== 'zip') {
-                    return Promise.reject(new Error('Only ZIP archive is supported for import a dataset'));
+                    return Promise.reject(new Error(tt("Only ZIP archive is supported for import a dataset")));
                 }
             }
         }
@@ -460,7 +460,7 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
             name='fileName'
             hasFeedback
             dependencies={['selectedFormat']}
-            rules={[{ validator: validateFileName }, { required: true, message: 'Please, specify a name' }]}
+            rules={[{ validator: validateFileName }, { required: true, message: tt("Please, specify a name") }]}
             required
         >
             <Input
@@ -499,7 +499,7 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
                 ));
             const resToPrint = uploadParams.resource.charAt(0).toUpperCase() + uploadParams.resource.slice(1);
             const description = `${resToPrint} import was started for ${instanceType}.` +
-            ' You can check progress [here](/requests).';
+            tt("You can check progress [here](/requests).");
             Notification.info({
                 message: `${resToPrint} import started`,
                 description: (
@@ -513,10 +513,10 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
     const confirmUpload = (): void => {
         const isAppend = uploadParams.importMode === 'append';
         const annotationEntity = isTask() ? 'task' : 'job';
-        const title = isAppend ? 'Append annotations?' : 'Replace existing annotations?';
+        const title = isAppend ? tt("Append annotations?") : tt("Replace existing annotations?");
         const content = isAppend ?
             `Uploaded annotations will be added to the existing annotations in this ${annotationEntity}. ` +
-                'Existing annotations will not be removed.' :
+                tt("Existing annotations will not be removed.") :
             `This will remove the current annotations in this ${annotationEntity} and ` +
                 'upload annotations from the selected file instead.';
 
@@ -531,8 +531,8 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
                 type: 'primary',
                 danger: true,
             },
-            okText: isAppend ? 'Append annotations' : 'Replace annotations',
-            cancelText: 'Cancel',
+            okText: isAppend ? tt("Append annotations") : tt("Replace annotations"),
+            cancelText: tt("Cancel"),
         });
     };
 
@@ -565,8 +565,8 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
                             <CVATTooltip
                                 title={
                                     instance && !instance.labels.length ?
-                                        'Labels will be imported from dataset' :
-                                        'Labels from project will be used'
+                                        tt("Labels will be imported from dataset") :
+                                        tt("Labels from project will be used")
                                 }
                             >
                                 <QuestionCircleOutlined className='cvat-modal-import-header-question-icon' />
@@ -594,7 +594,7 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
                 <Form.Item
                     name='selectedFormat'
                     label={tt("Import format")}
-                    rules={[{ required: true, message: 'Format must be selected' }]}
+                    rules={[{ required: true, message: tt("Format must be selected") }]}
                     hasFeedback
                 >
                     <Select

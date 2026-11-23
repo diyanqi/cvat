@@ -89,6 +89,7 @@ import BulkProgress from './bulk-progress';
 import ProfilePageComponent from './profile-page/profile-page';
 import ServerUnavailableComponent from './server-unavailable/server-unavailable';
 import GitHubStarModal from './github-star-prompt/github-star-modal';
+import { localizeText } from 'i18n/localize';
 import { tt } from 'i18n';
 
 interface CVATAppProps {
@@ -233,7 +234,7 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
             });
         })
             .catch((error: unknown) => {
-                const healthCheckError = error instanceof Error ? error.message : 'The CVAT server is not reachable.';
+                const healthCheckError = error instanceof Error ? error.message : tt("The CVAT server is not reachable.");
 
                 this.setState({
                     healthIinitialized: true,
@@ -257,8 +258,8 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
                             <Col>
                                 <Text>
                                     {`The browser you are using is ${name} ${version} based on ${engine}.` +
-                                        ' CVAT was tested in the latest versions of Chrome and Firefox.' +
-                                        ' We recommend to use Chrome (or another Chromium based browser)'}
+                                        tt("CVAT was tested in the latest versions of Chrome and Firefox.") +
+                                        tt("We recommend to use Chrome (or another Chromium based browser)")}
                                 </Text>
                             </Col>
                         </Row>
@@ -414,10 +415,10 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
         function showMessage(notificationState: NotificationState): void {
             notification.info({
                 message: (
-                    <CVATMarkdown history={history}>{notificationState.message}</CVATMarkdown>
+                    <CVATMarkdown history={history}>{localizeText(notificationState.message)}</CVATMarkdown>
                 ),
                 description: notificationState?.description && (
-                    <CVATMarkdown history={history}>{notificationState?.description}</CVATMarkdown>
+                    <CVATMarkdown history={history}>{localizeText(notificationState?.description || '')}</CVATMarkdown>
                 ),
                 duration: notificationState.duration ?? null,
                 className: notificationState.className,
@@ -456,11 +457,11 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
             notification.error({
                 ...dynamicProps,
                 message: (
-                    <CVATMarkdown history={history}>{title}</CVATMarkdown>
+                    <CVATMarkdown history={history}>{localizeText(title)}</CVATMarkdown>
                 ),
                 duration: null,
                 description: errorLength > appConfig.MAXIMUM_NOTIFICATION_MESSAGE_LENGTH ?
-                    'Open the Browser Console to get details' : <CVATMarkdown history={history}>{error}</CVATMarkdown>,
+                    localizeText('Open the Browser Console to get details') : <CVATMarkdown history={history}>{localizeText(error)}</CVATMarkdown>,
             });
 
             if (shouldLog) {

@@ -25,6 +25,7 @@ import { useResetShortcutsOnUnmount } from 'utils/hooks';
 import { getCVATStore } from 'cvat-store';
 import { LabelType } from 'cvat-core-wrapper';
 import { filterApplicableForType } from 'utils/filter-applicable-labels';
+import { tt } from 'i18n';
 
 const componentShortcuts: Record<string, KeyMapItem> = {};
 
@@ -32,8 +33,8 @@ const makeKey = (index: number): string => `SWITCH_LABEL_AUDIO_${index}`;
 
 for (const index of [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) {
     componentShortcuts[makeKey(index)] = {
-        name: 'Switch label (audio)',
-        description: 'Change label of selected audio region, or default label for next created region',
+        name: tt("Switch label (audio)"),
+        description: tt("Change label of selected audio region, or default label for next created region"),
         sequences: [`ctrl+${index}`],
         nonActive: true,
         scope: ShortcutScope.AUDIO_WORKSPACE_CONTROLS,

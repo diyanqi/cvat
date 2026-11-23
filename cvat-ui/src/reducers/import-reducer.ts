@@ -8,6 +8,7 @@ import { RequestInstanceType } from 'actions/requests-actions';
 import { ProjectOrTaskOrJob } from 'cvat-core-wrapper';
 import { getInstanceType } from 'actions/common';
 import { ImportState } from '.';
+import { tt } from 'i18n';
 
 const defaultProgress = 0.0;
 
@@ -97,7 +98,7 @@ export default (state: ImportState = defaultState, action: ImportActions): Impor
             if (activitiesField === 'projects') {
                 updatedActivity = {
                     ...updatedActivity,
-                    status: 'The file is being uploaded to the server',
+                    status: tt("The file is being uploaded to the server"),
                     progress: defaultProgress,
                 };
                 return {

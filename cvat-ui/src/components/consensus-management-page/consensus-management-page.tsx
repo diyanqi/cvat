@@ -134,7 +134,7 @@ function ConsensusManagementPage(): JSX.Element {
                 dispatch(reducerActions.setConsensusSettingsFetching(false));
             }
         } catch (error: unknown) {
-            dispatch(reducerActions.setError(error instanceof Error ? error : new Error('Unknown error')));
+            dispatch(reducerActions.setError(error instanceof Error ? error : new Error(tt("Unknown error"))));
         } finally {
             dispatch(reducerActions.setFetching(false));
         }
@@ -233,7 +233,7 @@ function ConsensusManagementPage(): JSX.Element {
         title = (
             <Col className='cvat-consensus-management-header'>
                 <Title level={4} className='cvat-text-color'>
-                    {'Consensus management for '}
+                    {tt("Consensus management for")}
                     <ResourceLink resource={instance} />
                 </Title>
             </Col>
@@ -244,7 +244,7 @@ function ConsensusManagementPage(): JSX.Element {
         if (consensusSettings) {
             tabsItems.push({
                 key: TabName.settings,
-                label: 'Settings',
+                label: tt("Settings"),
                 children: (
                     <ConsensusSettingsTab
                         fetching={fetching}

@@ -43,7 +43,7 @@ export default function ConsensusSettingsForm(props: Readonly<Props>): JSX.Eleme
 
     const shapeComparisonTooltip = makeTooltip(
         <>
-            {makeTooltipFragment('Min overlap threshold (IoU)', settings.descriptions.iouThreshold)}
+            {makeTooltipFragment(tt("Min overlap threshold (IoU)"), settings.descriptions.iouThreshold)}
         </>,
     );
 
@@ -77,7 +77,7 @@ export default function ConsensusSettingsForm(props: Readonly<Props>): JSX.Eleme
                     <Form.Item
                         name='iouThreshold'
                         label={tt("Min Overlap (%)")}
-                        rules={[{ required: true, message: 'This field is required' }]}
+                        rules={[{ required: true, message: tt("This field is required") }]}
                     >
                         <InputNumber min={0} max={100} precision={0} />
                     </Form.Item>

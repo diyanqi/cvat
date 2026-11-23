@@ -7,6 +7,7 @@ import Text from 'antd/lib/typography/Text';
 import { BaseType } from 'antd/es/typography/Base';
 import LoadingOutlined from '@ant-design/icons/lib/icons/LoadingOutlined';
 import { RQStatus } from 'cvat-core-wrapper';
+import { tt } from 'i18n';
 
 function statusMessage(message: string, defaultMessage: string, postfix?: JSX.Element): JSX.Element {
     if (message) {
@@ -78,7 +79,7 @@ function StatusMessage(props: Props): JSX.Element {
                 }
 
                 if ([RQStatus.STARTED].includes(status)) {
-                    return statusMessage(message, 'In progress', <LoadingOutlined />);
+                    return statusMessage(message, tt("In progress"), <LoadingOutlined />);
                 }
 
                 if (status === RQStatus.FAILED) {
@@ -86,10 +87,10 @@ function StatusMessage(props: Props): JSX.Element {
                 }
 
                 if (status === RQStatus.UNKNOWN) {
-                    return statusMessage(message, 'Unknown status received');
+                    return statusMessage(message, tt("Unknown status received"));
                 }
 
-                return statusMessage(message, 'Unknown status received');
+                return statusMessage(message, tt("Unknown status received"));
             })()}
         </Text>
     );

@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: MIT
 
 import config from 'config';
+import { tt } from 'i18n';
 
 export function readLatestFrameStorage(): Map<number, number> {
     let latestFrameStorage: [number, number][] = [];
@@ -15,7 +16,7 @@ export function readLatestFrameStorage(): Map<number, number> {
                 !Number.isInteger(item[1])
             ))
         ) {
-            throw new Error('Incorrect format from local storage');
+            throw new Error(tt("Incorrect format from local storage"));
         }
     } catch (_error: unknown) {
         return new Map([]);

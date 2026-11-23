@@ -130,7 +130,7 @@ export default function AnnotationPageComponent(props: Props): JSX.Element {
                                 
                                 {tt("Add")}
                             </a>
-                            {' the first one for editing annotation.'}
+                            {tt("the first one for editing annotation.")}
                         </span>
                     ),
                     placement: 'topRight',

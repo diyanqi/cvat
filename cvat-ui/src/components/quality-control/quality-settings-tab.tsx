@@ -140,7 +140,7 @@ function QualitySettingsTab(props: Readonly<Props>): JSX.Element | null {
                                     icon: <ExclamationCircleFilled />,
                                     content: tt("This action will override own settings in all tasks."),
                                     okText: tt("Yes"),
-                                    cancelText: 'No',
+                                    cancelText: tt("No"),
                                     onOk: onChildInheritChange,
                                 });
                             }}

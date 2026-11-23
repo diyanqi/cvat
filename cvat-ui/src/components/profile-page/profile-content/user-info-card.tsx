@@ -28,15 +28,15 @@ interface ProfileFormValues {
 }
 
 const roleOptions = [
-    { value: 'ml_engineer', label: 'Machine learning engineer' },
-    { value: 'data_scientist', label: 'Data scientist' },
-    { value: 'annotation_specialist', label: 'Annotation specialist' },
-    { value: 'project_manager', label: 'Project manager' },
-    { value: 'founder_executive', label: 'Founder or executive' },
-    { value: 'researcher', label: 'Researcher' },
-    { value: 'student', label: 'Student' },
-    { value: 'educator', label: 'Educator' },
-    { value: 'other', label: 'Other' },
+    { value: 'ml_engineer', label: tt("Machine learning engineer") },
+    { value: 'data_scientist', label: tt("Data scientist") },
+    { value: 'annotation_specialist', label: tt("Annotation specialist") },
+    { value: 'project_manager', label: tt("Project manager") },
+    { value: 'founder_executive', label: tt("Founder or executive") },
+    { value: 'researcher', label: tt("Researcher") },
+    { value: 'student', label: tt("Student") },
+    { value: 'educator', label: tt("Educator") },
+    { value: 'other', label: tt("Other") },
 ];
 const predefinedRoles = new Set(roleOptions.map(({ value }) => value).filter((value) => value !== 'other'));
 
@@ -135,8 +135,8 @@ function UserInfoCard(): JSX.Element {
                         label={tt("Please specify your role")}
                         name='customRole'
                         rules={[
-                            { required: true, whitespace: true, message: 'Enter your role' },
-                            { max: 255, message: 'The role must not exceed 255 characters' },
+                            { required: true, whitespace: true, message: tt("Enter your role") },
+                            { max: 255, message: tt("The role must not exceed 255 characters") },
                         ]}
                     >
                         <Input />

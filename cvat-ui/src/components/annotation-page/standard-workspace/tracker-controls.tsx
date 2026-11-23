@@ -8,6 +8,7 @@ import { Col } from 'antd/lib/grid';
 
 import { ObjectState } from 'cvat-core-wrapper';
 import CVATTooltip from 'components/common/cvat-tooltip';
+import { tt } from 'i18n';
 
 interface TrackerControls {
     trackerName: string;
@@ -38,7 +39,7 @@ export function TrackerButton({ objectState }: { objectState: ObjectState }): JS
 
     const isTracked = controls.trackedClientIDs.has(objectState.clientID as number);
     const isSaving = controls.savingClientIDs.has(objectState.clientID as number);
-    const title = isTracked ? 'Disable tracking' : `Enable tracking using ${controls.trackerName}`;
+    const title = isTracked ? tt("Disable tracking") : `Enable tracking using ${controls.trackerName}`;
     const onClick = (): void => {
         controls.toggleTracking(objectState);
     };

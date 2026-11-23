@@ -36,8 +36,8 @@ export default function RemoveConfirmComponent(): JSX.Element | null {
     useEffect(() => {
         const newVisible = (!!objectState && !force && objectState.lock) ||
             (objectState?.objectType === ObjectType.TRACK && !force);
-        setTitle(objectState?.lock ? 'Object is locked' : 'Remove object');
-        let descriptionMessage: string | JSX.Element = 'Are you sure you want to remove it?';
+        setTitle(objectState?.lock ? tt("Object is locked") : tt("Remove object"));
+        let descriptionMessage: string | JSX.Element = tt("Are you sure you want to remove it?");
 
         if (objectState?.objectType === ObjectType.TRACK && !force) {
             descriptionMessage = (

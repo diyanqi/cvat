@@ -50,21 +50,21 @@ export default function ProjectActionsItems(
     menuItems.push([{
         key: 'export-dataset',
         onClick: onExportDataset,
-        label: withCount('Export dataset', 'export-dataset'),
+        label: withCount(tt("Export dataset"), 'export-dataset'),
         disabled: isExportDatasetDisabled || isDisabled('export-dataset'),
     }, 0]);
 
     menuItems.push([{
         key: 'import-dataset',
         onClick: onImportDataset,
-        label: 'Import dataset',
+        label: tt("Import dataset"),
         disabled: isDisabled('import-dataset'),
     }, 10]);
 
     menuItems.push([{
         key: 'backup-project',
         onClick: onBackupProject,
-        label: withCount('Backup Project', 'backup-project'),
+        label: withCount(tt("Backup Project"), 'backup-project'),
         disabled: isDisabled('backup-project'),
     }, 20]);
 

@@ -55,7 +55,7 @@ export default function WebhookActionsMenu(props: Readonly<WebhookActionsMenuPro
     const menuItems: MenuProps['items'] = [
         {
             key: 'edit',
-            label: 'Edit',
+            label: tt("Edit"),
             onClick: onEdit,
             disabled: isBulk,
         },

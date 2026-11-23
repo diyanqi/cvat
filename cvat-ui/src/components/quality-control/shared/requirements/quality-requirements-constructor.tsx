@@ -42,12 +42,12 @@ const metricFilterValues = Object.values(METRIC_LABELS)
 const requirementsFilterConfig: Partial<Config> = {
     fields: {
         name: {
-            label: 'Name',
+            label: tt("Name"),
             type: 'text',
             valueSources: ['value'],
         },
         annotationType: {
-            label: 'Annotation type',
+            label: tt("Annotation type"),
             type: 'select',
             valueSources: ['value'],
             operators: ['select_any_in', 'select_equals'],
@@ -56,7 +56,7 @@ const requirementsFilterConfig: Partial<Config> = {
             },
         },
         metric: {
-            label: 'Metric',
+            label: tt("Metric"),
             type: 'select',
             valueSources: ['value'],
             operators: ['select_any_in', 'select_equals'],
@@ -65,7 +65,7 @@ const requirementsFilterConfig: Partial<Config> = {
             },
         },
         enabled: {
-            label: 'Enabled',
+            label: tt("Enabled"),
             type: 'boolean',
             valueSources: ['value'],
         },
@@ -279,7 +279,7 @@ export default function QualityRequirementsConstructor(props: Readonly<Props>): 
                 await updateRequirement(
                     requirement,
                     () => requirement.delete(),
-                    'Could not delete requirement',
+                    tt("Could not delete requirement"),
                 );
             },
         });
@@ -306,14 +306,14 @@ export default function QualityRequirementsConstructor(props: Readonly<Props>): 
                 isRequirementEnabled(record.requirement) ? '' : 'cvat-quality-requirements-disabled-row'
             )}
             columns={[{
-                title: 'Name',
+                title: tt("Name"),
                 dataIndex: 'name',
                 sorter: (first: RequirementRow, second: RequirementRow) => first.name.localeCompare(second.name),
                 render: (_: string, record: RequirementRow): JSX.Element => (
                     <Text>{record.name}</Text>
                 ),
             }, {
-                title: 'Annotation type',
+                title: tt("Annotation type"),
                 dataIndex: 'annotationType',
                 sorter: (first: RequirementRow, second: RequirementRow) => (
                     first.annotationType.localeCompare(second.annotationType)
@@ -322,14 +322,14 @@ export default function QualityRequirementsConstructor(props: Readonly<Props>): 
                     <Text>{record.annotationType}</Text>
                 ),
             }, {
-                title: 'Metric',
+                title: tt("Metric"),
                 dataIndex: 'metric',
                 sorter: (first: RequirementRow, second: RequirementRow) => first.metric.localeCompare(second.metric),
                 render: (_: string, record: RequirementRow): JSX.Element => (
                     <Text>{record.metric}</Text>
                 ),
             }, {
-                title: 'Threshold',
+                title: tt("Threshold"),
                 dataIndex: 'threshold',
                 sorter: (first: RequirementRow, second: RequirementRow) => (
                     first.threshold.localeCompare(second.threshold)
@@ -338,7 +338,7 @@ export default function QualityRequirementsConstructor(props: Readonly<Props>): 
                     <Text>{record.threshold}</Text>
                 ),
             }, {
-                title: 'Enabled',
+                title: tt("Enabled"),
                 dataIndex: 'enabled',
                 sorter: (first: RequirementRow, second: RequirementRow) => (
                     Number(first.enabled) - Number(second.enabled)
@@ -351,7 +351,7 @@ export default function QualityRequirementsConstructor(props: Readonly<Props>): 
                     />
                 ),
             }, {
-                title: 'Actions',
+                title: tt("Actions"),
                 dataIndex: 'actions',
                 render: (_: unknown, record: RequirementRow): JSX.Element => {
                     const actionsDisabled = disabled || pendingRequirementId !== null;

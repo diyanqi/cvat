@@ -42,29 +42,29 @@ const DraggableArea = (
 
 const componentShortcuts = {
     ACTIVATE_BRUSH_TOOL_STANDARD_CONTROLS: {
-        name: 'Brush tool',
-        description: 'Activate brush tool on masks drawing toolbox',
+        name: tt("Brush tool"),
+        description: tt("Activate brush tool on masks drawing toolbox"),
         sequences: ['shift+1'],
         scope: ShortcutScope.STANDARD_WORKSPACE_CONTROLS,
         displayWeight: 10,
     },
     ACTIVATE_ERASER_TOOL_STANDARD_CONTROLS: {
-        name: 'Eraser tool',
-        description: 'Activate eraser tool on masks drawing toolbox',
+        name: tt("Eraser tool"),
+        description: tt("Activate eraser tool on masks drawing toolbox"),
         sequences: ['shift+2'],
         scope: ShortcutScope.STANDARD_WORKSPACE_CONTROLS,
         displayWeight: 15,
     },
     ACTIVATE_POLYGON_TOOL_STANDARD_CONTROLS: {
-        name: 'Polygon tool',
-        description: 'Activate polygon tool on masks drawing toolbox',
+        name: tt("Polygon tool"),
+        description: tt("Activate polygon tool on masks drawing toolbox"),
         sequences: ['shift+3'],
         scope: ShortcutScope.STANDARD_WORKSPACE_CONTROLS,
         displayWeight: 20,
     },
     ACTIVATE_POLYGON_REMOVE_TOOL_STANDARD_CONTROLS: {
-        name: 'Polygon remove tool',
-        description: 'Activate polygon remove tool on masks drawing toolbox',
+        name: tt("Polygon remove tool"),
+        description: tt("Activate polygon remove tool on masks drawing toolbox"),
         sequences: ['shift+4'],
         scope: ShortcutScope.STANDARD_WORKSPACE_CONTROLS,
         displayWeight: 25,

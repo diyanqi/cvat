@@ -59,7 +59,7 @@ function validateLabels(_: RuleObject, value: string): Promise<void> {
     try {
         const parsed = JSON.parse(replaceTrailingCommas(value));
         if (!Array.isArray(parsed)) {
-            return Promise.reject(new Error('Field is expected to be a JSON array'));
+            return Promise.reject(new Error(tt("Field is expected to be a JSON array")));
         }
 
         for (const label of parsed) {
@@ -72,7 +72,7 @@ function validateLabels(_: RuleObject, value: string): Promise<void> {
 
         const labelNames = parsed.map((label: SerializedLabel) => label.name.trim());
         if (new Set(labelNames).size !== labelNames.length) {
-            return Promise.reject(new Error('Label name must be unique'));
+            return Promise.reject(new Error(tt("Label name must be unique")));
         }
     } catch (error) {
         return Promise.reject(error);

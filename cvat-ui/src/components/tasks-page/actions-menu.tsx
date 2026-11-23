@@ -161,8 +161,8 @@ function TaskActionsComponent(props: Readonly<Props>): JSX.Element {
                 `Delete ${tasksToDelete.length} selected tasks` :
                 `The task ${taskInstance.id} will be deleted`,
             content: isBulkMode ?
-                'All related data (images, annotations) for all selected tasks will be lost. Continue?' :
-                'All related data (images, annotations) will be lost. Continue?',
+                tt("All related data (images, annotations) for all selected tasks will be lost. Continue?") :
+                tt("All related data (images, annotations) will be lost. Continue?"),
             className: 'cvat-modal-confirm-delete-task',
             onOk: () => {
                 dispatch(makeBulkOperationAsync(
@@ -177,7 +177,7 @@ function TaskActionsComponent(props: Readonly<Props>): JSX.Element {
                 type: 'primary',
                 danger: true,
             },
-            okText: isBulkMode ? 'Delete selected' : 'Delete',
+            okText: isBulkMode ? tt("Delete selected") : 'Delete',
         });
     }, [taskInstance, currentTasks, selectedIds, isBulkMode]);
 

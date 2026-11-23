@@ -153,7 +153,7 @@ interface Props {
 
 function validateURL(_: RuleObject, value: string): Promise<void> {
     if (value && !patterns.validateURL.pattern.test(value)) {
-        return Promise.reject(new Error('URL is not a valid URL'));
+        return Promise.reject(new Error(tt("URL is not a valid URL")));
     }
 
     return Promise.resolve();
@@ -165,7 +165,7 @@ const validateOverlapSize: RuleRender = ({ getFieldValue }): RuleObject => ({
             const segmentSize = getFieldValue('segmentSize');
             if (typeof segmentSize !== 'undefined' && segmentSize !== '') {
                 if (+segmentSize <= +value) {
-                    return Promise.reject(new Error('Segment size must be more than overlap size'));
+                    return Promise.reject(new Error(tt("Segment size must be more than overlap size")));
                 }
             }
         }
@@ -180,7 +180,7 @@ const validateStopFrame: RuleRender = ({ getFieldValue }): RuleObject => ({
             const startFrame = getFieldValue('startFrame');
             if (typeof startFrame !== 'undefined' && startFrame !== '') {
                 if (+startFrame > +value) {
-                    return Promise.reject(new Error('Start frame must not be more than stop frame'));
+                    return Promise.reject(new Error(tt("Start frame must not be more than stop frame")));
                 }
             }
         }
@@ -261,7 +261,7 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
                 );
         }
 
-        return Promise.reject(new Error('Form ref is empty'));
+        return Promise.reject(new Error(tt("Form ref is empty")));
     }
 
     public resetFields(): void {
@@ -294,7 +294,7 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
                 rules={[
                     {
                         required: true,
-                        message: 'The field is required.',
+                        message: tt("The field is required."),
                     },
                 ]}
                 help={tt("Specify how to sort images. It is not relevant for videos.")}
@@ -324,7 +324,7 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
                     rules={[
                         {
                             required: true,
-                            message: 'The field is required.',
+                            message: tt("The field is required."),
                         },
                         { validator: isInteger({ min: 5, max: 100 }) },
                     ]}

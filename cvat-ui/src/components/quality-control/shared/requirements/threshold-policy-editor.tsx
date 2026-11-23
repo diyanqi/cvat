@@ -22,7 +22,8 @@ import ThresholdPolicyInput, { thresholdValueError } from './threshold-policy-in
 import {
     EditableThresholdPolicy, EditableLinearThresholdPolicy, ThresholdCoordinates,
 } from './threshold-policy-editor-types';
-import { tt } from 'i18n';
+import { tt, tf } from 'i18n';
+import { localizeText } from 'i18n/localize';
 
 interface Props {
     value?: SimilarityThresholdPolicy;
@@ -165,7 +166,7 @@ export default function ThresholdPolicyEditor(props: Readonly<Props>): JSX.Eleme
     const changeMode = (mode: 'constant' | 'linear'): void => {
         numericEdit.current = null;
         setSelected(null);
-        const action = `return to ${policy.mode === 'constant' ? 'constant' : 'linear interpolation'} mode`;
+        const action = `return to ${policy.mode === 'constant' ? 'constant' : tt("linear interpolation")} mode`;
         if (mode === 'constant') emit(drafts.current.constant, action);
         else {
             const threshold = policy.mode === 'constant' && valid ? policy.value : DEFAULT_POLICY.value;
@@ -183,7 +184,7 @@ export default function ThresholdPolicyEditor(props: Readonly<Props>): JSX.Eleme
         const points = policy.points.map((point) => (
             point.id === id ? { ...point, [field]: number === null ? NaN : number } : point
         ));
-        updateNumber({ ...policy, points }, `change ${field === 'x' ? 'GT area' : 'IoU'} of point ${
+        updateNumber({ ...policy, points }, `change ${field === 'x' ? tt("GT area") : 'IoU'} of point ${
             policy.points.findIndex((point) => point.id === id) + 1
         }`);
         setSelected(id);
@@ -194,7 +195,7 @@ export default function ThresholdPolicyEditor(props: Readonly<Props>): JSX.Eleme
         if (existing) { selectPoint(existing.id); return; }
         const id = nextID.current++;
         const points = [...policy.points, { ...point, id }].sort((a, b) => a.x - b.x);
-        if (emit({ ...policy, points }, 'add a point')) selectPoint(id);
+        if (emit({ ...policy, points }, tt("add a point"))) selectPoint(id);
     };
     const deletePoint = (id: number): void => {
         if (policy.mode !== 'linear' || disabled) return;
@@ -270,14 +271,14 @@ export default function ThresholdPolicyEditor(props: Readonly<Props>): JSX.Eleme
                             onCommit={finishNumericEdit}
                             onChange={(next) => updateNumber(
                                 { type: 'iou', mode: 'constant', value: next === null ? NaN : next },
-                                'change the constant IoU threshold',
+                                tt("change the constant IoU threshold"),
                             )}
                         />
                     </div>
                 )}
                 <CVATTooltip title={history.length ?
-                    `Undo: ${history.at(-1).action}. Only changes in this curve editor are undone.` :
-                    'No changes to undo in this curve editor.'}>
+                    tf(tt("Undo: {{action}}. Only changes in this curve editor are undone."), { action: localizeText(history.at(-1).action) }) :
+                    tt('No changes to undo in this curve editor.')}>
                     <span className='cvat-threshold-policy-undo'>
                         <Button disabled={disabled || !history.length} icon={<UndoOutlined />} onClick={undo}>
                             

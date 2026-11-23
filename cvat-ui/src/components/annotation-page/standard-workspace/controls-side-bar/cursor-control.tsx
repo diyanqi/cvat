@@ -18,6 +18,7 @@ import { ThunkDispatch } from 'utils/redux';
 import { ShortcutScope } from 'utils/enums';
 import { registerComponentShortcuts } from 'actions/shortcuts-actions';
 import { subKeyMap } from 'utils/component-subkeymap';
+import { tt } from 'i18n';
 
 export interface Props {
     canvasInstance: Canvas | Canvas3d;
@@ -27,8 +28,8 @@ export interface Props {
 
 const componentShortcuts = {
     CANCEL: {
-        name: 'Cancel',
-        description: 'Cancel any active canvas mode',
+        name: tt("Cancel"),
+        description: tt("Cancel any active canvas mode"),
         sequences: ['esc'],
         scope: ShortcutScope.STANDARD_WORKSPACE_CONTROLS,
     },

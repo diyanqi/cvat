@@ -14,6 +14,7 @@ import { registerComponentShortcuts } from 'actions/shortcuts-actions';
 import { ShortcutScope } from 'utils/enums';
 import { subKeyMap } from 'utils/component-subkeymap';
 import { useSelector } from 'react-redux';
+import { tt } from 'i18n';
 
 export interface Props {
     updateActiveControl(activeControl: ActiveControl): void;
@@ -24,8 +25,8 @@ export interface Props {
 
 const componentShortcuts = {
     SWITCH_JOIN_MODE_STANDARD_CONTROLS: {
-        name: 'Join mode',
-        description: 'Activate or deactivate a mode where you can join polygons and masks',
+        name: tt("Join mode"),
+        description: tt("Activate or deactivate a mode where you can join polygons and masks"),
         sequences: ['j'],
         scope: ShortcutScope.STANDARD_WORKSPACE_CONTROLS,
     },

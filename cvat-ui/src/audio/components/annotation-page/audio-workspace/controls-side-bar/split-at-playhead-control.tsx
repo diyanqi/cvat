@@ -40,8 +40,8 @@ interface SplitChooserState {
 
 const componentShortcuts = {
     SPLIT_AUDIO_INTERVAL_AT_PLAYBACK_POSITION: {
-        name: 'Split audio interval at playback position',
-        description: 'Split the interval at the current playback position',
+        name: tt("Split audio interval at playback position"),
+        description: tt("Split the interval at the current playback position"),
         sequences: ['alt+m'],
         scope: ShortcutScope.AUDIO_WORKSPACE_CONTROLS,
     },

@@ -312,7 +312,7 @@ function QualityControlPageContent({ requestedInstanceType, requestedInstanceID 
             await receiveSettings(requestedInstanceType, requestedInstanceID, receivedInstance);
             setActiveTab(getQualityTabFromHash());
         } catch (error: unknown) {
-            dispatch(reducerActions.setError(error instanceof Error ? error : new Error('Unknown error')));
+            dispatch(reducerActions.setError(error instanceof Error ? error : new Error(tt("Unknown error"))));
         } finally {
             dispatch(reducerActions.setFetching(false));
         }
@@ -357,7 +357,7 @@ function QualityControlPageContent({ requestedInstanceType, requestedInstanceID 
         } catch (error: unknown) {
             notification.error({
                 message: tt("Could not save quality settings"),
-                description: error instanceof Error ? error.message : 'Unknown error',
+                description: error instanceof Error ? error.message : tt("Unknown error"),
             });
             throw error;
         } finally {
@@ -490,7 +490,7 @@ function QualityControlPageContent({ requestedInstanceType, requestedInstanceID 
         title = (
             <Col className='cvat-quality-page-header'>
                 <Title level={4} className='cvat-text-color'>
-                    {'Quality control for '}
+                    {tt("Quality control for")}
                     <ResourceLink resource={instance} />
                 </Title>
             </Col>
@@ -518,7 +518,7 @@ function QualityControlPageContent({ requestedInstanceType, requestedInstanceID 
         if (!pluginTabs.length && qualitySettings) {
             tabsItems.push({
                 key: 'requirements',
-                label: 'Requirements',
+                label: tt("Requirements"),
                 children: (
                     <QualityRequirementsTab
                         instance={instance}
@@ -531,7 +531,7 @@ function QualityControlPageContent({ requestedInstanceType, requestedInstanceID 
         if (isTaskWithGT && validationLayout && qualitySettings) {
             tabsItems.push({
                 key: 'management',
-                label: 'Management',
+                label: tt("Management"),
                 children: (
                     <QualityManagementTab
                         task={instance}
@@ -551,7 +551,7 @@ function QualityControlPageContent({ requestedInstanceType, requestedInstanceID 
         if ((isTaskWithGT || isProject) && qualitySettings) {
             tabsItems.push({
                 key: 'settings',
-                label: 'Settings',
+                label: tt("Settings"),
                 children: (
                     <QualitySettingsTab
                         instance={instance}

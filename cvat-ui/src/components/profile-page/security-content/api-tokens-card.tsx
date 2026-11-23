@@ -130,7 +130,7 @@ function ApiTokensCard(): JSX.Element {
 
     const apiTokenColumns: ColumnType<RowData>[] = [
         {
-            title: 'Name',
+            title: tt("Name"),
             dataIndex: 'name',
             key: 'name',
             width: 250,
@@ -138,7 +138,7 @@ function ApiTokensCard(): JSX.Element {
             className: 'cvat-api-token-name',
         },
         {
-            title: 'Permissions',
+            title: tt("Permissions"),
             dataIndex: 'readOnly',
             key: 'readOnly',
             align: 'center' as const,
@@ -147,19 +147,19 @@ function ApiTokensCard(): JSX.Element {
                 return a.readOnly ? -1 : 1;
             },
             filters: [
-                { text: 'Read Only', value: true },
-                { text: 'Read/Write', value: false },
+                { text: tt("Read Only"), value: true },
+                { text: tt("Read/Write"), value: false },
             ],
             onFilter: (value: boolean | Key, record: RowData) => record.readOnly === value,
             render: (readOnly: boolean) => (
                 <Tag color={readOnly ? 'blue' : 'orange'}>
-                    {readOnly ? 'Read Only' : 'Read/Write'}
+                    {readOnly ? tt("Read Only") : 'Read/Write'}
                 </Tag>
             ),
             className: 'cvat-api-token-permissions',
         },
         {
-            title: 'Created',
+            title: tt("Created"),
             dataIndex: 'createdDate',
             key: 'createdDate',
             sorter: (a: RowData, b: RowData) => new Date(a.createdDate).getTime() - new Date(b.createdDate).getTime(),
@@ -167,7 +167,7 @@ function ApiTokensCard(): JSX.Element {
             className: 'cvat-api-token-created-date',
         },
         {
-            title: 'Expires',
+            title: tt("Expires"),
             dataIndex: 'expiryDate',
             key: 'expiryDate',
             sorter: (a: RowData, b: RowData) => {
@@ -182,7 +182,7 @@ function ApiTokensCard(): JSX.Element {
             className: 'cvat-api-token-expire-date',
         },
         {
-            title: 'Last Used',
+            title: tt("Last Used"),
             dataIndex: 'lastUsedDate',
             key: 'lastUsedDate',
             sorter: (a: RowData, b: RowData) => {
@@ -195,7 +195,7 @@ function ApiTokensCard(): JSX.Element {
             className: 'cvat-api-token-last-used',
         },
         {
-            title: 'Actions',
+            title: tt("Actions"),
             key: 'actions',
             align: 'center' as const,
             width: 60,
@@ -205,13 +205,13 @@ function ApiTokensCard(): JSX.Element {
                         items: [
                             {
                                 key: 'edit',
-                                label: 'Edit',
+                                label: tt("Edit"),
                                 onClick: () => onEditToken(row.token),
                             },
                             { type: 'divider' },
                             {
                                 key: 'revoke',
-                                label: 'Revoke',
+                                label: tt("Revoke"),
                                 onClick: () => onRevokeToken(row.token),
                             },
                         ],

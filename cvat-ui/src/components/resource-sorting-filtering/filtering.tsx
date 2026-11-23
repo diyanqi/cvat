@@ -56,7 +56,7 @@ function keepFilterInLocalStorage(filter: string, storageKey: string, capacity: 
     try {
         savedItems = JSON.parse(localStorage.getItem(storageKey) || '[]');
         if (!Array.isArray(savedItems) || savedItems.some((item: any) => typeof item !== 'string')) {
-            throw new Error('Wrong filters value stored');
+            throw new Error(tt("Wrong filters value stored"));
         }
     } catch (_: any) {
         // nothing to do
@@ -71,7 +71,7 @@ function receiveRecentFilters(storageKey: string): Record<string, string> {
     try {
         recentFilters = JSON.parse(localStorage.getItem(storageKey) || '[]');
         if (!Array.isArray(recentFilters) || recentFilters.some((item: any) => typeof item !== 'string')) {
-            throw new Error('Wrong filters value stored');
+            throw new Error(tt("Wrong filters value stored"));
         }
     } catch (_: any) {
         // nothing to do

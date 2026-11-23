@@ -44,9 +44,9 @@ function SelectCSUpdatingSchemeModal(): JSX.Element | null {
     }
 
     const capitalizedInstanceType = instanceType.charAt(0).toUpperCase() + instanceType.slice(1);
-    const alert = 'Data-linked storage will only be reset during the transfer and must be updated manually afterward';
+    const alert = tt("Data-linked storage will only be reset during the transfer and must be updated manually afterward");
     const message = instances.length > 1 ?
-        'Some resources are linked to a cloud storage' :
+        tt("Some resources are linked to a cloud storage") :
         `${capitalizedInstanceType} #${instances[0].id} is linked to a cloud storage`;
 
     return (

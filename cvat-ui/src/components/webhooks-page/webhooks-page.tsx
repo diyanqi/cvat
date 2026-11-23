@@ -24,6 +24,7 @@ import { getCore, type WebhookEvent } from 'cvat-core-wrapper';
 import WebhooksList from './webhooks-list';
 import TopBar from './top-bar';
 import EmptyWebhooksListComponent from './empty-list';
+import { tt } from 'i18n';
 
 interface ProjectRouteMatch {
     id?: string;
@@ -68,7 +69,7 @@ function WebhooksPage(): JSX.Element | null {
             size='large'
         >
             <LeftOutlined />
-            {projectsMatch ? 'Back to project' : 'Back to organization'}
+            {projectsMatch ? tt("Back to project") : tt("Back to organization")}
         </Button>
     );
 

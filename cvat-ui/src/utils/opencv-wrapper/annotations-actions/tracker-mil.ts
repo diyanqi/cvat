@@ -8,6 +8,7 @@ import {
     Job, Task, ActionParameterType, BaseCollectionAction,
     ObjectType, ObjectState, Source, ShapeType,
 } from 'cvat-core-wrapper';
+import { tt } from 'i18n';
 
 type Collection = Parameters<BaseCollectionAction['run']>[0]['collection'];
 type Track = Collection['tracks'][0];
@@ -64,7 +65,7 @@ export default class OpenCVTrackerMIL extends BaseCollectionAction {
         }
 
         if (number >= this.#targetFrame) {
-            throw new Error('OpenCV tracking backward is not supported');
+            throw new Error(tt("OpenCV tracking backward is not supported"));
         }
 
         const frameNumbers = this.#instance instanceof Job ?
@@ -140,14 +141,14 @@ export default class OpenCVTrackerMIL extends BaseCollectionAction {
         }, [[], [], []] as [number[][], (Shape | Track)[], ObjectState[]]);
 
         if (!this.#openCVWrapper.isInitialized) {
-            onProgress('OpenCV library initialization', 0);
+            onProgress(tt("OpenCV library initialization"), 0);
             await this.#openCVWrapper.initialize(() => {});
             if (cancelled()) {
                 return noChanges;
             }
         }
 
-        onProgress('Action is running', 0);
+        onProgress(tt("Action is running"), 0);
         if (cancelled()) {
             return noChanges;
         }
@@ -171,7 +172,7 @@ export default class OpenCVTrackerMIL extends BaseCollectionAction {
                 for (let j = 0; j < targetFrameNumbers.length; j++) {
                     currentProgress = i * targetFrameNumbers.length + j;
 
-                    onProgress('Action is running', Math.ceil((currentProgress / progressPieces) * 100));
+                    onProgress(tt("Action is running"), Math.ceil((currentProgress / progressPieces) * 100));
                     await new Promise((resolve) => {
                         setTimeout(resolve);
                     });

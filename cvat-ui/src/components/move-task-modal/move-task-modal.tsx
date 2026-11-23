@@ -73,7 +73,7 @@ function MoveTaskModal({
 
     const submitMove = async (): Promise<void> => {
         if (!taskInstance) {
-            throw new Error('Task to move is not specified');
+            throw new Error(tt("Task to move is not specified"));
         }
 
         if (!projectId) {

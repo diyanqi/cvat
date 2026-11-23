@@ -60,21 +60,21 @@ interface Props {
 
 const componentShortcuts = {
     DELETE_FRAME: {
-        name: 'Delete frame',
-        description: 'Delete frame',
+        name: tt("Delete frame"),
+        description: tt("Delete frame"),
         sequences: ['alt+del'],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },
     FOCUS_INPUT_FRAME: {
-        name: 'Focus input frame',
-        description: 'Focus on the element to change the current frame',
+        name: tt("Focus input frame"),
+        description: tt("Focus on the element to change the current frame"),
         sequences: ['`'],
         displayedSequences: ['~'],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },
     SEARCH_FRAME_BY_NAME: {
-        name: 'Search frame by name',
-        description: 'Open search frame by name dialog',
+        name: tt("Search frame by name"),
+        description: tt("Open search frame by name dialog"),
         sequences: [],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },

@@ -47,7 +47,7 @@ function ShortcutsSettingsComponent(props: Props): JSX.Element {
             title: tt("Are you sure you want to restore defaults?"),
             okText: tt("Yes"),
             className: 'cvat-shortcuts-settings-restore-modal',
-            cancelText: 'No',
+            cancelText: tt("No"),
             onOk: () => {
                 const currentSettings = localStorage.getItem('clientSettings');
                 dispatch(shortcutsActions.registerShortcuts({ ...shortcuts.defaultState }));

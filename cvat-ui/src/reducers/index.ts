@@ -21,6 +21,7 @@ import { KeyMap, KeyMapItem } from 'utils/mousetrap-react';
 import { ImageFilter } from 'utils/image-processing';
 import { AudioRegionsOrdering } from 'audio/components/annotation-page/audio-workspace/utils/audio-interval';
 import type { AudioSeekRequest } from 'actions/audio-actions';
+import { tt } from 'i18n';
 
 export interface AudioState {
     player: {
@@ -871,9 +872,9 @@ export enum ActiveControl {
 export enum StatesOrdering {
     ID_DESCENT = 'ID - descent',
     ID_ASCENT = 'ID - ascent',
-    UPDATED = 'Updated time',
+    UPDATED = '更新时间',
     LAYER = 'Layer',
-    LABEL_NAME = 'Label name',
+    LABEL_NAME = '标签名称',
 }
 
 export enum ContextMenuType {
@@ -1042,13 +1043,13 @@ export interface AnnotationState {
 }
 
 export enum Workspace {
-    STANDARD3D = 'Standard 3D',
+    STANDARD3D = '标准 3D',
     STANDARD = 'Standard',
-    ATTRIBUTES = 'Attribute annotation',
-    SINGLE_SHAPE = 'Single shape',
-    TAGS = 'Tag annotation',
+    ATTRIBUTES = '属性标注',
+    SINGLE_SHAPE = '单一形状',
+    TAGS = '标签标注',
     REVIEW = 'Review',
-    AUDIO = 'Audio annotation',
+    AUDIO = '音频标注',
 }
 
 export function isMultiSelectionSupported(workspace: Workspace): boolean {

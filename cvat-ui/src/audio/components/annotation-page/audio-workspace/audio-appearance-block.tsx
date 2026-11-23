@@ -25,8 +25,8 @@ import { tt } from 'i18n';
 
 const componentShortcuts = {
     SWITCH_COLOR_BY_APPEARANCE_AUDIO: {
-        name: 'Switch objects appearance setting "Color by" (audio)',
-        description: 'Audio region color mode may be by label or instance',
+        name: tt("Switch objects appearance setting \"Color by\" (audio)"),
+        description: tt("Audio region color mode may be by label or instance"),
         sequences: [],
         scope: ShortcutScope.AUDIO_WORKSPACE_CONTROLS,
     },

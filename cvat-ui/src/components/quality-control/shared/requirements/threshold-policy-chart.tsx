@@ -53,7 +53,7 @@ export default function ThresholdPolicyChart(props: Readonly<Props>): JSX.Elemen
                     x: {
                         type: 'linear',
                         min: 0,
-                        title: { display: true, text: 'GT shape area (px²)', color: color('text') },
+                        title: { display: true, text: tt("GT shape area (px²)"), color: color('text') },
                         ticks: { color: color('text'), maxTicksLimit: 6, callback: (tick) => format(Number(tick)) },
                         grid: { color: color('grid') },
                         border: { color: color('grid') },

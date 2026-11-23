@@ -34,13 +34,13 @@ function AnaylyticsPageHeader(props: Props): JSX.Element {
         <Row justify='space-between' align='middle'>
             <Col className='cvat-analytics-header'>
                 <Title level={4} className='cvat-text-color'>
-                    {'Analytics for '}
+                    {tt("Analytics for")}
                     <ResourceLink resource={resource} />
                 </Title>
             </Col>
             <Col>
                 <DatePicker.RangePicker
-                    placeholder={['UTC start date', 'UTC end date']}
+                    placeholder={[tt("UTC start date"), tt("UTC end date")]}
                     className='cvat-analytics-date-picker'
                     onChange={(value) => {
                         if (value) {

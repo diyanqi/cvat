@@ -53,8 +53,8 @@ interface State {
 
 const componentShortcuts = {
     CANCEL_SKELETON_EDGE: {
-        name: 'Cancel skeleton drawing',
-        description: 'Interrupts drawing a new skeleton edge',
+        name: tt("Cancel skeleton drawing"),
+        description: tt("Interrupts drawing a new skeleton edge"),
         sequences: ['esc'],
         scope: ShortcutScope.LABELS_EDITOR,
     },
@@ -661,7 +661,7 @@ export default class SkeletonConfigurator extends React.PureComponent<Props, Sta
         });
 
         if (!sublabels.length || !elements) {
-            throw new Error('At least one skeleton element is necessary');
+            throw new Error(tt("At least one skeleton element is necessary"));
         }
 
         if (elements !== sublabels.length) {

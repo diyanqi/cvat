@@ -10,6 +10,7 @@ import {
 import { ActionUnion, createAction, ThunkAction } from 'utils/redux';
 import { filterNull } from 'utils/filter-null';
 import { OrganizationsQuery, OrganizationMembersQuery } from 'reducers';
+import { tt } from 'i18n';
 
 const core = getCore();
 
@@ -166,7 +167,7 @@ export function activateOrganizationAsync(): ThunkAction {
                 if (error instanceof Error) {
                     dispatch(organizationActions.activateOrganizationFailed(error.toString(), curSlug));
                 } else {
-                    dispatch(organizationActions.activateOrganizationFailed('Unknown error', curSlug));
+                    dispatch(organizationActions.activateOrganizationFailed(tt("Unknown error"), curSlug));
                 }
             }
         } else {

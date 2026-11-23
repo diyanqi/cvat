@@ -26,8 +26,8 @@ interface Props {
 
 const componentShortcuts = {
     OPEN_REVIEW_ISSUE: {
-        name: 'Open an issue',
-        description: 'Create a new issues in the review workspace',
+        name: tt("Open an issue"),
+        description: tt("Create a new issues in the review workspace"),
         sequences: ['n'],
         scope: ShortcutScope.REVIEW_WORKSPACE_CONTROLS,
     },

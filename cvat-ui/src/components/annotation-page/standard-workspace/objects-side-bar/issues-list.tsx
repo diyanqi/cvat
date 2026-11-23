@@ -60,7 +60,7 @@ export default function IssuesListComponent(): JSX.Element {
     }), shallowEqual);
 
     if (workspace === Workspace.AUDIO) {
-        throw new Error('Not supported in audio workspace');
+        throw new Error(tt("Not supported in audio workspace"));
     }
 
     let frames = issues

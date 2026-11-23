@@ -353,12 +353,12 @@ class OpenCVControlComponent extends React.PureComponent<Props & DispatchToProps
                                                 markdown: [
                                                     '### Intelligent scissors',
                                                     '',
-                                                    'Follow object edges to outline the object.',
+                                                    tt("Follow object edges to outline the object."),
                                                     '',
                                                     '**Actions**',
-                                                    '- Click to add a point.',
-                                                    '- Hold `Ctrl` to draw straight segments.',
-                                                    '- Hold the `Mouse wheel` and drag to pan.',
+                                                    tt("- Click to add a point."),
+                                                    tt("- Hold `Ctrl` to draw straight segments."),
+                                                    tt("- Hold the `Mouse wheel` and drag to pan."),
                                                 ].join('\n'),
                                                 topic: 'intelligent-scissors-v1',
                                             },
@@ -495,17 +495,17 @@ class OpenCVControlComponent extends React.PureComponent<Props & DispatchToProps
                         tabBarGutter={8}
                         items={[{
                             key: 'drawing',
-                            label: 'Drawing',
+                            label: tt("Drawing"),
                             children: this.renderDrawingContent(),
                             className: 'cvat-opencv-control-tabpane',
                         }, {
                             key: 'image',
-                            label: 'Image',
+                            label: tt("Image"),
                             children: this.renderImageContent(),
                             className: 'cvat-opencv-control-tabpane',
                         }, {
                             key: 'tracking',
-                            label: 'Tracking',
+                            label: tt("Tracking"),
                             children: this.renderTrackingContent(),
                             className: 'cvat-opencv-control-tabpane',
                         }]}

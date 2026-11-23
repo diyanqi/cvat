@@ -47,7 +47,7 @@ export default function BulkProgress(): JSX.Element | null {
                         {` ${remainingItemsCount} items.`}
                     </>
                 ) : (
-                    'An error occurred during the bulk operation.'
+                    tt("An error occurred during the bulk operation.")
                 )}
                 {remainingItemsCount > 0 && (
                     <>

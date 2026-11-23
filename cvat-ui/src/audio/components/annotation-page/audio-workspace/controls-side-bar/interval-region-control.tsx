@@ -35,27 +35,27 @@ export interface Props {
 
 const componentShortcuts = {
     CREATE_AUDIO_REGION: {
-        name: 'Create audio interval',
-        description: 'Enable audio interval creation mode — drag on waveform to create an interval',
+        name: tt("Create audio interval"),
+        description: tt("Enable audio interval creation mode — drag on waveform to create an interval"),
         sequences: ['n'],
         scope: ShortcutScope.AUDIO_WORKSPACE_CONTROLS,
     },
     RECORD_AUDIO_REGION: {
-        name: 'Record audio interval',
+        name: tt("Record audio interval"),
         description: (
-            'Toggle live audio interval recording. ' +
-            'First press marks the interval start at the current playback position; ' +
-            'pressing again or pausing finalizes the end.'
+            tt("Toggle live audio interval recording.") +
+            tt("First press marks the interval start at the current playback position;") +
+            tt("pressing again or pausing finalizes the end.")
         ),
         sequences: ['shift+n'],
         scope: ShortcutScope.AUDIO_WORKSPACE_CONTROLS,
     },
     EXTEND_AUDIO_REGION_FROM_LAST: {
-        name: 'Extend interval from last region',
+        name: tt("Extend interval from last region"),
         description: (
-            'Create a new audio interval that starts at the end of the most recently ' +
-            'added region (or at the audio start if none exists) and ends at the ' +
-            'current playback position.'
+            tt("Create a new audio interval that starts at the end of the most recently") +
+            tt("added region (or at the audio start if none exists) and ends at the") +
+            tt("current playback position.")
         ),
         sequences: ['shift+e'],
         scope: ShortcutScope.AUDIO_WORKSPACE_CONTROLS,
@@ -180,7 +180,7 @@ function IntervalRegionControl(props: Props): JSX.Element {
                 <Col span={8}>
                     {renderAction(
                         'Draw',
-                        'Draw an interval on the waveform',
+                        tt("Draw an interval on the waveform"),
                         createRegionShortkey,
                         drawInterval,
                         activeLabelId === null,
@@ -189,7 +189,7 @@ function IntervalRegionControl(props: Props): JSX.Element {
                 <Col span={8}>
                     {renderAction(
                         'Record',
-                        'Record an interval from playback position',
+                        tt("Record an interval from playback position"),
                         recordRegionShortkey,
                         recordInterval,
                         activeLabelId === null,
@@ -198,7 +198,7 @@ function IntervalRegionControl(props: Props): JSX.Element {
                 <Col span={8}>
                     {renderAction(
                         'Extend',
-                        'Create an interval from the previous interval end to current time',
+                        tt("Create an interval from the previous interval end to current time"),
                         extendRegionShortkey,
                         extendInterval,
                         activeLabelId === null || recording,
@@ -225,8 +225,8 @@ function IntervalRegionControl(props: Props): JSX.Element {
                 <CVATTooltip
                     title={
                         noLabels ?
-                            'Add a label to the task to create intervals' :
-                            'Audio interval tools'
+                            tt("Add a label to the task to create intervals") :
+                            tt("Audio interval tools")
                     }
                     placement='right'
                 >

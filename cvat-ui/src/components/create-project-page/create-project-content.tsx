@@ -64,7 +64,7 @@ function NameConfigurationForm(
                 rules={[
                     {
                         required: true,
-                        message: 'Please, specify a name',
+                        message: tt("Please, specify a name"),
                     },
                 ]}
             >
@@ -93,7 +93,7 @@ function AdvancedConfigurationForm(props: AdvancedConfigurationProps): JSX.Eleme
                     {
                         validator: (_, value, callback): void => {
                             if (value && !patterns.validateURL.pattern.test(value)) {
-                                callback('Issue tracker must be URL');
+                                callback(tt("Issue tracker must be URL"));
                             } else {
                                 callback();
                             }

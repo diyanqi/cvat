@@ -70,11 +70,11 @@ function ResetPasswordFormComponent({ fetching, onSubmit }: Props): JSX.Element 
                     rules={[
                         {
                             type: 'email',
-                            message: 'The input is not valid E-mail!',
+                            message: tt("The input is not valid E-mail!"),
                         },
                         {
                             required: true,
-                            message: 'Please specify an email address',
+                            message: tt("Please specify an email address"),
                         },
                     ]}
                 >

@@ -1,11 +1,12 @@
-// Copyright (C) CVAT.ai Corporation
+
+import { tt } from 'i18n';// Copyright (C) CVAT.ai Corporation
 //
 // SPDX-License-Identifier: MIT
 
 export async function toClipboard(text: string): Promise<boolean> {
     const fallback = (): boolean => {
         // eslint-disable-next-line
-        window.prompt('Browser Clipboard API not allowed, please copy manually', text);
+        window.prompt(tt("Browser Clipboard API not allowed, please copy manually"), text);
         return false;
     };
 

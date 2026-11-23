@@ -15,6 +15,7 @@ import { ValidationMode } from 'components/create-task-page/quality-configuratio
 import { ResourceUpdateTypes } from 'utils/enums';
 import { getInferenceStatusAsync } from './models-actions';
 import { updateRequestProgress } from './requests-actions';
+import { tt } from 'i18n';
 
 const cvat = getCore();
 
@@ -304,14 +305,14 @@ ThunkAction {
                     let helperMessage = '';
                     if (!message) {
                         if ([RQStatus.QUEUED, RQStatus.STARTED].includes(status)) {
-                            message = 'CVAT queued the task to import';
-                            helperMessage = 'You may close the window.';
+                            message = tt("CVAT queued the task to import");
+                            helperMessage = tt("You may close the window.");
                         } else if (status === RQStatus.FAILED) {
-                            message = 'Images processing failed';
+                            message = tt("Images processing failed");
                         } else if (status === RQStatus.FINISHED) {
-                            message = 'Task creation finished';
+                            message = tt("Task creation finished");
                         } else {
-                            message = 'Unknown status received';
+                            message = tt("Unknown status received");
                         }
                     }
                     onProgress?.(`${message}${progress ? ` ${Math.floor(progress * 100)}%` : ''}. ${helperMessage}`);

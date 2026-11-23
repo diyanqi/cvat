@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: MIT
 
 import { Project, QualitySettings, Task } from 'cvat-core-wrapper';
+import { tt } from 'i18n';
 
 export function sorter(path: string) {
     return (obj1: any, obj2: any): number => {
@@ -56,7 +57,7 @@ export function tablePaginationPageSize(pageHeight: number): number {
 export function validationModeText(task: Task): string | null {
     let result: string | null = null;
     if (task.validationMode === 'gt') {
-        result = 'Ground truth';
+        result = tt("Ground truth");
     } else if (task.validationMode === 'gt_pool') {
         result = 'Honeypots';
     }

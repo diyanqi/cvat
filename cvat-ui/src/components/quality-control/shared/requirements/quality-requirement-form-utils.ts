@@ -19,6 +19,7 @@ import {
     getRequirementEffectiveField,
     getRequirementResolvedValue,
 } from './quality-requirements-utils';
+import { tt } from 'i18n';
 
 export const ROOT_DEFAULTS = {
     annotationType: QualityRequirementAnnotationType.RECTANGLE,
@@ -45,18 +46,18 @@ export const METRIC_OPTION_GROUPS: Array<{
     options: QualityRequirementMetric[];
 }> = [
     {
-        label: 'Micro average',
+        label: tt("Micro average"),
         options: Object.values(QualityRequirementMetric),
     },
     {
-        label: 'Macro average',
+        label: tt("Macro average"),
         options: Object.values(QualityRequirementMetric).map((metric) => serializeQualityTargetMetric({
             metric,
             aggregation: QualityMetricAggregation.MEAN,
         })),
     },
     {
-        label: 'Worst label',
+        label: tt("Worst label"),
         options: Object.values(QualityRequirementMetric).map((metric) => serializeQualityTargetMetric({
             metric,
             aggregation: QualityMetricAggregation.LABEL,
@@ -881,12 +882,12 @@ export function validateJsonLogic(_: unknown, value: string | undefined): Promis
     try {
         const parsedValue = JSON.parse(value);
         if (!parsedValue || Array.isArray(parsedValue) || typeof parsedValue !== 'object') {
-            return Promise.reject(new Error('Filter must be a JSON logic object'));
+            return Promise.reject(new Error(tt("Filter must be a JSON logic object")));
         }
 
         return Promise.resolve();
     } catch (_error: unknown) {
-        return Promise.reject(new Error('Filter must be valid JSON logic'));
+        return Promise.reject(new Error(tt("Filter must be valid JSON logic")));
     }
 }
 

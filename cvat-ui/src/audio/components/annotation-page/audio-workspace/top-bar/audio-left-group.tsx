@@ -18,6 +18,7 @@ import { subKeyMap } from 'utils/component-subkeymap';
 import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
 import AudioSaveAnnotationsButton from './audio-save-annotations-button';
 import AudioRemoveAnnotationsConfirm from './audio-remove-annotations-confirm';
+import { localizeText } from 'i18n/localize';
 import { tt } from 'i18n';
 
 interface Props {
@@ -33,14 +34,14 @@ interface Props {
 
 const componentShortcuts = {
     AUDIO_UNDO: {
-        name: 'Undo audio action',
-        description: 'Cancel the latest action related to audio regions',
+        name: tt("Undo audio action"),
+        description: tt("Cancel the latest action related to audio regions"),
         sequences: ['ctrl+z', 'command+z'],
         scope: ShortcutScope.AUDIO_WORKSPACE_CONTROLS,
     },
     AUDIO_REDO: {
-        name: 'Redo audio action',
-        description: 'Cancel undo of audio action',
+        name: tt("Redo audio action"),
+        description: tt("Cancel undo of audio action"),
         sequences: ['ctrl+shift+z', 'command+shift+z', 'ctrl+y'],
         scope: ShortcutScope.AUDIO_WORKSPACE_CONTROLS,
     },
@@ -93,7 +94,7 @@ function AudioLeftGroup(props: Props): JSX.Element {
             <Col className='cvat-annotation-header-left-group'>
                 <AnnotationMenuComponent removeAnnotationsConfirmComponent={AudioRemoveAnnotationsConfirm} />
                 <AudioSaveAnnotationsButton />
-                <CVATTooltip overlay={`Undo: ${undoAction} ${undoShortcut}`}>
+                <CVATTooltip overlay={`${tt('Undo')}: ${localizeText(undoAction || '')} ${undoShortcut}`}>
                     <Button
                         style={{ pointerEvents: undoAction ? 'initial' : 'none', opacity: undoAction ? 1 : 0.5 }}
                         type='link'
@@ -104,7 +105,7 @@ function AudioLeftGroup(props: Props): JSX.Element {
                         <span>{tt("Undo")}</span>
                     </Button>
                 </CVATTooltip>
-                <CVATTooltip overlay={`Redo: ${redoAction} ${redoShortcut}`}>
+                <CVATTooltip overlay={`${tt('Redo')}: ${localizeText(redoAction || '')} ${redoShortcut}`}>
                     <Button
                         style={{ pointerEvents: redoAction ? 'initial' : 'none', opacity: redoAction ? 1 : 0.5 }}
                         type='link'

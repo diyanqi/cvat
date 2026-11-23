@@ -6,6 +6,7 @@
 import { ObjectState, ShapeType, getCore } from 'cvat-core-wrapper';
 import config from 'config';
 import TrackerMILAction from './annotations-actions/tracker-mil';
+import { tt } from 'i18n';
 
 const core = getCore();
 
@@ -37,7 +38,7 @@ export class OpenCVWrapper {
 
     private getCVInterface(): OpenCVInterface {
         if (!this.cvInterface) {
-            throw new Error('OpenCV is not initialized. Please call initialize() method first.');
+            throw new Error(tt("OpenCV is not initialized. Please call initialize() method first."));
         }
         return this.cvInterface;
     }
@@ -73,7 +74,7 @@ export class OpenCVWrapper {
             let receivedLength = 0;
 
             if (response.body === null) {
-                throw new Error('Unexpected response body');
+                throw new Error(tt("Unexpected response body"));
             }
 
             const reader = response.body.getReader();
@@ -219,7 +220,7 @@ export class OpenCVWrapper {
             try {
                 await this.initialize(() => {});
             } catch {
-                throw new Error('Could not initialize OpenCV');
+                throw new Error(tt("Could not initialize OpenCV"));
             }
         }
 
@@ -251,7 +252,7 @@ export class OpenCVWrapper {
             trackerMIL: {
                 model: () => this.getCVInterface().tracking.trackerMIL.model(),
                 name: 'TrackerMIL',
-                description: 'Lightweight client-side algorithm, useful to track simple objects',
+                description: tt("Lightweight client-side algorithm, useful to track simple objects"),
                 kind: 'opencv_tracker_mil',
             },
         };

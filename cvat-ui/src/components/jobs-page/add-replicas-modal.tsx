@@ -67,7 +67,7 @@ function AddReplicasModal(props: Readonly<Props>): JSX.Element {
             onCancel={onCancel}
             onOk={onAdd}
         >
-            <Text>{isBulkMode ? 'Replicas per job: ' : 'Number of replicas: '}</Text>
+            <Text>{isBulkMode ? tt("Replicas per job:") : tt("Number of replicas:")}</Text>
             <InputNumber
                 className='cvat-add-replicas-count-input'
                 autoFocus

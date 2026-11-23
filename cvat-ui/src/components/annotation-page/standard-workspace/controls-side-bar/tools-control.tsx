@@ -60,11 +60,11 @@ const rectangleHint = {
     markdown: [
         '### Rectangle prompts',
         '',
-        'Draw a box around the area you want to select.',
+        tt("Draw a box around the area you want to select."),
         '',
         '**Actions**',
-        '- Click opposite corners to draw a box.',
-        '- Hold the `Mouse wheel` and drag to pan.',
+        tt("- Click opposite corners to draw a box."),
+        tt("- Hold the `Mouse wheel` and drag to pan."),
     ].join('\n'),
     topic: 'rectangle-prompts-v1',
 };
@@ -73,12 +73,12 @@ const getPointsHint = (withNegativePoints: boolean): typeof rectangleHint => ({
     markdown: [
         '### Point prompts',
         '',
-        'Use points to guide the selection.',
+        tt("Use points to guide the selection."),
         '',
         '**Actions**',
-        '- `Left click` to add a positive point.',
-        ...(withNegativePoints ? ['- `Right click` to add a negative point.'] : []),
-        '- Hold the `Mouse wheel` and drag to pan.',
+        tt("- `Left click` to add a positive point."),
+        ...(withNegativePoints ? [tt("- `Right click` to add a negative point.")] : []),
+        tt("- Hold the `Mouse wheel` and drag to pan."),
     ].join('\n'),
     topic: 'point-prompts-v1',
 });
@@ -229,7 +229,7 @@ function registerPlugin(): (callback: null | (() => void)) => void {
     let onTrigger: null | (() => void) = null;
     const listener = {
         name: 'Remove annotations listener',
-        description: 'Tracker needs to know when annotations is reset in the job',
+        description: tt("Tracker needs to know when annotations is reset in the job"),
         cvat: {
             classes: {
                 Job: {
@@ -1054,7 +1054,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                         const numOfObjects = trackableObjects.clientIDs.length;
                         hideMessage = message.loading({
                             content: `${tracker.name}: ${numOfObjects} ${
-                                numOfObjects > 1 ? 'objects are' : 'object is'
+                                numOfObjects > 1 ? tt("objects are") : tt("object is")
                             } being tracked..`,
                             duration: 0,
                             className: 'cvat-tracking-notice',
@@ -1547,15 +1547,15 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                     onChange={(key) => this.setState({ activeTab: key as 'interactors' | 'detectors' | 'trackers' })}
                     items={[{
                         key: 'interactors',
-                        label: 'Prompting',
+                        label: tt("Prompting"),
                         children: this.renderInteractorBlock(),
                     }, {
                         key: 'detectors',
-                        label: 'Auto-labeling',
+                        label: tt("Auto-labeling"),
                         children: this.renderDetectorBlock(),
                     }, {
                         key: 'trackers',
-                        label: 'Tracking',
+                        label: tt("Tracking"),
                         children: this.renderTrackerBlock(),
                     }]}
                 />

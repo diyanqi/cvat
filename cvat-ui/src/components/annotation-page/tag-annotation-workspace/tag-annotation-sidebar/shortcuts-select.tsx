@@ -31,8 +31,8 @@ const componentShortcuts: Record<string, KeyMapItem> = {};
 
 for (const idx of [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) {
     componentShortcuts[`SETUP_${idx}_TAG`] = {
-        name: 'Create a new tag',
-        description: 'Create a new tag with corresponding class. The class may be setup in tag annotation sidebar',
+        name: tt("Create a new tag"),
+        description: tt("Create a new tag with corresponding class. The class may be setup in tag annotation sidebar"),
         sequences: [`${idx}`],
         nonActive: true,
         scope: ShortcutScope.TAG_ANNOTATION_WORKSPACE,

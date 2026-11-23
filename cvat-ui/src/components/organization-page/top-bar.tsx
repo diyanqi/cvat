@@ -187,7 +187,7 @@ function OrganizationTopBar(props: Readonly<Props>): JSX.Element {
                                             }, {
                                                 key: MenuActions.REMOVE_ORGANIZATION,
                                                 onClick: onRemove,
-                                                label: 'Remove organization',
+                                                label: tt("Remove organization"),
                                             }] : []),
                                         ],
                                         className: 'cvat-organization-actions-menu',
@@ -226,7 +226,7 @@ function OrganizationTopBar(props: Readonly<Props>): JSX.Element {
                         </Text>
                         {!editingDescription ? (
                             <span style={{ display: 'grid' }}>
-                                {(description || 'Add description').split('\n').map((val: string, idx: number) => (
+                                {(description || tt("Add description")).split('\n').map((val: string, idx: number) => (
                                     <Text key={idx} type='secondary'>
                                         {val}
                                         {idx === 0 ? <EditTwoTone onClick={() => setEditingDescription(true)} /> : null}

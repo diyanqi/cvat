@@ -12,6 +12,7 @@ import {
     ApiTokensFilter, SerializedApiToken,
 } from 'cvat-core-wrapper';
 import { ChangePasswordData, CombinedState } from 'reducers';
+import { tt } from 'i18n';
 
 const cvat = getCore();
 

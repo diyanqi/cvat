@@ -6,19 +6,20 @@ import { ProjectsQuery } from 'reducers';
 import { CSVColumn } from 'utils/csv-writer';
 import { getCore, Project } from 'cvat-core-wrapper';
 import createCSVExportButton from '../export-csv-button-hoc';
+import { tt } from 'i18n';
 
 const cvat = getCore();
 
 const columns: CSVColumn<Project>[] = [
-    { header: 'ID', accessor: (project) => project.id },
-    { header: 'Name', accessor: (project) => project.name },
-    { header: 'Project URL', accessor: (project) => `${window.location.origin}/projects/${project.id}` },
-    { header: 'Owner', accessor: (project) => project.owner?.username ?? '' },
-    { header: 'Assignee', accessor: (project) => project.assignee?.username ?? '' },
-    { header: 'Status', accessor: (project) => project.status },
-    { header: 'Dimension', accessor: (project) => project.dimension },
+    { header: tt("ID"), accessor: (project) => project.id },
+    { header: tt("Name"), accessor: (project) => project.name },
+    { header: tt("Project URL"), accessor: (project) => `${window.location.origin}/projects/${project.id}` },
+    { header: tt("Owner"), accessor: (project) => project.owner?.username ?? '' },
+    { header: tt("Assignee"), accessor: (project) => project.assignee?.username ?? '' },
+    { header: tt("Status"), accessor: (project) => project.status },
+    { header: tt("Dimension"), accessor: (project) => project.dimension },
     {
-        header: 'Task Subsets',
+        header: tt("Task Subsets"),
         accessor: (project) => (
             project.subsets && project.subsets.length > 0 ?
                 project.subsets.join(', ') :
@@ -26,20 +27,20 @@ const columns: CSVColumn<Project>[] = [
         ),
     },
     {
-        header: 'Created Date',
+        header: tt("Created Date"),
         accessor: (project) => project.createdDate,
     },
     {
-        header: 'Updated Date',
+        header: tt("Updated Date"),
         accessor: (project) => project.updatedDate,
     },
-    { header: 'Bug Tracker', accessor: (project) => project.bugTracker ?? '' },
+    { header: tt("Bug Tracker"), accessor: (project) => project.bugTracker ?? '' },
 ];
 
 const ProjectsCSVExportButton = createCSVExportButton<Project, ProjectsQuery>({
     resourceName: 'projects',
     className: 'cvat-projects-export-csv-button',
-    tooltipTitle: 'Export projects to CSV',
+    tooltipTitle: tt("Export projects to CSV"),
     columns,
     uniqueKey: 'id',
     fetchPage: async (query) => {

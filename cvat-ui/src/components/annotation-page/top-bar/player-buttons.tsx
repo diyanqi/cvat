@@ -60,56 +60,56 @@ interface Props {
 
 const componentShortcuts = {
     NEXT_FRAME: {
-        name: 'Next frame',
-        description: 'Go to the next frame',
+        name: tt("Next frame"),
+        description: tt("Go to the next frame"),
         sequences: ['f'],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },
     PREV_FRAME: {
-        name: 'Previous frame',
-        description: 'Go to the previous frame',
+        name: tt("Previous frame"),
+        description: tt("Go to the previous frame"),
         sequences: ['d'],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },
     FORWARD_FRAME: {
-        name: 'Forward frame',
-        description: 'Go forward with a step',
+        name: tt("Forward frame"),
+        description: tt("Go forward with a step"),
         sequences: ['v'],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },
     BACKWARD_FRAME: {
-        name: 'Backward frame',
-        description: 'Go backward with a step',
+        name: tt("Backward frame"),
+        description: tt("Go backward with a step"),
         sequences: ['c'],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },
     SEARCH_FORWARD: {
-        name: 'Search forward',
-        description: 'Search the next frame that satisfies to the filters',
+        name: tt("Search forward"),
+        description: tt("Search the next frame that satisfies to the filters"),
         sequences: ['right'],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },
     SEARCH_BACKWARD: {
-        name: 'Search backward',
-        description: 'Search the previous frame that satisfies to the filters',
+        name: tt("Search backward"),
+        description: tt("Search the previous frame that satisfies to the filters"),
         sequences: ['left'],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },
     CHAPTER_BACKWARD: {
-        name: 'Chapter backward',
-        description: 'Go to the previous chapter',
+        name: tt("Chapter backward"),
+        description: tt("Go to the previous chapter"),
         sequences: ['x'],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },
     CHAPTER_FORWARD: {
-        name: 'Chapter forward',
-        description: 'Go to the next chapter',
+        name: tt("Chapter forward"),
+        description: tt("Go to the next chapter"),
         sequences: ['b'],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },
     PLAY_PAUSE: {
-        name: 'Play/pause',
-        description: 'Start/stop automatic changing frames',
+        name: tt("Play/pause"),
+        description: tt("Start/stop automatic changing frames"),
         sequences: ['space'],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },
@@ -184,14 +184,14 @@ function PlayerButtons(props: Props): JSX.Element {
         } : {}),
     };
 
-    const prevRegularText = 'Go back';
-    const prevFilteredText = 'Go back with a filter';
-    const prevEmptyText = 'Go back to an empty frame';
-    const prevChapterText = 'Go to the previous chapter';
-    const nextRegularText = 'Go next';
-    const nextFilteredText = 'Go next with a filter';
-    const nextEmptyText = 'Go next to an empty frame';
-    const nextChapterText = 'Go to the next chapter';
+    const prevRegularText = tt("Go back");
+    const prevFilteredText = tt("Go back with a filter");
+    const prevEmptyText = tt("Go back to an empty frame");
+    const prevChapterText = tt("Go to the previous chapter");
+    const nextRegularText = tt("Go next");
+    const nextFilteredText = tt("Go next with a filter");
+    const nextEmptyText = tt("Go next to an empty frame");
+    const nextChapterText = tt("Go to the next chapter");
 
     let prevButton = <Icon className='cvat-player-previous-button' component={PreviousIcon} onClick={onPrevFrame} />;
     let prevButtonTooltipMessage = prevRegularText;

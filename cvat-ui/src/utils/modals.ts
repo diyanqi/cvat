@@ -5,7 +5,7 @@
 import Modal from 'antd/lib/modal';
 
 import { Organization, Project, Task } from 'cvat-core-wrapper';
-import { tt } from 'i18n';
+import { tf, tt } from 'i18n';
 
 export function confirmTransferModal(
     instances: Project[] | Task[],
@@ -18,19 +18,23 @@ export function confirmTransferModal(
         return;
     }
 
-    const instanceType = first instanceof Task ? 'task' : 'project';
+    const instanceType = first instanceof Task ? tt('task') : tt('project');
     const movingItems = instances.length > 1 ?
-        `${instances.length} ${instanceType}s` : `the ${instanceType} #${first.id}`;
-    let details = `You are going to move ${movingItems} ` +
-        `to the ${dstWorkspace ? `organization ${dstWorkspace.slug}` : 'personal workspace'}. `;
+        `${instances.length} ${instanceType}` : `${instanceType} #${first.id}`;
+    const target = dstWorkspace ? tf(tt("organization {{slug}}"), { slug: dstWorkspace.slug }) : tt('personal workspace');
+    let details = tf(tt("You are going to move {{items}} to the {{target}}. Would you like to proceed?"), {
+        items: movingItems,
+        target,
+    });
     if (activeWorkspace) {
-        details += 'Organization members will lose access to ' +
-            `${instances.length > 1 ? 'these resources' : 'this resource'}.`;
+        details += tf(tt("Organization members will lose access to {{resources}}."), {
+            resources: instances.length > 1 ? tt('these resources') : tt('this resource'),
+        });
     }
 
     Modal.confirm({
         title: tt("Data transfer between workspaces"),
-        content: `${details} Would you like to proceed?`,
+        content: details,
         className: 'cvat-modal-confirm-project-transfer-between-workspaces',
         onOk,
         okButtonProps: {

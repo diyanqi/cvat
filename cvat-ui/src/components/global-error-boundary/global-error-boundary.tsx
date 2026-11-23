@@ -119,7 +119,7 @@ class GlobalErrorBoundary extends React.PureComponent<Props, State> {
                                     defaultActiveKey={['errorMessage']}
                                     items={[{
                                         key: 'errorMessage',
-                                        label: 'Exception details',
+                                        label: tt("Exception details"),
                                         children: (
                                             <Text type='danger'>
                                                 <TextArea

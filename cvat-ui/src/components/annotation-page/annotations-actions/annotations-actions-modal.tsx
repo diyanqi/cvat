@@ -404,7 +404,7 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                             targetObjectStates?.length ? (
                                 <Text>
                                     {targetObjectStates.length === 1 ?
-                                        'Selected action will be applied to the current object' :
+                                        tt("Selected action will be applied to the current object") :
                                         `Selected action will be applied to ${
                                             targetObjectStates.length
                                         } selected objects`}

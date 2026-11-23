@@ -7,6 +7,7 @@ import ErrorStackParser from 'error-stack-parser';
 import { getCore } from 'cvat-core-wrapper';
 import { getCVATStore } from 'cvat-store';
 import { CombinedState } from 'reducers';
+import { tt } from 'i18n';
 
 const core = getCore();
 const { logger } = core;
@@ -20,7 +21,7 @@ export function logError(
     extras: { type: string } & Record<string, unknown>,
 ): void {
     if (!(error instanceof Error)) {
-        console.warn('Unknown error type caught', error);
+        console.warn(tt("Unknown error type caught"), error);
         return;
     }
     // stack is not guaranteed by ECMA but

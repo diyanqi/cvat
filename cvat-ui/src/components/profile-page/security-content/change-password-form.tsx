@@ -28,7 +28,7 @@ function ChangePasswordFormComponent({ onSubmit, onCancel }: Props): JSX.Element
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your current password!',
+                        message: tt("Please input your current password!"),
                     },
                 ]}
             >
@@ -45,7 +45,7 @@ function ChangePasswordFormComponent({ onSubmit, onCancel }: Props): JSX.Element
                 rules={[
                     {
                         required: true,
-                        message: 'Please input new password!',
+                        message: tt("Please input new password!"),
                     },
                     validatePassword,
                 ]}
@@ -64,7 +64,7 @@ function ChangePasswordFormComponent({ onSubmit, onCancel }: Props): JSX.Element
                 rules={[
                     {
                         required: true,
-                        message: 'Please confirm your new password!',
+                        message: tt("Please confirm your new password!"),
                     },
                     validateConfirmation('newPassword1'),
                 ]}

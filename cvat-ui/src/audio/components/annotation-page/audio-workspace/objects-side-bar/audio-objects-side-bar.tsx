@@ -90,11 +90,11 @@ function AudioObjectsSideBar(props: StateToProps & DispatchToProps & OwnProps): 
                 className='cvat-objects-sidebar-tabs'
                 items={[{
                     key: 'objects',
-                    label: 'Objects',
+                    label: tt("Objects"),
                     children: objectsList,
                 }, {
                     key: 'labels',
-                    label: 'Labels',
+                    label: tt("Labels"),
                     forceRender: true,
                     children: <AudioLabelsList />,
                 }]}

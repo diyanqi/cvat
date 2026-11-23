@@ -62,8 +62,8 @@ function DrawShapePopoverComponent(props: Props): JSX.Element {
     const is2D = jobInstance.dimension === DimensionType.DIMENSION_2D;
     const simplifyDisabled = typeof numberOfPoints !== 'undefined';
     const simplifyTooltip = simplifyDisabled ?
-        'Simplification is unavailable when a predefined number of points is set' :
-        'Automatically start polygon/polyline simplification after shape is drawn';
+        tt("Simplification is unavailable when a predefined number of points is set") :
+        tt("Automatically start polygon/polyline simplification after shape is drawn");
 
     return (
         <div className='cvat-draw-shape-popover-content'>
@@ -114,10 +114,10 @@ function DrawShapePopoverComponent(props: Props): JSX.Element {
                                 <CVATTooltip
                                     title={
                                         `Click at least ${shapeType === ShapeType.ELLIPSE ? 'five' : 'three'} contour points. ` +
-                                        'A dashed fitted shape previews the result ' +
-                                        'as points are added or removed; ' +
+                                        tt("A dashed fitted shape previews the result") +
+                                        tt("as points are added or removed;") +
                                         `press ${repeatShapeShortcut} or select Done to finish, ` +
-                                        'and right-click to undo the last point.'
+                                        tt("and right-click to undo the last point.")
                                     }
                                 >
                                     <Radio.Button

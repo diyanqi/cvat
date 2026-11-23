@@ -22,7 +22,7 @@ import dimensions from 'utils/dimensions';
 import { tt } from 'i18n';
 
 const core = getCore();
-const confirmationMessage = 'You have unsaved changes, please confirm leaving this page.';
+const confirmationMessage = tt("You have unsaved changes, please confirm leaving this page.");
 
 function AnnotationGuidePage(): JSX.Element {
     const mdEditorRef = useRef<typeof MDEditor & { commandOrchestrator: commands.TextAreaCommandOrchestrator }>(null);

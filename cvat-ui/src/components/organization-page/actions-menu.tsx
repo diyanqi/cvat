@@ -97,7 +97,7 @@ function MemberActionsMenu(props: Readonly<MemberActionsMenuProps>): JSX.Element
         actionType: MenuKeys.REMOVE_MEMBER | MenuKeys.DELETE_INVITATION,
     ): void => {
         const membershipsToRemove = actionsApplicable[actionType];
-        const actionLabel = actionType === MenuKeys.DELETE_INVITATION ? 'Deleting invitation for' : 'Removing member';
+        const actionLabel = actionType === MenuKeys.DELETE_INVITATION ? tt("Deleting invitation for") : tt("Removing member");
 
         dispatch(makeBulkOperationAsync(
             membershipsToRemove,
@@ -146,13 +146,13 @@ function MemberActionsMenu(props: Readonly<MemberActionsMenuProps>): JSX.Element
     } else {
         menuItems.push(
             ...(actionsApplicable[MenuKeys.RESEND_INVITATION].length > 0 ?
-                [{ key: MenuKeys.RESEND_INVITATION, label: withCount('Resend invitation', MenuKeys.RESEND_INVITATION) }] :
+                [{ key: MenuKeys.RESEND_INVITATION, label: withCount(tt("Resend invitation"), MenuKeys.RESEND_INVITATION) }] :
                 []),
             ...(actionsApplicable[MenuKeys.DELETE_INVITATION].length > 0 ?
                 [{ key: 'divider', type: 'divider' } as ItemType] :
                 []),
             ...(actionsApplicable[MenuKeys.DELETE_INVITATION].length > 0 ?
-                [{ key: MenuKeys.DELETE_INVITATION, label: withCount('Remove invitation', MenuKeys.DELETE_INVITATION) }] :
+                [{ key: MenuKeys.DELETE_INVITATION, label: withCount(tt("Remove invitation"), MenuKeys.DELETE_INVITATION) }] :
                 []),
             ...(actionsApplicable[MenuKeys.REMOVE_MEMBER].length > 0 ?
                 [{ key: MenuKeys.REMOVE_MEMBER, label: withCount('Delete', MenuKeys.REMOVE_MEMBER) }] :

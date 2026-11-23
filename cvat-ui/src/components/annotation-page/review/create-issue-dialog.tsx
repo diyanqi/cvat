@@ -76,7 +76,7 @@ function MessageForm(props: Readonly<FormProps>): JSX.Element {
             >
                 <Form.Item
                     name='issue_description'
-                    rules={[{ required: true, message: 'Please, fill out the field' }]}
+                    rules={[{ required: true, message: tt("Please, fill out the field") }]}
                 >
                     <Input ref={inputRef} autoComplete='off' placeholder={tt("Please, describe the issue")} />
                 </Form.Item>

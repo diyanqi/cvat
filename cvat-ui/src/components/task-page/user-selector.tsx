@@ -169,9 +169,9 @@ export default function UserSelector(props: Readonly<Props>): JSX.Element {
             className={combinedClassName}
             popupClassName='cvat-user-search-dropdown'
             options={[
-                ...(!searchPhrase || 'reset assignee'.includes(searchPhrase.toLowerCase()) ? [{
+                ...(!searchPhrase || tt("reset assignee").includes(searchPhrase.toLowerCase()) ? [{
                     value: 'RESET_ASSIGNEE',
-                    label: 'Reset assignee',
+                    label: tt("Reset assignee"),
                 }] : []),
                 ...users.map((user) => ({
                     value: user.id.toString(),

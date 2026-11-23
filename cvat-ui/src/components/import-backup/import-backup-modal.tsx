@@ -66,7 +66,7 @@ function ImportBackupModal(): JSX.Element {
                 return e?.fileList[0];
             }}
             name='dragger'
-            rules={[{ required: true, message: 'The file is required' }]}
+            rules={[{ required: true, message: tt("The file is required") }]}
         >
             <Upload.Dragger
                 listType='text'
@@ -95,7 +95,7 @@ function ImportBackupModal(): JSX.Element {
         if (value) {
             const extension = value.toLowerCase().split('.')[1];
             if (extension !== 'zip') {
-                return Promise.reject(new Error('Only ZIP archive is supported'));
+                return Promise.reject(new Error(tt("Only ZIP archive is supported")));
             }
         }
 
@@ -106,7 +106,7 @@ function ImportBackupModal(): JSX.Element {
         <Form.Item
             label={<Text strong>{tt("File name")}</Text>}
             name='fileName'
-            rules={[{ validator: validateFileName }, { required: true, message: 'Please, specify a name' }]}
+            rules={[{ validator: validateFileName }, { required: true, message: tt("Please, specify a name") }]}
         >
             <Input
                 placeholder={tt("Backup file name")}
@@ -128,7 +128,7 @@ function ImportBackupModal(): JSX.Element {
         (values: FormValues): void => {
             if (file === null && !values.fileName) {
                 Notification.error({
-                    message: 'No backup file specified',
+                    message: tt("No backup file specified"),
                 });
                 return;
             }

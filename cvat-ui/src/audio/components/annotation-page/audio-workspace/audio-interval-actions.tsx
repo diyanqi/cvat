@@ -25,6 +25,7 @@ import {
     SeekToEndIcon,
     SeekToStartIcon,
 } from 'icons';
+import { tt } from 'i18n';
 
 interface Props {
     clientID: number;
@@ -197,7 +198,7 @@ export default function AudioIntervalActions({
                     <Row gutter={4}>
                         <Col>
                             <AudioIntervalActionButton
-                                title={`${locked ? 'Unlock interval' : 'Lock interval'} ${shortcuts.switchLock}`}
+                                title={`${locked ? tt("Unlock interval") : tt("Lock interval")} ${shortcuts.switchLock}`}
                                 className={actionClassName}
                                 onAction={handleToggleLock}
                             >
@@ -206,7 +207,7 @@ export default function AudioIntervalActions({
                         </Col>
                         <Col>
                             <AudioIntervalActionButton
-                                title={`${pinned ? 'Unpin interval' : 'Pin interval'} ${shortcuts.switchPinned}`}
+                                title={`${pinned ? tt("Unpin interval") : tt("Pin interval")} ${shortcuts.switchPinned}`}
                                 className={lockableActionClassName}
                                 onAction={handleTogglePinned}
                             >
@@ -215,7 +216,7 @@ export default function AudioIntervalActions({
                         </Col>
                         <Col>
                             <AudioIntervalActionButton
-                                title={`${hidden ? 'Show interval' : 'Hide interval'} ${shortcuts.switchHidden}`}
+                                title={`${hidden ? tt("Show interval") : tt("Hide interval")} ${shortcuts.switchHidden}`}
                                 className={lockableActionClassName}
                                 onAction={handleToggleHidden}
                             >

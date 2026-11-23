@@ -94,9 +94,9 @@ function SelectCloudStorage(props: Props): JSX.Element {
 
     return (
         <Form.Item
-            label={label || 'Select cloud storage'}
+            label={label || tt("Select cloud storage")}
             name={name || 'cloudStorageSelect'}
-            rules={[{ required: true, message: 'Please, specify a cloud storage' }]}
+            rules={[{ required: true, message: tt("Please, specify a cloud storage") }]}
             valuePropName='label'
             colon={false}
         >

@@ -56,9 +56,9 @@ export default function ThresholdPolicyPoints(props: Readonly<Props>): JSX.Eleme
 
     const data = points.map((point, index) => {
         let areaError = '';
-        if (!Number.isFinite(point.x) || point.x <= 0) areaError = 'GT area must be finite and positive.';
+        if (!Number.isFinite(point.x) || point.x <= 0) areaError = tt("GT area must be finite and positive.");
         else if (points.some((other) => other.id !== point.id && other.x === point.x)) {
-            areaError = 'GT area must be unique.';
+            areaError = tt("GT area must be unique.");
         }
         return {
             ...point, index, areaError, iouError: thresholdValueError(point.y),
@@ -105,7 +105,7 @@ export default function ThresholdPolicyPoints(props: Readonly<Props>): JSX.Eleme
                     width: 48,
                     render: (_, point: typeof data[number]) => point.index + 1,
                 }, {
-                    title: 'GT area (px²)',
+                    title: tt("GT area (px²)"),
                     render: (_, point: typeof data[number]) => (
                         <ThresholdPolicyInput id={`${controlID}-area-${point.id}`}
                             label={`GT area for point ${point.index + 1}`} value={point.x}
@@ -113,7 +113,7 @@ export default function ThresholdPolicyPoints(props: Readonly<Props>): JSX.Eleme
                             onChange={(number) => onUpdate(point.id, 'x', number)} onCommit={commit} />
                     ),
                 }, {
-                    title: 'IoU (%)',
+                    title: tt("IoU (%)"),
                     render: (_, point: typeof data[number]) => (
                         <ThresholdPolicyInput id={`${controlID}-iou-${point.id}`} percentage
                             label={`IoU for point ${point.index + 1}`} value={point.y}
@@ -121,7 +121,7 @@ export default function ThresholdPolicyPoints(props: Readonly<Props>): JSX.Eleme
                             onChange={(number) => onUpdate(point.id, 'y', number)} onCommit={commit} />
                     ),
                 }, {
-                    title: 'Actions',
+                    title: tt("Actions"),
                     width: 80,
                     align: 'center',
                     render: (_, point: typeof data[number]) => (

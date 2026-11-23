@@ -44,7 +44,7 @@ function ResetPasswordConfirmFormComponent({ fetching, onSubmit }: Props): JSX.E
                 rules={[
                     {
                         required: true,
-                        message: 'Please input new password!',
+                        message: tt("Please input new password!"),
                     }, validatePassword,
                 ]}
             >
@@ -62,7 +62,7 @@ function ResetPasswordConfirmFormComponent({ fetching, onSubmit }: Props): JSX.E
                 rules={[
                     {
                         required: true,
-                        message: 'Please confirm your new password!',
+                        message: tt("Please confirm your new password!"),
                     }, validateConfirmation('newPassword1'),
                 ]}
             >

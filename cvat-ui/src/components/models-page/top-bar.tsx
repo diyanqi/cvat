@@ -73,7 +73,7 @@ export default function TopBarComponent(props: Readonly<VisibleTopBarProps>): JS
                                 setVisibility({ ...defaultVisibility, sorting: visible })
                             )}
                             defaultFields={query.sort?.split(',') || ['-ID']}
-                            sortingFields={['ID', 'Target URL', 'Owner', 'Description', 'Type', 'Updated date']}
+                            sortingFields={['ID', tt("Target URL"), 'Owner', 'Description', 'Type', tt("Updated date")]}
                             onApplySorting={onApplySorting}
                         />
                         <FilteringComponent

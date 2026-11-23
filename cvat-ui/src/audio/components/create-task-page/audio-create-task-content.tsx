@@ -79,8 +79,8 @@ const defaultState: State = {
     statusInProgressTask: '',
 };
 
-const NON_AUDIO_ERROR = 'Wrong list of files. Only audio files are allowed for an audio task. ';
-const LOCAL_AUDIO_FILES_HINT = 'You can only upload an audio file here';
+const NON_AUDIO_ERROR = tt("Wrong list of files. Only audio files are allowed for an audio task.");
+const LOCAL_AUDIO_FILES_HINT = tt("You can only upload an audio file here");
 
 function localFilesHaveNonAudio(files: File[]): boolean {
     const meaningful = files.filter((f) => !f.name.endsWith('.jsonl'));

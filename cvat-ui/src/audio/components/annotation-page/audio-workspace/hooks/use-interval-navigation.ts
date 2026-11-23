@@ -16,17 +16,18 @@ import {
     intervalEndSeconds, intervalStartSeconds, sortAudioIntervals,
 } from '../utils/audio-interval';
 import { WaveformViewport } from './use-waveform-viewport';
+import { tt } from 'i18n';
 
 const componentShortcuts = {
     NEXT_OBJECT: {
-        name: 'Next object',
-        description: 'Go to the next audio interval and center it on the waveform',
+        name: tt("Next object"),
+        description: tt("Go to the next audio interval and center it on the waveform"),
         sequences: ['tab'],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },
     PREVIOUS_OBJECT: {
-        name: 'Previous object',
-        description: 'Go to the previous audio interval and center it on the waveform',
+        name: tt("Previous object"),
+        description: tt("Go to the previous audio interval and center it on the waveform"),
         sequences: ['shift+tab'],
         scope: ShortcutScope.ANNOTATION_PAGE,
     },

@@ -118,8 +118,8 @@ function JobActionsComponent(
                 `Delete ${jobsToAct.length} selected jobs` :
                 `The job ${jobInstance.id} will be deleted`,
             content: isBulkMode ?
-                'All related data (annotations) for all selected jobs will be lost. Continue?' :
-                'All related data (annotations) will be lost. Continue?',
+                tt("All related data (annotations) for all selected jobs will be lost. Continue?") :
+                tt("All related data (annotations) will be lost. Continue?"),
             className: 'cvat-modal-confirm-delete-job',
             onOk: () => {
                 setTimeout(() => {
@@ -138,7 +138,7 @@ function JobActionsComponent(
                 type: 'primary',
                 danger: true,
             },
-            okText: isBulkMode ? 'Delete selected' : 'Delete',
+            okText: isBulkMode ? tt("Delete selected") : 'Delete',
         });
     }, [jobInstance, isBulkMode, jobsToAct, dispatch]);
 

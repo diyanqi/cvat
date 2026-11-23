@@ -13,6 +13,7 @@ import Text from 'antd/lib/typography/Text';
 import config from 'config';
 import { clamp } from 'utils/math';
 import TextArea, { TextAreaRef } from 'antd/lib/input/TextArea';
+import { tt } from 'i18n';
 
 interface Props {
     readonly: boolean;
@@ -138,7 +139,7 @@ function ItemAttributeComponent(props: Props): JSX.Element {
                             setAttributeValue(value);
                         }}
                         value={mixed ? undefined : localAttrValue}
-                        placeholder={mixed ? 'Multiple values' : undefined}
+                        placeholder={mixed ? tt("Multiple values") : undefined}
                         className='cvat-object-item-select-attribute'
                     >
                         {attrValues.map(
@@ -171,7 +172,7 @@ function ItemAttributeComponent(props: Props): JSX.Element {
                             }
                         }}
                         value={mixed ? null : +localAttrValue}
-                        placeholder={mixed ? 'Multiple values' : undefined}
+                        placeholder={mixed ? tt("Multiple values") : undefined}
                         className='cvat-object-item-number-attribute'
                         min={min}
                         max={max}
@@ -203,7 +204,7 @@ function ItemAttributeComponent(props: Props): JSX.Element {
                         setAttributeValue(event.target.value);
                     }}
                     value={mixed ? '' : localAttrValue}
-                    placeholder={mixed ? 'Multiple values' : undefined}
+                    placeholder={mixed ? tt("Multiple values") : undefined}
                     className='cvat-object-item-text-attribute'
                 />
             </Col>

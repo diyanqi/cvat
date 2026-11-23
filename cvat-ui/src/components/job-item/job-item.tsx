@@ -33,7 +33,7 @@ import { JobStageSelector, JobStateSelector } from './job-selectors';
 import { tt } from 'i18n';
 
 function formatDate(value: Dayjs): string {
-    return value.format('MMM Do YYYY HH:mm');
+    return value.format('YYYY年M月D日 HH:mm');
 }
 
 interface Props {
@@ -132,7 +132,7 @@ function JobItem(props: Readonly<Props>): JSX.Element {
     const audioJobDuration = isAudioTask ? formatTimeShort(job.frameCount / 1000) : '';
     const audioJobRange = isAudioTask ?
         `${formatTimeShort(job.startFrame / 1000)} – ${formatTimeShort(job.stopFrame / 1000)}` : '';
-    const jobName = `Job #${job.id}`;
+    const jobName = `作业 #${job.id}`;
 
     let tag = null;
     if (job.type === JobType.GROUND_TRUTH) {

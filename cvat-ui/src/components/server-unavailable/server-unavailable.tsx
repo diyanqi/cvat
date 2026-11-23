@@ -19,6 +19,20 @@ import {
 import { CombinedState } from 'reducers';
 import { tt } from 'i18n';
 
+const HEALTH_CHECK_LABEL: Record<string, string> = {
+    'Cache backend': '缓存后端',
+    DatabaseBackend: '数据库后端',
+    DiskUsage: '磁盘使用',
+    MemoryUsage: '内存使用',
+    OPAHealthCheck: 'OPA 健康检查',
+};
+
+const HEALTH_STATUS_LABEL: Record<string, string> = {
+    working: '正常',
+    error: '异常',
+    unavailable: '不可用',
+};
+
 interface ServerUnavailableProps {
     details: string | null;
 }
@@ -90,10 +104,10 @@ function DefaultServerUnavailableComponent({ details }: ServerUnavailableProps):
                                 <div className='cvat-health-check-item' key={check}>
                                     {renderHealthCheckIcon(checkName)}
                                     <div>
-                                        <Text strong>{checkName}</Text>
+                                        <Text strong>{HEALTH_CHECK_LABEL[checkName] ?? checkName}</Text>
                                         {checkStatus && (
                                             <Text className='cvat-health-check-status' type='secondary'>
-                                                {checkStatus}
+                                                {HEALTH_STATUS_LABEL[checkStatus] ?? checkStatus}
                                             </Text>
                                         )}
                                     </div>

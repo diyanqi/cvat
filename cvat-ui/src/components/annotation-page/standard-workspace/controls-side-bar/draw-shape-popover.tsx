@@ -18,6 +18,17 @@ import LabelSelector from 'components/label-selector/label-selector';
 import CVATTooltip from 'components/common/cvat-tooltip';
 import { tt } from 'i18n';
 
+const SHAPE_LABEL: Record<string, string> = {
+    rectangle: '矩形',
+    polygon: '多边形',
+    polyline: '折线',
+    points: '点',
+    ellipse: '椭圆',
+    cuboid: '长方体',
+    mask: '掩码',
+    skeleton: '骨架',
+};
+
 interface Props {
     shapeType: ShapeType;
     labels: any[];
@@ -69,7 +80,7 @@ function DrawShapePopoverComponent(props: Props): JSX.Element {
         <div className='cvat-draw-shape-popover-content'>
             <Row justify='start'>
                 <Col>
-                    <Text className='cvat-text-color' strong>{`Draw new ${shapeType}`}</Text>
+                    <Text className='cvat-text-color' strong>{`绘制新${SHAPE_LABEL[shapeType] ?? shapeType}`}</Text>
                 </Col>
             </Row>
             <Row justify='start'>
@@ -113,10 +124,10 @@ function DrawShapePopoverComponent(props: Props): JSX.Element {
                                 )}
                                 <CVATTooltip
                                     title={
-                                        `Click at least ${shapeType === ShapeType.ELLIPSE ? 'five' : 'three'} contour points. ` +
+                                        `至少单击${shapeType === ShapeType.ELLIPSE ? '五' : '三'}个轮廓点。` +
                                         tt("A dashed fitted shape previews the result") +
                                         tt("as points are added or removed;") +
-                                        `press ${repeatShapeShortcut} or select Done to finish, ` +
+                                        `按 ${repeatShapeShortcut} 或选择“完成”结束，` +
                                         tt("and right-click to undo the last point.")
                                     }
                                 >
@@ -205,11 +216,11 @@ function DrawShapePopoverComponent(props: Props): JSX.Element {
             ) : null}
             <Row justify='space-around'>
                 <Col span={24}>
-                    <CVATTooltip title={`Press ${repeatShapeShortcut} to draw again`}>
+                    <CVATTooltip title={`按 ${repeatShapeShortcut} 再次绘制`}>
                         <Button className={`cvat-draw-${shapeType}-shape-button`} onClick={onDrawShape}>{tt("Shape")}</Button>
                     </CVATTooltip>
                     {shapeType !== ShapeType.MASK && (
-                        <CVATTooltip title={`Press ${repeatShapeShortcut} to draw again`}>
+                        <CVATTooltip title={`按 ${repeatShapeShortcut} 再次绘制`}>
                             <Button
                                 className={`cvat-draw-${shapeType}-track-button`}
                                 onClick={onDrawTrack}

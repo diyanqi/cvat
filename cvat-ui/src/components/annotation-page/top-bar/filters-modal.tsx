@@ -424,7 +424,7 @@ function FiltersModalComponent(): JSX.Element {
                         QbUtils.queryString(keypointTree, keypointConfig) : '';
                     const queryString = [
                         objectQueryString,
-                        keypointQueryString ? `Elements: ${keypointQueryString}` : '',
+                        keypointQueryString ? `元素：${keypointQueryString}` : '',
                     ].filter((item) => !!item).join(' | ');
 
                     return {

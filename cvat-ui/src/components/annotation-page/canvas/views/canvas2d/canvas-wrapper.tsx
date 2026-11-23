@@ -726,7 +726,7 @@ class CanvasWrapperComponent extends React.PureComponent<Props> {
     private onCanvasWarningOccurrence = (event: any): void => {
         const { message, domain } = event.detail;
         notification.warning({
-            message: domain ? `${domain}` : 'Warning',
+            message: domain ? `${domain}` : '警告',
             description: message,
             duration: 5,
             className: 'cvat-notification-warning-canvas',
@@ -1400,11 +1400,11 @@ class CanvasWrapperComponent extends React.PureComponent<Props> {
                     <UpOutlined className='cvat-canvas-image-setups-trigger' />
                 </Popover>
 
-                <CVATTooltip title={`Open layer stack. Current layer ${currentZLayer}`}>
+                <CVATTooltip title={`打开图层栈。当前图层 ${currentZLayer}`}>
                     <button
                         className='cvat-canvas-layer-stack-trigger'
                         type='button'
-                        aria-label={`Open layer stack. Current layer ${currentZLayer}`}
+                        aria-label={`打开图层栈。当前图层 ${currentZLayer}`}
                         onClick={(): void => onOpenLayerStack(sidebarCollapsed)}
                     >
                         <Icon component={LayerStackIcon} />

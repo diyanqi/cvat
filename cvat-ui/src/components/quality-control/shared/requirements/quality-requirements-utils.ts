@@ -21,21 +21,21 @@ export {
 };
 
 export const ANNOTATION_TYPE_LABELS: Record<string, string> = {
-    [QualityRequirementAnnotationType.TAG]: 'Tag',
-    [QualityRequirementAnnotationType.RECTANGLE]: 'Rectangle',
-    [QualityRequirementAnnotationType.SKELETON]: 'Skeleton',
-    [QualityRequirementAnnotationType.SKELETON_KEYPOINT]: tt("Skeleton keypoint"),
-    [QualityRequirementAnnotationType.POINTS]: 'Points',
-    [QualityRequirementAnnotationType.POLYLINE]: 'Polyline',
-    [QualityRequirementAnnotationType.MASK]: 'Mask',
-    [QualityRequirementAnnotationType.POLYGON]: 'Polygon',
-    [QualityRequirementAnnotationType.ELLIPSE]: 'Ellipse',
+    [QualityRequirementAnnotationType.TAG]: '标签',
+    [QualityRequirementAnnotationType.RECTANGLE]: '矩形',
+    [QualityRequirementAnnotationType.SKELETON]: '骨架',
+    [QualityRequirementAnnotationType.SKELETON_KEYPOINT]: '骨架关键点',
+    [QualityRequirementAnnotationType.POINTS]: '点',
+    [QualityRequirementAnnotationType.POLYLINE]: '折线',
+    [QualityRequirementAnnotationType.MASK]: '掩码',
+    [QualityRequirementAnnotationType.POLYGON]: '多边形',
+    [QualityRequirementAnnotationType.ELLIPSE]: '椭圆',
 };
 
 const BASE_METRIC_LABELS: Record<QualityMetric, string> = {
-    [QualityMetric.ACCURACY]: 'Accuracy',
-    [QualityMetric.PRECISION]: 'Precision',
-    [QualityMetric.RECALL]: 'Recall',
+    [QualityMetric.ACCURACY]: '准确率',
+    [QualityMetric.PRECISION]: '精确率',
+    [QualityMetric.RECALL]: '召回率',
     [QualityMetric.JACCARD_INDEX]: tt("Jaccard Index"),
     [QualityMetric.DICE]: tt("Dice Coefficient"),
 };
@@ -50,13 +50,13 @@ export const METRIC_LABELS: Record<string, string> = {
         const label = BASE_METRIC_LABELS[metric];
 
         if (aggregation === QualityMetricAggregation.MEAN) {
-            return [value, `${label} (macro/mean)`];
+            return [value, `${label}（宏平均）`];
         }
         if (aggregation === QualityMetricAggregation.LABEL) {
-            return [value, `${label} (worst label)`];
+            return [value, `${label}（最差标签）`];
         }
 
-        return [value, `${label} (micro)`];
+        return [value, `${label}（微平均）`];
     })),
 };
 

@@ -15,6 +15,25 @@ import Radio from 'antd/lib/radio';
 import CVATTooltip from 'components/common/cvat-tooltip';
 import { tt } from 'i18n';
 
+const SORT_FIELD_LABEL: Record<string, string> = {
+    ID: 'ID',
+    Owner: '所有者',
+    Status: '状态',
+    Assignee: '负责人',
+    Stage: '阶段',
+    Subset: '子集',
+    Mode: '模式',
+    Dimension: '维度',
+    Name: '名称',
+    Resource: '资源',
+    Description: '描述',
+    Type: '类型',
+    User: '用户',
+    Role: '角色',
+    Organization: '组织',
+    Timeout: '超时',
+};
+
 interface Props {
     sortingFields: string[];
     defaultFields: string[];
@@ -57,7 +76,7 @@ const SortableItem = SortableElement<SortableItemProps>(
 
         return (
             <div className='cvat-sorting-field'>
-                <Radio.Button disabled={valueIndex > anchorIndex}>{value}</Radio.Button>
+                <Radio.Button disabled={valueIndex > anchorIndex}>{SORT_FIELD_LABEL[value] ?? value}</Radio.Button>
                 <div>
                     <CVATTooltip overlay={appliedSorting[value]?.startsWith('-') ? tt("Descending sort") : tt("Ascending sort")}>
                         <Button className='cvat-switch-sort-order-button' type='text' disabled={!isActiveField} onClick={onClick}>

@@ -1880,6 +1880,7 @@
   "Incorrect format from local storage": "本地存储中的格式有误",
   "Browser Clipboard API not allowed, please copy manually": "浏览器剪贴板接口不可用，请手动复制",
   "Unknown error type caught": "捕获到未知错误类型",
+  "Welcome": "欢迎",
   "header.projects": "项目",
   "header.tasks": "任务",
   "header.jobs": "作业",

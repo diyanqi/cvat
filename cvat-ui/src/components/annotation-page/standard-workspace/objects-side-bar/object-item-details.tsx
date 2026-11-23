@@ -54,19 +54,19 @@ const sizeFields: {
     {
         key: 'length',
         type: SizeType.LENGTH,
-        label: 'L',
+        label: '长',
         tooltip: tt("Length along X axis"),
     },
     {
         key: 'width',
         type: SizeType.WIDTH,
-        label: 'W',
+        label: '宽',
         tooltip: tt("Width along Y axis"),
     },
     {
         key: 'height',
         type: SizeType.HEIGHT,
-        label: 'H',
+        label: '高',
         tooltip: tt("Height along Z axis"),
     },
 ];

@@ -112,7 +112,7 @@ function AudioIntervalPlayButton({
 
     return (
         <AudioIntervalActionButton
-            title={`Play interval as range ${shortcut}`}
+            title={`按范围播放区间 ${shortcut}`}
             className={playActionClassName}
             onAction={handlePlayInterval}
         >
@@ -169,7 +169,7 @@ export default function AudioIntervalActions({
                     <Row gutter={4}>
                         <Col>
                             <AudioIntervalActionButton
-                                title={`Set playback to interval start ${shortcuts.setPlaybackToStart}`}
+                                title={`将播放位置设为区间起点 ${shortcuts.setPlaybackToStart}`}
                                 className={actionClassName}
                                 onAction={handleSetPlaybackToStart}
                             >
@@ -185,7 +185,7 @@ export default function AudioIntervalActions({
                         </Col>
                         <Col>
                             <AudioIntervalActionButton
-                                title={`Set playback to interval end ${shortcuts.setPlaybackToEnd}`}
+                                title={`将播放位置设为区间终点 ${shortcuts.setPlaybackToEnd}`}
                                 className={actionClassName}
                                 onAction={handleSetPlaybackToEnd}
                             >

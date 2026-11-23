@@ -39,7 +39,7 @@ export function TrackerButton({ objectState }: { objectState: ObjectState }): JS
 
     const isTracked = controls.trackedClientIDs.has(objectState.clientID as number);
     const isSaving = controls.savingClientIDs.has(objectState.clientID as number);
-    const title = isTracked ? tt("Disable tracking") : `Enable tracking using ${controls.trackerName}`;
+    const title = isTracked ? tt("Disable tracking") : `使用 ${controls.trackerName} 启用跟踪`;
     const onClick = (): void => {
         controls.toggleTracking(objectState);
     };

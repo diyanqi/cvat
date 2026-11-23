@@ -59,7 +59,7 @@ export function validationModeText(task: Task): string | null {
     if (task.validationMode === 'gt') {
         result = tt("Ground truth");
     } else if (task.validationMode === 'gt_pool') {
-        result = 'Honeypots';
+        result = '蜜罐';
     }
     return result;
 }

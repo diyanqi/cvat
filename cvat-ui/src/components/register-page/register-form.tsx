@@ -83,7 +83,7 @@ const validateAgreement: ((userAgreements: UserAgreement[]) => RuleRender) = (
         const [agreement] = userAgreements
             .filter((userAgreement: UserAgreement): boolean => userAgreement.name === name);
         if (agreement.required && !value) {
-            return Promise.reject(new Error(`You must accept ${agreement.urlDisplayText} to continue!`));
+            return Promise.reject(new Error(`需要先接受${agreement.urlDisplayText}才能继续！`));
         }
 
         return Promise.resolve();

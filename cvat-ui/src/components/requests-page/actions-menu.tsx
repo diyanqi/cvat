@@ -11,6 +11,7 @@ import { Request, RQStatus } from 'cvat-core-wrapper';
 import { cancelRequestAsync } from 'actions/requests-async-actions';
 import { makeBulkOperationAsync } from 'actions/bulk-actions';
 import { CombinedState } from 'reducers';
+import { tt } from 'i18n';
 
 interface Props {
     requestInstance: Request;
@@ -86,7 +87,7 @@ function RequestActionsComponent(props: Readonly<Props>): JSX.Element | null {
             async (request) => {
                 await dispatch(cancelRequestAsync(request));
             },
-            (request, idx, total) => `Canceling request #${request.id} (${idx + 1}/${total})`,
+            (request, idx, total) => `正在取消请求 #${request.id}（${idx + 1}/${total}）`,
         ));
     }, [requestsToAct]);
 
@@ -104,14 +105,14 @@ function RequestActionsComponent(props: Readonly<Props>): JSX.Element | null {
     if (downloadableCount > 0) {
         menuItems.push({
             key: 'download',
-            label: withCount('Download', downloadableCount),
+            label: withCount(tt('Download'), downloadableCount),
             onClick: onDownload,
         });
     }
     if (queuedCount > 0) {
         menuItems.push({
             key: 'cancel',
-            label: withCount('Cancel', queuedCount),
+            label: withCount(tt('Cancel'), queuedCount),
             onClick: onCancel,
         });
     }

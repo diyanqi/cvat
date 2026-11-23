@@ -182,7 +182,7 @@ export function conflictDetector(
                 if (conflict(sequence, existingSequence)) {
                     const conflictingActions = Object.keys(flatKeyMapUpdated.items)
                         .filter((a) => flatKeyMapUpdated.items[a].sequences.includes(existingSequence));
-                    console.warn(`The shortcut: ${sequence} of ${label} have conflicts with these shortcuts: ${conflictingActions.join(', ')}`);
+                    console.warn(`快捷键 ${sequence}（${label}）与以下快捷键冲突：${conflictingActions.join('、')}`);
                     conflictingActions.forEach((conflictingAction) => {
                         conflictingItems[conflictingAction] = flatKeyMapUpdated.items[conflictingAction];
                     });

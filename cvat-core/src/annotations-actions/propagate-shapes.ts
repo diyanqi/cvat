@@ -19,7 +19,7 @@ export class PropagateShapes extends BaseCollectionAction {
 
     public async init(instance: Job | Task, parameters): Promise<void> {
         this.#instance = instance;
-        this.#targetFrame = parameters['Target frame'];
+        this.#targetFrame = parameters['目标帧'];
     }
 
     public async destroy(): Promise<void> {
@@ -65,7 +65,7 @@ export class PropagateShapes extends BaseCollectionAction {
 
     public get parameters(): ActionParameters | null {
         return {
-            'Target frame': {
+            '目标帧': {
                 type: ActionParameterType.NUMBER,
                 values: ({ instance }) => {
                     if (instance instanceof Job) {

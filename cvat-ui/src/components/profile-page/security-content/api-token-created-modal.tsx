@@ -83,7 +83,7 @@ function ApiTokenCreatedModal({
                             onClick={handleCopyToClipboard}
                             className='cvat-api-token-copy-button'
                         >
-                            {copied ? 'Copied!' : 'Copy'}
+                            {copied ? '已复制！' : '复制'}
                         </Button>
                     </Space.Compact>
                 </div>

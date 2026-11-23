@@ -125,7 +125,7 @@ export default class BasicConfigurationForm extends React.PureComponent<Props> {
                                 
                                 {tt("Example:&nbsp;")}
                                 <i>
-                                    {exampleMultiTaskName || 'Task name 1 - video_1.mp4'}
+                                    {exampleMultiTaskName || '任务名 1 - video_1.mp4'}
                                 </i>
                             </>
                         )}

@@ -67,15 +67,15 @@ function StatusMessage(props: Props): JSX.Element {
         >
             {((): JSX.Element => {
                 if (cancelled || status === RQStatus.CANCELED) {
-                    return statusMessage(message, 'Cancelled');
+                    return statusMessage(message, tt('Cancelled'));
                 }
 
                 if (status === RQStatus.FINISHED) {
-                    return statusMessage(message, 'Finished');
+                    return statusMessage(message, tt('Finished'));
                 }
 
                 if ([RQStatus.QUEUED].includes(status)) {
-                    return statusMessage(message, 'Queued', <LoadingOutlined />);
+                    return statusMessage(message, tt('Queued'), <LoadingOutlined />);
                 }
 
                 if ([RQStatus.STARTED].includes(status)) {
@@ -83,7 +83,7 @@ function StatusMessage(props: Props): JSX.Element {
                 }
 
                 if (status === RQStatus.FAILED) {
-                    return statusMessage(message, 'Failed');
+                    return statusMessage(message, tt('Failed'));
                 }
 
                 if (status === RQStatus.UNKNOWN) {

@@ -30,7 +30,7 @@ export function validateNumberAttributeValues(values: string[]): void {
     const numbers = trimmed.map((value: string): number => (value.length ? Number(value) : NaN));
     const invalidIndex = numbers.findIndex((number: number) => !Number.isFinite(number));
     if (invalidIndex !== -1) {
-        throw new Error(`"${trimmed[invalidIndex]}" is not a number`);
+        throw new Error(`“${trimmed[invalidIndex]}”不是数字`);
     }
 
     const [min, max, step] = numbers;
@@ -62,24 +62,24 @@ function validateParsedAttribute(attr: SerializedAttribute): void {
     }
 
     if (typeof attr.id !== 'undefined' && !Number.isInteger(attr.id)) {
-        throw new Error(`Attribute: "${attr.name}": id must be an integer or undefined`);
+        throw new Error(`属性“${attr.name}”：id 必须是整数或留空`);
     }
 
     if (!['checkbox', 'number', 'text', 'radio', 'select'].includes((attr.input_type ?? '').toLowerCase())) {
-        throw new Error(`Attribute: "${attr.name}": unknown input type: ${attr.input_type}`);
+        throw new Error(`属性“${attr.name}”：未知输入类型：${attr.input_type}`);
     }
 
     if (typeof attr.mutable !== 'boolean') {
-        throw new Error(`Attribute: "${attr.name}": mutable property must be a boolean`);
+        throw new Error(`属性“${attr.name}”：mutable 必须为布尔值`);
     }
 
     if (!Array.isArray(attr.values) || !attr.values.length) {
-        throw new Error(`Attribute: "${attr.name}": attribute values must be a non-empty array`);
+        throw new Error(`属性“${attr.name}”：属性值必须是非空数组`);
     }
 
     for (const value of attr.values) {
         if (typeof value !== 'string') {
-            throw new Error(`Attribute: "${attr.name}": each attribute value must be a string`);
+            throw new Error(`属性“${attr.name}”：每个属性值必须是字符串`);
         }
     }
 
@@ -88,16 +88,16 @@ function validateParsedAttribute(attr: SerializedAttribute): void {
         try {
             validateNumberAttributeValues(attrValues);
         } catch (error: any) {
-            throw new Error(`Attribute: "${attr.name}": ${error.message}`);
+            throw new Error(`属性“${attr.name}”：${error.message}`);
         }
     } else if (new Set(attrValues).size !== attrValues.length) {
-        throw new Error(`Attribute: "${attr.name}": attribute values must be unique`);
+        throw new Error(`属性“${attr.name}”：属性值必须唯一`);
     }
 
     if (attr.default_value) {
         if (!core.utils.validateAttributeValue(attr.default_value, new core.classes.Attribute(attr))) {
             throw new Error(
-                `Attribute: "${attr.name}": invalid default value "${attr.default_value}"`,
+                `属性“${attr.name}”：无效的默认值“${attr.default_value}”`,
             );
         }
     }
@@ -117,19 +117,19 @@ export function validateParsedLabel(label: SerializedLabel): void {
     }
 
     if (typeof label.id !== 'undefined' && !Number.isInteger(label.id)) {
-        throw new Error(`Label "${label.name}": id must be an integer or undefined`);
+        throw new Error(`标签“${label.name}”：id 必须是整数或留空`);
     }
 
     if (label.color && typeof label.color !== 'string') {
-        throw new Error(`Label "${label.name}": color must be a string`);
+        throw new Error(`标签“${label.name}”：颜色必须是字符串`);
     }
 
     if (label.color && !label.color.match(/^#[0-9a-fA-F]{6}$|^$/)) {
-        throw new Error(`Label "${label.name}": color value is invalid`);
+        throw new Error(`标签“${label.name}”：颜色值无效`);
     }
 
     if (!Array.isArray(label.attributes)) {
-        throw new Error(`Label "${label.name}": attributes must be an array`);
+        throw new Error(`标签“${label.name}”：属性必须是数组`);
     }
 
     for (const attr of label.attributes) {
@@ -138,16 +138,16 @@ export function validateParsedLabel(label: SerializedLabel): void {
 
     const attrNames = label.attributes.map((attr: SerializedAttribute) => attr.name.trim());
     if (new Set(attrNames).size !== attrNames.length) {
-        throw new Error(`Label "${label.name}": attributes names must be unique`);
+        throw new Error(`标签“${label.name}”：属性名必须唯一`);
     }
 
     if (!Object.values(LabelType).includes(label.type)) {
-        throw new Error(`Label "${label.name}": unknown label type "${label.type}"`);
+        throw new Error(`标签“${label.name}”：未知标签类型“${label.type}”`);
     }
 
     if (label.type === LabelType.SKELETON) {
         if (!Array.isArray(label.sublabels) || label.sublabels.length === 0) {
-            throw new Error(`Label "${label.name}": skeletons must provide non-empty sublabels array`);
+            throw new Error(`标签“${label.name}”：骨架必须提供非空的子标签数组`);
         }
 
         for (const sublabel of label.sublabels) {
@@ -156,11 +156,11 @@ export function validateParsedLabel(label: SerializedLabel): void {
 
         const sublabelsNames = label.sublabels.map((sublabel: SerializedLabel) => sublabel.name.trim());
         if (new Set(sublabelsNames).size !== sublabelsNames.length) {
-            throw new Error(`Label "${label.name}": sublabels names must be unique`);
+            throw new Error(`标签“${label.name}”：子标签名必须唯一`);
         }
 
         if (typeof label.svg !== 'string') {
-            throw new Error(`Label "${label.name}": skeletons must provide a correct SVG template`);
+            throw new Error(`标签“${label.name}”：骨架必须提供正确的 SVG 模板`);
         }
 
         const sublabelIds = label.sublabels
@@ -171,7 +171,7 @@ export function validateParsedLabel(label: SerializedLabel): void {
             const refersToId = +match[1];
             if (!sublabelIds.includes(refersToId)) {
                 throw new Error(
-                    `Label "${label.name}": skeletons SVG refers to sublabel with id ${refersToId}, ` +
+                    `标签“${label.name}”：骨架 SVG 引用了不存在的子标签 id ${refersToId}，` +
                     tt("which is not present in the sublabels array"),
                 );
             }
@@ -198,13 +198,13 @@ export function toSVGCoord(svg: SVGSVGElement, coord: number[], raiseError = fal
     const ctm = svg.getScreenCTM();
 
     if (!ctm) {
-        if (raiseError) throw new Error('Screen CTM is null');
+        if (raiseError) throw new Error('屏幕 CTM 为空');
         return coord;
     }
 
     const inversed = ctm.inverse();
     if (!inversed) {
-        if (raiseError) throw new Error('Inversed screen CTM is null');
+        if (raiseError) throw new Error('逆屏幕 CTM 为空');
         return coord;
     }
 
@@ -223,7 +223,7 @@ export function fromSVGCoord(svg: SVGSVGElement, coord: number[], raiseError = f
     const result = [];
     const ctm = svg.getScreenCTM();
     if (!ctm) {
-        if (raiseError) throw new Error('Inversed screen CTM is null');
+        if (raiseError) throw new Error('逆屏幕 CTM 为空');
         return coord;
     }
 

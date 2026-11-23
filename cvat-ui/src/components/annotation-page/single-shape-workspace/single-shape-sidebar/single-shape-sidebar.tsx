@@ -66,7 +66,17 @@ function makeMessage(label: Label, labelType: State['labelType'], pointsCount: n
     } else if (labelType === LabelType.ELLIPSE) {
         readableShape = tt("an ellipse");
     } else {
-        readableShape = `a ${labelType}`;
+        const SHAPE_LABEL: Record<string, string> = {
+            rectangle: '矩形',
+            polygon: '多边形',
+            polyline: '折线',
+            points: '点',
+            ellipse: '椭圆',
+            cuboid: '长方体',
+            mask: '掩码',
+            skeleton: '骨架',
+        };
+        readableShape = `一个${SHAPE_LABEL[labelType] ?? labelType}`;
     }
 
     return (

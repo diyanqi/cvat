@@ -201,7 +201,7 @@ export default function ThresholdPolicyEditor(props: Readonly<Props>): JSX.Eleme
         if (policy.mode !== 'linear' || disabled) return;
         if (policy.points.length <= 2) return;
         emit({ ...policy, points: policy.points.filter((point) => point.id !== id) },
-            `delete point ${policy.points.findIndex((point) => point.id === id) + 1}`);
+            `删除关键点 ${policy.points.findIndex((point) => point.id === id) + 1}`);
         setSelected(null);
     };
     const addBetween = (): void => {
@@ -235,7 +235,7 @@ export default function ThresholdPolicyEditor(props: Readonly<Props>): JSX.Eleme
         if (!completed) return;
         if (cancelled) emit(completed.before, undefined, false);
         else if (!equal(completed.before, completed.current)) {
-            remember(completed.before, `move point ${
+            remember(completed.before, `移动关键点 ${
                 completed.before.points.findIndex((point) => point.id === completed.pointID) + 1
             }`);
             emit(completed.current);

@@ -127,7 +127,7 @@ function QualitySettingsTab(props: Readonly<Props>): JSX.Element | null {
                     message={(
                         <div>
                             <ExclamationCircleFilled className='ant-alert-icon' />
-                            <Text>{`Own settings are used in ${nonInheritedChildSettings.length} tasks`}</Text>
+                            <Text>{`有 ${nonInheritedChildSettings.length} 个任务使用了自己的设置`}</Text>
                         </div>
                     )}
                     action={(

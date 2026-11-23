@@ -23,7 +23,7 @@ export default function BugTrackerEditorComponent(props: Props): JSX.Element {
     const [bugTracker, setBugTracker] = useState(instance.bugTracker);
     const [bugTrackerEditing, setBugTrackerEditing] = useState(false);
 
-    const instanceType = Array.isArray(instance.tasks) ? 'project' : 'task';
+    const instanceTypeLabel = Array.isArray(instance.tasks) ? '项目' : '任务';
     let shown = false;
 
     const onStart = (): void => setBugTrackerEditing(true);
@@ -31,7 +31,7 @@ export default function BugTrackerEditorComponent(props: Props): JSX.Element {
         if (value && !patterns.validateURL.pattern.test(value)) {
             if (!shown) {
                 Modal.error({
-                    title: `Could not update the ${instanceType} ${instance.id}`,
+                    title: `无法更新${instanceTypeLabel} ${instance.id}`,
                     content: tt("Issue tracker is expected to be URL"),
                     onOk: () => {
                         shown = false;

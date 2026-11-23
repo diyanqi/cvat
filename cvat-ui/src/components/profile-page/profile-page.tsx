@@ -85,7 +85,7 @@ function ProfilePageComponent(): JSX.Element {
             <Row justify='center' align='middle'>
                 <Col {...dimensions}>
                     <Title level={1} className='cvat-profile-page-welcome'>
-                        {`Welcome, ${user?.username}`}
+                        {`${tt('Welcome')}, ${user?.username}`}
                     </Title>
                 </Col>
             </Row>

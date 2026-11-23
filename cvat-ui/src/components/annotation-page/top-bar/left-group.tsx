@@ -127,7 +127,7 @@ function LeftGroup(props: Props): JSX.Element {
                     </Button>
                 </CVATTooltip>
                 {includesDoneButton ? (
-                    <CVATTooltip overlay={`Press "${drawShortcut}" to finish`}>
+                    <CVATTooltip overlay={`按“${drawShortcut}”完成`}>
                         <Button type='link' className='cvat-annotation-header-done-button cvat-annotation-header-button' onClick={onFinishDraw}>
                             <CheckCircleOutlined />
                             

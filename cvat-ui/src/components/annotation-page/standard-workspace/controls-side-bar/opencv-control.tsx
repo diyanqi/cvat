@@ -164,13 +164,13 @@ class OpenCVControlComponent extends React.PureComponent<Props & DispatchToProps
                 type CanvasType = HTMLCanvasElement | undefined;
                 const canvas: CanvasType = window.document.getElementById('cvat_canvas_background') as CanvasType;
                 if (!canvas) {
-                    throw new Error('Element #cvat_canvas_background was not found');
+                    throw new Error('未找到元素 #cvat_canvas_background');
                 }
 
                 const { width, height } = canvas;
                 const context = canvas.getContext('2d');
                 if (!context) {
-                    throw new Error('Canvas context is empty');
+                    throw new Error('画布上下文为空');
                 }
                 this.activeTool.setImage(context.getImageData(0, 0, width, height));
             }
@@ -351,11 +351,11 @@ class OpenCVControlComponent extends React.PureComponent<Props & DispatchToProps
                                             points_type: 'positive' as const,
                                             hint: {
                                                 markdown: [
-                                                    '### Intelligent scissors',
+                                                    '### 智能剪刀',
                                                     '',
                                                     tt("Follow object edges to outline the object."),
                                                     '',
-                                                    '**Actions**',
+                                                    '**操作**',
                                                     tt("- Click to add a point."),
                                                     tt("- Hold `Ctrl` to draw straight segments."),
                                                     tt("- Hold the `Mouse wheel` and drag to pan."),

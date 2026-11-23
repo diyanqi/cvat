@@ -128,7 +128,7 @@ function PlayerNavigation(props: Props): JSX.Element {
         if (!playing) {
             switchNavigationBlocked(true);
             Modal.confirm({
-                title: `Do you want to delete frame #${frameNumber}?`,
+                title: `确定要删除帧 #${frameNumber} 吗？`,
                 content: tt("The frame will not be visible in navigation and exported datasets, but it still can be restored with all the annotations."),
                 className: 'cvat-modal-delete-frame',
                 okText: tt("Delete"),
@@ -192,7 +192,7 @@ function PlayerNavigation(props: Props): JSX.Element {
     }, {});
 
     const deleteFrameIcon = !frameDeleted ? (
-        <CVATTooltip title={`Delete the frame ${deleteFrameShortcut}`}>
+        <CVATTooltip title={`删除该帧 ${deleteFrameShortcut}`}>
             <DeleteOutlined
                 style={deleteFrameIconStyle}
                 className='cvat-player-delete-frame'
@@ -266,7 +266,7 @@ function PlayerNavigation(props: Props): JSX.Element {
                 </Row>
             </Col>
             <Col>
-                <CVATTooltip title={`Press ${focusFrameInputShortcut} to focus here`}>
+                <CVATTooltip title={`按 ${focusFrameInputShortcut} 聚焦到此处`}>
                     <InputNumber
                         ref={inputFrameRef}
                         className='cvat-player-frame-selector'
@@ -294,7 +294,7 @@ function PlayerNavigation(props: Props): JSX.Element {
             <Col className='cvat-player-actions'>
                 {
                     showSearchFrameByName && (
-                        <CVATTooltip title={`Search frame by name ${searchFrameByNameShortcut}`}>
+                        <CVATTooltip title={`按名称搜索帧 ${searchFrameByNameShortcut}`}>
                             <SearchOutlined
                                 className='cvat-player-search-frame-name-icon'
                                 onClick={onSearchIconClick}

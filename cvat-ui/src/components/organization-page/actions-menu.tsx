@@ -115,7 +115,7 @@ function MemberActionsMenu(props: Readonly<MemberActionsMenuProps>): JSX.Element
             async (m) => {
                 await dispatch(resendInvitationAsync(organizationInstance, m.invitation.key));
             },
-            (m, idx, total) => `Resending invitation to ${m.user.username} (${idx + 1}/${total})`,
+            (m, idx, total) => `正在重新发送邀请给 ${m.user.username} (${idx + 1}/${total})`,
             fetchMembers,
         ));
     };
@@ -124,7 +124,7 @@ function MemberActionsMenu(props: Readonly<MemberActionsMenuProps>): JSX.Element
         {
             key: MenuKeys.EDIT_ROLE,
             label: (
-                <CVATMenuEditLabel>{withCount('Role', MenuKeys.EDIT_ROLE)}</CVATMenuEditLabel>
+                <CVATMenuEditLabel>{withCount(tt('Role'), MenuKeys.EDIT_ROLE)}</CVATMenuEditLabel>
             ),
             disabled: role === 'owner' && actionsApplicable[MenuKeys.EDIT_ROLE].length < 1,
         },
@@ -155,7 +155,7 @@ function MemberActionsMenu(props: Readonly<MemberActionsMenuProps>): JSX.Element
                 [{ key: MenuKeys.DELETE_INVITATION, label: withCount(tt("Remove invitation"), MenuKeys.DELETE_INVITATION) }] :
                 []),
             ...(actionsApplicable[MenuKeys.REMOVE_MEMBER].length > 0 ?
-                [{ key: MenuKeys.REMOVE_MEMBER, label: withCount('Delete', MenuKeys.REMOVE_MEMBER) }] :
+                [{ key: MenuKeys.REMOVE_MEMBER, label: withCount(tt('Delete'), MenuKeys.REMOVE_MEMBER) }] :
                 []),
         );
     }
@@ -177,7 +177,7 @@ function MemberActionsMenu(props: Readonly<MemberActionsMenuProps>): JSX.Element
                     } else if (action.key === 'remove_member') {
                         Modal.confirm({
                             className: 'cvat-modal-organization-member-remove',
-                            title: `You are removing "${username}" from this organization`,
+                            title: `确定要将“${username}”移出该组织吗？`,
                             content: tt("The person will not have access to the organization data anymore. Continue?"),
                             okText: tt("Yes, remove"),
                             okButtonProps: {

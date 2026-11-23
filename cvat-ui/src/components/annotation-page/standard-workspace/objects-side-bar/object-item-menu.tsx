@@ -140,7 +140,7 @@ function SliceItem(props: ItemProps): JSX.Element {
     const { toolProps } = props;
     const { slice, sliceShortcut } = toolProps;
     return (
-        <CVATTooltip title={`Cut the shape into two parts ${sliceShortcut}`}>
+        <CVATTooltip title={`将形状切成两部分 ${sliceShortcut}`}>
             <Button
                 type='link'
                 icon={<Icon component={SliceIcon} />}
@@ -351,7 +351,7 @@ function SwitchColorItem(props: ItemProps): JSX.Element {
         <CVATTooltip title={`${changeColorShortcut}`}>
             <Button onClick={() => setColorPickerVisible(true)} type='link' className='cvat-object-item-menu-change-color'>
                 <Icon component={ColorizeIcon} />
-                {`Change ${colorBy.toLowerCase()} color`}
+                {`更改${colorBy}颜色`}
             </Button>
         </CVATTooltip>
     );

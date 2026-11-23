@@ -59,10 +59,10 @@ function constructName(operation: Request['operation']): string | null {
         return `Project #${projectID}`;
     }
     if (target === 'task' && taskID) {
-        return `Task #${taskID}`;
+        return `任务 #${taskID}`;
     }
     if (target === 'job' && jobID) {
-        return `Job #${jobID}`;
+        return `作业 #${jobID}`;
     }
     return null;
 }
@@ -80,10 +80,10 @@ function renderEllipsisText(text: string, type?: BaseType): JSX.Element {
 }
 
 function constructTimestamps(request: Request): JSX.Element {
-    const started = dayjs(request.startedDate).format('MMM Do YY, H:mm');
-    const finished = dayjs(request.finishedDate).format('MMM Do YY, H:mm');
-    const created = dayjs(request.createdDate).format('MMM Do YY, H:mm');
-    const expired = dayjs(request.expiryDate).format('MMM Do YY, H:mm');
+    const started = dayjs(request.startedDate).format('YY年M月D日 H:mm');
+    const finished = dayjs(request.finishedDate).format('YY年M月D日 H:mm');
+    const created = dayjs(request.createdDate).format('YY年M月D日 H:mm');
+    const expired = dayjs(request.expiryDate).format('YY年M月D日 H:mm');
     const { operation: { type }, url } = request;
 
     switch (request.status) {
@@ -93,10 +93,10 @@ function constructTimestamps(request: Request): JSX.Element {
                 return (
                     <>
                         <Row>
-                            {renderEllipsisText(`Started by ${request.owner.username} on ${started}`, 'secondary')}
+                            {renderEllipsisText(`由 ${request.owner.username} 于 ${started} 开始`, 'secondary')}
                         </Row>
                         <Row>
-                            <Text type='secondary'>{`Expires on ${expired}`}</Text>
+                            <Text type='secondary'>{`过期时间 ${expired}`}</Text>
                         </Row>
                     </>
                 );
@@ -104,10 +104,10 @@ function constructTimestamps(request: Request): JSX.Element {
             return (
                 <>
                     <Row>
-                        {renderEllipsisText(`Started by ${request.owner.username} on ${started}`, 'secondary')}
+                        {renderEllipsisText(`由 ${request.owner.username} 于 ${started} 开始`, 'secondary')}
                     </Row>
                     <Row>
-                        <Text type='secondary'>{`Finished on ${finished}`}</Text>
+                        <Text type='secondary'>{`完成时间 ${finished}`}</Text>
                     </Row>
                 </>
             );
@@ -115,11 +115,11 @@ function constructTimestamps(request: Request): JSX.Element {
         case RQStatus.FAILED: {
             return (request.startedDate ? (
                 <Row>
-                    {renderEllipsisText(`Started by ${request.owner.username} on ${started}`, 'secondary')}
+                    {renderEllipsisText(`由 ${request.owner.username} 于 ${started} 开始`, 'secondary')}
                 </Row>
             ) : (
                 <Row>
-                    {renderEllipsisText(`Enqueued by ${request.owner.username} on ${created}`, 'secondary')}
+                    {renderEllipsisText(`由 ${request.owner.username} 于 ${created} 提交`, 'secondary')}
                 </Row>
             ));
         }
@@ -127,10 +127,10 @@ function constructTimestamps(request: Request): JSX.Element {
             return (
                 <>
                     <Row>
-                        {renderEllipsisText(`Enqueued by ${request.owner.username} on ${created}`, 'secondary')}
+                        {renderEllipsisText(`由 ${request.owner.username} 于 ${created} 提交`, 'secondary')}
                     </Row>
                     <Row>
-                        <Text type='secondary'>{`Started on ${started}`}</Text>
+                        <Text type='secondary'>{`开始时间 ${started}`}</Text>
                     </Row>
                 </>
             );
@@ -138,7 +138,7 @@ function constructTimestamps(request: Request): JSX.Element {
         default: {
             return (
                 <Row>
-                    {renderEllipsisText(`Enqueued by ${request.owner.username} on ${created}`, 'secondary')}
+                    {renderEllipsisText(`由 ${request.owner.username} 于 ${created} 提交`, 'secondary')}
                 </Row>
             );
         }

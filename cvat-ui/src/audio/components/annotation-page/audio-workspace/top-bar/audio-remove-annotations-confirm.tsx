@@ -60,7 +60,7 @@ function AudioTimeInput({
             <InputNumber
                 min={0}
                 max={999}
-                placeholder='ms'
+                placeholder='毫秒'
                 className='cvat-audio-remove-annotations-time-input'
                 value={value.milliseconds}
                 onChange={(milliseconds) => onChange({ ...value, milliseconds: milliseconds ?? undefined })}
@@ -125,7 +125,7 @@ function AudioRemoveAnnotationsConfirm(props: RemoveAnnotationsConfirmProps): JS
                         children: (
                             <div className='cvat-audio-remove-annotations-time-range'>
                                 <AudioTimeInput label={tt("From")} value={removeFrom} onChange={setRemoveFrom} />
-                                <AudioTimeInput label='To' value={removeUpTo} onChange={setRemoveUpTo} />
+                                <AudioTimeInput label='至' value={removeUpTo} onChange={setRemoveUpTo} />
                             </div>
                         ),
                     }]}

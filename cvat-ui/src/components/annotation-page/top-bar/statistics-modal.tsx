@@ -57,7 +57,7 @@ function mapStateToProps(state: CombinedState): StateToProps {
         startFrame,
         stopFrame,
         dimension,
-        assignee: assignee?.username || 'Nobody',
+        assignee: assignee?.username || '无',
     };
 }
 
@@ -165,49 +165,49 @@ function StatisticsModalComponent(props: StateToProps & DispatchToProps): JSX.El
             width: 120,
         },
         {
-            title: makeShapesTracksTitle('Rectangle'),
+            title: makeShapesTracksTitle('矩形'),
             dataIndex: 'rectangle',
             key: 'rectangle',
             width: 100,
         },
         {
-            title: makeShapesTracksTitle('Polygon'),
+            title: makeShapesTracksTitle('多边形'),
             dataIndex: 'polygon',
             key: 'polygon',
             width: 100,
         },
         {
-            title: makeShapesTracksTitle('Polyline'),
+            title: makeShapesTracksTitle('折线'),
             dataIndex: 'polyline',
             key: 'polyline',
             width: 100,
         },
         {
-            title: makeShapesTracksTitle('Points'),
+            title: makeShapesTracksTitle('点'),
             dataIndex: 'points',
             key: 'points',
             width: 100,
         },
         {
-            title: makeShapesTracksTitle('Ellipse'),
+            title: makeShapesTracksTitle('椭圆'),
             dataIndex: 'ellipse',
             key: 'ellipse',
             width: 100,
         },
         {
-            title: makeShapesTracksTitle('Cuboid'),
+            title: makeShapesTracksTitle('长方体'),
             dataIndex: 'cuboid',
             key: 'cuboid',
             width: 100,
         },
         {
-            title: makeShapesTracksTitle('Skeleton'),
+            title: makeShapesTracksTitle('骨架'),
             dataIndex: 'skeleton',
             key: 'skeleton',
             width: 100,
         },
         {
-            title: makeShapesTracksTitle('Mask'),
+            title: makeShapesTracksTitle('掩码'),
             dataIndex: 'mask',
             key: 'mask',
             width: 100,
@@ -248,7 +248,7 @@ function StatisticsModalComponent(props: StateToProps & DispatchToProps): JSX.El
             key: 'label',
         },
         {
-            title: makeShapesTracksTitle('Cuboids'),
+            title: makeShapesTracksTitle('长方体'),
             dataIndex: 'cuboid',
             key: 'cuboid',
         },

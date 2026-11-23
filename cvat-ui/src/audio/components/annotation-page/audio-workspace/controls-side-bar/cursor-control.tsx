@@ -55,7 +55,7 @@ function AudioCursorControl(props: Props): JSX.Element {
                 keyMap={subKeyMap(componentShortcuts, keyMap)}
                 handlers={handlers}
             />
-            <CVATTooltip title={`Cursor ${cursorShortkey}`} placement='right'>
+            <CVATTooltip title={`光标 ${cursorShortkey}`} placement='right'>
                 <Icon
                     component={CursorIcon}
                     className={

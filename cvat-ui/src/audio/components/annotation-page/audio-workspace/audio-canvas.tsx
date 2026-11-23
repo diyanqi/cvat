@@ -99,7 +99,7 @@ function AudioCanvasWrapper(): JSX.Element {
             <div className='cvat-audio-canvas-wrapper'>
                 <div className='cvat-audio-placeholder'>
                     <p className='cvat-audio-placeholder-text'>
-                        {`Failed to load audio: ${audioError}`}
+                        {`音频加载失败：${audioError}`}
                     </p>
                 </div>
             </div>

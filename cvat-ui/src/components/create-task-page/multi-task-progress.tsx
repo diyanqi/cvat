@@ -74,20 +74,20 @@ export default function MultiTasksProgress(props: Props): JSX.Element {
                     ) : null}
                     <Row className='cvat-create-multi-tasks-progress'>
                         <Col>
-                            {`Pending: ${countPending} `}
+                            {`待处理：${countPending} `}
                         </Col>
                         <Col offset={1}>
-                            {`Progress: ${countProgress} `}
+                            {`进行中：${countProgress} `}
                         </Col>
                         <Col offset={1}>
-                            {`Completed: ${countCompleted} `}
+                            {`已完成：${countCompleted} `}
                         </Col>
                         <Col offset={1}>
-                            {`Failed: ${countFailed} `}
+                            {`失败：${countFailed} `}
                         </Col>
-                        {countCancelled ? (<Col offset={1}>{`Cancelled: ${countCancelled} `}</Col>) : null}
+                        {countCancelled ? (<Col offset={1}>{`已取消：${countCancelled} `}</Col>) : null}
                         <Col offset={1}>
-                            {`Total: ${countAll}.`}
+                            {`总计：${countAll}。`}
                         </Col>
                     </Row>
                     <Progress

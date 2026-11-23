@@ -149,12 +149,12 @@ function findContainerFromPath(
         }
         updatedStateSegment = updatedStateSegment[pathSegment];
         if (typeof updatedStateSegment === 'undefined') {
-            throw new Error('The specified plugins path is not supported by the core application');
+            throw new Error('核心应用不支持指定的插件路径');
         }
     }
 
     if (!Array.isArray(updatedStateSegment)) {
-        throw new Error('Could not add plugin component. Target path is not array');
+        throw new Error('无法添加插件组件。目标路径不是数组');
     }
 
     return updatedStateSegment;

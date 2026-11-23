@@ -71,7 +71,7 @@ export default function ProjectActionsItems(
     menuItems.push([{
         key: 'edit_assignee',
         onClick: () => startEditField('assignee'),
-        label: <CVATMenuEditLabel>{withCount('Assignee', 'edit_assignee')}</CVATMenuEditLabel>,
+        label: <CVATMenuEditLabel>{withCount(tt('Assignee'), 'edit_assignee')}</CVATMenuEditLabel>,
         disabled: isDisabled('edit_assignee'),
     }, 30]);
 
@@ -106,7 +106,7 @@ export default function ProjectActionsItems(
     menuItems.push([{
         key: 'delete',
         onClick: onDeleteProject,
-        label: withCount('Delete', 'delete'),
+        label: withCount(tt('Delete'), 'delete'),
         disabled: isDisabled('delete'),
     }, 80]);
 

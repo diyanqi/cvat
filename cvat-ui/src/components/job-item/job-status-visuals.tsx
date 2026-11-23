@@ -14,6 +14,7 @@ import {
     SyncOutlined,
 } from '@ant-design/icons';
 import { JobStage, JobState } from 'cvat-core-wrapper';
+import { localizeText } from 'i18n/localize';
 
 import './job-status-visuals.scss';
 
@@ -77,7 +78,7 @@ export function JobStageLabel({ stage }: Readonly<JobStageLabelProps>): JSX.Elem
     return (
         <span className='cvat-job-stage-label'>
             <JobStageIcon stage={stage} />
-            <span>{stage}</span>
+            <span>{localizeText(stage)}</span>
         </span>
     );
 }
@@ -90,7 +91,7 @@ export function JobStateLabel({ state }: Readonly<JobStateLabelProps>): JSX.Elem
     return (
         <span className='cvat-job-state-label'>
             <JobStateIcon state={state} />
-            <span>{state}</span>
+            <span>{localizeText(state)}</span>
         </span>
     );
 }
@@ -104,10 +105,10 @@ function JobStageStateBadges({ stage, state }: Readonly<JobStageStateBadgesProps
     return (
         <Space size={4} wrap className='cvat-job-stage-state-badges'>
             <Tag className={`cvat-job-stage-tag ${stageClassName(stage)}`} icon={<JobStageIcon stage={stage} />}>
-                {stage}
+                {localizeText(stage)}
             </Tag>
             <Tag className={`cvat-job-state-tag ${stateClassName(state)}`} icon={<JobStateIcon state={state} />}>
-                {state}
+                {localizeText(state)}
             </Tag>
         </Space>
     );

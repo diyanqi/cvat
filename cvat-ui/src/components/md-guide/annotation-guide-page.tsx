@@ -100,7 +100,7 @@ function AnnotationGuidePage(): JSX.Element {
                 updateGuide(guideInstance);
             }).catch((error: unknown) => {
                 notification.error({
-                    message: `Could not receive guide for the ${instanceType} ${id}`,
+                    message: `无法获取${instanceType === 'project' ? '项目' : '任务'} ${id} 的说明`,
                     description: error instanceof Error ? error.message : '',
                 });
             }).finally(() => {

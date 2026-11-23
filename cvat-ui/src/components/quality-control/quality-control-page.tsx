@@ -259,7 +259,7 @@ function QualityControlPageContent({ requestedInstanceType, requestedInstanceID 
             dispatch(reducerActions.setInstanceType(type));
         } catch (error: unknown) {
             notification.error({
-                message: `Could not receive requested ${type}`,
+                message: `无法获取所请求的${type === 'project' ? '项目' : type === 'task' ? '任务' : '作业'}`,
                 description: `${error instanceof Error ? error.message : ''}`,
             });
             throw error;

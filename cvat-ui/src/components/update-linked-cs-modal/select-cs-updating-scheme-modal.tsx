@@ -43,11 +43,11 @@ function SelectCSUpdatingSchemeModal(): JSX.Element | null {
         return null;
     }
 
-    const capitalizedInstanceType = instanceType.charAt(0).toUpperCase() + instanceType.slice(1);
+    const instanceTypeLabel = ({ project: '项目', task: '任务', job: '作业' } as Record<string, string>)[instanceType] ?? instanceType;
     const alert = tt("Data-linked storage will only be reset during the transfer and must be updated manually afterward");
     const message = instances.length > 1 ?
         tt("Some resources are linked to a cloud storage") :
-        `${capitalizedInstanceType} #${instances[0].id} is linked to a cloud storage`;
+        `${instanceTypeLabel} #${instances[0].id} 已关联云存储`;
 
     return (
         <Modal

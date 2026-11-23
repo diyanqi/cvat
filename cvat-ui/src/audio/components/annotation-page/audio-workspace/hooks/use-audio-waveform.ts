@@ -207,7 +207,7 @@ function useWaveSurferRuntime({
     useEffect(() => {
         const container = containerRef.current;
         if (!container) {
-            throw new Error('Cannot initialize the audio waveform without its container element');
+            throw new Error('没有容器元素时无法初始化音频波形');
         }
 
         const wsInstance = WaveSurfer.create({

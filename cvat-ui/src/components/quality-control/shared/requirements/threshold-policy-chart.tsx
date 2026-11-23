@@ -219,12 +219,12 @@ export default function ThresholdPolicyChart(props: Readonly<Props>): JSX.Elemen
             <div className='cvat-threshold-policy-toolbar'>
                 <span>{tt("Minimum IoU (%)")}</span>
                 <Space size={4}>
-                    <CVATTooltip title={tt("Zoom in on GT area")}>
-                        <Button disabled={disabled} size='small' aria-label='Zoom in on GT area'
+                    <CVATTooltip title={tt("放大 GT 区域")}>
+                        <Button disabled={disabled} size='small' aria-label='放大 GT 区域'
                             onClick={() => setXMax(Math.max(1, xMax / 1.5))}>+</Button>
                     </CVATTooltip>
-                    <CVATTooltip title={tt("Zoom out on GT area")}>
-                        <Button disabled={disabled} size='small' aria-label='Zoom out on GT area'
+                    <CVATTooltip title={tt("缩小 GT 区域")}>
+                        <Button disabled={disabled} size='small' aria-label='缩小 GT 区域'
                             onClick={() => setXMax(Math.min(1e12, xMax * 1.5))}>−</Button>
                     </CVATTooltip>
                     <Button disabled={disabled} size='small' onClick={() => setXMax(policy.points.at(-1).x * 1.15)}>
@@ -235,7 +235,7 @@ export default function ThresholdPolicyChart(props: Readonly<Props>): JSX.Elemen
             </div>
             <div className='cvat-threshold-policy-chart'>
                 <canvas ref={canvasRef}
-                    aria-label='IoU threshold by GT area. Edit points below the graph.'
+                    aria-label='按 GT 区域的 IoU 阈值。可在图表下方编辑控制点。'
                     onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={pointerUp}
                     onPointerLeave={() => { if (!drag.current) setHover(null); }}
                     onPointerCancel={() => {

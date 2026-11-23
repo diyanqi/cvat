@@ -138,12 +138,12 @@ export class SliceHandlerImpl implements SliceHandler {
 
     private showInitialMessage(): void {
         this.onMessage([
-            '### Slice a shape',
+            '### 切分形状',
             '',
-            'Keep the cutting line from crossing itself or crossing the outline more than twice.',
+            '切割线不能自相交，也不能与轮廓相交超过两次。',
             '',
             '**Actions**',
-            '- Click the shape outline to start cutting.',
+            '- 单击形状轮廓开始切割。',
         ].join('\n'), 'slice-start-cut-v1');
     }
 
@@ -216,14 +216,14 @@ export class SliceHandlerImpl implements SliceHandler {
                 this.slicingPoints.push(circle);
 
                 this.onMessage([
-                    '### Draw the cut',
+                    '### 绘制切割线',
                     '',
-                    'Finish at another point on the outline to split the shape.',
+                    '在轮廓上的另一点结束即可拆分该形状。',
                     '',
                     '**Actions**',
-                    '- Click inside the shape to add a cutting point.',
-                    '- Hold `Shift` to enable slip mode.',
-                    '- `Right click` to remove the last point.',
+                    '- 在形状内部单击添加切割点。',
+                    '- 按住 `Shift` 启用滑动模式。',
+                    '- 右键单击移除上一个点。',
                 ].join('\n'), 'slice-draw-cut-v1');
             }
         };
@@ -525,9 +525,9 @@ export class SliceHandlerImpl implements SliceHandler {
                 const { startTimestamp } = this;
 
                 this.onMessage([
-                    '### Preparing to slice',
+                    '### 正在准备切分',
                     '',
-                    'Getting the shape outline…',
+                    '正在获取形状轮廓……',
                 ].join('\n'), 'force');
 
                 sliceData.getContour(state).then((contour) => {
@@ -559,12 +559,12 @@ export class SliceHandlerImpl implements SliceHandler {
             }
 
             this.onMessage([
-                '### Slice a shape',
+                '### 切分形状',
                 '',
-                'Split a mask or polygon into separate shapes.',
+                '将掩码或多边形拆分为多个独立形状。',
                 '',
                 '**Actions**',
-                '- Click the shape you want to slice.',
+                '- 单击要切分的形状。',
             ].join('\n'), 'slice-select-shape-v1');
 
             this.objectSelector.enable(([state]) => {

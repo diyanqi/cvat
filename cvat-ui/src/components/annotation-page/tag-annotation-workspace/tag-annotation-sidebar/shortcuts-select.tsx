@@ -89,8 +89,8 @@ function ShortcutsSelect(props: Props): JSX.Element {
                 updatedComponentShortcuts[key] = {
                     ...updatedComponentShortcuts[key],
                     nonActive: false,
-                    name: `Create a new tag "${label.name}"`,
-                    description: `Create a new tag having class "${label.name}"`,
+                    name: `创建新标签“${label.name}”`,
+                    description: `创建类别为“${label.name}”的新标签`,
                 };
             }
         }
@@ -132,7 +132,7 @@ function ShortcutsSelect(props: Props): JSX.Element {
                     <Row key={id}>
                         <Col span={24}>
                             <Text code>
-                                {`Shortcut: ${keyMap[`SETUP_${id}_TAG`].sequences.join(', ')}`}
+                                {`快捷键：${keyMap[`SETUP_${id}_TAG`].sequences.join(', ')}`}
                             </Text>
                         </Col>
                         <Col>

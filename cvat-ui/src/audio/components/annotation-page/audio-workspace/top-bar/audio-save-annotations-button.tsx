@@ -54,7 +54,7 @@ function AudioSaveAnnotationsButton(): JSX.Element {
     return (
         <>
             <GlobalHotKeys keyMap={subKeyMap(componentShortcuts, keyMap)} handlers={handlers} />
-            <CVATTooltip overlay={`Save current changes ${normKeyMap.SAVE_JOB}`}>
+            <CVATTooltip overlay={`保存当前更改 ${normKeyMap.SAVE_JOB}`}>
                 <Button
                     type='link'
                     onClick={trySave}
@@ -62,7 +62,7 @@ function AudioSaveAnnotationsButton(): JSX.Element {
                         'cvat-annotation-header-save-button cvat-annotation-header-button'}
                 >
                     <Icon component={SaveIcon} />
-                    {isSaving ? 'Saving...' : 'Save'}
+                    {isSaving ? '正在保存…' : '保存'}
                 </Button>
             </CVATTooltip>
         </>

@@ -4,6 +4,8 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
+const TYPE_LABEL: Record<string, string> = { project: '项目', task: '任务', job: '作业' };
+
 import React, { useState, useEffect, useCallback } from 'react';
 import {
     connect, useDispatch, useSelector,
@@ -175,7 +177,7 @@ function ExportDatasetModal(props: Readonly<StateToProps>): JSX.Element {
     useEffect(() => {
         const loc = defaultStorageLocation ? defaultStorageLocation.split('_')[0] : 'local';
         const cloudId = defaultStorageCloudId !== undefined && defaultStorageCloudId !== null ? `№${defaultStorageCloudId}` : '';
-        setHelpMessage(`Export to ${loc} storage ${cloudId}`);
+        setHelpMessage(`导出到${loc === 'local' ? '本地' : '云端'}存储 ${cloudId}`);
     }, [defaultStorageLocation, defaultStorageCloudId]);
 
     const closeModal = (): void => {
@@ -218,16 +220,16 @@ function ExportDatasetModal(props: Readonly<StateToProps>): JSX.Element {
                         );
                     },
                     (inst: ProjectOrTaskOrJob, idx: number, total: number) => (
-                        `Exporting dataset for ${instanceType}#${inst.id} [${idx + 1}/${total}]`
+                        `正在导出 ${TYPE_LABEL[instanceType] ?? instanceType} #${inst.id} 的数据集 [${idx + 1}/${total}]`
                     ),
                 ));
                 closeModal();
-                const resource = values.saveImages ? 'Dataset' : 'Annotations';
+                const resource = values.saveImages ? '数据集' : '标注';
                 const description =
-                    `Bulk ${resource.toLowerCase()} export was started. ` +
+                    `已开始批量导出${resource}。` +
                     tt("You can check progress and download the file [here](/requests).");
                 Notification.info({
-                    message: `Bulk ${resource.toLowerCase()} export started`,
+                    message: `批量导出${resource}已开始`,
                     description: (
                         <CVATMarkdown history={history}>{description}</CVATMarkdown>
                     ),
@@ -250,11 +252,11 @@ function ExportDatasetModal(props: Readonly<StateToProps>): JSX.Element {
                 ),
             );
             closeModal();
-            const resource = values.saveImages ? 'Dataset' : 'Annotations';
-            const description = `${resource} export was started for ${instanceType}. ` +
+            const resource = values.saveImages ? '数据集' : '标注';
+            const description = `已开始为${TYPE_LABEL[instanceType] ?? instanceType}导出${resource}。` +
             tt("You can check progress and download the file [here](/requests).");
             Notification.info({
-                message: `${resource} export started`,
+                message: `${resource}导出已开始`,
                 description: (
                     <CVATMarkdown history={history}>{description}</CVATMarkdown>
                 ),
@@ -295,10 +297,10 @@ function ExportDatasetModal(props: Readonly<StateToProps>): JSX.Element {
             title={
                 isBulkMode ? (
                     <Text strong>
-                        {`Export ${selectedInstances.length} ${instanceType}s as datasets`}
+                        {`将 ${selectedInstances.length} 个${TYPE_LABEL[instanceType] ?? instanceType}导出为数据集`}
                     </Text>
                 ) : (
-                    <Text strong>{`Export ${instanceType} as a dataset`}</Text>
+                    <Text strong>{`将${TYPE_LABEL[instanceType] ?? instanceType}导出为数据集`}</Text>
                 )
             }
             open={!!instance}
@@ -308,7 +310,7 @@ function ExportDatasetModal(props: Readonly<StateToProps>): JSX.Element {
             destroyOnClose
         >
             <Form
-                name='Export dataset'
+                name='导出数据集'
                 form={form}
                 layout='vertical'
                 initialValues={initialValues}
@@ -392,10 +394,10 @@ function ExportDatasetModal(props: Readonly<StateToProps>): JSX.Element {
                 )}
                 <TargetStorageField
                     instanceId={instance ? instance.id : null}
-                    switchDescription='Use default settings'
+                    switchDescription='使用默认设置'
                     switchHelpMessage={helpMessage}
                     useDefaultStorage={isBulkMode ? false : useDefaultTargetStorage}
-                    storageDescription='Specify target storage for export dataset'
+                    storageDescription='指定用于导出数据集的目标存储'
                     locationValue={targetStorage.location}
                     onChangeUseDefaultStorage={isBulkMode ? undefined : (value: boolean) => {
                         setUseDefaultTargetStorage(value);

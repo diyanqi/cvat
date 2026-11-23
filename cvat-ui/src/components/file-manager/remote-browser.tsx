@@ -367,7 +367,7 @@ function RemoteBrowser(props: Props): JSX.Element {
                     <Input
                         addonBefore={<SearchOutlined />}
                         suffix={resource !== 'share' && !!resource.prefix && (
-                            <CVATTooltip title={`Default prefix "${resource.prefix}" is used`}>
+                            <CVATTooltip title={`默认使用前缀“${resource.prefix}”`}>
                                 <InfoCircleOutlined style={{ opacity: 0.5 }} />
                             </CVATTooltip>
                         )}

@@ -24,7 +24,7 @@ function AudioWaveformControls({
                     type='text'
                     size='small'
                     icon={<AimOutlined />}
-                    aria-label='Center waveform on playback position'
+                    aria-label='将波形居中到播放位置'
                     onClick={centerPlaybackPosition}
                 />
             </CVATTooltip>

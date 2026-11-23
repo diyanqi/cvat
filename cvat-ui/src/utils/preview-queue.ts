@@ -22,7 +22,7 @@ export function getPreviewType(entity: PreviewEntity): PreviewType {
     if (entity instanceof Project) return 'project';
     if (entity instanceof CloudStorage) return 'cloudStorage';
     if (entity instanceof MLModel) return 'model';
-    throw new Error('Unknown entity type');
+    throw new Error('未知的实体类型');
 }
 
 export function getRequestId(entity: PreviewEntity): string {

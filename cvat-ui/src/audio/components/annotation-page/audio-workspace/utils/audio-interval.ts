@@ -17,11 +17,11 @@ export interface AudioPlaybackRange extends AudioTimeRange {
 }
 
 export enum AudioRegionsOrdering {
-    ID_ASCENT = 'ID - ascent',
-    ID_DESCENT = 'ID - descent',
+    ID_ASCENT = 'ID - 升序',
+    ID_DESCENT = 'ID - 降序',
     START_TIME = '开始时间',
     END_TIME = '结束时间',
-    DURATION = 'Duration',
+    DURATION = '时长',
     LABEL_NAME = '标签名称',
 }
 

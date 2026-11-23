@@ -23,7 +23,7 @@ function MdGuideControl(props: Props): JSX.Element {
     return (
         <Row justify='start' className='cvat-md-guide-control-wrapper'>
             <Col span={24}>
-                <Text strong className='cvat-text-color'>{`${instanceType[0].toUpperCase()}${instanceType.slice(1)} description`}</Text>
+                <Text strong className='cvat-text-color'>{instanceType === 'task' ? '任务说明' : '项目说明'}</Text>
                 <br />
                 <Button
                     onClick={() => {

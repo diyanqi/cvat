@@ -88,6 +88,13 @@ type Props = StateToProps & DispatchToProps;
 
 const colorByOptions = [ColorBy.LABEL, ColorBy.INSTANCE];
 
+const COLOR_BY_LABEL: Record<string, string> = {
+    [ColorBy.INSTANCE]: '实例',
+    [ColorBy.GROUP]: '分组',
+    [ColorBy.LABEL]: '标签',
+};
+
+
 const nextColorBy: Record<ColorBy, ColorBy> = {
     [ColorBy.LABEL]: ColorBy.INSTANCE,
     [ColorBy.INSTANCE]: ColorBy.LABEL,
@@ -139,7 +146,7 @@ function AudioAppearanceBlock(props: Props): JSX.Element {
                             onChange={(event: RadioChangeEvent) => changeShapesColorBy(event.target.value)}
                         >
                             {colorByOptions.map((val) => (
-                                <Radio.Button value={val} key={val}>{val}</Radio.Button>
+                                <Radio.Button value={val} key={val}>{COLOR_BY_LABEL[val] ?? val}</Radio.Button>
                             ))}
                         </Radio.Group>
                         <Text type='secondary'>{tt("Opacity")}</Text>

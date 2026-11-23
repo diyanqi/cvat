@@ -174,7 +174,7 @@ function AllocationTable(props: Readonly<Props>): JSX.Element | null {
     return (
         <CVATTable
             stateKey={`allocation-task-${task.id}`}
-            tableTitle='Frames'
+            tableTitle='帧'
             searchDataIndex={['name']}
             csvExport={{ filename: `allocation-table-task_${task.id}.csv` }}
             className='cvat-frame-allocation-table'

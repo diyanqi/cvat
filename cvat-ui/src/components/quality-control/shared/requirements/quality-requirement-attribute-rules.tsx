@@ -217,7 +217,7 @@ export default function QualityRequirementAttributeRules(props: Readonly<Props>)
                             attributeOptionsBySpecId.get(rule.specId) :
                             null;
                         const name = attributeOption?.label ?? (
-                            typeof rule.specId === 'number' ? `Unknown attribute #${rule.specId}` : ''
+                            typeof rule.specId === 'number' ? `未知属性 #${rule.specId}` : ''
                         );
                         const comparator = rule.comparator ?? QualityRequirementAttributeComparator.EXACT;
 
@@ -259,7 +259,7 @@ export default function QualityRequirementAttributeRules(props: Readonly<Props>)
 
                     return (
                         <CVATTable
-                            tableTitle='Attribute rules'
+                            tableTitle='属性规则'
                             className='cvat-quality-requirement-attribute-rules-table'
                             searchDataIndex={['searchValue']}
                             queryBuilder={{

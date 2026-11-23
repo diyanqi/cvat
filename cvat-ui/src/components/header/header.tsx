@@ -374,7 +374,7 @@ function HeaderComponent(props: Props): JSX.Element {
         key: 'settings',
         icon: <SettingOutlined />,
         onClick: () => switchSettingsModalVisible(true),
-        title: `Press ${switchSettingsShortcut} to switch`,
+        title: `按 ${switchSettingsShortcut} 切换`,
         label: tt("Settings"),
     }, 30]);
 

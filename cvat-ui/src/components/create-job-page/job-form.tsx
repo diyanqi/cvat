@@ -192,7 +192,7 @@ function JobForm(props: Props): JSX.Element {
                         label={(
                             <Space>
                                 {frameSelectionMethod === FrameSelectionMethod.RANDOM ?
-                                    'Quantity' : tt("Quantity per job")}
+                                    '数量' : tt("Quantity per job")}
                                 <CVATTooltip title={description}>
                                     <QuestionCircleOutlined
                                         style={{ opacity: 0.5 }}

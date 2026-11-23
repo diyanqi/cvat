@@ -104,9 +104,9 @@ function LabelsListComponent(): JSX.Element {
                 updatedComponentShortcuts[key] = {
                     ...updatedComponentShortcuts[key],
                     nonActive: false,
-                    name: `Switch label to ${labelName}`,
-                    description: `Changes the label to ${labelName} for selected objects, the activated
-                        object, or the next drawn object if no objects are selected or activated`,
+                    name: `切换标签为 ${labelName}`,
+                    description: `将所选对象、已激活对象或下一个将要绘制的对象的标签更改为 ${labelName}
+                        （若没有选中或激活对象）`,
                 };
             }
         }
@@ -137,7 +137,7 @@ function LabelsListComponent(): JSX.Element {
 
                 if (!labelIsApplicable) {
                     message.destroy();
-                    message.warning(`Label "${label.name}" cannot be applied to every selected object`);
+                    message.warning(`标签“${label.name}”无法应用到每个所选对象`);
                     return;
                 }
 
@@ -179,7 +179,7 @@ function LabelsListComponent(): JSX.Element {
                 }
 
                 message.destroy();
-                message.success(`Default label has been changed to "${label.name}"`);
+                message.success(`默认标签已更改为“${label.name}”`);
             }
         }
     };
@@ -228,7 +228,7 @@ function LabelsListComponent(): JSX.Element {
         <div className='cvat-objects-sidebar-labels-list'>
             <GlobalHotKeys keyMap={subKeyMap(componentShortcuts, keyMap)} handlers={handlers} />
             <div className='cvat-objects-sidebar-labels-list-header'>
-                <Text>{`Items: ${labels.length}`}</Text>
+                <Text>{`条目：${labels.length}`}</Text>
             </div>
             {labelIDs.map(
                 (labelID: number): JSX.Element => (

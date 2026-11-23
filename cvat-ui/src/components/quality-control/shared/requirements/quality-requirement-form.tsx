@@ -560,7 +560,7 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
             case QualityRequirementSimilarityMetric.EQUALITY:
                 return null;
             default:
-                throw new Error(`Unexpected similarity metric '${similarityMetric}'`);
+                throw new Error(`意外的相似度度量“${similarityMetric}”`);
         }
     };
 

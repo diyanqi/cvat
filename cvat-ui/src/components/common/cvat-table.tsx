@@ -284,8 +284,8 @@ function CVATTable(props: Props): JSX.Element {
                     <Space align='center'>
                         {Array.isArray(searchDataIndex) && !!searchDataIndex.length && (
                             <CVATTooltip
-                                title={`Search across fields: ${searchDataIndex
-                                    .map((dataIndex) => stringifyDataIndex(dataIndex)).join(', ')}`}
+                                title={`跨字段搜索：${searchDataIndex
+                                    .map((dataIndex) => stringifyDataIndex(dataIndex)).join('、')}`}
                             >
                                 <Input.Search
                                     className='cvat-table-search-bar'
@@ -339,8 +339,8 @@ function CVATTable(props: Props): JSX.Element {
 
                                     return (
                                         <Text key={group} type='secondary' className='cvat-table-columns-settings-hint'>
-                                            {params.hint ?? `You can select up to ${params.maxVisible} columns`}
-                                            {` (${visibleCount} of ${params.maxVisible})`}
+                                            {params.hint ?? `最多可选择 ${params.maxVisible} 列`}
+                                            {`（${visibleCount} / ${params.maxVisible}）`}
                                         </Text>
                                     );
                                 }).filter((item): item is JSX.Element => item !== null);

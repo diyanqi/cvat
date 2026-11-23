@@ -338,7 +338,7 @@ export default function SelectionContextMenu(): JSX.Element | null {
             role='button'
             tabIndex={0}
             className='cvat-canvas-selected-objects-more-button'
-            aria-label='More selection actions'
+            aria-label='更多选择操作'
         >
             <MoreOutlined />
         </Col>
@@ -496,7 +496,7 @@ export default function SelectionContextMenu(): JSX.Element | null {
                         type='text'
                         size='small'
                         danger
-                        aria-label='Delete selection'
+                        aria-label='删除所选'
                         icon={<DeleteOutlined />}
                         onClick={async (): Promise<void> => {
                             if (canvasInstance instanceof Canvas) {

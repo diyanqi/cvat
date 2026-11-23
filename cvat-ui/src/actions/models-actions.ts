@@ -147,7 +147,13 @@ function listen(
                             error: message as string,
                             id,
                         },
-                        new Error(`Inference status for the task ${taskID} is ${_status}. ${message}`),
+                        new Error(`任务 ${taskID} 的推理状态为${({
+                            queued: '排队中',
+                            started: '已开始',
+                            finished: '已完成',
+                            failed: '失败',
+                            unknown: '未知',
+                        } as Record<string, string>)[_status] ?? _status}。${message}`),
                     ),
                 );
 

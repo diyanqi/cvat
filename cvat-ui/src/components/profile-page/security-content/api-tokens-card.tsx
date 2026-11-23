@@ -86,7 +86,7 @@ function ApiTokensCard(): JSX.Element {
     const onRevokeToken = useCallback((token: ApiToken): void => {
         Modal.confirm({
             title: tt("Revoke API Token"),
-            content: `Are you sure you want to revoke the token "${token.name}"? This action cannot be undone.`,
+            content: `确定要撤销令牌“${token.name}”吗？此操作无法撤销。`,
             okText: tt("Revoke"),
             okButtonProps: {
                 type: 'primary',
@@ -191,7 +191,7 @@ function ApiTokensCard(): JSX.Element {
                 if (!b.lastUsedDate) return -1;
                 return new Date(a.lastUsedDate).getTime() - new Date(b.lastUsedDate).getTime();
             },
-            render: (date: string | null) => (date ? new Date(date).toLocaleDateString() : 'Never'),
+            render: (date: string | null) => (date ? new Date(date).toLocaleDateString() : '从未'),
             className: 'cvat-api-token-last-used',
         },
         {

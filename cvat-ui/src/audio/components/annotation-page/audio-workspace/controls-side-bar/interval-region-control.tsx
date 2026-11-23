@@ -179,7 +179,7 @@ function IntervalRegionControl(props: Props): JSX.Element {
             <Row gutter={8} style={{ marginTop: 8 }}>
                 <Col span={8}>
                     {renderAction(
-                        'Draw',
+                        '绘制',
                         tt("Draw an interval on the waveform"),
                         createRegionShortkey,
                         drawInterval,
@@ -188,7 +188,7 @@ function IntervalRegionControl(props: Props): JSX.Element {
                 </Col>
                 <Col span={8}>
                     {renderAction(
-                        'Record',
+                        '录制',
                         tt("Record an interval from playback position"),
                         recordRegionShortkey,
                         recordInterval,
@@ -197,7 +197,7 @@ function IntervalRegionControl(props: Props): JSX.Element {
                 </Col>
                 <Col span={8}>
                     {renderAction(
-                        'Extend',
+                        '延伸',
                         tt("Create an interval from the previous interval end to current time"),
                         extendRegionShortkey,
                         extendInterval,

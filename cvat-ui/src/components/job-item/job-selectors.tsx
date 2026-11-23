@@ -6,6 +6,7 @@ import React from 'react';
 import Select from 'antd/lib/select';
 import { JobStage, JobState } from 'cvat-core-wrapper';
 import { handleDropdownKeyDown } from 'utils/dropdown-utils';
+import { localizeText } from 'i18n/localize';
 import { JobStageLabel, JobStateLabel } from './job-status-visuals';
 import { tt } from 'i18n';
 
@@ -24,16 +25,16 @@ export function JobStateSelector({ value, onSelect }: Readonly<JobStateSelectorP
             onKeyDown={handleDropdownKeyDown}
             placeholder={tt("Select a state")}
         >
-            <Select.Option value={JobState.NEW} title={JobState.NEW}>
+            <Select.Option value={JobState.NEW} title={localizeText(JobState.NEW)}>
                 <JobStateLabel state={JobState.NEW} />
             </Select.Option>
-            <Select.Option value={JobState.IN_PROGRESS} title={JobState.IN_PROGRESS}>
+            <Select.Option value={JobState.IN_PROGRESS} title={localizeText(JobState.IN_PROGRESS)}>
                 <JobStateLabel state={JobState.IN_PROGRESS} />
             </Select.Option>
-            <Select.Option value={JobState.REJECTED} title={JobState.REJECTED}>
+            <Select.Option value={JobState.REJECTED} title={localizeText(JobState.REJECTED)}>
                 <JobStateLabel state={JobState.REJECTED} />
             </Select.Option>
-            <Select.Option value={JobState.COMPLETED} title={JobState.COMPLETED}>
+            <Select.Option value={JobState.COMPLETED} title={localizeText(JobState.COMPLETED)}>
                 <JobStateLabel state={JobState.COMPLETED} />
             </Select.Option>
         </Select>
@@ -55,13 +56,13 @@ export function JobStageSelector({ value, onSelect }: Readonly<JobStageSelectorP
             onKeyDown={handleDropdownKeyDown}
             placeholder={tt("Select a stage")}
         >
-            <Select.Option value={JobStage.ANNOTATION} title={JobStage.ANNOTATION}>
+            <Select.Option value={JobStage.ANNOTATION} title={localizeText(JobStage.ANNOTATION)}>
                 <JobStageLabel stage={JobStage.ANNOTATION} />
             </Select.Option>
-            <Select.Option value={JobStage.VALIDATION} title={JobStage.VALIDATION}>
+            <Select.Option value={JobStage.VALIDATION} title={localizeText(JobStage.VALIDATION)}>
                 <JobStageLabel stage={JobStage.VALIDATION} />
             </Select.Option>
-            <Select.Option value={JobStage.ACCEPTANCE} title={JobStage.ACCEPTANCE}>
+            <Select.Option value={JobStage.ACCEPTANCE} title={localizeText(JobStage.ACCEPTANCE)}>
                 <JobStageLabel stage={JobStage.ACCEPTANCE} />
             </Select.Option>
         </Select>

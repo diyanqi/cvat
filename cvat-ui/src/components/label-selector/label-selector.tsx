@@ -97,7 +97,7 @@ export default function LabelSelector(props: Props): JSX.Element {
                 if (label) {
                     onChange(label);
                 } else {
-                    throw new Error(`Label with id ${newValue} was not found within the list`);
+                    throw new Error(`列表中未找到 ID 为 ${newValue} 的标签`);
                 }
             }}
             onInputKeyDown={(event) => {

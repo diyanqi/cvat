@@ -88,7 +88,7 @@ export default function AnnotationPageComponent(props: Props): JSX.Element {
                 const notificationKey = `cvat-notification-continue-job-${job.id}`;
                 notification.info({
                     key: notificationKey,
-                    message: `You finished working on frame ${latestFrame}`,
+                    message: `你已完成第 ${latestFrame} 帧的标注`,
                     description: (
                         <span>
                             
@@ -123,9 +123,9 @@ export default function AnnotationPageComponent(props: Props): JSX.Element {
                     message: tt("No labels"),
                     description: (
                         <span>
-                            {`${job.projectId ? 'Project' : 'Task'} ${
+                            {`${job.projectId ? '项目' : '任务'} ${
                                 job.projectId || job.taskId
-                            } does not contain any compatible labels. `}
+                            } 不包含任何兼容的标签。`}
                             <a href={`/${job.projectId ? 'projects' : 'tasks'}/${job.projectId || job.taskId}/`}>
                                 
                                 {tt("Add")}

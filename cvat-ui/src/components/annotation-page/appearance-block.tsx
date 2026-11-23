@@ -34,6 +34,12 @@ import { ShortcutScope } from 'utils/enums';
 import { subKeyMap } from 'utils/component-subkeymap';
 import { tt } from 'i18n';
 
+const COLOR_BY_LABEL: Record<string, string> = {
+    [ColorBy.INSTANCE]: '实例',
+    [ColorBy.GROUP]: '分组',
+    [ColorBy.LABEL]: '标签',
+};
+
 const componentShortcuts = {
     SWITCH_COLOR_BY_APPEARANCE: {
         name: tt("Switch objects appearance setting \"Color by\""),
@@ -207,7 +213,7 @@ function AppearanceBlock(props: Props): JSX.Element {
                             onChange={(event: RadioChangeEvent) => changeShapesColorBy(event.target.value)}
                         >
                             {Object.keys(nextColorBy).map((val) => (
-                                <Radio.Button value={val} key={val}>{val}</Radio.Button>
+                                <Radio.Button value={val} key={val}>{COLOR_BY_LABEL[val] ?? val}</Radio.Button>
                             ))}
                         </Radio.Group>
                         <Text type='secondary'>{tt("Opacity")}</Text>

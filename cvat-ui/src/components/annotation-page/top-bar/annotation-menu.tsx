@@ -29,6 +29,13 @@ import { updateJobAsync } from 'actions/jobs-actions';
 import RemoveAnnotationsConfirm, { RemoveAnnotationsConfirmProps } from './remove-annotations-confirm';
 import { tt } from 'i18n';
 
+const JOBS_STATE_LABEL: Record<string, string> = {
+    new: '新建',
+    'in progress': '进行中',
+    completed: '已完成',
+    rejected: '已拒绝',
+};
+
 export enum Actions {
     LOAD_JOB_ANNO = 'load_job_anno',
     EXPORT_JOB_DATASET = 'export_job_dataset',
@@ -93,7 +100,7 @@ function AnnotationMenuComponent(props: Props): JSX.Element {
     const changeJobState = useCallback((state: JobState) => () => {
         Modal.confirm({
             title: tt("Would you like to update current job state?"),
-            content: `Job state will be switched to "${state}"`,
+            content: `作业状态将切换为“${JOBS_STATE_LABEL[state] ?? state}”`,
             okText: tt("Continue"),
             cancelText: tt("Cancel"),
             className: 'cvat-modal-content-change-job-state',
@@ -146,22 +153,22 @@ function AnnotationMenuComponent(props: Props): JSX.Element {
         label: tt("Change job state"),
         children: [{
             key: `state:${JobState.NEW}`,
-            label: JobState.NEW,
+            label: JOBS_STATE_LABEL[JobState.NEW] ?? JobState.NEW,
             className: computeClassName(JobState.NEW),
             onClick: changeJobState(JobState.NEW),
         }, {
             key: `state:${JobState.IN_PROGRESS}`,
-            label: JobState.IN_PROGRESS,
+            label: JOBS_STATE_LABEL[JobState.IN_PROGRESS] ?? JobState.IN_PROGRESS,
             className: computeClassName(JobState.IN_PROGRESS),
             onClick: changeJobState(JobState.IN_PROGRESS),
         }, {
             key: `state:${JobState.REJECTED}`,
-            label: JobState.REJECTED,
+            label: JOBS_STATE_LABEL[JobState.REJECTED] ?? JobState.REJECTED,
             className: computeClassName(JobState.REJECTED),
             onClick: changeJobState(JobState.REJECTED),
         }, {
             key: `state:${JobState.COMPLETED}`,
-            label: JobState.COMPLETED,
+            label: JOBS_STATE_LABEL[JobState.COMPLETED] ?? JobState.COMPLETED,
             className: computeClassName(JobState.COMPLETED),
             onClick: changeJobState(JobState.COMPLETED),
         }],

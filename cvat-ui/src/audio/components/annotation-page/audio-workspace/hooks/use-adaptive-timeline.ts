@@ -133,7 +133,7 @@ let prevMPPS = Number.MAX_SAFE_INTEGER;
 for (const band of DENSITY_BANDS) {
     const currMpps = band.minPixelsPerSecond;
     if (currMpps > prevMPPS) {
-        throw new Error(`DENSITY_BANDS must be sorted by MPPS descending. Conflicting band: ${JSON.stringify(band)}`);
+        throw new Error(`DENSITY_BANDS 必须按 MPPS 降序排列。冲突区间：${JSON.stringify(band)}`);
     }
     prevMPPS = currMpps;
 }

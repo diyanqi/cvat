@@ -50,7 +50,7 @@ function AddReplicasModal(props: Readonly<Props>): JSX.Element {
             async (job) => {
                 await dispatch(createReplicaJobAsync(job));
             },
-            (job, idx, total) => `Adding a replica to job #${job.id} (${idx + 1}/${total})`,
+            (job, idx, total) => `正在为作业 #${job.id} 添加副本（${idx + 1}/${total}）`,
             fetchJobs,
         )).catch(() => {});
         onCancel();
@@ -60,7 +60,7 @@ function AddReplicasModal(props: Readonly<Props>): JSX.Element {
         <Modal
             destroyOnClose
             open={visible}
-            title={isBulkMode ? `Add replicas to ${jobs.length} selected jobs` : `Add replicas to job #${jobs[0]?.id}`}
+            title={isBulkMode ? `为 ${jobs.length} 个所选作业添加副本` : `为作业 #${jobs[0]?.id} 添加副本`}
             className='cvat-modal-add-replicas'
             okText={tt("Add")}
             okButtonProps={{ disabled: count === null }}

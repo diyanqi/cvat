@@ -57,24 +57,24 @@ function AudioRegionsListHeader(props: Props): JSX.Element {
         <div className='cvat-audio-regions-list-header'>
             <Row justify='space-between' align='middle'>
                 <Col>
-                    <Text>{`Items: ${count}`}</Text>
+                    <Text>{`条目：${count}`}</Text>
                 </Col>
                 <Col className='cvat-audio-regions-list-header-actions'>
-                    <CVATTooltip title={`Switch lock for all ${switchLockAllShortcut}`}>
+                    <CVATTooltip title={`切换全部锁定 ${switchLockAllShortcut}`}>
                         {allLocked ? (
                             <LockFilled onClick={onUnlockAll} />
                         ) : (
                             <UnlockOutlined onClick={onLockAll} />
                         )}
                     </CVATTooltip>
-                    <CVATTooltip title={`Switch pin for all ${switchPinAllShortcut}`}>
+                    <CVATTooltip title={`切换全部固定 ${switchPinAllShortcut}`}>
                         {allPinned ? (
                             <PushpinFilled onClick={onUnpinAll} />
                         ) : (
                             <PushpinOutlined onClick={onPinAll} />
                         )}
                     </CVATTooltip>
-                    <CVATTooltip title={`Switch hidden for all ${switchHiddenAllShortcut}`}>
+                    <CVATTooltip title={`切换全部隐藏 ${switchHiddenAllShortcut}`}>
                         {allHidden ? (
                             <EyeInvisibleFilled onClick={onShowAll} />
                         ) : (

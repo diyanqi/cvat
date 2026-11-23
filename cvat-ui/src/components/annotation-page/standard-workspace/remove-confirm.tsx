@@ -44,9 +44,9 @@ export default function RemoveConfirmComponent(): JSX.Element | null {
                 <>
                     <Text>
                         {
-                            `The object you are trying to remove is a track.
-                            If you continue, it removes many drawn objects on different frames.
-                            If you want to hide it only on this frame, use the outside feature instead.
+                            `你要移除的对象是一个轨迹。
+                            若继续，将移除不同帧上的多个已绘制对象。
+                            如果只想在当前帧隐藏它，请改用“外部”功能。
                             ${descriptionMessage}`
                         }
                     </Text>

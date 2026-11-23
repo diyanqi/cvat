@@ -46,7 +46,7 @@ function CreateJobPage(): JSX.Element {
         } else {
             notification.error({
                 message: tt("Could not receive the requested task from the server"),
-                description: `Requested task id "${id}" is not valid`,
+                description: `请求的任务 id“${id}”无效`,
             });
             setFetchingTask(false);
         }

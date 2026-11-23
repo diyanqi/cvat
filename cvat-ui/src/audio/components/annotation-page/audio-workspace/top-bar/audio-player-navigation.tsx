@@ -227,7 +227,7 @@ function AudioPlayerNavigation(props: Props): JSX.Element {
                 <Col>
                     <div style={blockStyle} className='cvat-player-buttons'>
                         {LEFT_BUTTONS.map(renderSeekButton)}
-                        <CVATTooltip title={`${playing ? 'Pause' : 'Play'} ${playPauseShortcut}`}>
+                        <CVATTooltip title={`${playing ? '暂停' : '播放'} ${playPauseShortcut}`}>
                             <Icon
                                 className={playing ? 'cvat-player-pause-button' : 'cvat-player-play-button'}
                                 component={playing ? PauseIcon : PlayIcon}

@@ -150,7 +150,7 @@ function TaskActionsComponent(props: Readonly<Props>): JSX.Element {
                     await dispatch(updateTaskAsync(task, { assignee }));
                 }
             },
-            (task, idx, total) => `Updating assignee for task #${task.id} (${idx + 1}/${total})`,
+            (task, idx, total) => `正在更新任务 #${task.id} 的负责人 (${idx + 1}/${total})`,
         ));
     }, [taskInstance, stopEditField, dispatch, collectObjectsForBulkUpdate]);
 
@@ -158,8 +158,8 @@ function TaskActionsComponent(props: Readonly<Props>): JSX.Element {
         const tasksToDelete = currentTasks.filter((task) => selectedIds.includes(task.id));
         Modal.confirm({
             title: isBulkMode ?
-                `Delete ${tasksToDelete.length} selected tasks` :
-                `The task ${taskInstance.id} will be deleted`,
+                `删除 ${tasksToDelete.length} 个所选任务` :
+                `任务 ${taskInstance.id} 将被删除`,
             content: isBulkMode ?
                 tt("All related data (images, annotations) for all selected tasks will be lost. Continue?") :
                 tt("All related data (images, annotations) will be lost. Continue?"),
@@ -170,14 +170,14 @@ function TaskActionsComponent(props: Readonly<Props>): JSX.Element {
                     async (task) => {
                         await dispatch(deleteTaskAsync(task));
                     },
-                    (task, idx, total) => `Deleting task #${task.id} (${idx + 1}/${total})`,
+                    (task, idx, total) => `正在删除任务 #${task.id} (${idx + 1}/${total})`,
                 ));
             },
             okButtonProps: {
                 type: 'primary',
                 danger: true,
             },
-            okText: isBulkMode ? tt("Delete selected") : 'Delete',
+            okText: isBulkMode ? tt("Delete selected") : tt("Delete"),
         });
     }, [taskInstance, currentTasks, selectedIds, isBulkMode]);
 
@@ -200,7 +200,7 @@ function TaskActionsComponent(props: Readonly<Props>): JSX.Element {
                     task.organizationId = newOrganization?.id ?? null;
                     await dispatch(updateTaskAsync(task, {}, ResourceUpdateTypes.UPDATE_ORGANIZATION));
                 },
-                (task, idx, total) => `Updating organization for task #${task.id} (${idx + 1}/${total})`,
+                (task, idx, total) => `正在更新任务 #${task.id} 的组织（${idx + 1}/${total}）`,
             )).then((processedCount: number) => {
                 if (processedCount) {
                     // as for some tasks org has changed

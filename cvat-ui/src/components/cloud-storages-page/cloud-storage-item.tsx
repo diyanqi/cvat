@@ -75,11 +75,11 @@ export default function CloudStorageItemComponent(props: Readonly<Props>): JSX.E
         const cloudStoragesToDelete = currentCloudStorages.filter((storage) => selectedIds.includes(storage.id));
         Modal.confirm({
             title: isBulkMode ?
-                `Delete ${cloudStoragesToDelete.length} selected cloud storages` :
+                `删除 ${cloudStoragesToDelete.length} 个所选云存储` :
                 tt("Please, confirm your action"),
             content: isBulkMode ?
                 tt("All selected cloud storages will be permanently removed. Continue?") :
-                `You are going to remove the cloudstorage "${displayName}". Continue?`,
+                `确定要移除云存储“${displayName}”吗？`,
             className: 'cvat-modal-confirm-delete-cloud-storage',
             onOk: () => {
                 dispatch(makeBulkOperationAsync(
@@ -87,14 +87,14 @@ export default function CloudStorageItemComponent(props: Readonly<Props>): JSX.E
                     async (storage) => {
                         await dispatch(deleteCloudStorageAsync(storage));
                     },
-                    (storage, idx, total) => `Deleting cloud storage #${storage.id} (${idx + 1}/${total})`,
+                    (storage, idx, total) => `正在删除云存储 #${storage.id}（${idx + 1}/${total}）`,
                 ));
             },
             okButtonProps: {
                 type: 'primary',
                 danger: true,
             },
-            okText: isBulkMode ? tt("Delete selected") : 'Delete',
+            okText: isBulkMode ? tt("Delete selected") : tt("Delete"),
         });
     }, [cloudStorage, currentCloudStorages, selectedIds, isBulkMode, displayName]);
 
@@ -138,9 +138,9 @@ export default function CloudStorageItemComponent(props: Readonly<Props>): JSX.E
                         </Paragraph>
                         <Paragraph>
                             <Text type='secondary'>{tt("Created")} </Text>
-                            {owner ? <Text type='secondary'>{`by ${owner.username}`}</Text> : null}
+                            {owner ? <Text type='secondary'>{`由 ${owner.username}`}</Text> : null}
                             <Text type='secondary'>  {tt("on")} </Text>
-                            <Text type='secondary'>{dayjs(createdDate).format('MMMM Do YYYY')}</Text>
+                            <Text type='secondary'>{dayjs(createdDate).format('YYYY年M月D日')}</Text>
                         </Paragraph>
                         <Paragraph>
                             <Text type='secondary'>{tt("Last updated")} </Text>

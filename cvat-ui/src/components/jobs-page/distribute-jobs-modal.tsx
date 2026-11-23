@@ -110,7 +110,7 @@ function DistributeJobsModal(props: Readonly<Props>): JSX.Element {
                     }
                 },
                 ({ job, assignee }, idx, total) => (
-                    `Assigning job #${job.id} to ${assignee.username} (${idx + 1}/${total})`
+                    `正在将作业 #${job.id} 分配给 ${assignee.username}（${idx + 1}/${total}）`
                 ),
             )).catch((error: unknown) => {
                 dispatch(jobsActions.updateJobFailed(jobsToUpdate[0].job.id, error));
@@ -165,7 +165,7 @@ function DistributeJobsModal(props: Readonly<Props>): JSX.Element {
         <Modal
             destroyOnClose
             open={visible}
-            title={`Distribute ${orderedJobs.length} jobs`}
+            title={`分配 ${orderedJobs.length} 个作业`}
             className='cvat-modal-distribute-jobs'
             okText={tt("Distribute")}
             okButtonProps={{ disabled: !users.length || fetchingUsers }}
@@ -211,7 +211,7 @@ function DistributeJobsModal(props: Readonly<Props>): JSX.Element {
                 {assignments.map(({ job, assignee }) => (
                     <React.Fragment key={job.id}>
                         <Link to={`/tasks/${job.taskId}/jobs/${job.id}`} target='_blank'>
-                            {`Job #${job.id}`}
+                            {`作业 #${job.id}`}
                         </Link>
                         <ArrowRightOutlined />
                         <span>{assignee.username}</span>

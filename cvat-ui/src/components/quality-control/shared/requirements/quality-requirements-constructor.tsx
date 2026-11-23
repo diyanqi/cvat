@@ -271,7 +271,7 @@ export default function QualityRequirementsConstructor(props: Readonly<Props>): 
 
     const onDeleteRequirement = (requirement: QualityRequirement): void => {
         Modal.confirm({
-            title: `Delete "${requirement.name}" requirement?`,
+            title: `删除需求“${requirement.name}”？`,
             content: tt("This action cannot be undone."),
             okText: tt("Delete"),
             okButtonProps: { danger: true },
@@ -293,7 +293,7 @@ export default function QualityRequirementsConstructor(props: Readonly<Props>): 
 
     return (
         <CVATTable
-            tableTitle='Requirements configuration'
+            tableTitle='需求配置'
             className='cvat-quality-requirements-configuration-table'
             searchDataIndex={['searchValue']}
             queryBuilder={{

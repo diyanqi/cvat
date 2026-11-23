@@ -149,9 +149,9 @@ function AudioLabelsList(): JSX.Element {
                 updated[key] = {
                     ...updated[key],
                     nonActive: false,
-                    name: `Switch audio label to ${labelName}`,
-                    description: `Change the label to ${labelName} for the active audio region,
-                        or set it as default for the next created region`,
+                    name: `切换音频标签为 ${labelName}`,
+                    description: `将活动音频区域的标签更改为 ${labelName}，
+                        或将其设为下一个新建区域的默认标签`,
                 };
             }
         }
@@ -172,7 +172,7 @@ function AudioLabelsList(): JSX.Element {
         } else {
             dispatch(audioActions.setAudioActiveLabel(labelID));
             message.destroy();
-            message.success(`Default label has been changed to "${label.name}"`);
+            message.success(`默认标签已更改为“${label.name}”`);
         }
     }, [dispatch, keyToLabelMapping, labels]);
 
@@ -190,7 +190,7 @@ function AudioLabelsList(): JSX.Element {
         <div className='cvat-objects-sidebar-labels-list'>
             <GlobalHotKeys keyMap={subKeyMap(componentShortcuts, keyMap)} handlers={handlers} />
             <div className='cvat-objects-sidebar-labels-list-header'>
-                <Text>{`Items: ${labels.length}`}</Text>
+                <Text>{`条目：${labels.length}`}</Text>
             </div>
             {labelIDs.map((labelID: number): JSX.Element => (
                 <MemoizedAudioLabelItem key={labelID} labelID={labelID} />

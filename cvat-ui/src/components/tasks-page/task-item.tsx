@@ -107,7 +107,7 @@ function TaskItemComponent(props: TaskItemProps): JSX.Element {
     const { id } = taskInstance;
     const owner = taskInstance.owner ? taskInstance.owner.username : null;
     const updated = dayjs(taskInstance.updatedDate).fromNow();
-    const created = dayjs(taskInstance.createdDate).format('MMMM Do YYYY');
+    const created = dayjs(taskInstance.createdDate).format('YYYY年M月D日');
 
     const ribbonItems = ribbonPlugins
         .filter((plugin) => plugin.data.shouldBeRendered(props, { importingState }))
@@ -151,21 +151,21 @@ function TaskItemComponent(props: TaskItemProps): JSX.Element {
                         <div>
                             {numOfCompleted > 0 && (
                                 <Text strong className='cvat-task-completed-progress'>
-                                    {`\u2022 ${numOfCompleted} done `}
+                                    {`\u2022 ${numOfCompleted} 已完成 `}
                                 </Text>
                             )}
                             {numOfValidation > 0 && (
                                 <Text strong className='cvat-task-validation-progress'>
-                                    {`\u2022 ${numOfValidation} on review `}
+                                    {`\u2022 ${numOfValidation} 审核中 `}
                                 </Text>
                             )}
                             {numOfAnnotation > 0 && (
                                 <Text strong className='cvat-task-annotation-progress'>
-                                    {`\u2022 ${numOfAnnotation} annotating `}
+                                    {`\u2022 ${numOfAnnotation} 标注中 `}
                                 </Text>
                             )}
                             <Text strong type='secondary'>
-                                {`\u2022 ${numOfJobs} total`}
+                                {`\u2022 共 ${numOfJobs} 个作业`}
                             </Text>
                         </div>
                         <Progress
@@ -213,11 +213,11 @@ function TaskItemComponent(props: TaskItemProps): JSX.Element {
                 <br />
                 {owner && (
                     <>
-                        <Text type='secondary'>{`Created ${owner ? `by ${owner}` : ''} on ${created}`}</Text>
+                        <Text type='secondary'>{`创建${owner ? `者 ${owner}` : ''} 于 ${created}`}</Text>
                         <br />
                     </>
                 )}
-                <Text type='secondary'>{`Last updated ${updated}`}</Text>
+                <Text type='secondary'>{`最后更新于 ${updated}`}</Text>
             </Col>
             {renderProgress()}
             <Col span={3}>

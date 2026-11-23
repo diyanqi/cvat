@@ -59,7 +59,7 @@ function ContextImage(props: Props): JSX.Element {
             if (!unmounted) {
                 setHasError(true);
                 notification.error({
-                    message: `Could not fetch context images. Frame: ${frameIndex}`,
+                    message: `无法获取上下文图像。帧：${frameIndex}`,
                     description: error.toString(),
                 });
             }

@@ -58,11 +58,11 @@ import { tt } from 'i18n';
 
 const rectangleHint = {
     markdown: [
-        '### Rectangle prompts',
+        '### 矩形提示',
         '',
         tt("Draw a box around the area you want to select."),
         '',
-        '**Actions**',
+        '**操作**',
         tt("- Click opposite corners to draw a box."),
         tt("- Hold the `Mouse wheel` and drag to pan."),
     ].join('\n'),
@@ -71,11 +71,11 @@ const rectangleHint = {
 
 const getPointsHint = (withNegativePoints: boolean): typeof rectangleHint => ({
     markdown: [
-        '### Point prompts',
+        '### 点提示',
         '',
         tt("Use points to guide the selection."),
         '',
-        '**Actions**',
+        '**操作**',
         tt("- `Left click` to add a positive point."),
         ...(withNegativePoints ? [tt("- `Right click` to add a negative point.")] : []),
         tt("- Hold the `Mouse wheel` and drag to pan."),
@@ -228,7 +228,7 @@ function trackedRectangleMapper(shape: MinimalShape): MinimalShape {
 function registerPlugin(): (callback: null | (() => void)) => void {
     let onTrigger: null | (() => void) = null;
     const listener = {
-        name: 'Remove annotations listener',
+        name: '移除标注监听器',
         description: tt("Tracker needs to know when annotations is reset in the job"),
         cvat: {
             classes: {
@@ -537,7 +537,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
 
         try {
             this.interaction.closeFetchingMessage = message.loading({
-                content: `Waiting for a response from ${activeInteractor?.name}`,
+                content: `正在等待 ${activeInteractor?.name} 的响应`,
                 duration: 0,
                 className: 'cvat-tracking-notice',
             });
@@ -706,7 +706,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                     frame,
                     occluded: false,
                     attributes: {},
-                    descriptions: [`Trackable (${activeTracker.name})`],
+                    descriptions: [`可跟踪 (${activeTracker.name})`],
                 })
             ));
 
@@ -879,7 +879,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
         const originalKeyframe = objectState.keyframe;
         try {
             this.publishTrackerControls();
-            objectState.descriptions = isTracked ? [] : [`Trackable (${activeTracker.name})`];
+            objectState.descriptions = isTracked ? [] : [`可跟踪 (${activeTracker.name})`];
             if (!isTracked) objectState.keyframe = true;
             await objectState.save();
             if (!this.mounted) return;
@@ -1000,14 +1000,12 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                     try {
                         const [tracker] = trackers.filter((_tracker: MLModel) => _tracker.id === trackerID);
                         if (!tracker) {
-                            throw new Error(`Suitable tracker with ID ${trackerID} not found in tracker list`);
+                            throw new Error(`跟踪器列表中未找到 ID 为 ${trackerID} 的可用跟踪器`);
                         }
 
                         const numOfObjects = trackableObjects.clientIDs.length;
                         hideMessage = message.loading({
-                            content: `${tracker.name}: states are being initialized for ${numOfObjects} ${
-                                numOfObjects > 1 ? 'objects' : 'object'
-                            } ..`,
+                            content: `${tracker.name}：正在初始化 ${numOfObjects} 个对象的状态…`,
                             duration: 0,
                             className: 'cvat-tracking-notice',
                         });
@@ -1048,14 +1046,12 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                     try {
                         const [tracker] = trackers.filter((_tracker: MLModel) => _tracker.id === trackerID);
                         if (!tracker) {
-                            throw new Error(`Suitable tracker with ID ${trackerID} not found in tracker list`);
+                            throw new Error(`跟踪器列表中未找到 ID 为 ${trackerID} 的可用跟踪器`);
                         }
 
                         const numOfObjects = trackableObjects.clientIDs.length;
                         hideMessage = message.loading({
-                            content: `${tracker.name}: ${numOfObjects} ${
-                                numOfObjects > 1 ? tt("objects are") : tt("object is")
-                            } being tracked..`,
+                            content: `${tracker.name}：正在跟踪 ${numOfObjects} 个对象…`,
                             duration: 0,
                             className: 'cvat-tracking-notice',
                         });
@@ -1178,7 +1174,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
 
     private receiveContoursFromMask(mask: Int32Array): [number, number][][] {
         if (!openCVWrapper.isInitialized) {
-            throw new Error('OpenCV was not initialized');
+            throw new Error('OpenCV 尚未初始化');
         }
 
         if (mask.length < 6) {
@@ -1191,7 +1187,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
 
     private approximateResponsePoints(points: [number, number][]): [number, number][] {
         if (!openCVWrapper.isInitialized) {
-            throw new Error('OpenCV was not initialized');
+            throw new Error('OpenCV 尚未初始化');
         }
 
         const { approxPolyAccuracy } = this.state;

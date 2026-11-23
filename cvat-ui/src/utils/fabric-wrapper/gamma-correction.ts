@@ -19,7 +19,7 @@ export default class GammaCorrection extends FabricFilter {
 
         const { gamma } = options;
         if (!Array.isArray(gamma) || gamma.length !== 3) {
-            throw Error(`Incorrect option for gamma filter, expected array: [R, G, B] got ${gamma}`);
+            throw Error(`gamma 滤镜参数错误，期望数组 [R, G, B]，实际收到 ${gamma}`);
         }
 
         // @ts-ignore: Some filters are not typed yet https://github.com/DefinitelyTyped/DefinitelyTyped/issues/62371

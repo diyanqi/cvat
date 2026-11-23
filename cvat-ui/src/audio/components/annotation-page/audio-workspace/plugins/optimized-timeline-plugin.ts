@@ -40,7 +40,7 @@ export default class OptimizedTimelinePlugin extends TimelinePlugin {
     public onInit(): void {
         const { wavesurfer } = this;
         if (!wavesurfer) {
-            throw new Error('Timeline plugin cannot initialize without a WaveSurfer instance');
+            throw new Error('没有 WaveSurfer 实例时无法初始化时间轴插件');
         }
 
         const { timelineWrapper } = this.getTimelinePlugin();
@@ -50,7 +50,7 @@ export default class OptimizedTimelinePlugin extends TimelinePlugin {
         } else if (typeof this.options.container === 'string') {
             const element = document.querySelector(this.options.container);
             if (!element) {
-                throw new Error(`No Timeline container found matching ${this.options.container}`);
+                throw new Error(`未找到与 ${this.options.container} 匹配的时间轴容器`);
             }
             container = element as HTMLElement;
         }

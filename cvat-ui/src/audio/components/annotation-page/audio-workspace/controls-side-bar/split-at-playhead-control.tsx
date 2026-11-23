@@ -170,7 +170,7 @@ function SplitAtPlayheadControl({ shortcut }: Props): JSX.Element {
                                             </Col>
                                             {interval.lock && (
                                                 <Col className='cvat-audio-split-option-status'>
-                                                    <LockFilled aria-label='Locked interval' />
+                                                    <LockFilled aria-label='已锁定区间' />
                                                 </Col>
                                             )}
                                         </Row>
@@ -187,7 +187,7 @@ function SplitAtPlayheadControl({ shortcut }: Props): JSX.Element {
     return (
         <>
             <GlobalHotKeys keyMap={subKeyMap(componentShortcuts, keyMap)} handlers={handlers} />
-            <CVATTooltip title={`Split interval at playback position ${shortcut}`} placement='right'>
+            <CVATTooltip title={`在播放位置拆分区间 ${shortcut}`} placement='right'>
                 <Popover
                     content={chooserContent}
                     trigger='click'

@@ -13,6 +13,12 @@ import { ColorizeIcon } from 'icons';
 import { ColorBy } from 'reducers';
 import { tt } from 'i18n';
 
+const COLOR_BY_LABEL: Record<string, string> = {
+    [ColorBy.INSTANCE]: '实例',
+    [ColorBy.GROUP]: '分组',
+    [ColorBy.LABEL]: '标签',
+};
+
 interface Props {
     serverID: number | undefined;
     locked: boolean;
@@ -78,7 +84,7 @@ function ChangeColorItem({
             onClick={onChangeColorClick}
             className='cvat-audio-region-menu-change-color'
         >
-            {`Change ${colorBy.toLowerCase()} color`}
+            {`更改${COLOR_BY_LABEL[colorBy] ?? colorBy}颜色`}
         </Button>
     );
 }

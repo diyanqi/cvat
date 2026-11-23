@@ -122,7 +122,7 @@ function checkFiles(files: RemoteFile[], type: SupportedShareTypes, baseError: s
     if (erroredFiles.length !== 0) {
         const unsupportedTypes = receiveExtensions(erroredFiles);
         const extensionList = Array.from(new Set(unsupportedTypes));
-        return extensionList.length ? `${baseError} Found unsupported types: ${extensionList.join(', ')}. ` : baseError;
+        return extensionList.length ? `${baseError} 发现不支持的类型：${extensionList.join('、')}。 ` : baseError;
     }
     return '';
 }
@@ -381,7 +381,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
                 }
             }
         } catch (err) {
-            uploadFileErrorMessage = `We can't process it. ${err}`;
+            uploadFileErrorMessage = `无法处理。${err}`;
         }
 
         this.setState({
@@ -505,7 +505,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
                             ) : advanced.targetStorage,
                         });
                     }).catch((error: Error): void => {
-                        throw new Error(`Couldn't fetch the project ${projectId} ${error.toString()}`);
+                        throw new Error(`无法获取项目 ${projectId} ${error.toString()}`);
                     });
                 }
 
@@ -659,9 +659,9 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
                 notification.info({
                     message: tt("The tasks have been created"),
                     description:
-                        `Completed: ${countCompleted}, failed: ${countFailed},${countCancelled ?
-                            ` cancelled: ${countCancelled},` :
-                            ''} total: ${countAll}, `,
+                        `已完成：${countCompleted}，失败：${countFailed}，${countCancelled ?
+                            ` 已取消：${countCancelled}，` :
+                            ''} 总计：${countAll}，`,
                     className: 'cvat-notification-create-task-success',
                 });
             });
@@ -684,7 +684,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
             multiTasks: newMultiTasks,
         }, () => {
             notification.info({
-                message: `Creation of ${count} tasks have been canceled`,
+                message: `${count} 个任务的创建已取消`,
                 className: 'cvat-notification-create-task-success',
             });
         });

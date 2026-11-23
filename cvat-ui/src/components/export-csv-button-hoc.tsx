@@ -11,7 +11,7 @@ import notification from 'antd/lib/notification';
 
 import { CombinedState } from 'reducers';
 import IncrementalCSVWriter, { CSVColumn, downloadCSV } from 'utils/csv-writer';
-import { exportToCSVAsync } from 'actions/csv-export-actions';
+import { exportToCSVAsync, localizeResourceName } from 'actions/csv-export-actions';
 import { filterNull, NonNullableProperties } from 'utils/filter-null';
 import { tt } from 'i18n';
 
@@ -79,7 +79,7 @@ function createCSVExportButton<T, Q>(
                     notification.success({
                         message: tt("Export completed"),
                         description: (
-                            `Successfully exported ${totalCount} ${config.resourceName} to ${exportedFilename}`
+                            `已成功导出 ${totalCount} 个${localizeResourceName(config.resourceName)}到 ${exportedFilename}`
                         ),
                     });
                 },

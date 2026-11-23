@@ -7,6 +7,15 @@ import { ThunkDispatch } from 'utils/redux';
 import IncrementalCSVWriter, { CSVColumn, downloadCSV } from 'utils/csv-writer';
 import { bulkActions } from './bulk-actions';
 
+const RESOURCE_NAMES: Record<string, string> = {
+    projects: '项目',
+    tasks: '任务',
+    jobs: '作业',
+    items: '条目',
+};
+
+export const localizeResourceName = (name: string): string => RESOURCE_NAMES[name] ?? name;
+
 export interface CSVExportOptions<T> {
     columns: CSVColumn<T>[];
     fetchPage: (page: number, pageSize: number) => Promise<{ results: T[]; count: number }>;
@@ -63,7 +72,7 @@ export function exportToCSVAsync<T>(options: CSVExportOptions<T>) {
 
                 const loadedCount = (page - 1) * pageSize + response.results.length;
                 dispatch(bulkActions.updateBulkActionStatus({
-                    message: `Exporting ${resourceName}: ${loadedCount} of ${totalCount}`,
+                    message: `正在导出${localizeResourceName(resourceName)}：${loadedCount} / ${totalCount}`,
                     percent: Math.round((page / totalPages) * 100),
                 }));
             }

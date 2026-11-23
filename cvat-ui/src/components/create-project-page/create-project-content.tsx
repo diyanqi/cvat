@@ -87,7 +87,7 @@ function AdvancedConfigurationForm(props: AdvancedConfigurationProps): JSX.Eleme
             <Form.Item
                 name='bug_tracker'
                 label={tt("Issue tracker")}
-                extra='Attach issue tracker where the project is described'
+                extra='填写描述该项目的缺陷跟踪系统地址'
                 hasFeedback
                 rules={[
                     {
@@ -107,7 +107,7 @@ function AdvancedConfigurationForm(props: AdvancedConfigurationProps): JSX.Eleme
                 <Col span={11}>
                     <SourceStorageField
                         instanceId={null}
-                        storageDescription='Specify source storage for import resources like annotation, backups'
+                        storageDescription='指定用于导入标注、备份等资源的源存储'
                         locationValue={sourceStorageLocation}
                         onChangeLocationValue={onChangeSourceStorageLocation}
                     />
@@ -115,7 +115,7 @@ function AdvancedConfigurationForm(props: AdvancedConfigurationProps): JSX.Eleme
                 <Col span={11} offset={1}>
                     <TargetStorageField
                         instanceId={null}
-                        storageDescription='Specify target storage for export resources like annotation, backups'
+                        storageDescription='指定用于导出标注、备份等资源的目标存储'
                         locationValue={targetStorageLocation}
                         onChangeLocationValue={onChangeTargetStorageLocation}
                     />

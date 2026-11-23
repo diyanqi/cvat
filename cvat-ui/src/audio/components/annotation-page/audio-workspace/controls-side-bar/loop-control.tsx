@@ -52,7 +52,7 @@ function LoopControl(props: Props): JSX.Element {
                 keyMap={subKeyMap(componentShortcuts, keyMap)}
                 handlers={handlers}
             />
-            <CVATTooltip title={`Loop interval playback${loop ? ' (on)' : ''} ${loopShortcut}`} placement='right'>
+            <CVATTooltip title={`循环播放区间${loop ? '（开）' : ''} ${loopShortcut}`} placement='right'>
                 <RetweetOutlined
                     className={
                         loop ?

@@ -624,7 +624,7 @@ export default class SkeletonConfigurator extends React.PureComponent<Props, Sta
     public wrappedSubmit(): SkeletonConfiguration {
         const svg = this.svgRef.current;
         if (!svg) {
-            throw new Error('SVG reference is null');
+            throw new Error('SVG 引用为空');
         }
 
         const sublabels = Object.values(this.labels);
@@ -641,7 +641,7 @@ export default class SkeletonConfigurator extends React.PureComponent<Props, Sta
                         child.setAttribute('data-label-name', elementLabel.name);
                     } else {
                         throw new Error(
-                            `Element ${elementID} does not refer to any label`,
+                            `元素 ${elementID} 未关联任何标签`,
                         );
                     }
                 }
@@ -653,7 +653,7 @@ export default class SkeletonConfigurator extends React.PureComponent<Props, Sta
                     const node2 = svg.querySelector(`[data-node-to="${dataNodeTo}"]`);
                     if (!node1 || !node2) {
                         throw new Error(
-                            `Edge's nodeFrom ${dataNodeFrom} or nodeTo ${dataNodeTo} do not to refer to any node`,
+                            `边的 nodeFrom ${dataNodeFrom} 或 nodeTo ${dataNodeTo} 未指向任何节点`,
                         );
                     }
                 }
@@ -666,8 +666,8 @@ export default class SkeletonConfigurator extends React.PureComponent<Props, Sta
 
         if (elements !== sublabels.length) {
             throw new Error(
-                `Skeleton configurator state is not consistent. Number of sublabels ${sublabels.length} ` +
-                `differs from number of elements ${elements}`,
+                `骨架配置器状态不一致：子标签数量 ${sublabels.length} ` +
+                `与元素数量 ${elements} 不同`,
             );
         }
 
@@ -754,7 +754,7 @@ export default class SkeletonConfigurator extends React.PureComponent<Props, Sta
                                 if (!['image/jpeg', 'image/png'].includes(file.type)) {
                                     notification.error({
                                         message:
-                                            `File must be a JPEG or PNG image. Detected mime type is "${file.type}"`,
+                                            `文件必须是 JPEG 或 PNG 图像。检测到的 MIME 类型为“${file.type}”`,
                                     });
                                 }
                                 this.setState({ image: file }, () => {

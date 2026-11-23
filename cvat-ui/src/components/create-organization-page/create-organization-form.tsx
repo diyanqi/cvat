@@ -58,7 +58,7 @@ function CreateOrganizationForm(): JSX.Element {
                 label={tt("Short name")}
                 rules={[
                     { required: true, message: tt("Short name is a required field") },
-                    { max: MAX_SLUG_LEN, message: `Short name must not exceed ${MAX_SLUG_LEN} characters` },
+                    { max: MAX_SLUG_LEN, message: `简称不得超过 ${MAX_SLUG_LEN} 个字符` },
                     { ...validationPatterns.validateOrganizationSlug },
                 ]}
             >
@@ -68,7 +68,7 @@ function CreateOrganizationForm(): JSX.Element {
                 hasFeedback
                 name='name'
                 label={tt("Full name")}
-                rules={[{ max: MAX_NAME_LEN, message: `Full name must not exceed ${MAX_NAME_LEN} characters` }]}
+                rules={[{ max: MAX_NAME_LEN, message: `全称不得超过 ${MAX_NAME_LEN} 个字符` }]}
             >
                 <Input />
             </Form.Item>

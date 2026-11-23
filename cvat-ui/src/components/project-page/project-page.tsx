@@ -117,7 +117,7 @@ export default function ProjectPageComponent(): JSX.Element {
         } else {
             notification.error({
                 message: tt("Could not receive the requested project from the server"),
-                description: `Requested project id "${id}" is not valid`,
+                description: `请求的项目 id“${id}”无效`,
             });
             setFetchingProject(false);
         }

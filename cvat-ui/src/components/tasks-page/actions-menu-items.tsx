@@ -98,7 +98,7 @@ export default function TaskActionsItems(menuItemsData: MenuItemsData, taskMenuP
     menuItems.push([{
         key: 'edit_assignee',
         onClick: () => startEditField('assignee'),
-        label: <CVATMenuEditLabel>{withCount('Assignee', 'edit_assignee')}</CVATMenuEditLabel>,
+        label: <CVATMenuEditLabel>{withCount(tt('Assignee'), 'edit_assignee')}</CVATMenuEditLabel>,
         disabled: isDisabled('edit_assignee'),
     }, 50]);
 
@@ -143,7 +143,7 @@ export default function TaskActionsItems(menuItemsData: MenuItemsData, taskMenuP
             onClick: () => startEditField('organization'),
             label: (
                 <CVATMenuEditLabel>
-                    {withCount('Organization', 'edit_organization')}
+                    {withCount(tt('Organization'), 'edit_organization')}
                 </CVATMenuEditLabel>
             ),
         }, 100]);
@@ -152,7 +152,7 @@ export default function TaskActionsItems(menuItemsData: MenuItemsData, taskMenuP
     menuItems.push([{
         key: 'delete_task',
         onClick: onDeleteTask,
-        label: withCount('Delete', 'delete_task'),
+        label: withCount(tt('Delete'), 'delete_task'),
         disabled: isDisabled('delete_task'),
     }, 110]);
 

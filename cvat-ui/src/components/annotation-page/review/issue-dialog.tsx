@@ -100,7 +100,7 @@ export default function IssueDialog(props: Props): JSX.Element {
     const onDeleteIssue = useCallback((): void => {
         const issueNumber = typeof id === 'number' ? ` #${id}` : '';
         Modal.confirm({
-            title: `The issue${issueNumber} will be deleted.`,
+            title: `问题 ${issueNumber} 将被删除。`,
             className: 'cvat-modal-confirm-remove-issue',
             onOk: () => {
                 collapse();
@@ -123,10 +123,10 @@ export default function IssueDialog(props: Props): JSX.Element {
                 <Comment
                     avatar={null}
                     key={_comment.id}
-                    author={<Text strong>{_comment.owner ? _comment.owner.username : 'Unknown'}</Text>}
+                    author={<Text strong>{_comment.owner ? _comment.owner.username : '未知'}</Text>}
                     content={<p>{_comment.message}</p>}
                     datetime={(
-                        <CVATTooltip title={created.format('MMMM Do YYYY')}>
+                        <CVATTooltip title={created.format('YYYY年M月D日')}>
                             <span>{diff}</span>
                         </CVATTooltip>
                     )}
@@ -155,7 +155,7 @@ export default function IssueDialog(props: Props): JSX.Element {
         >
             <Row className='cvat-issue-dialog-header' justify='space-between'>
                 <Col>
-                    <Text strong>{typeof id === 'number' ? `Issue #${id}` : 'Issue'}</Text>
+                    <Text strong>{typeof id === 'number' ? `问题 #${id}` : '问题'}</Text>
                 </Col>
                 <Col>
                     <CVATTooltip title={tt("Collapse the chat")}>

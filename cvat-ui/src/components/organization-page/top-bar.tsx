@@ -171,7 +171,7 @@ function OrganizationTopBar(props: Readonly<Props>): JSX.Element {
                         <Row justify='space-between'>
                             <Col>
                                 <Text>
-                                    <Text className='cvat-title'>{`Organization: ${slug} `}</Text>
+                                    <Text className='cvat-title'>{`组织：${slug} `}</Text>
                                 </Text>
                             </Col>
                             <Col>
@@ -313,8 +313,8 @@ function OrganizationTopBar(props: Readonly<Props>): JSX.Element {
                                 {contact.location}
                             </Text>
                         </div>
-                        <Text type='secondary'>{`Created ${dayjs(createdDate).format('MMMM Do YYYY')}`}</Text>
-                        <Text type='secondary'>{`Updated ${dayjs(updatedDate).fromNow()}`}</Text>
+                        <Text type='secondary'>{`创建于 ${dayjs(createdDate).format('YYYY年M月D日')}`}</Text>
+                        <Text type='secondary'>{`更新于 ${dayjs(updatedDate).fromNow()}`}</Text>
                     </div>
                 </Col>
                 <Col span={12} className='cvat-organization-top-bar-buttons-block'>

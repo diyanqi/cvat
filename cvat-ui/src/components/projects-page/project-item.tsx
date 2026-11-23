@@ -110,7 +110,7 @@ export default function ProjectItemComponent(props: Props): JSX.Element {
                                     <br />
                                 </>
                             )}
-                            <Text type='secondary'>{`Last updated ${updated}`}</Text>
+                            <Text type='secondary'>{`最后更新于 ${updated}`}</Text>
                         </div>
                         <div>
                             <Button

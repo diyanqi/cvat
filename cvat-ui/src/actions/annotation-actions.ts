@@ -569,7 +569,7 @@ export function propagateObjectAsync(from: number, to: number): ThunkAction {
             }
 
             if (!sessionInstance) {
-                throw new Error('SessionInstance is not defined, propagation is not possible');
+                throw new Error('SessionInstance 未定义，无法进行传播');
             }
 
             const states = cvat.utils.propagateShapes<ObjectState>([objectState], from, to, frameNumbers);
@@ -1113,7 +1113,7 @@ export function changeFrameAsync(
 
         try {
             if (toFrame < job.startFrame || toFrame > job.stopFrame) {
-                throw Error(`Required frame ${toFrame} is out of the current job`);
+                throw Error(`所需帧 ${toFrame} 超出当前作业范围`);
             }
 
             if (toFrame === frame && !forceUpdate) {
@@ -2112,7 +2112,7 @@ export function repeatDrawShapeAsync(): ThunkAction {
 
         const [activeLabel] = labels.filter((label: any) => label.id === activeLabelID);
         if (!activeLabel) {
-            throw new Error(`Label with ID ${activeLabelID}, was not found`);
+            throw new Error(`未找到 ID 为 ${activeLabelID} 的标签`);
         }
 
         if (activeObjectType === ObjectType.TAG) {

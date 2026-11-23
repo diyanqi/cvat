@@ -105,7 +105,7 @@ export default function IssuesListComponent(): JSX.Element {
             <div className='cvat-objects-sidebar-issues-list-header'>
                 <Row justify='space-between' align='middle'>
                     <Col span={24}>
-                        <Text>{`Items: ${frameIssues.length}`}</Text>
+                        <Text>{`条目：${frameIssues.length}`}</Text>
                     </Col>
                     <Col span={24}>
                         <Row className='cvat-objects-sidebar-issues-toolbar' justify='space-around' align='middle'>
@@ -214,7 +214,7 @@ export default function IssuesListComponent(): JSX.Element {
                                     </Col>
                                     <Col offset={1}>
                                         <Text type='secondary'>
-                                            {`created ${dayjs(frameIssue.createdDate).fromNow()}`}
+                                            {`创建于 ${dayjs(frameIssue.createdDate).fromNow()}`}
                                         </Text>
                                     </Col>
                                 </Row>
@@ -271,7 +271,7 @@ export default function IssuesListComponent(): JSX.Element {
                             <Row>
                                 <Text strong>
                                     {`#${frameConflict.id} • ${frameConflict.severity === ConflictSeverity.WARNING ?
-                                        'Warning' : 'Conflict'}`}
+                                        '警告' : '冲突'}`}
                                 </Text>
                             </Row>
                             <Row>

@@ -59,7 +59,7 @@ export class OpenCVWrapper {
             response = await fetch(config.OPENCV_PATH);
 
             if (!response.ok) {
-                throw new Error(`Could not fetch data from the server: ${response.status} ${response.statusText}`);
+                throw new Error(`无法从服务器获取数据：${response.status} ${response.statusText}`);
             }
         }
 
@@ -133,7 +133,7 @@ export class OpenCVWrapper {
                 OpenCVConstructor();
             } catch (error: unknown) {
                 delete (window as any).Module;
-                reject(new Error(`Initialization error: ${error instanceof Error ? error.message : 'unknown'}`));
+                reject(new Error(`初始化错误：${error instanceof Error ? error.message : '未知'}`));
             }
         });
 
@@ -204,13 +204,13 @@ export class OpenCVWrapper {
                         [val[0] + left, val[1] + top]
                     )));
                 }
-                throw new Error('Empty contour received from state');
+                throw new Error('从状态中收到空轮廓');
             } finally {
                 src.delete();
             }
         }
 
-        throw new Error(`Not implemented getContour for ${state.shapeType}`);
+        throw new Error(`未实现 ${state.shapeType} 的轮廓提取`);
     };
 
     public getContoursFromState = async (

@@ -125,7 +125,7 @@ function ApiTokenForm({
                         onClick={handleSubmit}
                         loading={submitting}
                     >
-                        {isEditing ? 'Update' : 'Save'}
+                        {isEditing ? '更新' : '保存'}
                     </Button>
                 </Col>
             </Row>

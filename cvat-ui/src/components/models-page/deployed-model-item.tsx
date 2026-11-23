@@ -58,7 +58,7 @@ function DeployedModelItem(props: Readonly<Props>): JSX.Element {
 
     const created = dayjs(model.createdDate).fromNow();
     const modelDescription = !systemModel ?
-        <Text type='secondary'>{`Added ${created}`}</Text> :
+        <Text type='secondary'>{`添加于 ${created}`}</Text> :
         <Text type='secondary'>{tt("System model")}</Text>;
 
     const topBarItems: [JSX.Element, number][] = [];
@@ -112,7 +112,7 @@ function DeployedModelItem(props: Readonly<Props>): JSX.Element {
                         <Row onClick={onOpenModel} className='cvat-models-item-text-description'>
                             {model.owner && (
                                 <>
-                                    <Text type='secondary'>{`Created by ${model.owner}`}</Text>
+                                    <Text type='secondary'>{`由 ${model.owner} 创建`}</Text>
                                     <br />
                                 </>
                             )}

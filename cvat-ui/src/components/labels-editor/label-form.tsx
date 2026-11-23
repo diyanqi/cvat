@@ -246,7 +246,7 @@ export default class LabelForm extends React.Component<Props> {
 
             for (const value of values) {
                 if (!patterns.validateAttributeValue.pattern.test(value)) {
-                    return Promise.reject(new Error(`Invalid attribute value: "${value}"`));
+                    return Promise.reject(new Error(`无效的属性值：“${value}”`));
                 }
             }
 
@@ -413,7 +413,7 @@ export default class LabelForm extends React.Component<Props> {
                                 Modal.confirm({
                                     className: 'cvat-modal-delete-label-attribute',
                                     icon: <ExclamationCircleOutlined />,
-                                    title: `Do you want to remove the "${attr.name}" attribute?`,
+                                    title: `确定要移除属性“${attr.name}”吗？`,
                                     content: tt("This action cannot be undone.") +
                                         tt("Corresponding attribute annotation values will be removed."),
                                     type: 'warning',
@@ -566,7 +566,7 @@ export default class LabelForm extends React.Component<Props> {
     private renderSaveButton(): JSX.Element {
         const { label } = this.props;
         const tooltipTitle = label ? tt("Save the label and return") : tt("Save the label and create one more");
-        const buttonText = label ? 'Done' : 'Continue';
+        const buttonText = label ? '完成' : '继续';
 
         return (
             <CVATTooltip title={tooltipTitle}>

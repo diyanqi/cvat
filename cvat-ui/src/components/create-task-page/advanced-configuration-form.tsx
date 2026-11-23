@@ -395,7 +395,7 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
                 hasFeedback
                 name='bugTracker'
                 label={tt("Issue tracker")}
-                extra='Attach issue tracker where the task is described'
+                extra='填写描述该任务的缺陷跟踪系统地址'
                 rules={[{ validator: validateURL }]}
             >
                 <Input size='large' />
@@ -500,8 +500,8 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
             <SourceStorageField
                 instanceId={projectId}
                 locationValue={sourceStorageLocation}
-                switchDescription='Use project source storage'
-                storageDescription='Specify source storage for import resources like annotation, backups'
+                switchDescription='使用项目的源存储'
+                storageDescription='指定用于导入标注、备份等资源的源存储'
                 useDefaultStorage={useProjectSourceStorage}
                 onChangeUseDefaultStorage={onChangeUseProjectSourceStorage}
                 onChangeLocationValue={onChangeSourceStorageLocation}
@@ -521,8 +521,8 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
             <TargetStorageField
                 instanceId={projectId}
                 locationValue={targetStorageLocation}
-                switchDescription='Use project target storage'
-                storageDescription='Specify target storage for export resources like annotation, backups                '
+                switchDescription='使用项目的目标存储'
+                storageDescription='指定用于导出标注、备份等资源的目标存储'
                 useDefaultStorage={useProjectTargetStorage}
                 onChangeUseDefaultStorage={onChangeUseProjectTargetStorage}
                 onChangeLocationValue={onChangeTargetStorageLocation}

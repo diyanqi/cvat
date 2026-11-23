@@ -76,7 +76,7 @@ function JoinControl(props: Props): JSX.Element {
                 keyMap={subKeyMap(componentShortcuts, keyMap)}
                 handlers={handlers}
             />
-            <CVATTooltip title={`Join tool ${normalizedKeyMap.SWITCH_JOIN_MODE_STANDARD_CONTROLS}`} placement='right'>
+            <CVATTooltip title={`连接工具 ${normalizedKeyMap.SWITCH_JOIN_MODE_STANDARD_CONTROLS}`} placement='right'>
                 <Icon {...dynamicIconProps} component={JoinIcon} />
             </CVATTooltip>
         </>

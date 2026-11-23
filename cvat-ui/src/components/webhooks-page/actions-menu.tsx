@@ -48,7 +48,7 @@ export default function WebhookActionsMenu(props: Readonly<WebhookActionsMenuPro
             async (webhook) => {
                 await dispatch(deleteWebhookAsync(webhook));
             },
-            (webhook, idx, total) => `Deleting webhook #${webhook.id} (${idx + 1}/${total})`,
+            (webhook, idx, total) => `正在删除 Webhook #${webhook.id}（${idx + 1}/${total}）`,
         ));
     }, [dispatch, webhookInstance]);
 
@@ -61,10 +61,10 @@ export default function WebhookActionsMenu(props: Readonly<WebhookActionsMenuPro
         },
         {
             key: 'delete',
-            label: isBulk ? `Delete (${selectedIds.length})` : 'Delete',
+            label: isBulk ? `${tt('Delete')} (${selectedIds.length})` : tt('Delete'),
             onClick: isBulk ? () => {
                 Modal.confirm({
-                    title: `Are you sure you want to remove ${selectedIds.length} webhooks?`,
+                    title: `确定要移除 ${selectedIds.length} 个 Webhook 吗？`,
                     content: tt("They will stop notifying the specified URLs about listed events"),
                     className: 'cvat-modal-confirm-remove-webhook',
                     onOk: () => onDelete(),

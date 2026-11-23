@@ -2951,13 +2951,13 @@ export class CanvasViewImpl implements CanvasView, Listener {
                 this.mode = Mode.JOIN;
 
                 this.onMessage([
-                    '### Join shapes',
+                    '### 合并形状',
                     '',
-                    'Select masks or polygons of the same label to join them.',
+                    '选择同一标签的掩码或多边形进行合并。',
                     '',
-                    '**Actions**',
-                    '- Click a shape to select it.',
-                    '- Click a selected shape again to remove it from the selection.',
+                    '**操作**',
+                    '- 单击形状将其选中。',
+                    '- 再次单击已选形状可将其取消选择。',
                 ].join('\n'), 'join');
 
                 this.groupHandler.group(data, {

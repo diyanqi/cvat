@@ -66,9 +66,9 @@ function JobCardComponent(props: Readonly<Props>): JSX.Element {
     if (job.type === JobType.GROUND_TRUTH) {
         tag = tt("Ground truth");
     } else if (job.replicasCount > 0) {
-        tag = 'Parent';
+        tag = '父作业';
     } else if (job.parentJobId !== null) {
-        tag = 'Replica';
+        tag = '副本';
     }
 
     const cardClassName = `cvat-job-page-list-item${selected ? ' cvat-item-selected' : ''}`;

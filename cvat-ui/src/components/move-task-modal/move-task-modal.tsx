@@ -186,7 +186,7 @@ function MoveTaskModal({
             okButtonProps={{ disabled: isUpdating }}
             title={(
                 <span>
-                    {`Move task ${taskInstance?.id} to project`}
+                    {`将任务 ${taskInstance?.id} 移动到项目`}
                     {/* TODO: replace placeholder */}
                     <CVATTooltip title={tt("Some moving process description here")}>
                         <QuestionCircleOutlined className='ant-typography-secondary' />

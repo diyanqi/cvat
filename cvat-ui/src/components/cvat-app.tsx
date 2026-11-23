@@ -257,7 +257,7 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
                         <Row>
                             <Col>
                                 <Text>
-                                    {`The browser you are using is ${name} ${version} based on ${engine}.` +
+                                    {`你正在使用的浏览器是 ${name} ${version}（内核：${engine}）。` +
                                         tt("CVAT was tested in the latest versions of Chrome and Firefox.") +
                                         tt("We recommend to use Chrome (or another Chromium based browser)")}
                                 </Text>
@@ -265,7 +265,7 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
                         </Row>
                         <Row>
                             <Col>
-                                <Text type='secondary'>{`The operating system is ${os}`}</Text>
+                                <Text type='secondary'>{`操作系统为 ${os}`}</Text>
                             </Col>
                         </Row>
                     </>
@@ -279,7 +279,7 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
                 className: 'cvat-modal-unsupported-features-warning',
                 content: (
                     <Text>
-                        {`${name} v${version} does not support API, which is used by CVAT. `}
+                        {`${name} v${version} 不支持 CVAT 使用的 API。 `}
                         
                         {tt("It is strongly recommended to update your browser.")}
                     </Text>

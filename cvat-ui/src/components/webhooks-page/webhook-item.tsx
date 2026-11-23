@@ -35,18 +35,18 @@ interface WebhookStatus {
 function setUpWebhookStatus(status: number): WebhookStatus {
     if (status?.toString().startsWith('2')) {
         return {
-            message: `Last delivery was successful. Response: ${status}`,
+            message: `最近一次投递成功。响应：${status}`,
             className: 'cvat-webhook-status-available',
         };
     }
     if (status?.toString().startsWith('5')) {
         return {
-            message: `Last delivery was not successful. Response: ${status}`,
+            message: `最近一次投递失败。响应：${status}`,
             className: 'cvat-webhook-status-failed',
         };
     }
     return {
-        message: status ? `Response: ${status}` : undefined,
+        message: status ? `响应：${status}` : undefined,
         className: 'cvat-webhook-status-unavailable',
     };
 }
@@ -61,7 +61,7 @@ function WebhookItem(props: Readonly<WebhookItemProps>): JSX.Element | null {
     } = webhookInstance;
 
     const updated = dayjs(updatedDate).fromNow();
-    const created = dayjs(createdDate).format('MMMM Do YYYY');
+    const created = dayjs(createdDate).format('YYYY年M月D日');
     const username = owner ? owner.username : null;
 
     const { lastStatus } = webhookInstance;
@@ -78,7 +78,7 @@ function WebhookItem(props: Readonly<WebhookItemProps>): JSX.Element | null {
         setPingFetching(true);
         webhookInstance.ping().then((deliveryInstance: any) => {
             setWebhookStatus(setUpWebhookStatus(
-                deliveryInstance.statusCode ? deliveryInstance.statusCode : 'Timeout',
+                deliveryInstance.statusCode ? deliveryInstance.statusCode : '超时',
             ));
         }).finally(() => {
             setPingFetching(false);
@@ -123,11 +123,11 @@ function WebhookItem(props: Readonly<WebhookItemProps>): JSX.Element | null {
                 </Paragraph>
                 {username && (
                     <>
-                        <Text type='secondary'>{`Created by ${username} on ${created}`}</Text>
+                        <Text type='secondary'>{`由 ${username} 创建于 ${created}`}</Text>
                         <br />
                     </>
                 )}
-                <Text type='secondary'>{`Last updated ${updated}`}</Text>
+                <Text type='secondary'>{`最后更新于 ${updated}`}</Text>
             </Col>
             <Col span={6} offset={1}>
                 <Paragraph ellipsis={{

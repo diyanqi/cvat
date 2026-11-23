@@ -405,9 +405,7 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                                 <Text>
                                     {targetObjectStates.length === 1 ?
                                         tt("Selected action will be applied to the current object") :
-                                        `Selected action will be applied to ${
-                                            targetObjectStates.length
-                                        } selected objects`}
+                                        `所选操作将应用到 ${targetObjectStates.length} 个所选对象`}
                                 </Text>
                             ) : (
                                 <div>
@@ -677,7 +675,7 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                             }
                         }}
                     >
-                        { fetching ? 'Cancel' : 'Close'}
+                        { fetching ? '取消' : '关闭'}
                     </Button>
                     <Button
                         className='cvat-action-runner-run-btn'

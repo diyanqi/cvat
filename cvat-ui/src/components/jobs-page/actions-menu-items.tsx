@@ -179,7 +179,7 @@ export default function JobActionsItems(
     menuItems.push([{
         key: MenuKeys.EDIT_ASSIGNEE,
         onClick: () => startEditField('assignee'),
-        label: <CVATMenuEditLabel>{withCount('Assignee', MenuKeys.EDIT_ASSIGNEE)}</CVATMenuEditLabel>,
+        label: <CVATMenuEditLabel>{withCount(tt('Assignee'), MenuKeys.EDIT_ASSIGNEE)}</CVATMenuEditLabel>,
         disabled: isDisabled(MenuKeys.EDIT_ASSIGNEE),
     }, 80]);
 
@@ -195,14 +195,14 @@ export default function JobActionsItems(
     menuItems.push([{
         key: MenuKeys.EDIT_STATE,
         onClick: () => startEditField('state'),
-        label: <CVATMenuEditLabel>{withCount('State', MenuKeys.EDIT_STATE)}</CVATMenuEditLabel>,
+        label: <CVATMenuEditLabel>{withCount(tt('State'), MenuKeys.EDIT_STATE)}</CVATMenuEditLabel>,
         disabled: isDisabled(MenuKeys.EDIT_STATE),
     }, 90]);
 
     menuItems.push([{
         key: MenuKeys.EDIT_STAGE,
         onClick: () => startEditField('stage'),
-        label: <CVATMenuEditLabel>{withCount('Stage', MenuKeys.EDIT_STAGE)}</CVATMenuEditLabel>,
+        label: <CVATMenuEditLabel>{withCount(tt('Stage'), MenuKeys.EDIT_STAGE)}</CVATMenuEditLabel>,
         disabled: isDisabled(MenuKeys.EDIT_STAGE),
     }, 100]);
 
@@ -217,7 +217,7 @@ export default function JobActionsItems(
         menuItems.push([{
             key: MenuKeys.DELETE,
             onClick: onDeleteJob,
-            label: withCount('Delete', MenuKeys.DELETE),
+            label: withCount(tt('Delete'), MenuKeys.DELETE),
             disabled: isDisabled(MenuKeys.DELETE),
         }, 120]);
     }

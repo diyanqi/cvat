@@ -146,7 +146,7 @@ function ImportBackupModal(): JSX.Element {
             );
 
             Notification.info({
-                message: `The ${instanceType} creating from the backup has been started`,
+                message: `已开始从备份创建${instanceType === 'project' ? '项目' : '任务'}`,
                 className: 'cvat-notification-notice-import-backup-start',
             });
             closeModal();
@@ -158,7 +158,7 @@ function ImportBackupModal(): JSX.Element {
         <Modal
             title={(
                 <Text strong>
-                    {`Create ${instanceType} from backup`}
+                    {`从备份创建${instanceType === 'project' ? '项目' : '任务'}`}
                 </Text>
             )}
             open={modalVisible}
@@ -167,7 +167,7 @@ function ImportBackupModal(): JSX.Element {
             className='cvat-modal-import-backup'
         >
             <Form
-                name={`Create ${instanceType} from backup file`}
+                name={`从备份文件创建${instanceType === 'project' ? '项目' : '任务'}`}
                 form={form}
                 onFinish={handleImport}
                 layout='vertical'
@@ -175,7 +175,7 @@ function ImportBackupModal(): JSX.Element {
             >
                 <SourceStorageField
                     instanceId={null}
-                    storageDescription='Specify source storage with backup'
+                    storageDescription='指定包含备份的源存储'
                     locationValue={selectedSourceStorage.location}
                     onChangeStorage={(value: StorageData) => setSelectedSourceStorage(new Storage(value))}
                     onChangeLocationValue={(value: StorageLocation) => {

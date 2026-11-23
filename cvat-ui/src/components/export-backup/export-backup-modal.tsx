@@ -3,6 +3,8 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
+const TYPE_LABEL: Record<string, string> = { project: '项目', task: '任务', job: '作业' };
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { shallowEqual } from 'utils/redux';
@@ -127,7 +129,7 @@ function ExportBackupModal(): JSX.Element {
     useEffect(() => {
         const loc = defaultStorageLocation ? defaultStorageLocation.split('_')[0] : 'local';
         const cloudId = defaultStorageCloudId !== undefined && defaultStorageCloudId !== null ? `№${defaultStorageCloudId}` : '';
-        setHelpMessage(`Export backup to ${loc} storage ${cloudId}`);
+        setHelpMessage(`导出备份到${loc === 'local' ? '本地' : '云端'}存储 ${cloudId}`);
     }, [defaultStorageLocation, defaultStorageCloudId]);
 
     const closeModal = (): void => {
@@ -165,7 +167,7 @@ function ExportBackupModal(): JSX.Element {
                         );
                     },
                     (inst: Exclude<ProjectOrTaskOrJob, Job>, idx: number, total: number) => (
-                        `Exporting backup for ${instanceType}#${inst.id} [${idx + 1}/${total}]`
+                        `正在导出 ${TYPE_LABEL[instanceType] ?? instanceType} #${inst.id} 的备份 [${idx + 1}/${total}]`
                     ),
                 ));
                 closeModal();
@@ -236,10 +238,10 @@ function ExportBackupModal(): JSX.Element {
             title={
                 isBulkMode ? (
                     <Text strong>
-                        {`Export ${selectedInstances.length} ${instanceType}s`}
+                        {`导出 ${selectedInstances.length} 个${TYPE_LABEL[instanceType] ?? instanceType}`}
                     </Text>
                 ) : (
-                    <Text strong>{`Export ${instanceType} #${instance?.id}`}</Text>
+                    <Text strong>{`导出${TYPE_LABEL[instanceType] ?? instanceType} #${instance?.id}`}</Text>
                 )
             }
             open={!!instance}
@@ -289,10 +291,10 @@ function ExportBackupModal(): JSX.Element {
                 )}
                 <TargetStorageField
                     instanceId={instance ? instance.id : null}
-                    switchDescription='Use default settings'
+                    switchDescription='使用默认设置'
                     switchHelpMessage={helpMessage}
                     useDefaultStorage={isBulkMode ? false : useDefaultStorage}
-                    storageDescription={`Specify target storage for export ${instanceType}`}
+                    storageDescription={`指定${TYPE_LABEL[instanceType] ?? instanceType}导出的目标存储`}
                     locationValue={storageLocation}
                     onChangeUseDefaultStorage={isBulkMode ? undefined : (value: boolean) => setUseDefaultStorage(value)}
                     onChangeLocationValue={(value: StorageLocation) => setStorageLocation(value)}

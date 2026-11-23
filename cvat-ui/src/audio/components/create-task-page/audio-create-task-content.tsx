@@ -364,7 +364,7 @@ class AudioCreateTaskContent extends React.PureComponent<Props & RouteComponentP
                             ) : advanced.targetStorage,
                         });
                     }).catch((error: Error): void => {
-                        throw new Error(`Couldn't fetch the project ${projectId} ${error.toString()}`);
+                        throw new Error(`无法获取项目 ${projectId} ${error.toString()}`);
                     });
                 }
 

@@ -153,7 +153,7 @@ class DetailsComponent extends React.PureComponent<Props, State> {
 
         const owner = taskInstance.owner ? taskInstance.owner.username : null;
         const assignee = taskInstance.assignee ? taskInstance.assignee : null;
-        const created = dayjs(taskInstance.createdDate).format('MMMM Do YYYY');
+        const created = dayjs(taskInstance.createdDate).format('YYYY年M月D日');
         const assigneeSelect = (
             <UserSelector
                 value={assignee}
@@ -172,7 +172,7 @@ class DetailsComponent extends React.PureComponent<Props, State> {
                         {owner && (
                             <div>
                                 <Text type='secondary'>
-                                    {`Task #${taskInstance.id} Created by ${owner} on ${created}`}
+                                    {`任务 #${taskInstance.id} 由 ${owner} 创建于 ${created}`}
                                 </Text>
                             </div>
                         )}

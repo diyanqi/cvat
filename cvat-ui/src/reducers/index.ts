@@ -870,10 +870,10 @@ export enum ActiveControl {
 }
 
 export enum StatesOrdering {
-    ID_DESCENT = 'ID - descent',
-    ID_ASCENT = 'ID - ascent',
+    ID_DESCENT = 'ID - 降序',
+    ID_ASCENT = 'ID - 升序',
     UPDATED = '更新时间',
-    LAYER = 'Layer',
+    LAYER = '图层',
     LABEL_NAME = '标签名称',
 }
 
@@ -1044,11 +1044,11 @@ export interface AnnotationState {
 
 export enum Workspace {
     STANDARD3D = '标准 3D',
-    STANDARD = 'Standard',
+    STANDARD = '标准',
     ATTRIBUTES = '属性标注',
     SINGLE_SHAPE = '单一形状',
     TAGS = '标签标注',
-    REVIEW = 'Review',
+    REVIEW = '审核',
     AUDIO = '音频标注',
 }
 

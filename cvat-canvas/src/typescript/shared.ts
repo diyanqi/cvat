@@ -598,8 +598,8 @@ export function validateUnionResult(result: martinez.Geometry): void {
     for (const polygon of result) {
         if (polygon.length > 1) {
             throw new Error(
-                'Cannot join these polygons: the operation would create a shape with holes, ' +
-                'which is not supported by CVAT. Please select different polygons or use the mask tool.',
+                '无法合并这些多边形：该操作会生成带孔洞的形状，' +
+                'CVAT 不支持这种结果。请选择其它多边形，或改用掩码工具。',
             );
         }
     }

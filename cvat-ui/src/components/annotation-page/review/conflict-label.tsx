@@ -54,7 +54,7 @@ export default function ConflictLabel(props: Props): ReactPortal {
                                 </div>
                             ))}
                             {conflict.requirements.length > MAX_TOOLTIP_REQUIREMENTS && (
-                                <div>{`${conflict.requirements.length - MAX_TOOLTIP_REQUIREMENTS} more in Issues`}</div>
+                                <div>{`另有 ${conflict.requirements.length - MAX_TOOLTIP_REQUIREMENTS} 个问题`}</div>
                             )}
                         </div>
                     )}

@@ -47,7 +47,7 @@ function LockAllSwitcher(props: Props): JSX.Element {
     } = props;
     return (
         <Col span={3}>
-            <CVATTooltip title={`Switch lock property for all ${switchLockAllShortcut}`}>
+            <CVATTooltip title={`切换所有对象的锁定属性 ${switchLockAllShortcut}`}>
                 {statesLocked ? <LockFilled onClick={unlockAllStates} /> : <UnlockOutlined onClick={lockAllStates} />}
             </CVATTooltip>
         </Col>
@@ -60,7 +60,7 @@ function HideAllSwitcher(props: Props): JSX.Element {
     } = props;
     return (
         <Col span={3}>
-            <CVATTooltip title={`Switch hidden property for all ${switchHiddenAllShortcut}`}>
+            <CVATTooltip title={`切换所有对象的隐藏属性 ${switchHiddenAllShortcut}`}>
                 {statesHidden ? (
                     <EyeInvisibleFilled onClick={showAllStates} />
                 ) : (
@@ -114,7 +114,7 @@ function ObjectListHeader(props: Props): JSX.Element {
         <div className='cvat-objects-sidebar-states-header'>
             <Row justify='space-between' align='middle'>
                 <Col span={24}>
-                    <Text>{`Items: ${count}`}</Text>
+                    <Text>{`条目：${count}`}</Text>
                     <StatesOrderingSelector
                         statesOrdering={statesOrdering}
                         changeStatesOrdering={changeStatesOrdering}

@@ -43,7 +43,7 @@ export default function LocalFiles(props: Props): JSX.Element {
             {files.length >= 5 && (
                 <>
                     <br />
-                    <Text className='cvat-text-color'>{`${files.length} files selected`}</Text>
+                    <Text className='cvat-text-color'>{`已选择 ${files.length} 个文件`}</Text>
                 </>
             )}
         </>

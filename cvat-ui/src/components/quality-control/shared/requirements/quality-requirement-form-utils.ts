@@ -92,8 +92,8 @@ export const SUPPORTED_SIMILARITY_METRICS: Record<
 export const SIMILARITY_METRIC_LABELS: Record<QualityRequirementSimilarityMetric, string> = {
     [QualityRequirementSimilarityMetric.IOU]: 'IoU',
     [QualityRequirementSimilarityMetric.OKS]: 'OKS',
-    [QualityRequirementSimilarityMetric.BOUNDARY_F]: 'Boundary F',
-    [QualityRequirementSimilarityMetric.EQUALITY]: 'Equality',
+    [QualityRequirementSimilarityMetric.BOUNDARY_F]: '边界 F',
+    [QualityRequirementSimilarityMetric.EQUALITY]: '相等',
 };
 export const POINT_SIZE_BASE_OPTIONS: QualityRequirementPointSizeBase[] = Object.values(
     QualityRequirementPointSizeBase,
@@ -615,7 +615,7 @@ export function getCopiedInitialValues(
 ): RequirementFormValues {
     return {
         ...getInitialValues(copiedRequirement, null, requirements),
-        name: `Copy of ${copiedRequirement.name}`,
+        name: `${copiedRequirement.name} 的副本`,
         parentRequirement: parentRequirement?.id ?? copiedRequirement.parentRequirementId ?? null,
     };
 }

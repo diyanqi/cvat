@@ -368,14 +368,14 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
             } else if (isTask()) {
                 type = 'task';
             }
-            dispatch(reducerActions.setInstanceType(`${type} #${instance.id}`));
+            dispatch(reducerActions.setInstanceType(`${type === 'project' ? '项目' : type === 'task' ? '任务' : '作业'} #${instance.id}`));
         }
     }, [instance, resource]);
 
     useEffect(() => {
         dispatch(reducerActions.setHelpMessage(
-            `Import from ${(defaultStorageLocation) ? defaultStorageLocation.split('_')[0] : 'local'} ` +
-            `storage ${(defaultStorageCloudId) ? `№${defaultStorageCloudId}` : ''}`,
+            `从${(defaultStorageLocation) ? (defaultStorageLocation.split('_')[0] === 'local' ? '本地' : '云端') : '本地'} ` +
+            `存储 ${(defaultStorageCloudId) ? `№${defaultStorageCloudId}` : ''} 导入`,
         ));
     }, [defaultStorageLocation, defaultStorageCloudId]);
 
@@ -408,8 +408,8 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
                     } else if (isAnnotation() &&
                                 !selectedLoader.format.toLowerCase().split(', ').includes(_file.name.split('.')[_file.name.split('.').length - 1])) {
                         message.error(
-                            `For ${selectedLoader.name} format only files with ` +
-                                `${selectedLoader.format.toLowerCase()} extension can be used`,
+                            `${selectedLoader.name} 格式仅支持 ` +
+                                `${selectedLoader.format.toLowerCase()} 扩展名的文件`,
                         );
                     } else {
                         dispatch(reducerActions.setFile(_file));
@@ -439,8 +439,8 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
                 const allowedExtensions = selectedLoader.format.toLowerCase().split(', ');
                 if (!allowedExtensions.includes(extension)) {
                     return Promise.reject(new Error(
-                        `For ${selectedLoader.name} format only files with ` +
-                        `${selectedLoader.format.toLowerCase()} extension can be used`,
+                        `${selectedLoader.name} 格式仅支持 ` +
+                        `${selectedLoader.format.toLowerCase()} 扩展名的文件`,
                     ));
                 }
             }
@@ -497,11 +497,11 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
                     uploadParams.convMaskToPoly,
                     uploadParams.importMode,
                 ));
-            const resToPrint = uploadParams.resource.charAt(0).toUpperCase() + uploadParams.resource.slice(1);
-            const description = `${resToPrint} import was started for ${instanceType}.` +
+            const resToPrint = uploadParams.resource === 'dataset' ? '数据集' : '标注';
+            const description = `已开始为 ${instanceType} 导入${resToPrint}。` +
             tt("You can check progress [here](/requests).");
             Notification.info({
-                message: `${resToPrint} import started`,
+                message: `${resToPrint}导入已开始`,
                 description: (
                     <CVATMarkdown history={history}>{description}</CVATMarkdown>
                 ),
@@ -512,18 +512,18 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
 
     const confirmUpload = (): void => {
         const isAppend = uploadParams.importMode === 'append';
-        const annotationEntity = isTask() ? 'task' : 'job';
+        const annotationEntity = isTask() ? '任务' : '作业';
         const title = isAppend ? tt("Append annotations?") : tt("Replace existing annotations?");
         const content = isAppend ?
-            `Uploaded annotations will be added to the existing annotations in this ${annotationEntity}. ` +
+            `上传的标注将追加到该${annotationEntity}的现有标注中。` +
                 tt("Existing annotations will not be removed.") :
-            `This will remove the current annotations in this ${annotationEntity} and ` +
-                'upload annotations from the selected file instead.';
+            `这会移除该${annotationEntity}当前的标注，并 ` +
+                '改为从所选文件上传标注。';
 
         confirm({
             title,
             content,
-            className: `cvat-modal-content-load-${instanceType.split(' ')[0]}-annotation`,
+            className: `cvat-modal-content-load-${instanceType.startsWith('项目') ? 'project' : instanceType.startsWith('任务') ? 'task' : 'job'}-annotation`,
             onOk: () => {
                 onUpload();
             },
@@ -558,7 +558,7 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
             title={(
                 <>
                     <Text strong>
-                        {`Import ${resource} to ${instanceType}`}
+                        {`将${resource === 'dataset' ? '数据集' : '标注'}导入到 ${instanceType}`}
                     </Text>
                     {
                         instance instanceof core.classes.Project && (
@@ -582,7 +582,7 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
             destroyOnClose
         >
             <Form
-                name={`Import ${resource}`}
+                name={`导入${resource === 'dataset' ? '数据集' : '标注'}`}
                 form={form}
                 initialValues={{
                     ...initialValues,
@@ -598,7 +598,7 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
                     hasFeedback
                 >
                     <Select
-                        placeholder={`Select ${resource} format`}
+                        placeholder={`选择${resource === 'dataset' ? '数据集' : '标注'}格式`}
                         className='cvat-modal-import-select'
                         virtual={false}
                         onChange={(format: string) => {

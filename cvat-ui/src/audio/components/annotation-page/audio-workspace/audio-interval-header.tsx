@@ -90,7 +90,7 @@ function AudioIntervalHeader({
         />
     );
     const sourceLabel = sourceLabelValue ? (
-        <span className='cvat-audio-interval-header-source' title={`Source: ${sourceLabelValue}`}>
+        <span className='cvat-audio-interval-header-source' title={`来源：${sourceLabelValue}`}>
             ({sourceLabelValue})
         </span>
     ) : null;

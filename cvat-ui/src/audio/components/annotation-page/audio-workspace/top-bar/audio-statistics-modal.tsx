@@ -51,7 +51,7 @@ function mapStateToProps(state: CombinedState): StateToProps {
         data,
         workspace,
         bugTracker: instance?.bugTracker ?? null,
-        assignee: instance?.assignee?.username || 'Nobody',
+        assignee: instance?.assignee?.username || '无',
         duration,
     };
 }

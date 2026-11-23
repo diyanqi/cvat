@@ -125,11 +125,11 @@ function RegionOfInterestInputComponent(props: Props): JSX.Element {
                 crosshair: true,
                 hint: {
                     markdown: [
-                        '### Region of interest',
+                        '### 感兴趣区域',
                         '',
                         tt("Outline the area where the model should run."),
                         '',
-                        '**Actions**',
+                        '**操作**',
                         tt("- Click opposite corners to draw a box."),
                         tt("- Hold the `Mouse wheel` and drag to pan."),
                     ].join('\n'),

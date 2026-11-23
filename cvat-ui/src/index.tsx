@@ -17,6 +17,8 @@ import weekOfYear from 'dayjs/plugin/weekOfYear';
 import weekYear from 'dayjs/plugin/weekYear';
 import duration from 'dayjs/plugin/duration';
 
+import './i18n';
+import LocaleProvider from 'i18n/provider';
 import { getAboutAsync } from 'actions/about-actions';
 import { authenticatedAsync } from 'actions/auth-actions';
 import { getFormatsAsync } from 'actions/formats-actions';
@@ -163,13 +165,15 @@ const ReduxAppWrapper = connect(mapStateToProps, mapDispatchToProps)(CVATApplica
 
 const root = createRoot(document.getElementById('root') as HTMLDivElement);
 root.render((
-    <Provider store={cvatStore}>
-        <BrowserRouter>
-            <PluginsEntrypoint />
-            <ReduxAppWrapper />
-        </BrowserRouter>
-        <LayoutGrid />
-    </Provider>
+    <LocaleProvider>
+        <Provider store={cvatStore}>
+            <BrowserRouter>
+                <PluginsEntrypoint />
+                <ReduxAppWrapper />
+            </BrowserRouter>
+            <LayoutGrid />
+        </Provider>
+    </LocaleProvider>
 ));
 
 window.addEventListener('unhandledrejection', (event: PromiseRejectionEvent) => {

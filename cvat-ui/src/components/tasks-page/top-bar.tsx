@@ -4,6 +4,7 @@
 // SPDX-License-Identifier: MIT
 
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 
@@ -46,6 +47,7 @@ interface VisibleTopBarProps {
 }
 
 export default function TopBarComponent(props: Readonly<VisibleTopBarProps>): JSX.Element {
+    const { t } = useTranslation();
     const dispatch = useDispatch();
     const {
         importing, query, onApplyFilter, onApplySorting, onApplySearch,
@@ -73,7 +75,7 @@ export default function TopBarComponent(props: Readonly<VisibleTopBarProps>): JS
                             }}
                             defaultValue={query.search ?? ''}
                             className='cvat-tasks-page-search-bar'
-                            placeholder='Search ...'
+                            placeholder={t('common.search')}
                         />
                         <ResourceSelectionInfo selectedCount={selectedCount} onSelectAll={onSelectAll} />
                     </div>
@@ -120,7 +122,7 @@ export default function TopBarComponent(props: Readonly<VisibleTopBarProps>): JS
                                     onClick={(): void => history.push('/tasks/create')}
                                     icon={<PlusOutlined />}
                                 >
-                                    Create a new task
+                                    {t('pages.createTask')}
                                 </Button>
                                 <Button
                                     className='cvat-create-audio-task-button'
@@ -128,7 +130,7 @@ export default function TopBarComponent(props: Readonly<VisibleTopBarProps>): JS
                                     onClick={(): void => history.push('/tasks/create?type=audio')}
                                     icon={<SoundOutlined />}
                                 >
-                                    Create a new audio task
+                                    {t('pages.createAudioTask')}
                                 </Button>
                                 <Button
                                     className='cvat-create-multi-tasks-button'

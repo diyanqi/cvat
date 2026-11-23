@@ -1,0 +1,31 @@
+{
+  "header": {
+    "projects": "Projects",
+    "tasks": "Tasks",
+    "jobs": "Jobs",
+    "cloudStorages": "Cloud Storages",
+    "requests": "Requests",
+    "models": "Models",
+    "analytics": "Analytics",
+    "language": "Language"
+  },
+  "login": {
+    "signIn": "Sign in",
+    "emailOrUsername": "Email or username",
+    "password": "Password",
+    "pleaseSpecifyPassword": "Please specify a password",
+    "next": "Next",
+    "forgotPassword": "Forgot password?",
+    "newUser": "New user?",
+    "createAccount": "Create an account"
+  },
+  "common": {
+    "search": "Search ..."
+  },
+  "pages": {
+    "createProject": "Create a new project",
+    "createTask": "Create a new task",
+    "createAudioTask": "Create a new audio task",
+    "createMultiTasks": "Create multiple tasks"
+  }
+}

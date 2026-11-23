@@ -5,6 +5,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { Row, Col } from 'antd/lib/grid';
 import Button from 'antd/lib/button';
@@ -42,6 +43,7 @@ interface Props {
 }
 
 function TopBarComponent(props: Readonly<Props>): JSX.Element {
+    const { t } = useTranslation();
     const dispatch = useDispatch();
     const {
         importing, query, onApplyFilter, onApplySorting, onApplySearch,
@@ -69,7 +71,7 @@ function TopBarComponent(props: Readonly<Props>): JSX.Element {
                             }}
                             defaultValue={query.search ?? ''}
                             className='cvat-projects-page-search-bar'
-                            placeholder='Search ...'
+                            placeholder={t('common.search')}
                         />
                         <ResourceSelectionInfo selectedCount={selectedCount} onSelectAll={onSelectAll} />
                     </div>
@@ -116,7 +118,7 @@ function TopBarComponent(props: Readonly<Props>): JSX.Element {
                                     onClick={(): void => history.push('/projects/create')}
                                     icon={<PlusOutlined />}
                                 >
-                                    Create a new project
+                                    {t('pages.createProject')}
                                 </Button>
                                 <Button
                                     className='cvat-import-project-button'

@@ -4,6 +4,7 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
+import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { useLocation } from 'react-router';
 import { Row, Col } from 'antd/lib/grid';
@@ -17,6 +18,7 @@ interface Props {
 }
 
 export default function CreateTaskPage(props: Props): JSX.Element {
+    const { t } = useTranslation();
     const { onCreate } = props;
 
     const location = useLocation();
@@ -33,7 +35,7 @@ export default function CreateTaskPage(props: Props): JSX.Element {
     return (
         <Row justify='center' align='top' className='cvat-create-work-form-wrapper'>
             <Col md={20} lg={16} xl={14} xxl={9}>
-                <Text className='cvat-title'>{audio ? 'Create a new audio task' : 'Create a new task'}</Text>
+                <Text className='cvat-title'>{audio ? t('pages.createAudioTask') : t('pages.createTask')}</Text>
                 {audio ? (
                     <AudioCreateTaskContent
                         projectId={projectId}

@@ -29,7 +29,10 @@ import Dropdown from 'antd/lib/dropdown';
 import Modal from 'antd/lib/modal';
 import Text from 'antd/lib/typography/Text';
 
+import { useTranslation } from 'react-i18next';
+
 import config from 'config';
+import LanguageSwitcher from 'i18n/language-switcher';
 
 import { Organization } from 'cvat-core-wrapper';
 import CVATTooltip from 'components/common/cvat-tooltip';
@@ -173,6 +176,8 @@ function HeaderComponent(props: Props): JSX.Element {
         fetchOrganizations,
         openSelectOrganizationModal,
     } = props;
+
+    const { t } = useTranslation();
 
     const {
         CHANGELOG_URL, LICENSE_URL, GITHUB_URL, GUIDE_URL, DISCORD_URL,
@@ -414,7 +419,7 @@ function HeaderComponent(props: Props): JSX.Element {
                         history.push('/projects');
                     }}
                 >
-                    Projects
+                    {t('header.projects')}
                 </Button>
                 <Button
                     className={getButtonClassName('tasks')}
@@ -426,7 +431,7 @@ function HeaderComponent(props: Props): JSX.Element {
                         history.push('/tasks');
                     }}
                 >
-                    Tasks
+                    {t('header.tasks')}
                 </Button>
                 <Button
                     className={getButtonClassName('jobs')}
@@ -438,7 +443,7 @@ function HeaderComponent(props: Props): JSX.Element {
                         history.push('/jobs');
                     }}
                 >
-                    Jobs
+                    {t('header.jobs')}
                 </Button>
                 <Button
                     className={getButtonClassName('cloudstorages')}
@@ -450,7 +455,7 @@ function HeaderComponent(props: Props): JSX.Element {
                         history.push('/cloudstorages');
                     }}
                 >
-                    Cloud Storages
+                    {t('header.cloudStorages')}
                 </Button>
                 <Button
                     className={getButtonClassName('requests')}
@@ -462,7 +467,7 @@ function HeaderComponent(props: Props): JSX.Element {
                         history.push('/requests');
                     }}
                 >
-                    Requests
+                    {t('header.requests')}
                 </Button>
                 <Button
                     className={getButtonClassName('models')}
@@ -474,7 +479,7 @@ function HeaderComponent(props: Props): JSX.Element {
                         history.push('/models');
                     }}
                 >
-                    Models
+                    {t('header.models')}
                 </Button>
                 {isAnalyticsPluginActive && user.hasAnalyticsAccess ? (
                     <Button
@@ -486,11 +491,12 @@ function HeaderComponent(props: Props): JSX.Element {
                             window.open('/analytics', '_blank');
                         }}
                     >
-                        Analytics
+                        {t('header.analytics')}
                     </Button>
                 ) : null}
             </div>
             <div className='cvat-right-header'>
+                <LanguageSwitcher />
                 <CVATTooltip overlay='Click to open repository'>
                     <Button
                         icon={<GithubOutlined />}

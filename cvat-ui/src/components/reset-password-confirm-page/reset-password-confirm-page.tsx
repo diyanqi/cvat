@@ -12,6 +12,7 @@ import Layout from 'antd/lib/layout';
 import { CombinedState } from 'reducers';
 import { resetPasswordAsync } from 'actions/auth-actions';
 import ResetPasswordConfirmForm, { ResetPasswordConfirmData } from './reset-password-confirm-form';
+import { tt } from 'i18n';
 
 interface StateToProps {
     fetching: boolean;
@@ -54,7 +55,7 @@ function ResetPasswordPagePageComponent(props: ResetPasswordConfirmPageComponent
             <Content>
                 <Row justify='center' align='middle' style={{ height: '100%' }}>
                     <Col {...sizes}>
-                        <Title level={2}> Change password </Title>
+                        <Title level={2}>  {tt("Change password")} </Title>
                         <ResetPasswordConfirmForm
                             fetching={fetching}
                             onSubmit={(resetPasswordConfirmData: ResetPasswordConfirmData): void => {

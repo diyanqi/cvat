@@ -9,6 +9,7 @@ import Select from 'antd/lib/select';
 import Text from 'antd/lib/typography/Text';
 
 import { StatesOrdering } from 'reducers';
+import { tt } from 'i18n';
 
 interface StatesOrderingSelectorComponentProps {
     statesOrdering: StatesOrdering;
@@ -20,7 +21,7 @@ function StatesOrderingSelectorComponent(props: StatesOrderingSelectorComponentP
 
     return (
         <Col>
-            <Text>Sort by</Text>
+            <Text>{tt("Sort by")}</Text>
             <Select
                 size='small'
                 className='cvat-objects-sidebar-ordering-selector'

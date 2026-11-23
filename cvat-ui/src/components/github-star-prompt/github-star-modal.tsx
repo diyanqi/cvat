@@ -9,6 +9,7 @@ import Button from 'antd/lib/button';
 import Typography from 'antd/lib/typography';
 import { StarFilled } from '@ant-design/icons';
 import SVGGitHubStarPromptArrow from '../../assets/github-star-prompt-arrow.svg';
+import { tt } from 'i18n';
 
 const { Title, Paragraph } = Typography;
 
@@ -54,15 +55,19 @@ function GitHubStarModal(props: Props): JSX.Element {
                         <i />
                     </div>
                     <Title level={1} className='cvat-github-star-modal-title'>
-                        Like labeling
+                        
+                        {tt("Like labeling")}
                         <br />
-                        with <span>CVAT?</span>
+                        
+                        {tt("with")} <span>{tt("CVAT?")}</span>
                     </Title>
                     <Title level={3} className='cvat-github-star-modal-subtitle'>
-                        Help others find it too. <StarFilled />
+                        
+                        {tt("Help others find it too.")} <StarFilled />
                     </Title>
                     <Paragraph className='cvat-github-star-modal-text'>
-                        Your GitHub star helps more people discover CVAT.
+                        
+                        {tt("Your GitHub star helps more people discover CVAT.")}
                     </Paragraph>
                     <div className='cvat-github-star-modal-actions'>
                         <Button
@@ -75,14 +80,16 @@ function GitHubStarModal(props: Props): JSX.Element {
                                 onClose();
                             }}
                         >
-                            Star CVAT on GitHub
+                            
+                            {tt("Star CVAT on GitHub")}
                         </Button>
                         <Button
                             type='link'
                             className='cvat-github-star-prompt-not-now-button'
                             onClick={onClose}
                         >
-                            Maybe later
+                            
+                            {tt("Maybe later")}
                         </Button>
                     </div>
                     <div className='cvat-github-star-modal-arrow' aria-hidden='true'>

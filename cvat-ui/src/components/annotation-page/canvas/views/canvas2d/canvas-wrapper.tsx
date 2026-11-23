@@ -81,6 +81,7 @@ import {
 } from 'utils/multi-selection';
 import ImageSetupsContent from './image-setups-content';
 import CanvasTipsComponent from './canvas-hints';
+import { tt } from 'i18n';
 
 const cvat = getCore();
 const MAX_DISTANCE_TO_OPEN_SHAPE = 50;
@@ -1195,7 +1196,7 @@ class CanvasWrapperComponent extends React.PureComponent<Props> {
                                 } catch (error: any) {
                                     notification.error({
                                         description: error.toString(),
-                                        message: 'Image processing error occurred',
+                                        message: tt("Image processing error occurred"),
                                         className: 'cvat-notification-notice-image-processing-error',
                                     });
                                 }

@@ -19,6 +19,7 @@ import { shallowEqual } from 'utils/redux';
 import Input from 'antd/lib/input/Input';
 
 import { Storage, StorageData, StorageLocation } from 'cvat-core-wrapper';
+import { tt } from 'i18n';
 
 type FormValues = {
     fileName?: string | undefined;
@@ -72,7 +73,7 @@ function ImportBackupModal(): JSX.Element {
                 fileList={file ? [file] : ([] as any[])}
                 beforeUpload={(_file: RcFile): boolean => {
                     if (!['application/zip', 'application/x-zip-compressed'].includes(_file.type)) {
-                        message.error('Only ZIP archive is supported');
+                        message.error(tt("Only ZIP archive is supported"));
                     } else {
                         setFile(_file);
                     }
@@ -85,7 +86,7 @@ function ImportBackupModal(): JSX.Element {
                 <p className='ant-upload-drag-icon'>
                     <InboxOutlined />
                 </p>
-                <p className='ant-upload-text'>Click or drag file to this area</p>
+                <p className='ant-upload-text'>{tt("Click or drag file to this area")}</p>
             </Upload.Dragger>
         </Form.Item>
     );
@@ -103,12 +104,12 @@ function ImportBackupModal(): JSX.Element {
 
     const renderCustomName = (): JSX.Element => (
         <Form.Item
-            label={<Text strong>File name</Text>}
+            label={<Text strong>{tt("File name")}</Text>}
             name='fileName'
             rules={[{ validator: validateFileName }, { required: true, message: 'Please, specify a name' }]}
         >
             <Input
-                placeholder='Backup file name'
+                placeholder={tt("Backup file name")}
                 className='cvat-modal-import-filename-input'
             />
         </Form.Item>

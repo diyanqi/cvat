@@ -31,6 +31,7 @@ import OrganizationSelector from 'components/selectors/organization-selector';
 import { confirmTransferModal } from 'utils/modals';
 import { makeBulkOperationAsync } from 'actions/bulk-actions';
 import TaskActionsItems from './actions-menu-items';
+import { tt } from 'i18n';
 
 interface Props {
     taskInstance: Task;
@@ -86,8 +87,8 @@ function TaskActionsComponent(props: Readonly<Props>): JSX.Element {
 
     const onMergeConsensusJobs = useCallback(() => {
         Modal.confirm({
-            title: 'The replica jobs will be merged',
-            content: 'Existing annotations in parent jobs will be updated. Continue?',
+            title: tt("The replica jobs will be merged"),
+            content: tt("Existing annotations in parent jobs will be updated. Continue?"),
             className: 'cvat-modal-confirm-consensus-merge-task',
             onOk: () => {
                 dispatch(mergeConsensusJobsAsync(taskInstance));
@@ -96,7 +97,7 @@ function TaskActionsComponent(props: Readonly<Props>): JSX.Element {
                 type: 'primary',
                 danger: true,
             },
-            okText: 'Merge',
+            okText: tt("Merge"),
         });
     }, [taskInstance]);
 

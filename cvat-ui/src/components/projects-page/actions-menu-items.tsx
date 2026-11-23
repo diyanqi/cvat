@@ -8,6 +8,7 @@ import { MenuProps } from 'antd/lib/menu';
 import { usePlugins } from 'utils/hooks';
 import { CVATMenuEditLabel } from 'components/common/cvat-menu-edit-label';
 import { LabelWithCountHOF } from 'components/common/label-with-count';
+import { tt } from 'i18n';
 
 interface MenuItemsData {
     projectId: number;
@@ -76,19 +77,19 @@ export default function ProjectActionsItems(
 
     menuItems.push([{
         key: 'view-analytics',
-        label: <Link to={`/projects/${projectId}/analytics`}>View analytics</Link>,
+        label: <Link to={`/projects/${projectId}/analytics`}>{tt("View analytics")}</Link>,
         disabled: isDisabled('view-analytics'),
     }, 40]);
 
     menuItems.push([{
         key: 'quality-control',
-        label: <Link to={`/projects/${projectId}/quality-control`}>Quality control</Link>,
+        label: <Link to={`/projects/${projectId}/quality-control`}>{tt("Quality control")}</Link>,
         disabled: isDisabled('quality-control') || isQualityControlDisabled,
     }, 50]);
 
     menuItems.push([{
         key: 'set-webhooks',
-        label: <Link to={`/projects/${projectId}/webhooks`}>Setup webhooks</Link>,
+        label: <Link to={`/projects/${projectId}/webhooks`}>{tt("Setup webhooks")}</Link>,
         disabled: isDisabled('set-webhooks'),
     }, 60]);
 
@@ -99,7 +100,7 @@ export default function ProjectActionsItems(
     menuItems.push([{
         key: 'edit_organization',
         onClick: () => startEditField('organization'),
-        label: <CVATMenuEditLabel>Organization</CVATMenuEditLabel>,
+        label: <CVATMenuEditLabel>{tt("Organization")}</CVATMenuEditLabel>,
     }, 70]);
 
     menuItems.push([{

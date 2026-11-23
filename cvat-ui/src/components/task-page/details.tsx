@@ -25,6 +25,7 @@ import BugTrackerEditor from './bug-tracker-editor';
 import CloudStorageEditor from './cloud-storage-editor';
 import LabelsEditorComponent from '../labels-editor/labels-editor';
 import ProjectSubsetField from '../create-task-page/project-subset-field';
+import { tt } from 'i18n';
 
 interface OwnProps {
     task: Task;
@@ -177,7 +178,7 @@ class DetailsComponent extends React.PureComponent<Props, State> {
                         )}
                     </Col>
                     <Col>
-                        <Text type='secondary'>Assigned to</Text>
+                        <Text type='secondary'>{tt("Assigned to")}</Text>
                         {assigneeSelect}
                     </Col>
                 </Row>
@@ -219,7 +220,7 @@ class DetailsComponent extends React.PureComponent<Props, State> {
         return (
             <Row>
                 <Col span={24}>
-                    <Text className='cvat-text-color'>Subset:</Text>
+                    <Text className='cvat-text-color'>{tt("Subset:")}</Text>
                 </Col>
                 <Col span={24}>
                     <ProjectSubsetField

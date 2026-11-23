@@ -11,6 +11,7 @@ import { DownloadOutlined } from '@ant-design/icons';
 
 import { Project, Task, Job } from 'cvat-core-wrapper';
 import ResourceLink from 'components/common/resource-link';
+import { tt } from 'i18n';
 
 interface Props {
     onExportEvents(): void;
@@ -60,7 +61,8 @@ function AnaylyticsPageHeader(props: Props): JSX.Element {
                     icon={<DownloadOutlined />}
                     onClick={onExportEvents}
                 >
-                    Export events
+                    
+                    {tt("Export events")}
                 </Button>
             </Col>
         </Row>

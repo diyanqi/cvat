@@ -16,6 +16,7 @@ import Paragraph from 'antd/lib/typography/Paragraph';
 import { SerializedLabel, SerializedAttribute } from 'cvat-core-wrapper';
 import CVATTooltip from 'components/common/cvat-tooltip';
 import { validateParsedLabel, idGenerator, LabelOptColor } from './common';
+import { tt } from 'i18n';
 
 function replaceTrailingCommas(value: string): string {
     return value.replace(/,{1}[\s]*}/g, '}');
@@ -183,13 +184,14 @@ export default class RawViewer extends React.PureComponent<Props> {
 
         if (deletedLabels.length || deletedAttributes.length) {
             Modal.confirm({
-                title: 'You are going to remove existing labels/attributes',
+                title: tt("You are going to remove existing labels/attributes"),
                 className: 'cvat-modal-confirm-remove-existing-labels',
                 content: (
                     <>
                         {deletedLabels.length ? (
                             <Paragraph>
-                                Following labels are going to be removed:
+                                
+                                {tt("Following labels are going to be removed:")}
                                 <div className='cvat-modal-confirm-content-remove-existing-labels'>
                                     {deletedLabels
                                         .map((_label: LabelOptColor): JSX.Element => (
@@ -201,7 +203,8 @@ export default class RawViewer extends React.PureComponent<Props> {
                         ) : null}
                         {deletedAttributes.length ? (
                             <Paragraph>
-                                Following attributes are going to be removed:
+                                
+                                {tt("Following attributes are going to be removed:")}
                                 <div className='cvat-modal-confirm-content-remove-existing-attributes'>
                                     {deletedAttributes.map(({ attribute, labelPath }: AttributeWithLabelPath) => (
                                         <Tag key={attribute.id as number}>{`${labelPath}: ${attribute.name}`}</Tag>
@@ -209,10 +212,10 @@ export default class RawViewer extends React.PureComponent<Props> {
                                 </div>
                             </Paragraph>
                         ) : null}
-                        <Paragraph type='danger'>All related annotations will be destroyed. Continue?</Paragraph>
+                        <Paragraph type='danger'>{tt("All related annotations will be destroyed. Continue?")}</Paragraph>
                     </>
                 ),
-                okText: 'Delete existing data',
+                okText: tt("Delete existing data"),
                 okButtonProps: {
                     danger: true,
                 },
@@ -268,7 +271,7 @@ export default class RawViewer extends React.PureComponent<Props> {
                         return (
                             <Row justify='start' align='middle'>
                                 <Col>
-                                    <CVATTooltip title='Save labels'>
+                                    <CVATTooltip title={tt("Save labels")}>
                                         <Button
                                             className='cvat-submit-raw-labels-conf-button'
                                             style={{ width: '150px' }}
@@ -277,12 +280,13 @@ export default class RawViewer extends React.PureComponent<Props> {
                                             loading={submitting}
                                             disabled={!hasChanges || hasErrors || submitting}
                                         >
-                                            Save
+                                            
+                                            {tt("Save")}
                                         </Button>
                                     </CVATTooltip>
                                 </Col>
                                 <Col offset={1}>
-                                    <CVATTooltip title='Reset all changes'>
+                                    <CVATTooltip title={tt("Reset all changes")}>
                                         <Button
                                             className='cvat-reset-raw-labels-conf-button'
                                             type='primary'
@@ -295,7 +299,8 @@ export default class RawViewer extends React.PureComponent<Props> {
                                                 }
                                             }}
                                         >
-                                            Cancel
+                                            
+                                            {tt("Cancel")}
                                         </Button>
                                     </CVATTooltip>
                                 </Col>

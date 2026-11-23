@@ -35,6 +35,7 @@ import { ShortcutScope } from 'utils/enums';
 import { registerComponentShortcuts } from 'actions/shortcuts-actions';
 import { subKeyMap } from 'utils/component-subkeymap';
 import ShortcutsSelect from './shortcuts-select';
+import { tt } from 'i18n';
 
 const cvat = getCore();
 
@@ -256,11 +257,11 @@ function TagAnnotationSidebar(props: StateToProps & DispatchToProps): JSX.Elemen
                     setSidebarCollapsed(!sidebarCollapsed);
                 }}
             >
-                {sidebarCollapsed ? <MenuFoldOutlined title='Show' /> : <MenuUnfoldOutlined title='Hide' />}
+                {sidebarCollapsed ? <MenuFoldOutlined title={tt("Show")} /> : <MenuUnfoldOutlined title={tt("Hide")} />}
             </span>
             <Row justify='center' className='cvat-tag-annotation-sidebar-empty'>
                 <Col>
-                    <Text strong>Can&apos;t place tag on this frame.</Text>
+                    <Text strong>{tt("Can&apos;t place tag on this frame.")}</Text>
                 </Col>
             </Row>
         </Layout.Sider>
@@ -275,11 +276,11 @@ function TagAnnotationSidebar(props: StateToProps & DispatchToProps): JSX.Elemen
                         setSidebarCollapsed(!sidebarCollapsed);
                     }}
                 >
-                    {sidebarCollapsed ? <MenuFoldOutlined title='Show' /> : <MenuUnfoldOutlined title='Hide' />}
+                    {sidebarCollapsed ? <MenuFoldOutlined title={tt("Show")} /> : <MenuUnfoldOutlined title={tt("Hide")} />}
                 </span>
                 <Row justify='start' className='cvat-tag-annotation-sidebar-tag-label'>
                     <Col>
-                        <Text strong>Tag label:</Text>
+                        <Text strong>{tt("Tag label:")}</Text>
                     </Col>
                 </Row>
                 <Row justify='start' className='cvat-tag-annotation-sidebar-label-select'>
@@ -306,7 +307,8 @@ function TagAnnotationSidebar(props: StateToProps & DispatchToProps): JSX.Elemen
                                 setSkipFrame(event.target.checked);
                             }}
                         >
-                            Automatically go to the next frame
+                            
+                            {tt("Automatically go to the next frame")}
                         </Checkbox>
                     </Col>
                 </Row>
@@ -318,8 +320,8 @@ function TagAnnotationSidebar(props: StateToProps & DispatchToProps): JSX.Elemen
                 <Row justify='center' className='cvat-tag-annotation-sidebar-shortcut-help'>
                     <Col>
                         <Text>
-                            Use configured shortcuts to add a new tag.
-                            If a tag with such label is already exists on the frame, it will be removed.
+                            
+                            {tt("Use configured shortcuts to add a new tag. If a tag with such label is already exists on the frame, it will be removed.")}
                         </Text>
                     </Col>
                 </Row>

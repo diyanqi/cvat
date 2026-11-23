@@ -14,6 +14,7 @@ import JobItem from 'components/job-item/job-item';
 import { validationModeText } from 'utils/quality';
 import { usePageSizeData } from 'utils/hooks';
 import AllocationTable from './allocation-table';
+import { tt } from 'i18n';
 
 interface Props {
     task: Task;
@@ -46,19 +47,19 @@ function QualityManagementTab(props: Readonly<Props>): JSX.Element {
         <div className='cvat-quality-control-management-tab' ref={tabRef}>
             <Row className='cvat-quality-control-management-tab-summary'>
                 <Card
-                    title='Total validation frames'
+                    title={tt("Total validation frames")}
                     className='cvat-allocation-summary-total'
                     value={totalCount}
                     size={{ cardSize: 8 }}
                 />
                 <Card
-                    title='Excluded validation frames'
+                    title={tt("Excluded validation frames")}
                     className='cvat-allocation-summary-excluded'
                     value={excludedCount}
                     size={{ cardSize: 8 }}
                 />
                 <Card
-                    title='Active validation frames'
+                    title={tt("Active validation frames")}
                     className='cvat-allocation-summary-active'
                     value={activeCount}
                     size={{ cardSize: 8 }}
@@ -67,7 +68,8 @@ function QualityManagementTab(props: Readonly<Props>): JSX.Element {
             { validationModeTextRepresentation ? (
                 <Row className='cvat-quality-control-validation-mode-hint'>
                     <Text type='secondary'>
-                        The task&apos;s validation mode is configured as&nbsp;
+                        
+                        {tt("The task&apos;s validation mode is configured as&nbsp;")}
                     </Text>
                     <Text type='secondary' strong>{validationModeTextRepresentation}</Text>
                 </Row>

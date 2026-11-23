@@ -16,6 +16,7 @@ import Preview from 'components/common/preview';
 import { CombinedState } from 'reducers';
 import JobStageStateBadges from 'components/job-item/job-status-visuals';
 import JobActionsComponent from './actions-menu';
+import { tt } from 'i18n';
 
 const useCardHeight = useCardHeightHOC({
     containerClassName: 'cvat-jobs-page',
@@ -89,7 +90,8 @@ function JobCardComponent(props: Readonly<Props>): JSX.Element {
                         previewClassName='cvat-jobs-page-job-item-card-preview'
                     />
                     <div className='cvat-job-page-list-item-id'>
-                        ID:
+                        
+                        {tt("ID:")}
                         {` ${job.id}`}
                     </div>
                     {tag && <div className='cvat-job-page-list-item-type'>{tag}</div>}
@@ -104,11 +106,11 @@ function JobCardComponent(props: Readonly<Props>): JSX.Element {
             onContextMenuCapture={handleContextMenuCapture}
         >
             <Descriptions column={1} size='small'>
-                <Descriptions.Item label='Frames'>{job.stopFrame - job.startFrame + 1}</Descriptions.Item>
+                <Descriptions.Item label={tt("Frames")}>{job.stopFrame - job.startFrame + 1}</Descriptions.Item>
                 {job.assignee ? (
-                    <Descriptions.Item label='Assignee'>{job.assignee.username}</Descriptions.Item>
+                    <Descriptions.Item label={tt("Assignee")}>{job.assignee.username}</Descriptions.Item>
                 ) : (
-                    <Descriptions.Item label='Assignee'> </Descriptions.Item>
+                    <Descriptions.Item label={tt("Assignee")}> </Descriptions.Item>
                 )}
             </Descriptions>
             <div

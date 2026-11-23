@@ -31,6 +31,7 @@ import {
     formatDescription,
     RequirementFormValues,
 } from './quality-requirement-form-utils';
+import { tt } from 'i18n';
 
 const ATTRIBUTE_COMPARATORS: QualityRequirementAttributeComparator[] = Object.values(
     QualityRequirementAttributeComparator,
@@ -137,13 +138,13 @@ export default function QualityRequirementAttributeRules(props: Readonly<Props>)
 
     const renderAttributeComparisonTitle = (): JSX.Element => {
         if (!attributeComparisonOverridden) {
-            return <Text strong>Attribute comparison</Text>;
+            return <Text strong>{tt("Attribute comparison")}</Text>;
         }
 
         return (
             <Space size={4} className='cvat-quality-requirement-overridden-label'>
-                <Text strong>Attribute comparison</Text>
-                <CVATTooltip title='Revert to inherited value'>
+                <Text strong>{tt("Attribute comparison")}</Text>
+                <CVATTooltip title={tt("Revert to inherited value")}>
                     <Button
                         type='link'
                         size='small'
@@ -181,10 +182,11 @@ export default function QualityRequirementAttributeRules(props: Readonly<Props>)
                     <Space direction='vertical' size={0}>
                         <Space size={4}>
                             <Text className='cvat-quality-requirement-match-unspecified-label'>
-                                Match unspecified attributes exactly
+                                
+                                {tt("Match unspecified attributes exactly")}
                             </Text>
                             {matchUnspecifiedOverridden && (
-                                <CVATTooltip title='Revert to inherited value'>
+                                <CVATTooltip title={tt("Revert to inherited value")}>
                                     <Button
                                         type='link'
                                         size='small'
@@ -201,7 +203,8 @@ export default function QualityRequirementAttributeRules(props: Readonly<Props>)
                             )}
                         </Space>
                         <Text type='secondary'>
-                            Attributes without a custom rule will be matched using Exact comparator.
+                            
+                            {tt("Attributes without a custom rule will be matched using Exact comparator.")}
                         </Text>
                     </Space>
                 </Checkbox>
@@ -365,10 +368,12 @@ export default function QualityRequirementAttributeRules(props: Readonly<Props>)
                                             }}
                                         >
                                             <Select.Option value={QualityRequirementAttributeComparator.EXACT}>
-                                                Exact
+                                                
+                                                {tt("Exact")}
                                             </Select.Option>
                                             <Select.Option value={QualityRequirementAttributeComparator.LEVENSHTEIN}>
-                                                Levenshtein
+                                                
+                                                {tt("Levenshtein")}
                                             </Select.Option>
                                         </Select>
                                     </Form.Item>
@@ -378,12 +383,12 @@ export default function QualityRequirementAttributeRules(props: Readonly<Props>)
                                 dataIndex: 'actions',
                                 render: (_: unknown, record: AttributeRuleRow): JSX.Element => {
                                     if (parentRequirementId !== null && !record.isLocal) {
-                                        return <Text type='secondary'>Inherited</Text>;
+                                        return <Text type='secondary'>{tt("Inherited")}</Text>;
                                     }
 
                                     if (parentRequirementId !== null && record.hasInheritedCounterpart) {
                                         return (
-                                            <CVATTooltip title='Revert to inherited value'>
+                                            <CVATTooltip title={tt("Revert to inherited value")}>
                                                 <Button
                                                     type='text'
                                                     className='cvat-quality-requirements-action-button'
@@ -397,7 +402,7 @@ export default function QualityRequirementAttributeRules(props: Readonly<Props>)
                                     }
 
                                     return (
-                                        <CVATTooltip title='Delete rule'>
+                                        <CVATTooltip title={tt("Delete rule")}>
                                             <Button
                                                 type='text'
                                                 className='cvat-quality-requirements-action-button'
@@ -448,8 +453,8 @@ export default function QualityRequirementAttributeRules(props: Readonly<Props>)
                                                 name={[record.fieldName, 'threshold']}
                                                 label={(
                                                     <Space>
-                                                        <Text>Threshold</Text>
-                                                        <CVATTooltip title='Minimum normalized similarity for Levenshtein comparator. Value must be from 0 to 1.'>
+                                                        <Text>{tt("Threshold")}</Text>
+                                                        <CVATTooltip title={tt("Minimum normalized similarity for Levenshtein comparator. Value must be from 0 to 1.")}>
                                                             <QuestionCircleOutlined className='cvat-quality-settings-tooltip-icon' />
                                                         </CVATTooltip>
                                                     </Space>

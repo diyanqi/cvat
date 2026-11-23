@@ -31,6 +31,7 @@ import { inheritsProjectQualitySettings } from 'utils/quality';
 import QualityRequirementsTab from './quality-requirements-tab';
 import QualityManagementTab from './task-quality/quality-magement-tab';
 import QualitySettingsTab, { UpdateSettingsData } from './quality-settings-tab';
+import { tt } from 'i18n';
 
 const core = getCore();
 
@@ -296,7 +297,7 @@ function QualityControlPageContent({ requestedInstanceType, requestedInstanceID 
             dispatch(reducerActions.setQualitySettings(settings, childrenSettings, parentSettings));
         } catch (error: unknown) {
             notification.error({
-                message: 'Could not receive quality settings',
+                message: tt("Could not receive quality settings"),
                 description: `${error instanceof Error ? error.message : ''}`,
             });
             throw error;
@@ -352,10 +353,10 @@ function QualityControlPageContent({ requestedInstanceType, requestedInstanceID 
             dispatch(reducerActions.setQualitySettings(
                 updatedInstanceSettings, updatedChildrenSettings, parentSettings,
             ));
-            notification.info({ message: 'Settings have been updated' });
+            notification.info({ message: tt("Settings have been updated") });
         } catch (error: unknown) {
             notification.error({
-                message: 'Could not save quality settings',
+                message: tt("Could not save quality settings"),
                 description: error instanceof Error ? error.message : 'Unknown error',
             });
             throw error;
@@ -409,7 +410,7 @@ function QualityControlPageContent({ requestedInstanceType, requestedInstanceID 
             .then(() => receiveInstance(requestedInstanceType, requestedInstanceID).catch(() => undefined))
             .catch((error: unknown) => {
                 notification.error({
-                    message: 'Could not update job',
+                    message: tt("Could not update job"),
                     description: error instanceof Error ? error.message : '',
                 });
             }).finally(() => {
@@ -466,7 +467,7 @@ function QualityControlPageContent({ requestedInstanceType, requestedInstanceID 
                 <div className='cvat-quality-control-page-error'>
                     <Result
                         status='error'
-                        title='Could not open the page'
+                        title={tt("Could not open the page")}
                         subTitle={error.message}
                         extra={backNavigation}
                     />

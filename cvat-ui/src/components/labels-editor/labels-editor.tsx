@@ -16,6 +16,7 @@ import ConstructorViewer, { CreatorType } from './constructor-viewer';
 import ConstructorCreator from './constructor-creator';
 import ConstructorUpdater from './constructor-updater';
 import { idGenerator, LabelOptColor } from './common';
+import { tt } from 'i18n';
 
 enum ConstructorMode {
     SHOW = 'SHOW',
@@ -340,7 +341,7 @@ export default class LabelsEditor extends React.PureComponent<LabelsEditorProps,
                     label: (
                         <span>
                             <EditOutlined />
-                            <Text>Raw</Text>
+                            <Text>{tt("Raw")}</Text>
                         </span>
                     ),
                     children: (
@@ -356,7 +357,7 @@ export default class LabelsEditor extends React.PureComponent<LabelsEditorProps,
                     label: (
                         <span>
                             <BuildOutlined />
-                            <Text>Constructor</Text>
+                            <Text>{tt("Constructor")}</Text>
                         </span>
                     ),
                     children: configuratorContent,

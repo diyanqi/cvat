@@ -17,6 +17,7 @@ import { Store } from 'antd/lib/form/interface';
 import { reviewActions, finishIssueAsync } from 'actions/review-actions';
 import { useIsMounted } from 'utils/hooks';
 import { useDialogPositioning } from './use-dialog-positioning';
+import { tt } from 'i18n';
 
 interface FormProps {
     top: number;
@@ -77,7 +78,7 @@ function MessageForm(props: Readonly<FormProps>): JSX.Element {
                     name='issue_description'
                     rules={[{ required: true, message: 'Please, fill out the field' }]}
                 >
-                    <Input ref={inputRef} autoComplete='off' placeholder='Please, describe the issue' />
+                    <Input ref={inputRef} autoComplete='off' placeholder={tt("Please, describe the issue")} />
                 </Form.Item>
                 <Row justify='space-between'>
                     <Col>
@@ -86,7 +87,8 @@ function MessageForm(props: Readonly<FormProps>): JSX.Element {
                             disabled={fetching}
                             className='cvat-create-issue-dialog-cancel-button'
                         >
-                            Cancel
+                            
+                            {tt("Cancel")}
                         </Button>
                     </Col>
                     <Col>
@@ -97,7 +99,8 @@ function MessageForm(props: Readonly<FormProps>): JSX.Element {
                             htmlType='submit'
                             className='cvat-create-issue-dialog-submit-button'
                         >
-                            Submit
+                            
+                            {tt("Submit")}
                         </Button>
                     </Col>
                 </Row>

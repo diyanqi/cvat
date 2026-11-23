@@ -4,6 +4,7 @@
 
 import React from 'react';
 import Tag from 'antd/lib/tag';
+import { tt } from 'i18n';
 
 export enum TagType {
     GROUND_TRUTH = 'ground_truth',
@@ -20,11 +21,11 @@ function CVATTag(props: TagProps): JSX.Element | null {
 
     switch (type) {
         case TagType.GROUND_TRUTH:
-            return <Tag className='cvat-tag-ground-truth' color='#ED9C00'>Ground truth</Tag>;
+            return <Tag className='cvat-tag-ground-truth' color='#ED9C00'>{tt("Ground truth")}</Tag>;
         case TagType.PARENT:
-            return <Tag className='cvat-tag-parent' color='#1890FF'>Parent</Tag>;
+            return <Tag className='cvat-tag-parent' color='#1890FF'>{tt("Parent")}</Tag>;
         case TagType.REPLICA:
-            return <Tag className='cvat-tag-replica' color='#13c2c2'>Replica</Tag>;
+            return <Tag className='cvat-tag-replica' color='#13c2c2'>{tt("Replica")}</Tag>;
         default:
             return null;
     }

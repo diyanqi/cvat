@@ -15,6 +15,7 @@ import { EditableThresholdPoint } from './threshold-policy-editor-types';
 import ThresholdPolicyInput, {
     formatThresholdCoordinate, thresholdPercent, thresholdValueError,
 } from './threshold-policy-input';
+import { tt } from 'i18n';
 
 interface Props {
     points: EditableThresholdPoint[];
@@ -91,7 +92,7 @@ export default function ThresholdPolicyPoints(props: Readonly<Props>): JSX.Eleme
                 )}
                 renderExtraActions={() => (
                     <Input.Search className='cvat-table-search-bar'
-                        aria-label='Search key points' placeholder='Search points' value={search}
+                        aria-label='Search key points' placeholder={tt("Search points")} value={search}
                         allowClear enterButton onChange={(event) => { setSearch(event.target.value); setPage(1); }} />
                 )}
                 renderHeaderActions={() => (
@@ -124,7 +125,7 @@ export default function ThresholdPolicyPoints(props: Readonly<Props>): JSX.Eleme
                     width: 80,
                     align: 'center',
                     render: (_, point: typeof data[number]) => (
-                        <CVATTooltip title='Delete point'>
+                        <CVATTooltip title={tt("Delete point")}>
                             <Button type='text' size='small' className='cvat-quality-requirements-action-button'
                                 icon={<DeleteOutlined />} aria-label={`Delete point ${point.index + 1}`}
                                 disabled={disabled || points.length <= 2} onClick={() => onDelete(point.id)} />
@@ -133,7 +134,8 @@ export default function ThresholdPolicyPoints(props: Readonly<Props>): JSX.Eleme
                 }]}
             />
             <p className='cvat-threshold-policy-hint'>
-                Linear interpolation between 2–200 points. Outside their range, the nearest endpoint is used.
+                
+                {tt("Linear interpolation between 2–200 points. Outside their range, the nearest endpoint is used.")}
             </p>
         </>
     );

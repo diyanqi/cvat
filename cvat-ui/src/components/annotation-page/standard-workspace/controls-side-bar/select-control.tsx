@@ -9,6 +9,7 @@ import { SelectIcon } from 'icons';
 import { Canvas } from 'cvat-canvas-wrapper';
 import CVATTooltip from 'components/common/cvat-tooltip';
 import { ActiveControl } from 'reducers';
+import { tt } from 'i18n';
 
 export interface Props {
     canvasInstance: Canvas;
@@ -37,7 +38,7 @@ function SelectControl(props: Props): JSX.Element {
     return disabled ? (
         <Icon component={SelectIcon} className='cvat-select-control cvat-disabled-canvas-control' />
     ) : (
-        <CVATTooltip title='Select objects' placement='right'>
+        <CVATTooltip title={tt("Select objects")} placement='right'>
             <Icon
                 component={SelectIcon}
                 className={selecting ?

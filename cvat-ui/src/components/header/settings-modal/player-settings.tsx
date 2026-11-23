@@ -20,6 +20,7 @@ import { BackJumpIcon, ForwardJumpIcon } from 'icons';
 import { FrameSpeed } from 'reducers';
 import config from 'config';
 import { usePlugins } from 'utils/hooks';
+import { tt } from 'i18n';
 
 interface Props {
     frameStep: number;
@@ -65,7 +66,7 @@ export default function PlayerSettingsComponent(props: Props): JSX.Element {
     items.push([(
         <Row key='player-step' align='bottom' className='cvat-player-settings-step cvat-player-setting'>
             <Col>
-                <Text className='cvat-text-color'> Player step </Text>
+                <Text className='cvat-text-color'>  {tt("Player step")} </Text>
                 <InputNumber
                     min={minFrameStep}
                     max={maxFrameStep}
@@ -79,9 +80,11 @@ export default function PlayerSettingsComponent(props: Props): JSX.Element {
             </Col>
             <Col offset={1}>
                 <Text type='secondary'>
-                    Number of frames skipped when selecting
+                    
+                    {tt("Number of frames skipped when selecting")}
                     <Icon component={BackJumpIcon} />
-                    or
+                    
+                    {tt("or")}
                     <Icon component={ForwardJumpIcon} />
                 </Text>
             </Col>
@@ -91,7 +94,7 @@ export default function PlayerSettingsComponent(props: Props): JSX.Element {
     items.push([(
         <Row key='player-speed' align='middle' className='cvat-player-settings-speed cvat-player-setting'>
             <Col>
-                <Text className='cvat-text-color'> Player speed </Text>
+                <Text className='cvat-text-color'>  {tt("Player speed")} </Text>
                 <Select
                     className='cvat-player-settings-speed-select'
                     value={frameSpeed}
@@ -104,34 +107,40 @@ export default function PlayerSettingsComponent(props: Props): JSX.Element {
                         value={FrameSpeed.Fastest}
                         className='cvat-player-settings-speed-fastest'
                     >
-                        Fastest
+                        
+                        {tt("Fastest")}
                     </Select.Option>
                     <Select.Option key='fast' value={FrameSpeed.Fast} className='cvat-player-settings-speed-fast'>
-                        Fast
+                        
+                        {tt("Fast")}
                     </Select.Option>
                     <Select.Option
                         key='usual'
                         value={FrameSpeed.Usual}
                         className='cvat-player-settings-speed-usual'
                     >
-                        Usual
+                        
+                        {tt("Usual")}
                     </Select.Option>
                     <Select.Option key='slow' value={FrameSpeed.Slow} className='cvat-player-settings-speed-slow'>
-                        Slow
+                        
+                        {tt("Slow")}
                     </Select.Option>
                     <Select.Option
                         key='slower'
                         value={FrameSpeed.Slower}
                         className='cvat-player-settings-speed-slower'
                     >
-                        Slower
+                        
+                        {tt("Slower")}
                     </Select.Option>
                     <Select.Option
                         key='slowest'
                         value={FrameSpeed.Slowest}
                         className='cvat-player-settings-speed-slowest'
                     >
-                        Slowest
+                        
+                        {tt("Slowest")}
                     </Select.Option>
                 </Select>
             </Col>
@@ -156,7 +165,8 @@ export default function PlayerSettingsComponent(props: Props): JSX.Element {
                         className='cvat-select-canvas-background-color-button'
                         type='default'
                     >
-                        Select canvas background color
+                        
+                        {tt("Select canvas background color")}
                     </Button>
                 </Popover>
             </Col>
@@ -175,11 +185,12 @@ export default function PlayerSettingsComponent(props: Props): JSX.Element {
                                 onSwitchResetZoom(event.target.checked);
                             }}
                         >
-                            Reset zoom
+                            
+                            {tt("Reset zoom")}
                         </Checkbox>
                     </Col>
                     <Col span={24}>
-                        <Text type='secondary'> Fit image after changing frame </Text>
+                        <Text type='secondary'>  {tt("Fit image after changing frame")} </Text>
                     </Col>
                 </Row>
             </Col>
@@ -193,11 +204,12 @@ export default function PlayerSettingsComponent(props: Props): JSX.Element {
                                 onSwitchRotateAll(event.target.checked);
                             }}
                         >
-                            Rotate all images
+                            
+                            {tt("Rotate all images")}
                         </Checkbox>
                     </Col>
                     <Col span={24}>
-                        <Text type='secondary'> Rotate all images simultaneously </Text>
+                        <Text type='secondary'>  {tt("Rotate all images simultaneously")} </Text>
                     </Col>
                 </Row>
             </Col>
@@ -216,11 +228,12 @@ export default function PlayerSettingsComponent(props: Props): JSX.Element {
                                 onSwitchSmoothImage(event.target.checked);
                             }}
                         >
-                            Smooth image
+                            
+                            {tt("Smooth image")}
                         </Checkbox>
                     </Col>
                     <Col span={24}>
-                        <Text type='secondary'> Smooth image when zoom-in it </Text>
+                        <Text type='secondary'>  {tt("Smooth image when zoom-in it")} </Text>
                     </Col>
                 </Row>
             </Col>
@@ -233,11 +246,12 @@ export default function PlayerSettingsComponent(props: Props): JSX.Element {
                             onSwitchShowingDeletedFrames(event.target.checked);
                         }}
                     >
-                        Show deleted frames
+                        
+                        {tt("Show deleted frames")}
                     </Checkbox>
                 </Row>
                 <Row>
-                    <Text type='secondary'>You will be able to navigate and restore deleted frames</Text>
+                    <Text type='secondary'>{tt("You will be able to navigate and restore deleted frames")}</Text>
                 </Row>
             </Col>
         </Row>

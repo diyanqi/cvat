@@ -89,6 +89,7 @@ import BulkProgress from './bulk-progress';
 import ProfilePageComponent from './profile-page/profile-page';
 import ServerUnavailableComponent from './server-unavailable/server-unavailable';
 import GitHubStarModal from './github-star-prompt/github-star-modal';
+import { tt } from 'i18n';
 
 interface CVATAppProps {
     loadFormats: () => void;
@@ -248,7 +249,7 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
         if (showPlatformNotification()) {
             stopNotifications(false);
             Modal.warning({
-                title: 'Unsupported platform detected',
+                title: tt("Unsupported platform detected"),
                 className: 'cvat-modal-unsupported-platform-warning',
                 content: (
                     <>
@@ -273,12 +274,13 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
         } else if (showUnsupportedNotification()) {
             stopNotifications(false);
             Modal.warning({
-                title: 'Unsupported features detected',
+                title: tt("Unsupported features detected"),
                 className: 'cvat-modal-unsupported-features-warning',
                 content: (
                     <Text>
                         {`${name} v${version} does not support API, which is used by CVAT. `}
-                        It is strongly recommended to update your browser.
+                        
+                        {tt("It is strongly recommended to update your browser.")}
                     </Text>
                 ),
                 onOk: () => stopNotifications(true),
@@ -678,7 +680,8 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
                 <Space align='center' direction='vertical' className='cvat-spinner cvat-server-unavailable'>
                     <DisconnectOutlined className='cvat-disconnected' />
                     <Text className='cvat-server-unavailable-title' strong>
-                        Cannot connect to the server
+                        
+                        {tt("Cannot connect to the server")}
                     </Text>
                     <ServerUnavailableComponent details={healthCheckError} />
                 </Space>

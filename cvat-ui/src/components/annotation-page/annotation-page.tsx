@@ -30,6 +30,7 @@ import { readLatestFrame } from 'utils/remember-latest-frame';
 import { EventScope } from 'cvat-core/src/enums';
 import { filterApplicableForType } from 'utils/filter-applicable-labels';
 import SearchFramesModal from './top-bar/search-modal';
+import { tt } from 'i18n';
 
 interface Props {
     job: Job | null | undefined;
@@ -90,7 +91,8 @@ export default function AnnotationPageComponent(props: Props): JSX.Element {
                     message: `You finished working on frame ${latestFrame}`,
                     description: (
                         <span>
-                            Press
+                            
+                            {tt("Press")}
                             <Button
                                 className='cvat-notification-continue-job-button'
                                 type='link'
@@ -99,9 +101,11 @@ export default function AnnotationPageComponent(props: Props): JSX.Element {
                                     notification.destroy(notificationKey);
                                 }}
                             >
-                                here
+                                
+                                {tt("here")}
                             </Button>
-                            if you would like to continue
+                            
+                            {tt("if you would like to continue")}
                         </span>
                     ),
                     placement: 'topRight',
@@ -116,14 +120,15 @@ export default function AnnotationPageComponent(props: Props): JSX.Element {
                 job.labels;
             if (!applicableLabels.length) {
                 notification.warning({
-                    message: 'No labels',
+                    message: tt("No labels"),
                     description: (
                         <span>
                             {`${job.projectId ? 'Project' : 'Task'} ${
                                 job.projectId || job.taskId
                             } does not contain any compatible labels. `}
                             <a href={`/${job.projectId ? 'projects' : 'tasks'}/${job.projectId || job.taskId}/`}>
-                                Add
+                                
+                                {tt("Add")}
                             </a>
                             {' the first one for editing annotation.'}
                         </span>

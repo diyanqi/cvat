@@ -17,6 +17,7 @@ import { updateOrganizationMemberAsync } from 'actions/organization-actions';
 import { useContextMenuClick } from 'utils/hooks';
 import MemberActionsMenu from './actions-menu';
 import MemberRoleSelector from './member-role-selector';
+import { tt } from 'i18n';
 
 export interface Props {
     membershipInstance: Membership;
@@ -96,7 +97,7 @@ function MemberItem(props: Readonly<Props>): JSX.Element {
                         {invitation.owner && ` by ${invitation.owner.username}`}
                     </Text>
                 ) : null}
-                {joinedDate ? <Text type='secondary'>{`Joined ${dayjs(joinedDate).fromNow()}`}</Text> : <Text type='secondary'>Invitation pending</Text>}
+                {joinedDate ? <Text type='secondary'>{`Joined ${dayjs(joinedDate).fromNow()}`}</Text> : <Text type='secondary'>{tt("Invitation pending")}</Text>}
             </Col>
             <Col span={3} className='cvat-organization-member-item-role'>
                 <MemberRoleSelector

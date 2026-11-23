@@ -21,6 +21,7 @@ import { subKeyMap } from 'utils/component-subkeymap';
 import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
 import { finishDrawAvailable } from 'utils/drawing';
 import SaveAnnotationsButton from './save-annotations-button';
+import { tt } from 'i18n';
 
 interface Props {
     saving: boolean;
@@ -94,7 +95,7 @@ function LeftGroup(props: Props): JSX.Element {
                     closable={false}
                     footer={[]}
                 >
-                    <Text>CVAT is saving your annotations, please wait </Text>
+                    <Text>{tt("CVAT is saving your annotations, please wait")} </Text>
                     <LoadingOutlined />
                 </Modal>
             )}
@@ -109,7 +110,7 @@ function LeftGroup(props: Props): JSX.Element {
                         onClick={onUndoClick}
                     >
                         <Icon component={UndoIcon} />
-                        <span>Undo</span>
+                        <span>{tt("Undo")}</span>
                     </Button>
                 </CVATTooltip>
                 <CVATTooltip overlay={`Redo: ${redoAction} ${redoShortcut}`}>
@@ -120,14 +121,16 @@ function LeftGroup(props: Props): JSX.Element {
                         onClick={onRedoClick}
                     >
                         <Icon component={RedoIcon} />
-                        Redo
+                        
+                        {tt("Redo")}
                     </Button>
                 </CVATTooltip>
                 {includesDoneButton ? (
                     <CVATTooltip overlay={`Press "${drawShortcut}" to finish`}>
                         <Button type='link' className='cvat-annotation-header-done-button cvat-annotation-header-button' onClick={onFinishDraw}>
                             <CheckCircleOutlined />
-                            Done
+                            
+                            {tt("Done")}
                         </Button>
                     </CVATTooltip>
                 ) : null}

@@ -21,6 +21,7 @@ import patterns from 'utils/validation-patterns';
 import LabelsEditor from 'components/labels-editor/labels-editor';
 import SourceStorageField from 'components/storage/source-storage-field';
 import TargetStorageField from 'components/storage/target-storage-field';
+import { tt } from 'i18n';
 
 interface AdvancedConfiguration {
     sourceStorage: StorageData;
@@ -59,7 +60,7 @@ function NameConfigurationForm(
             <Form.Item
                 name='name'
                 hasFeedback
-                label='Name'
+                label={tt("Name")}
                 rules={[
                     {
                         required: true,
@@ -85,7 +86,7 @@ function AdvancedConfigurationForm(props: AdvancedConfigurationProps): JSX.Eleme
         <Form layout='vertical' ref={formRef} initialValues={initialValues}>
             <Form.Item
                 name='bug_tracker'
-                label='Issue tracker'
+                label={tt("Issue tracker")}
                 extra='Attach issue tracker where the project is described'
                 hasFeedback
                 rules={[
@@ -187,7 +188,7 @@ export default function CreateProjectContent(): JSX.Element {
         if (res) {
             resetForm();
             notification.info({
-                message: 'The project has been created',
+                message: tt("The project has been created"),
                 className: 'cvat-notification-create-project-success',
             });
             focusForm();
@@ -204,7 +205,7 @@ export default function CreateProjectContent(): JSX.Element {
                 <NameConfigurationForm formRef={nameFormRef} inputRef={nameInputRef} />
             </Col>
             <Col span={24}>
-                <Text className='cvat-text-color'>Labels:</Text>
+                <Text className='cvat-text-color'>{tt("Labels:")}</Text>
                 <LabelsEditor
                     labels={projectLabels}
                     onSubmit={(newLabels): void => {
@@ -217,7 +218,7 @@ export default function CreateProjectContent(): JSX.Element {
                     className='cvat-advanced-configuration-wrapper'
                     items={[{
                         key: '1',
-                        label: <Text className='cvat-title'>Advanced configuration</Text>,
+                        label: <Text className='cvat-title'>{tt("Advanced configuration")}</Text>,
                         children: (
                             <AdvancedConfigurationForm
                                 formRef={advancedFormRef}
@@ -238,12 +239,14 @@ export default function CreateProjectContent(): JSX.Element {
                 <Row justify='end' gutter={8}>
                     <Col>
                         <Button className='cvat-submit-open-project-button' type='primary' onClick={onSubmitAndOpen}>
-                            Submit & Open
+                            
+                            {tt("Submit & Open")}
                         </Button>
                     </Col>
                     <Col>
                         <Button className='cvat-submit-continue-project-button' type='primary' onClick={onSubmitAndContinue}>
-                            Submit & Continue
+                            
+                            {tt("Submit & Continue")}
                         </Button>
                     </Col>
                 </Row>

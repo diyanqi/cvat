@@ -18,6 +18,7 @@ import Modal from 'antd/lib/modal';
 import { CombinedState } from 'reducers';
 import { Label } from 'cvat-core-wrapper';
 import { changeAnnotationsFilters, fetchAnnotationsAsync, showFilters } from 'actions/annotation-actions';
+import { tt } from 'i18n';
 
 const { FieldDropdown } = AntdWidgets;
 
@@ -256,14 +257,16 @@ function AudioFiltersModalComponent(): JSX.Element {
                     onClick={() => applyFilters([])}
                     className='cvat-filters-modal-clear-button'
                 >
-                    Clear filters
+                    
+                    {tt("Clear filters")}
                 </Button>,
                 <Button
                     key='cancel'
                     onClick={() => dispatch(showFilters(false))}
                     className='cvat-filters-modal-cancel-button'
                 >
-                    Cancel
+                    
+                    {tt("Cancel")}
                 </Button>,
                 <Button
                     key='submit'
@@ -272,7 +275,8 @@ function AudioFiltersModalComponent(): JSX.Element {
                     onClick={confirmModal}
                     className='cvat-filters-modal-submit-button'
                 >
-                    Submit
+                    
+                    {tt("Submit")}
                 </Button>,
             ]}
         >
@@ -293,7 +297,8 @@ function AudioFiltersModalComponent(): JSX.Element {
                         type='text'
                         className='cvat-filters-modal-recently-used-button'
                     >
-                        Recently used
+                        
+                        {tt("Recently used")}
                         {' '}
                         <DownOutlined />
                     </Button>

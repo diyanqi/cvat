@@ -31,6 +31,7 @@ import {
 } from 'cvat-core-wrapper';
 import StorageField from 'components/storage/storage-field';
 import { createAction, ActionUnion } from 'utils/redux';
+import { tt } from 'i18n';
 
 const { confirm } = Modal;
 
@@ -401,9 +402,9 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
                 }
                 beforeUpload={(_file: RcFile): boolean => {
                     if (!selectedLoader) {
-                        message.warning('Please select a format first', 3);
+                        message.warning(tt("Please select a format first"), 3);
                     } else if (isDataset() && !['application/zip', 'application/x-zip-compressed'].includes(_file.type)) {
-                        message.error('Only ZIP archive is supported for import a dataset');
+                        message.error(tt("Only ZIP archive is supported for import a dataset"));
                     } else if (isAnnotation() &&
                                 !selectedLoader.format.toLowerCase().split(', ').includes(_file.name.split('.')[_file.name.split('.').length - 1])) {
                         message.error(
@@ -422,14 +423,14 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
                 <p className='ant-upload-drag-icon'>
                     <InboxOutlined />
                 </p>
-                <p className='ant-upload-text'>Click or drag file to this area</p>
+                <p className='ant-upload-text'>{tt("Click or drag file to this area")}</p>
             </Upload.Dragger>
         </Form.Item>
     );
 
     const validateFileName = (_: RuleObject, value: string): Promise<void> => {
         if (!selectedLoader) {
-            message.warning('Please select a format first', 3);
+            message.warning(tt("Please select a format first"), 3);
             return Promise.reject();
         }
         if (value) {
@@ -455,7 +456,7 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
 
     const renderCustomName = (): JSX.Element => (
         <Form.Item
-            label={<Text strong>File name</Text>}
+            label={<Text strong>{tt("File name")}</Text>}
             name='fileName'
             hasFeedback
             dependencies={['selectedFormat']}
@@ -463,7 +464,7 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
             required
         >
             <Input
-                placeholder='Dataset file name'
+                placeholder={tt("Dataset file name")}
                 className='cvat-modal-import-filename-input'
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     dispatch(reducerActions.setFileName(e.target.value || ''));
@@ -592,7 +593,7 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
             >
                 <Form.Item
                     name='selectedFormat'
-                    label='Import format'
+                    label={tt("Import format")}
                     rules={[{ required: true, message: 'Format must be selected' }]}
                     hasFeedback
                 >
@@ -644,8 +645,8 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
                                 }}
                             />
                         </Form.Item>
-                        <Text strong>Convert masks to polygons</Text>
-                        <CVATTooltip title='The option is relevant for formats that work with masks only'>
+                        <Text strong>{tt("Convert masks to polygons")}</Text>
+                        <CVATTooltip title={tt("The option is relevant for formats that work with masks only")}>
                             <QuestionCircleOutlined />
                         </CVATTooltip>
                     </Space>
@@ -662,7 +663,7 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
                             }}
                         />
                     </Form.Item>
-                    <Text strong>Use default settings</Text>
+                    <Text strong>{tt("Use default settings")}</Text>
                     <CVATTooltip title={helpMessage}>
                         <QuestionCircleOutlined />
                     </CVATTooltip>
@@ -672,13 +673,13 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
                         name='importMode'
                         label={(
                             <Space className='cvat-modal-import-mode-label' size={4}>
-                                <Text strong>Import mode</Text>
+                                <Text strong>{tt("Import mode")}</Text>
                                 <CVATTooltip
                                     title={(
                                         <div>
-                                            <div>Choose what to do with existing annotations.</div>
-                                            <div>Replace: remove existing annotations before import.</div>
-                                            <div>Append: keep existing annotations and add imported ones.</div>
+                                            <div>{tt("Choose what to do with existing annotations.")}</div>
+                                            <div>{tt("Replace: remove existing annotations before import.")}</div>
+                                            <div>{tt("Append: keep existing annotations and add imported ones.")}</div>
                                         </div>
                                     )}
                                 >
@@ -694,8 +695,8 @@ function ImportDatasetModal(props: StateToProps): JSX.Element {
                                 dispatch(reducerActions.setImportMode(event.target.value));
                             }}
                         >
-                            <Radio.Button value='replace'>Replace</Radio.Button>
-                            <Radio.Button value='append'>Append</Radio.Button>
+                            <Radio.Button value='replace'>{tt("Replace")}</Radio.Button>
+                            <Radio.Button value='append'>{tt("Append")}</Radio.Button>
                         </Radio.Group>
                     </Form.Item>
                 )}

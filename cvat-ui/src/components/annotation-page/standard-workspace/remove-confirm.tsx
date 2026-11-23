@@ -13,6 +13,7 @@ import Modal from 'antd/lib/modal';
 import config from 'config';
 import { removeObjectAsync, removeObject as removeObjectAction } from 'actions/annotation-actions';
 import { ObjectType } from 'cvat-core-wrapper';
+import { tt } from 'i18n';
 
 export default function RemoveConfirmComponent(): JSX.Element | null {
     const dispatch = useDispatch();
@@ -67,8 +68,8 @@ export default function RemoveConfirmComponent(): JSX.Element | null {
     return (
         <Modal
             okType='primary'
-            okText='Yes'
-            cancelText='Cancel'
+            okText={tt("Yes")}
+            cancelText={tt("Cancel")}
             title={title}
             open={visible}
             cancelButtonProps={{

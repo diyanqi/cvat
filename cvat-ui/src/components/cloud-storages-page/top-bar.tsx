@@ -24,6 +24,7 @@ import {
     localStorageRecentKeyword, localStorageRecentCapacity,
     predefinedFilterValues, config,
 } from './cloud-storages-filter-configuration';
+import { tt } from 'i18n';
 
 const FilteringComponent = ResourceFilterHOC(
     config, localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues,
@@ -57,7 +58,7 @@ export default function StoragesTopBar(props: Readonly<Props>): JSX.Element {
                             }}
                             defaultValue={query.search ?? ''}
                             className='cvat-cloudstorages-page-tasks-search-bar'
-                            placeholder='Search ...'
+                            placeholder={tt("Search ...")}
                         />
                         <ResourceSelectionInfo selectedCount={selectedCount} onSelectAll={onSelectAll} />
                     </div>

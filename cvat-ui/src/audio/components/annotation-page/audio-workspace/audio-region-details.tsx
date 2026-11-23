@@ -17,6 +17,7 @@ import { clamp } from 'utils/math';
 import { ColorBy } from 'reducers';
 import { AudioIntervalActionShortcuts } from './audio-interval-actions';
 import AudioIntervalHeader from './audio-interval-header';
+import { tt } from 'i18n';
 
 interface AudioRegionDetailsProps {
     interval: AudioIntervalState;
@@ -234,7 +235,8 @@ function AudioRegionDetails(props: AudioRegionDetailsProps): JSX.Element {
                 )}
                 {attributes.length === 0 && activeLabel && (
                     <div className='cvat-audio-region-no-attributes'>
-                        No attributes defined for this label
+                        
+                        {tt("No attributes defined for this label")}
                     </div>
                 )}
             </div>

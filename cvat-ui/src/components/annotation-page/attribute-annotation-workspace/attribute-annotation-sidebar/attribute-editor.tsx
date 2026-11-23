@@ -21,6 +21,7 @@ import { CombinedState } from 'reducers';
 import { useSelector } from 'react-redux';
 import { useResetShortcutsOnUnmount } from 'utils/hooks';
 import { shallowEqual } from 'utils/redux';
+import { tt } from 'i18n';
 
 interface InputElementParameters {
     clientID: number;
@@ -81,7 +82,7 @@ function renderInputElement(parameters: InputElementParameters): JSX.Element {
 
     const renderCheckbox = (): JSX.Element => (
         <>
-            <Text strong>Checkbox: </Text>
+            <Text strong>{tt("Checkbox:")} </Text>
             <div className='attribute-annotation-sidebar-attr-elem-wrapper'>
                 <Checkbox
                     onChange={(event: CheckboxChangeEvent): void => setAttributeValue(event.target.checked ? 'true' : 'false')}
@@ -93,7 +94,7 @@ function renderInputElement(parameters: InputElementParameters): JSX.Element {
 
     const renderSelect = (): JSX.Element => (
         <>
-            <Text strong>Values: </Text>
+            <Text strong>{tt("Values:")} </Text>
             <div className='attribute-annotation-sidebar-attr-elem-wrapper'>
                 <Select
                     value={localAttrValue}
@@ -114,7 +115,7 @@ function renderInputElement(parameters: InputElementParameters): JSX.Element {
 
     const renderRadio = (): JSX.Element => (
         <>
-            <Text strong>Values: </Text>
+            <Text strong>{tt("Values:")} </Text>
             <div className='attribute-annotation-sidebar-attr-elem-wrapper'>
                 <Radio.Group
                     value={localAttrValue}
@@ -145,7 +146,7 @@ function renderInputElement(parameters: InputElementParameters): JSX.Element {
         const [min, max, step] = values;
         return (
             <>
-                <Text strong>Number: </Text>
+                <Text strong>{tt("Number:")} </Text>
                 <div className='attribute-annotation-sidebar-attr-elem-wrapper'>
                     <InputNumber
                         autoFocus
@@ -168,7 +169,7 @@ function renderInputElement(parameters: InputElementParameters): JSX.Element {
 
     const renderText = (): JSX.Element => (
         <>
-            <Text strong>Text: </Text>
+            <Text strong>{tt("Text:")} </Text>
             <div className='attribute-annotation-sidebar-attr-elem-wrapper'>
                 <Input.TextArea
                     autoFocus
@@ -334,15 +335,15 @@ function AttrValuesList(props: ListProps): JSX.Element | null {
         return (
             <div className='attribute-annotation-sidebar-attr-list-wrapper'>
                 <div>
-                    <Text strong>From:</Text>
+                    <Text strong>{tt("From:")}</Text>
                     <Text>{` ${values[0]}`}</Text>
                 </div>
                 <div>
-                    <Text strong>To:</Text>
+                    <Text strong>{tt("To:")}</Text>
                     <Text>{` ${values[1]}`}</Text>
                 </div>
                 <div>
-                    <Text strong>Step:</Text>
+                    <Text strong>{tt("Step:")}</Text>
                     <Text>{` ${values[2]}`}</Text>
                 </div>
             </div>

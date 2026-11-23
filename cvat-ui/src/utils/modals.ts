@@ -5,6 +5,7 @@
 import Modal from 'antd/lib/modal';
 
 import { Organization, Project, Task } from 'cvat-core-wrapper';
+import { tt } from 'i18n';
 
 export function confirmTransferModal(
     instances: Project[] | Task[],
@@ -28,7 +29,7 @@ export function confirmTransferModal(
     }
 
     Modal.confirm({
-        title: 'Data transfer between workspaces',
+        title: tt("Data transfer between workspaces"),
         content: `${details} Would you like to proceed?`,
         className: 'cvat-modal-confirm-project-transfer-between-workspaces',
         onOk,
@@ -36,6 +37,6 @@ export function confirmTransferModal(
             type: 'primary',
             danger: true,
         },
-        okText: 'Continue',
+        okText: tt("Continue"),
     });
 }

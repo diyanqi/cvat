@@ -43,6 +43,7 @@ import GroupControl, { Props as GroupControlProps } from './group-control';
 import JoinControl, { Props as JoinControlProps } from './join-control';
 import SplitControl, { Props as SplitControlProps } from './split-control';
 import SliceControl, { Props as SliceControlProps } from './slice-control';
+import { tt } from 'i18n';
 
 type Label = CombinedState['annotation']['job']['labels'][0];
 
@@ -264,9 +265,9 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
                 if (selectionGroupDisabledReason) {
                     message.warning(selectionGroupDisabledReason);
                 } else if (selectedObjectsCount < 2) {
-                    message.warning('Select at least two objects to group');
+                    message.warning(tt("Select at least two objects to group"));
                 } else if (selectedObjectsInSameGroup) {
-                    message.warning('Selected objects are already in the same group');
+                    message.warning(tt("Selected objects are already in the same group"));
                 } else {
                     groupSelection();
                 }
@@ -320,7 +321,7 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
                 } else if (hasGroupedSelectedObjects) {
                     groupSelection(true);
                 } else {
-                    message.warning('No selected objects are grouped');
+                    message.warning(tt("No selected objects are grouped"));
                 }
                 return;
             }

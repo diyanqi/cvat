@@ -10,6 +10,7 @@ import { Chart } from 'chart.js/auto';
 import { getRelativePosition } from 'chart.js/helpers';
 import { evaluateThresholdPolicy } from 'cvat-core/src/quality/threshold-policy';
 import { EditableLinearThresholdPolicy, ThresholdCoordinates } from './threshold-policy-editor-types';
+import { tt } from 'i18n';
 
 interface Props {
     policy: EditableLinearThresholdPolicy;
@@ -216,18 +217,19 @@ export default function ThresholdPolicyChart(props: Readonly<Props>): JSX.Elemen
     return (
         <>
             <div className='cvat-threshold-policy-toolbar'>
-                <span>Minimum IoU (%)</span>
+                <span>{tt("Minimum IoU (%)")}</span>
                 <Space size={4}>
-                    <CVATTooltip title='Zoom in on GT area'>
+                    <CVATTooltip title={tt("Zoom in on GT area")}>
                         <Button disabled={disabled} size='small' aria-label='Zoom in on GT area'
                             onClick={() => setXMax(Math.max(1, xMax / 1.5))}>+</Button>
                     </CVATTooltip>
-                    <CVATTooltip title='Zoom out on GT area'>
+                    <CVATTooltip title={tt("Zoom out on GT area")}>
                         <Button disabled={disabled} size='small' aria-label='Zoom out on GT area'
                             onClick={() => setXMax(Math.min(1e12, xMax * 1.5))}>−</Button>
                     </CVATTooltip>
                     <Button disabled={disabled} size='small' onClick={() => setXMax(policy.points.at(-1).x * 1.15)}>
-                        Fit
+                        
+                        {tt("Fit")}
                     </Button>
                 </Space>
             </div>
@@ -250,13 +252,14 @@ export default function ThresholdPolicyChart(props: Readonly<Props>): JSX.Elemen
                 />
                 {hover && (
                     <div className='cvat-threshold-policy-tooltip' style={{ left: hover.left, top: hover.top }}>
-                        <div>GT area: {format(hover.area)} px²</div>
-                        <strong>IoU threshold: {format(hover.threshold * 100)}%</strong>
+                        <div>{tt("GT area:")} {format(hover.area)}  {tt("px²")}</div>
+                        <strong>{tt("IoU threshold:")} {format(hover.threshold * 100)}%</strong>
                     </div>
                 )}
             </div>
             <p className='cvat-threshold-policy-hint'>
-                Left-click to add. Hold left mouse button on a point to move. Right-click a point to delete.
+                
+                {tt("Left-click to add. Hold left mouse button on a point to move. Right-click a point to delete.")}
             </p>
         </>
     );

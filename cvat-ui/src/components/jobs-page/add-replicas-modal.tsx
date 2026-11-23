@@ -14,6 +14,7 @@ import { CombinedState } from 'reducers';
 import { createReplicaJobAsync, jobsActions } from 'actions/jobs-actions';
 import { makeBulkOperationAsync } from 'actions/bulk-actions';
 import config from 'config';
+import { tt } from 'i18n';
 
 interface Props {
     fetchJobs?: () => void;
@@ -61,7 +62,7 @@ function AddReplicasModal(props: Readonly<Props>): JSX.Element {
             open={visible}
             title={isBulkMode ? `Add replicas to ${jobs.length} selected jobs` : `Add replicas to job #${jobs[0]?.id}`}
             className='cvat-modal-add-replicas'
-            okText='Add'
+            okText={tt("Add")}
             okButtonProps={{ disabled: count === null }}
             onCancel={onCancel}
             onOk={onAdd}

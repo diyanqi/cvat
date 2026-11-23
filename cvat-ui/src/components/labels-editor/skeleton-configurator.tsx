@@ -28,6 +28,7 @@ import {
     idGenerator, LabelOptColor, SkeletonConfiguration, toSVGCoord,
 } from './common';
 import SkeletonElementContextMenu from './skeleton-element-context-menu';
+import { tt } from 'i18n';
 
 function setAttributes(element: Element, attrs: Record<string, string | number | null>): void {
     for (const key of Object.keys(attrs)) {
@@ -763,7 +764,7 @@ export default class SkeletonConfigurator extends React.PureComponent<Props, Sta
                             }}
                         >
                             <p className='ant-upload-drag-icon'>
-                                <CVATTooltip title='Upload a background image'>
+                                <CVATTooltip title={tt("Upload a background image")}>
                                     <Button className='cvat-upload-skeleton-constructor-background' icon={<PictureOutlined />} />
                                 </CVATTooltip>
                             </p>
@@ -781,25 +782,25 @@ export default class SkeletonConfigurator extends React.PureComponent<Props, Sta
                                     this.setState({ activeTool: e.target.value });
                                 }}
                             >
-                                <CVATTooltip title='Click the canvas to add a point'>
+                                <CVATTooltip title={tt("Click the canvas to add a point")}>
                                     <Radio.Button defaultChecked value='point'>
                                         <Icon component={PointIcon} />
                                     </Radio.Button>
                                 </CVATTooltip>
 
-                                <CVATTooltip title='Click and drag points'>
+                                <CVATTooltip title={tt("Click and drag points")}>
                                     <Radio.Button defaultChecked value='drag'>
                                         <DragOutlined />
                                     </Radio.Button>
                                 </CVATTooltip>
 
-                                <CVATTooltip title='Click two points to setup an edge'>
+                                <CVATTooltip title={tt("Click two points to setup an edge")}>
                                     <Radio.Button value='join'>
                                         <LineOutlined />
                                     </Radio.Button>
                                 </CVATTooltip>
 
-                                <CVATTooltip title='Click an element to remove it'>
+                                <CVATTooltip title={tt("Click an element to remove it")}>
                                     <Radio.Button value='delete'>
                                         <DeleteOutlined />
                                     </Radio.Button>
@@ -808,7 +809,7 @@ export default class SkeletonConfigurator extends React.PureComponent<Props, Sta
                         </Col>
                     </Row>
                     <Row justify='space-between' className='cvat-skeleton-configurator-svg-buttons'>
-                        <CVATTooltip title='Download skeleton as SVG'>
+                        <CVATTooltip title={tt("Download skeleton as SVG")}>
                             <Button
                                 className='cvat-download-skeleton-svg-button'
                                 type='default'
@@ -888,7 +889,7 @@ export default class SkeletonConfigurator extends React.PureComponent<Props, Sta
                                         this.setupSkeleton(svg, labels as Record<string, LabelOptColor>);
                                     } catch (_: unknown) {
                                         notification.error({
-                                            message: 'Wrong skeleton structure',
+                                            message: tt("Wrong skeleton structure"),
                                         });
                                     }
                                 });
@@ -896,7 +897,7 @@ export default class SkeletonConfigurator extends React.PureComponent<Props, Sta
                                 return false;
                             }}
                         >
-                            <CVATTooltip title='Upload a skeleton from SVG'>
+                            <CVATTooltip title={tt("Upload a skeleton from SVG")}>
                                 <Button
                                     className='cvat-upload-skeleton-svg-button'
                                     style={disabledStyle}

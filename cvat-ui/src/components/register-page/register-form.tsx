@@ -17,6 +17,7 @@ import CVATSigningInput, { CVATInputType } from 'components/signing-common/cvat-
 import { useAuthQuery } from 'utils/hooks';
 import patterns from 'utils/validation-patterns';
 import validationRules from 'utils/validation-rules';
+import { tt } from 'i18n';
 
 interface UserConfirmation {
     name: string;
@@ -146,7 +147,7 @@ function RegisterFormComponent(props: Props): JSX.Element {
                         >
                             <CVATSigningInput
                                 id='firstName'
-                                placeholder='First name'
+                                placeholder={tt("First name")}
                                 autoComplete='given-name'
                                 onReset={() => form.setFieldsValue({ firstName: '' })}
                             />
@@ -160,7 +161,7 @@ function RegisterFormComponent(props: Props): JSX.Element {
                         >
                             <CVATSigningInput
                                 id='lastName'
-                                placeholder='Last name'
+                                placeholder={tt("Last name")}
                                 autoComplete='family-name'
                                 onReset={() => form.setFieldsValue({ lastName: '' })}
                             />
@@ -175,7 +176,7 @@ function RegisterFormComponent(props: Props): JSX.Element {
                     <CVATSigningInput
                         id='email'
                         autoComplete='email'
-                        placeholder='Email'
+                        placeholder={tt("Email")}
                         disabled={!!predefinedEmail}
                         value={predefinedEmail}
                         onReset={() => form.setFieldsValue({ email: '', username: '' })}
@@ -195,7 +196,7 @@ function RegisterFormComponent(props: Props): JSX.Element {
                 >
                     <CVATSigningInput
                         id='username'
-                        placeholder='Username'
+                        placeholder={tt("Username")}
                         autoComplete='username'
                         onReset={() => form.setFieldsValue({ username: '' })}
                         onChange={() => setUsernameEdited(true)}
@@ -214,7 +215,7 @@ function RegisterFormComponent(props: Props): JSX.Element {
                     <CVATSigningInput
                         type={CVATInputType.PASSWORD}
                         id='password1'
-                        placeholder='Password'
+                        placeholder={tt("Password")}
                         autoComplete='new-password'
                     />
                 </Form.Item>
@@ -252,7 +253,8 @@ function RegisterFormComponent(props: Props): JSX.Element {
                             loading={fetching}
                             disabled={fetching}
                         >
-                            Create account
+                            
+                            {tt("Create account")}
                         </Button>
                     )}
                 </Form.Item>

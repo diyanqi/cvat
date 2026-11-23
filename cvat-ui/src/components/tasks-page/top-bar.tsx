@@ -31,6 +31,7 @@ import TasksCSVExportButton from './tasks-csv-export-button';
 import {
     localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues, config,
 } from './tasks-filter-configuration';
+import { tt } from 'i18n';
 
 const FilteringComponent = ResourceFilterHOC(
     config, localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues,
@@ -138,7 +139,8 @@ export default function TopBarComponent(props: Readonly<VisibleTopBarProps>): JS
                                     onClick={(): void => history.push('/tasks/create?many=true')}
                                     icon={<span className='anticon'><MultiPlusIcon /></span>}
                                 >
-                                    Create multi tasks
+                                    
+                                    {tt("Create multi tasks")}
                                 </Button>
                                 <Button
                                     className='cvat-import-task-button'
@@ -147,7 +149,8 @@ export default function TopBarComponent(props: Readonly<VisibleTopBarProps>): JS
                                     icon={importing ? <LoadingOutlined /> : <UploadOutlined />}
                                     onClick={() => dispatch(importActions.openImportBackupModal('task'))}
                                 >
-                                    Create from backup
+                                    
+                                    {tt("Create from backup")}
                                 </Button>
                             </CvatDropdownMenuPaper>
                         )}

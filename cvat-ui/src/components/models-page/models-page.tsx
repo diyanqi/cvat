@@ -21,6 +21,7 @@ import { MLModel, ModelProviders } from 'cvat-core-wrapper';
 import DeployedModelsList from './deployed-models-list';
 import EmptyListComponent from './empty-list';
 import TopBar from './top-bar';
+import { tt } from 'i18n';
 
 function setUpModelsList(models: MLModel[], newPage: number, pageSize: number): MLModel[] {
     const builtInModels = models.filter((model: MLModel) => model.provider === ModelProviders.CVAT);
@@ -75,8 +76,8 @@ function ModelsPageComponent(): JSX.Element {
         dispatch(getModelsAsync(updatedQuery));
         if (pageOutOfBounds) {
             notification.error({
-                message: 'Could not fetch models',
-                description: 'Invalid page',
+                message: tt("Could not fetch models"),
+                description: tt("Invalid page"),
             });
         }
     }, []);

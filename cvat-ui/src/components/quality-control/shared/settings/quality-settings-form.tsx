@@ -17,6 +17,7 @@ import {
 } from './jobs-filter-configuration';
 import QualityRequirementsConstructor from '../requirements/quality-requirements-constructor';
 import QualityRequirementForm from '../requirements/quality-requirement-form';
+import { tt } from 'i18n';
 
 interface Props {
     form: FormInstance;
@@ -148,7 +149,8 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
         >
             <Row className='cvat-quality-settings-title'>
                 <Text strong>
-                    General
+                    
+                    {tt("General")}
                 </Text>
                 <CVATTooltip title={generalTooltip} className='cvat-settings-tooltip'>
                     <QuestionCircleOutlined
@@ -160,7 +162,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
                 <Col span={12}>
                     <Form.Item
                         name='jobFilter'
-                        label='Job selection filter'
+                        label={tt("Job selection filter")}
                         trigger='onApplyFilter'
                     >
                         {/* value and onApplyFilter will be automatically provided by Form.Item */}
@@ -184,7 +186,8 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
             <Divider />
             <Row className='cvat-quality-settings-title'>
                 <Text strong>
-                    Job validation
+                    
+                    {tt("Job validation")}
                 </Text>
                 <CVATTooltip title={jobValidationTooltip} className='cvat-settings-tooltip'>
                     <QuestionCircleOutlined
@@ -196,7 +199,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
                 <Col span={12}>
                     <Form.Item
                         name='maxValidationsPerJob'
-                        label='Max validations per job'
+                        label={tt("Max validations per job")}
                         rules={[{ required: true, message: 'This field is required' }]}
                     >
                         <InputNumber

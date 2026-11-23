@@ -9,6 +9,7 @@ import { useHistory } from 'react-router';
 import { Row, Col } from 'antd/lib/grid';
 import Text from 'antd/lib/typography/Text';
 import Button from 'antd/lib/button';
+import { tt } from 'i18n';
 
 interface Props {
     instanceType: 'task' | 'project';
@@ -29,7 +30,8 @@ function MdGuideControl(props: Props): JSX.Element {
                         history.push(`/${instanceType}s/${id}/guide`);
                     }}
                 >
-                    Edit
+                    
+                    {tt("Edit")}
                 </Button>
             </Col>
         </Row>

@@ -30,6 +30,7 @@ import CVATTable from 'components/common/cvat-table';
 import CVATTooltip from 'components/common/cvat-tooltip';
 import ApiTokenForm from './api-token-form';
 import ApiTokenCreatedModal from './api-token-created-modal';
+import { tt } from 'i18n';
 
 interface RowData {
     key: number;
@@ -84,15 +85,15 @@ function ApiTokensCard(): JSX.Element {
 
     const onRevokeToken = useCallback((token: ApiToken): void => {
         Modal.confirm({
-            title: 'Revoke API Token',
+            title: tt("Revoke API Token"),
             content: `Are you sure you want to revoke the token "${token.name}"? This action cannot be undone.`,
-            okText: 'Revoke',
+            okText: tt("Revoke"),
             okButtonProps: {
                 type: 'primary',
                 danger: true,
                 className: 'cvat-api-token-revoke-button',
             },
-            cancelText: 'Cancel',
+            cancelText: tt("Cancel"),
             onOk: () => {
                 dispatch(revokeApiTokenAsync(token, () => {
                     dispatch(getApiTokensAsync());
@@ -176,7 +177,7 @@ function ApiTokensCard(): JSX.Element {
                 return new Date(a.expiryDate).getTime() - new Date(b.expiryDate).getTime();
             },
             render: (date: string | null) => (
-                date ? new Date(date).toLocaleDateString() : <Text underline>Never</Text>
+                date ? new Date(date).toLocaleDateString() : <Text underline>{tt("Never")}</Text>
             ),
             className: 'cvat-api-token-expire-date',
         },
@@ -230,27 +231,23 @@ function ApiTokensCard(): JSX.Element {
                 title={(
                     <Row className='cvat-security-api-tokens-card-title' justify='space-between'>
                         <Col>
-                            <Title level={5}>Personal Access Tokens (PATs)</Title>
+                            <Title level={5}>{tt("Personal Access Tokens (PATs)")}</Title>
                             <CVATTooltip
                                 title={(
                                     <Row className='cvat-api-tokens-tooltip-inner'>
                                         <Row>
                                             <Col>
                                                 <Text>
-                                                    Personal Access Tokens (PATs) are text strings that
-                                                    can be used for authentication instead of a username/email
-                                                    and password. They allow interaction with the CVAT server
-                                                    API via various clients, including custom scripts, the CVAT
-                                                    Python SDK, and the CVAT CLI.
+                                                    
+                                                    {tt("Personal Access Tokens (PATs) are text strings that can be used for authentication instead of a username/email and password. They allow interaction with the CVAT server API via various clients, including custom scripts, the CVAT Python SDK, and the CVAT CLI.")}
                                                 </Text>
                                             </Col>
                                         </Row>
                                         <Row>
                                             <Col>
                                                 <Text>
-                                                    For additional security, each token can have an expiration
-                                                    date and restricted permissions. Users can create or revoke
-                                                    tokens at any time.
+                                                    
+                                                    {tt("For additional security, each token can have an expiration date and restricted permissions. Users can create or revoke tokens at any time.")}
                                                 </Text>
                                             </Col>
                                         </Row>
@@ -283,7 +280,7 @@ function ApiTokensCard(): JSX.Element {
                     />
                 ) : (
                     <CVATTable
-                        tableTitle={<Title level={5}>Existing Tokens</Title>}
+                        tableTitle={<Title level={5}>{tt("Existing Tokens")}</Title>}
                         className='cvat-api-tokens-table'
                         csvExport={{ filename: 'access_tokens.csv' }}
                         columns={apiTokenColumns}

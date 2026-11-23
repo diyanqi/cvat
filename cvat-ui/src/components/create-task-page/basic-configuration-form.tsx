@@ -9,6 +9,7 @@ import Text from 'antd/lib/typography/Text';
 import Tooltip from 'antd/lib/tooltip';
 import Form, { FormInstance } from 'antd/lib/form';
 import { QuestionCircleOutlined } from '@ant-design/icons';
+import { tt } from 'i18n';
 
 export interface BaseConfiguration {
     name: string;
@@ -79,7 +80,7 @@ export default class BasicConfigurationForm extends React.PureComponent<Props> {
                     className={many ? 'cvat-task-name-field-has-tooltip' : ''}
                     hasFeedback
                     name='name'
-                    label={<span>Name</span>}
+                    label={<span>{tt("Name")}</span>}
                     rules={[
                         {
                             required: true,
@@ -97,32 +98,40 @@ export default class BasicConfigurationForm extends React.PureComponent<Props> {
                     <Text type='secondary'>
                         <Tooltip title={() => (
                             <>
-                                You can use in the template:
+                                
+                                {tt("You can use in the template:")}
                                 <ul>
                                     <li>
-                                        some_text - any text
+                                        
+                                        {tt("some_text - any text")}
                                     </li>
                                     <li>
                                         {'{{'}
-                                        index
+                                        
+                                        {tt("index")}
                                         {'}}'}
-                                        &nbsp;- index file in set
+                                        
+                                        {tt("&nbsp;- index file in set")}
                                     </li>
                                     <li>
                                         {'{{'}
-                                        file_name
+                                        
+                                        {tt("file_name")}
                                         {'}}'}
-                                        &nbsp;- name of file
+                                        
+                                        {tt("&nbsp;- name of file")}
                                     </li>
                                 </ul>
-                                Example:&nbsp;
+                                
+                                {tt("Example:&nbsp;")}
                                 <i>
                                     {exampleMultiTaskName || 'Task name 1 - video_1.mp4'}
                                 </i>
                             </>
                         )}
                         >
-                            When forming the name, a template is used.
+                            
+                            {tt("When forming the name, a template is used.")}
                             {' '}
                             <QuestionCircleOutlined />
                         </Tooltip>

@@ -5,6 +5,7 @@
 
 import { AnyAction } from 'redux';
 
+import { tt } from 'i18n';
 import { ServerError, RequestError, StorageLocation } from 'cvat-core-wrapper';
 import { AuthActionTypes } from 'actions/auth-actions';
 import { FormatsActionTypes } from 'actions/formats-actions';
@@ -380,8 +381,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     auth: {
                         ...state.messages.auth,
                         requestPasswordResetDone: {
-                            message: `Check your email for a link to reset your password.
-                            If it doesn't appear within a few minutes, check your spam folder.`,
+                            message: tt("Check your email for a link to reset your password. If it doesn't appear within a few minutes, check your spam folder."),
                         },
                     },
                 },

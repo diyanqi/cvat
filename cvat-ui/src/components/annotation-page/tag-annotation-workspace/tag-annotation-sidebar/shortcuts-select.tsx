@@ -16,6 +16,7 @@ import { subKeyMap } from 'utils/component-subkeymap';
 import { useSelector } from 'react-redux';
 import { CombinedState } from 'reducers';
 import { useResetShortcutsOnUnmount } from 'utils/hooks';
+import { tt } from 'i18n';
 
 interface ShortcutLabelMap {
     [index: number]: any;
@@ -122,7 +123,7 @@ function ShortcutsSelect(props: Props): JSX.Element {
             <GlobalHotKeys keyMap={subKeyMap(componentShortcuts, keyMap)} handlers={handlers} />
             <Row>
                 <Col>
-                    <Text strong>Shortcuts for labels:</Text>
+                    <Text strong>{tt("Shortcuts for labels:")}</Text>
                 </Col>
             </Row>
             {shift(Object.keys(shortcutLabelMap), 1)
@@ -144,7 +145,7 @@ function ShortcutsSelect(props: Props): JSX.Element {
                                 className='cvat-tag-annotation-label-select'
                             >
                                 <Select.Option value=''>
-                                    <Text type='secondary'>None</Text>
+                                    <Text type='secondary'>{tt("None")}</Text>
                                 </Select.Option>
                                 {(labels as any[]).map((label: any) => (
                                     <Select.Option key={label.id} value={`${label.id}`}>

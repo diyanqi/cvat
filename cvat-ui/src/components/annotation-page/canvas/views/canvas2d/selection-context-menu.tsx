@@ -50,6 +50,7 @@ import {
     updateActiveControl,
     updateAnnotationsBatchAsync,
 } from 'actions/annotation-actions';
+import { tt } from 'i18n';
 
 export default function SelectionContextMenu(): JSX.Element | null {
     const dispatch = useDispatch<ThunkDispatch>();
@@ -201,7 +202,8 @@ export default function SelectionContextMenu(): JSX.Element | null {
                         }
                     }}
                 >
-                    Make a copy
+                    
+                    {tt("Make a copy")}
                 </Button>
             ),
         },
@@ -215,7 +217,8 @@ export default function SelectionContextMenu(): JSX.Element | null {
                         openAnnotationsActionModal({ defaultObjectStates: selectedStates });
                     }}
                 >
-                    Run annotation action
+                    
+                    {tt("Run annotation action")}
                 </Button>
             ),
         },
@@ -228,7 +231,8 @@ export default function SelectionContextMenu(): JSX.Element | null {
                     icon={<Icon component={BackgroundIcon} />}
                     onClick={(): Promise<void> => updateZOrder((): number => minZLayer - 1)}
                 >
-                    To background
+                    
+                    {tt("To background")}
                 </Button>
             ),
         },
@@ -241,7 +245,8 @@ export default function SelectionContextMenu(): JSX.Element | null {
                     icon={<Icon component={ForegroundIcon} />}
                     onClick={(): Promise<void> => updateZOrder((): number => maxZLayer + 1)}
                 >
-                    To foreground
+                    
+                    {tt("To foreground")}
                 </Button>
             ),
         },
@@ -256,7 +261,8 @@ export default function SelectionContextMenu(): JSX.Element | null {
                         (state: ObjectState): number => state.zOrder - 1,
                     )}
                 >
-                    To one layer backward
+                    
+                    {tt("To one layer backward")}
                 </Button>
             ),
         },
@@ -271,7 +277,8 @@ export default function SelectionContextMenu(): JSX.Element | null {
                         (state: ObjectState): number => state.zOrder + 1,
                     )}
                 >
-                    To one layer forward
+                    
+                    {tt("To one layer forward")}
                 </Button>
             ),
         },
@@ -284,7 +291,8 @@ export default function SelectionContextMenu(): JSX.Element | null {
                     icon={<VerticalAlignBottomOutlined />}
                     onClick={(): void => setLayerPickerVisible(true)}
                 >
-                    Move to layer ...
+                    
+                    {tt("Move to layer ...")}
                 </Button>
             ),
         },
@@ -300,7 +308,8 @@ export default function SelectionContextMenu(): JSX.Element | null {
                         dispatch(groupSelectedAnnotationsAsync());
                     }}
                 >
-                    Group selection
+                    
+                    {tt("Group selection")}
                 </Button>
             ),
         },
@@ -316,7 +325,8 @@ export default function SelectionContextMenu(): JSX.Element | null {
                         dispatch(groupSelectedAnnotationsAsync(true));
                     }}
                 >
-                    Ungroup selection
+                    
+                    {tt("Ungroup selection")}
                 </Button>
             ),
         },
@@ -375,7 +385,7 @@ export default function SelectionContextMenu(): JSX.Element | null {
                             popupMatchSelectWidth={false}
                         />
                     ) : (
-                        <Select disabled size='small' placeholder='No common labels' />
+                        <Select disabled size='small' placeholder={tt("No common labels")} />
                     )}
                 </Col>
                 {layerPickerVisible ? (
@@ -481,7 +491,7 @@ export default function SelectionContextMenu(): JSX.Element | null {
                         />
                     </span>
                 </CVATTooltip>
-                <CVATTooltip title='Delete selection'>
+                <CVATTooltip title={tt("Delete selection")}>
                     <Button
                         type='text'
                         size='small'

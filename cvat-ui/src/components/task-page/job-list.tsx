@@ -28,6 +28,7 @@ import DistributeJobsModal from 'components/jobs-page/distribute-jobs-modal';
 import {
     localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues, config,
 } from './jobs-filter-configuration';
+import { tt } from 'i18n';
 
 const FilteringComponent = ResourceFilterHOC(
     config, localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues,
@@ -131,7 +132,7 @@ function JobListComponent(props: Readonly<Props>): JSX.Element {
             <div className='cvat-jobs-list-wrapper'>
                 <Row>
                     <Col>
-                        <Text className='cvat-text-color cvat-jobs-header'> Jobs </Text>
+                        <Text className='cvat-text-color cvat-jobs-header'>  {tt("Jobs")} </Text>
                         <ResourceSelectionInfo selectedCount={selectedCount} onSelectAll={onSelectAll} />
                     </Col>
                 </Row>
@@ -202,7 +203,7 @@ function JobListComponent(props: Readonly<Props>): JSX.Element {
                     </Col>
                 </div>
             ) : (
-                <Empty description='No jobs found' />
+                <Empty description={tt("No jobs found")} />
             )}
             <Row justify='center' align='middle'>
                 <Col>

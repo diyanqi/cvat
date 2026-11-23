@@ -30,6 +30,7 @@ import {
     formatThreshold,
     getRequirementDisplayValue,
 } from './quality-requirements-utils';
+import { tt } from 'i18n';
 
 // The table rows hold formatted display labels (see buildRequirementTree), so the select
 // option values must be those labels for jsonLogic filtering to match.
@@ -271,8 +272,8 @@ export default function QualityRequirementsConstructor(props: Readonly<Props>): 
     const onDeleteRequirement = (requirement: QualityRequirement): void => {
         Modal.confirm({
             title: `Delete "${requirement.name}" requirement?`,
-            content: 'This action cannot be undone.',
-            okText: 'Delete',
+            content: tt("This action cannot be undone."),
+            okText: tt("Delete"),
             okButtonProps: { danger: true },
             onOk: async () => {
                 await updateRequirement(
@@ -357,7 +358,7 @@ export default function QualityRequirementsConstructor(props: Readonly<Props>): 
 
                     return (
                         <Space size='small'>
-                            <CVATTooltip title='Create child requirement'>
+                            <CVATTooltip title={tt("Create child requirement")}>
                                 <Button
                                     type='text'
                                     className='cvat-quality-requirements-action-button'
@@ -367,7 +368,7 @@ export default function QualityRequirementsConstructor(props: Readonly<Props>): 
                                     onClick={() => onCreateRequirement(record.requirement)}
                                 />
                             </CVATTooltip>
-                            <CVATTooltip title='Edit requirement'>
+                            <CVATTooltip title={tt("Edit requirement")}>
                                 <Button
                                     type='text'
                                     className='cvat-quality-requirements-action-button'
@@ -381,7 +382,7 @@ export default function QualityRequirementsConstructor(props: Readonly<Props>): 
                                 />
                             </CVATTooltip>
                             {!record.requirement.isBase && (
-                                <CVATTooltip title='Copy requirement'>
+                                <CVATTooltip title={tt("Copy requirement")}>
                                     <Button
                                         type='text'
                                         className='cvat-quality-requirements-action-button'
@@ -393,7 +394,7 @@ export default function QualityRequirementsConstructor(props: Readonly<Props>): 
                                 </CVATTooltip>
                             )}
                             {!record.requirement.isBase && (
-                                <CVATTooltip title='Delete requirement'>
+                                <CVATTooltip title={tt("Delete requirement")}>
                                     <Button
                                         type='text'
                                         className='cvat-quality-requirements-action-button'
@@ -437,7 +438,7 @@ export default function QualityRequirementsConstructor(props: Readonly<Props>): 
                 emptyText: (
                     <Space>
                         <QuestionCircleOutlined />
-                        <Text type='secondary'>No requirements configured</Text>
+                        <Text type='secondary'>{tt("No requirements configured")}</Text>
                     </Space>
                 ),
             }}

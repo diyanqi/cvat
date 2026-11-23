@@ -12,6 +12,7 @@ import { Row } from 'antd/lib/grid';
 
 import { ChangePasswordData } from 'reducers';
 import { validateConfirmation, validatePassword } from 'components/register-page/register-form';
+import { tt } from 'i18n';
 
 interface Props {
     onSubmit(loginData: ChangePasswordData): void;
@@ -34,7 +35,7 @@ function ChangePasswordFormComponent({ onSubmit, onCancel }: Props): JSX.Element
                 <Input.Password
                     autoComplete='current-password'
                     prefix={<LockOutlined style={{ color: 'rgba(0, 0, 0, 0.25)' }} />}
-                    placeholder='Current password'
+                    placeholder={tt("Current password")}
                 />
             </Form.Item>
 
@@ -52,7 +53,7 @@ function ChangePasswordFormComponent({ onSubmit, onCancel }: Props): JSX.Element
                 <Input.Password
                     autoComplete='new-password'
                     prefix={<LockOutlined style={{ color: 'rgba(0, 0, 0, 0.25)' }} />}
-                    placeholder='New password'
+                    placeholder={tt("New password")}
                 />
             </Form.Item>
 
@@ -71,7 +72,7 @@ function ChangePasswordFormComponent({ onSubmit, onCancel }: Props): JSX.Element
                 <Input.Password
                     autoComplete='new-password'
                     prefix={<LockOutlined style={{ color: 'rgba(0, 0, 0, 0.25)' }} />}
-                    placeholder='Confirm new password'
+                    placeholder={tt("Confirm new password")}
                 />
             </Form.Item>
 
@@ -81,14 +82,16 @@ function ChangePasswordFormComponent({ onSubmit, onCancel }: Props): JSX.Element
                         className='cvat-change-password-cancel-button'
                         onClick={onCancel}
                     >
-                        Cancel
+                        
+                        {tt("Cancel")}
                     </Button>
                     <Button
                         type='primary'
                         htmlType='submit'
                         className='cvat-change-password-form-button'
                     >
-                        Submit
+                        
+                        {tt("Submit")}
                     </Button>
                 </Row>
             </Form.Item>

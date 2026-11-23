@@ -22,6 +22,7 @@ import { useCardHeightHOC, useContextMenuClick, usePlugins } from 'utils/hooks';
 import { CombinedState } from 'reducers';
 import { MLModel, ModelProviders } from 'cvat-core-wrapper';
 import ModelActionsComponent from './actions-menu';
+import { tt } from 'i18n';
 
 interface Props {
     model: MLModel;
@@ -58,7 +59,7 @@ function DeployedModelItem(props: Readonly<Props>): JSX.Element {
     const created = dayjs(model.createdDate).fromNow();
     const modelDescription = !systemModel ?
         <Text type='secondary'>{`Added ${created}`}</Text> :
-        <Text type='secondary'>System model</Text>;
+        <Text type='secondary'>{tt("System model")}</Text>;
 
     const topBarItems: [JSX.Element, number][] = [];
 
@@ -139,7 +140,7 @@ function DeployedModelItem(props: Readonly<Props>): JSX.Element {
         <>
             <Modal
                 className='cvat-model-info-modal'
-                title='Model'
+                title={tt("Model")}
                 open={isModalShown}
                 onCancel={onCloseModel}
                 footer={null}
@@ -164,7 +165,7 @@ function DeployedModelItem(props: Readonly<Props>): JSX.Element {
                     model.labels?.length ? (
                         <>
                             <div className='cvat-model-info-container'>
-                                <Text className='cvat-model-info-modal-labels-title'>Labels:</Text>
+                                <Text className='cvat-model-info-modal-labels-title'>{tt("Labels:")}</Text>
                             </div>
                             <div className='cvat-model-info-container cvat-model-info-modal-labels-list'>
                                 {model.labels.map((label) => <Tag key={label.name}>{label.name}</Tag>)}
@@ -177,10 +178,10 @@ function DeployedModelItem(props: Readonly<Props>): JSX.Element {
                     <Col span={15}>
                         <Row>
                             <Col span={8}>
-                                <Text strong>Provider</Text>
+                                <Text strong>{tt("Provider")}</Text>
                             </Col>
                             <Col>
-                                <Text strong>Type</Text>
+                                <Text strong>{tt("Type")}</Text>
                             </Col>
                         </Row>
                         <Row>
@@ -196,7 +197,7 @@ function DeployedModelItem(props: Readonly<Props>): JSX.Element {
                         <Col>
                             <Row>
                                 <Col>
-                                    <Text strong>Owner</Text>
+                                    <Text strong>{tt("Owner")}</Text>
                                 </Col>
                             </Row>
                             <Row>

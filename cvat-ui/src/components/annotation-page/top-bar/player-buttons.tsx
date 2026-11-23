@@ -31,6 +31,7 @@ import { registerComponentShortcuts } from 'actions/shortcuts-actions';
 import { subKeyMap } from 'utils/component-subkeymap';
 import { Chapter } from 'cvat-core/src/frames';
 import ChapterMenu from './chapter-menu';
+import { tt } from 'i18n';
 
 interface Props {
     playing: boolean;
@@ -248,7 +249,7 @@ function PlayerButtons(props: Props): JSX.Element {
                 />
 
             )}
-            <CVATTooltip title='Go to the first frame'>
+            <CVATTooltip title={tt("Go to the first frame")}>
                 <Icon
                     style={navIconStyle}
                     className='cvat-player-first-button'
@@ -373,7 +374,7 @@ function PlayerButtons(props: Props): JSX.Element {
                     onClick={onForward}
                 />
             </CVATTooltip>
-            <CVATTooltip title='Go to the last frame'>
+            <CVATTooltip title={tt("Go to the last frame")}>
                 <Icon
                     style={navIconStyle}
                     className='cvat-player-last-button'

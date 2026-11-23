@@ -13,6 +13,7 @@ import { CopyOutlined } from '@ant-design/icons';
 
 import { ApiToken } from 'cvat-core-wrapper';
 import { toClipboard } from 'utils/to-clipboard';
+import { tt } from 'i18n';
 
 interface Props {
     visible: boolean;
@@ -38,7 +39,7 @@ function ApiTokenCreatedModal({
 
     return (
         <Modal
-            title='Your token is ready'
+            title={tt("Your token is ready")}
             open={visible}
             onCancel={onClose}
             footer={[
@@ -49,9 +50,11 @@ function ApiTokenCreatedModal({
                     style={{ background: '#faad14' }}
                     className='cvat-api-token-created-modal-confirm-saved-button'
                 >
-                    I have&nbsp;
-                    <strong>securely</strong>
-                    &nbsp;saved my token
+                    
+                    {tt("I have&nbsp;")}
+                    <strong>{tt("securely")}</strong>
+                    
+                    {tt("&nbsp;saved my token")}
                 </Button>,
             ]}
             width={500}
@@ -61,9 +64,11 @@ function ApiTokenCreatedModal({
             <Space direction='vertical' size='large' style={{ width: '100%' }}>
                 <div className='cvat-api-token-created-modal-content'>
                     <Typography.Text type='secondary'>
-                        Make sure to copy your new personal access token now.
+                        
+                        {tt("Make sure to copy your new personal access token now.")}
                         <br />
-                        You won&apos;t be able to see it again!
+                        
+                        {tt("You won&apos;t be able to see it again!")}
                     </Typography.Text>
                     <Space.Compact style={{ width: '100%' }}>
                         <Input

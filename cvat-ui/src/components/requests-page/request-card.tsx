@@ -20,6 +20,7 @@ import { useContextMenuClick } from 'utils/hooks';
 
 import StatusMessage from './request-status';
 import RequestActionsComponent from './actions-menu';
+import { tt } from 'i18n';
 
 export interface Props {
     request: Request;
@@ -238,7 +239,7 @@ function RequestCard(props: Readonly<Props>): JSX.Element {
                             {operation?.lightweight && (
                                 <Row>
                                     <Col className='cvat-lightweight-label'>
-                                        <Text type='secondary'>Lightweight backup</Text>
+                                        <Text type='secondary'>{tt("Lightweight backup")}</Text>
                                     </Col>
                                 </Row>
                             )}

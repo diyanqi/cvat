@@ -23,6 +23,7 @@ import { ActionUnion, createAction } from 'utils/redux';
 import { fetchTask } from 'utils/fetch';
 import { getTabFromHash } from 'utils/location-utils';
 import ConsensusSettingsTab from './consensus-settings-tab';
+import { tt } from 'i18n';
 
 const core = getCore();
 
@@ -149,10 +150,10 @@ function ConsensusManagementPage(): JSX.Element {
                     dispatch(reducerActions.setConsensusSettingsFetching(true));
                     const responseSettings = await settings.save();
                     dispatch(reducerActions.setConsensusSettings(responseSettings));
-                    notification.info({ message: 'Settings have been updated' });
+                    notification.info({ message: tt("Settings have been updated") });
                 } catch (error: unknown) {
                     notification.error({
-                        message: 'Could not save consensus settings',
+                        message: tt("Could not save consensus settings"),
                         description: typeof Error === 'object' ? (error as object).toString() : '',
                     });
                     throw error;
@@ -209,7 +210,7 @@ function ConsensusManagementPage(): JSX.Element {
                 <div className='cvat-consensus-management-page-error'>
                     <Result
                         status='error'
-                        title='Could not open the page'
+                        title={tt("Could not open the page")}
                         subTitle={error.message}
                         extra={backNavigation}
                     />

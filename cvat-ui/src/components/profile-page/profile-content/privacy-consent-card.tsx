@@ -10,6 +10,7 @@ import Switch from 'antd/lib/switch';
 
 import { updateGrowthDataAsync } from 'actions/growth-actions';
 import { CombinedState } from 'reducers';
+import { tt } from 'i18n';
 
 function PrivacyConsentCard(): JSX.Element {
     const dispatch = useDispatch();
@@ -23,7 +24,7 @@ function PrivacyConsentCard(): JSX.Element {
     const isChanged = !!data && promotionNotificationsAllowed !== data.promotionNotificationsAllowed;
 
     return (
-        <Card title='Privacy & consent' className='cvat-profile-privacy-consent-card'>
+        <Card title={tt("Privacy & consent")} className='cvat-profile-privacy-consent-card'>
             <div className='cvat-profile-privacy-consent-item'>
                 <Switch
                     checked={promotionNotificationsAllowed}
@@ -32,9 +33,10 @@ function PrivacyConsentCard(): JSX.Element {
                     onChange={setPromotionNotificationsAllowed}
                 />
                 <div className='cvat-profile-privacy-consent-item-copy'>
-                    <div className='cvat-profile-privacy-consent-item-title'>Allow promotional notifications</div>
+                    <div className='cvat-profile-privacy-consent-item-title'>{tt("Allow promotional notifications")}</div>
                     <div className='cvat-profile-privacy-consent-item-description'>
-                        Occasional product and community updates from CVAT.
+                        
+                        {tt("Occasional product and community updates from CVAT.")}
                     </div>
                 </div>
             </div>
@@ -45,7 +47,8 @@ function PrivacyConsentCard(): JSX.Element {
                     loading={fetching}
                     onClick={() => dispatch(updateGrowthDataAsync({ promotionNotificationsAllowed }))}
                 >
-                    Save changes
+                    
+                    {tt("Save changes")}
                 </Button>
             </div>
         </Card>

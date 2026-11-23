@@ -15,6 +15,7 @@ import { SettingOutlined } from '@ant-design/icons';
 import CVATTooltop from 'components/common/cvat-tooltip';
 import { CombinedState } from 'reducers';
 import ContextImageSelector from './context-image-selector';
+import { tt } from 'i18n';
 
 interface Props {
     offset: number[];
@@ -107,7 +108,7 @@ function ContextImage(props: Props): JSX.Element {
                 </div>
             </div>
             { (hasError ||
-                (!fetching && contextImageOffset >= Object.keys(contextImageData).length)) && <Text> No data </Text>}
+                (!fetching && contextImageOffset >= Object.keys(contextImageData).length)) && <Text>  {tt("No data")} </Text>}
             { fetching && <Spin size='small' /> }
             {
                 contextImageOffset < Object.keys(contextImageData).length &&

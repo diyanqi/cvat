@@ -11,6 +11,7 @@ import { Col, Row } from 'antd/lib/grid';
 import Select from 'antd/lib/select';
 
 import { FrameSelectionMethod } from 'components/create-job-page/job-form';
+import { tt } from 'i18n';
 
 export interface QualityConfiguration {
     validationMode: ValidationMode;
@@ -121,16 +122,17 @@ export default class QualityConfigurationForm extends React.PureComponent<Props>
                     <Col>
                         <Form.Item
                             name='frameSelectionMethod'
-                            label='Frame selection method'
+                            label={tt("Frame selection method")}
                             rules={[{ required: true, message: 'Please, specify frame selection method' }]}
                         >
                             <Select
                                 className='cvat-select-frame-selection-method'
                                 onChange={onChangeFrameSelectionMethod}
                             >
-                                <Select.Option value={FrameSelectionMethod.RANDOM}>Random</Select.Option>
+                                <Select.Option value={FrameSelectionMethod.RANDOM}>{tt("Random")}</Select.Option>
                                 <Select.Option value={FrameSelectionMethod.RANDOM_PER_JOB}>
-                                    Random per job
+                                    
+                                    {tt("Random per job")}
                                 </Select.Option>
                             </Select>
                         </Form.Item>
@@ -141,7 +143,7 @@ export default class QualityConfigurationForm extends React.PureComponent<Props>
                     supportsValidationQuantity && frameSelectionMethod === FrameSelectionMethod.RANDOM && (
                         <Col span={7}>
                             <Form.Item
-                                label='Quantity'
+                                label={tt("Quantity")}
                                 name='validationFramesPercent'
                                 normalize={(value) => +value}
                                 rules={[
@@ -166,7 +168,7 @@ export default class QualityConfigurationForm extends React.PureComponent<Props>
                     supportsValidationQuantity && frameSelectionMethod === FrameSelectionMethod.RANDOM_PER_JOB && (
                         <Col span={7}>
                             <Form.Item
-                                label='Quantity per job'
+                                label={tt("Quantity per job")}
                                 name='validationFramesPerJobPercent'
                                 normalize={(value) => +value}
                                 rules={[
@@ -196,7 +198,7 @@ export default class QualityConfigurationForm extends React.PureComponent<Props>
             <Row>
                 <Col span={7}>
                     <Form.Item
-                        label='Total honeypots'
+                        label={tt("Total honeypots")}
                         name='validationFramesPercent'
                         normalize={(value) => +value}
                         rules={[
@@ -211,7 +213,7 @@ export default class QualityConfigurationForm extends React.PureComponent<Props>
                 </Col>
                 <Col span={7} offset={1}>
                     <Form.Item
-                        label='Overhead per job'
+                        label={tt("Overhead per job")}
                         name='validationFramesPerJobPercent'
                         normalize={(value) => +value}
                         rules={[
@@ -248,7 +250,7 @@ export default class QualityConfigurationForm extends React.PureComponent<Props>
                 ref={this.formRef}
             >
                 <Form.Item
-                    label='Validation mode'
+                    label={tt("Validation mode")}
                     name='validationMode'
                     rules={[{ required: true }]}
                 >
@@ -259,14 +261,17 @@ export default class QualityConfigurationForm extends React.PureComponent<Props>
                         }}
                     >
                         <Radio.Button value={ValidationMode.NONE} key={ValidationMode.NONE}>
-                            None
+                            
+                            {tt("None")}
                         </Radio.Button>
                         <Radio.Button value={ValidationMode.GT} key={ValidationMode.GT}>
-                            Ground Truth
+                            
+                            {tt("Ground Truth")}
                         </Radio.Button>
                         {supportsHoneypots && (
                             <Radio.Button value={ValidationMode.HONEYPOTS} key={ValidationMode.HONEYPOTS}>
-                                Honeypots
+                                
+                                {tt("Honeypots")}
                             </Radio.Button>
                         )}
                     </Radio.Group>

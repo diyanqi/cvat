@@ -54,6 +54,7 @@ import ApproximationAccuracy from 'components/annotation-page/standard-workspace
 import ConfidenceThreshold from 'components/annotation-page/standard-workspace/controls-side-bar/confidence-threshold';
 import withVisibilityHandling from './handle-popover-visibility';
 import ToolsTooltips from './interactor-tooltips';
+import { tt } from 'i18n';
 
 const rectangleHint = {
     markdown: [
@@ -603,7 +604,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
         } catch (error: any) {
             notification.error({
                 description: <CVATMarkdown>{error.message}</CVATMarkdown>,
-                message: 'Interaction error occurred',
+                message: tt("Interaction error occurred"),
                 duration: null,
             });
         }
@@ -727,7 +728,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
         } catch (error: any) {
             notification.error({
                 description: <CVATMarkdown>{error.message}</CVATMarkdown>,
-                message: 'Tracking error occurred',
+                message: tt("Tracking error occurred"),
                 duration: null,
             });
         }
@@ -842,7 +843,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
         if (!shapesToBeDrawn.length) {
             if (!this.interaction.noShapesMessage) {
                 this.interaction.noShapesMessage = message.info({
-                    content: 'No shapes to display',
+                    content: tt("No shapes to display"),
                     duration: 0,
                 });
             }
@@ -899,7 +900,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
             objectState.descriptions = originalDescriptions;
             objectState.keyframe = originalKeyframe;
             notification.error({
-                message: 'Tracking error occurred',
+                message: tt("Tracking error occurred"),
                 description: <CVATMarkdown>{error instanceof Error ? error.message : String(error)}</CVATMarkdown>,
                 duration: null,
             });
@@ -1032,7 +1033,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                         trackingData.stateless.delete(trackerID);
                     } catch (error: any) {
                         notification.error({
-                            message: 'Tracker initialization error',
+                            message: tt("Tracker initialization error"),
                             description: <CVATMarkdown>{error.message}</CVATMarkdown>,
                             duration: null,
                         });
@@ -1085,7 +1086,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                         }
                     } catch (error: any) {
                         notification.error({
-                            message: 'Tracking error',
+                            message: tt("Tracking error"),
                             description: <CVATMarkdown>{error.message}</CVATMarkdown>,
                             duration: null,
                         });
@@ -1152,12 +1153,12 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
 
     private async initializeOpenCV(): Promise<void> {
         if (!openCVWrapper.isInitialized) {
-            const hide = message.loading('Initializing contour utilities..', 0);
+            const hide = message.loading(tt("Initializing contour utilities.."), 0);
             try {
                 await openCVWrapper.initialize(() => {});
             } catch (error: any) {
                 notification.error({
-                    message: 'Could not initialize contour utilities',
+                    message: tt("Could not initialize contour utilities"),
                     description: <CVATMarkdown>{error.message}</CVATMarkdown>,
                     duration: null,
                 });
@@ -1209,7 +1210,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
             <>
                 <Row justify='start'>
                     <Col>
-                        <Text className='cvat-text-color'>Label</Text>
+                        <Text className='cvat-text-color'>{tt("Label")}</Text>
                     </Col>
                 </Row>
                 <Row justify='center'>
@@ -1238,7 +1239,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
             <>
                 <Row justify='start'>
                     <Col>
-                        <Text className='cvat-text-color'>Model</Text>
+                        <Text className='cvat-text-color'>{tt("Model")}</Text>
                     </Col>
                 </Row>
                 <Row align='middle' justify='center'>
@@ -1246,7 +1247,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                         <Select
                             style={{ width: '100%' }}
                             defaultValue={supportedTrackers[0]?.name}
-                            placeholder='Select a model'
+                            placeholder={tt("Select a model")}
                             onChange={this.setActiveTracker}
                             dropdownRender={(menu) => (
                                 <ModelSelectorDropdownContent>{menu}</ModelSelectorDropdownContent>
@@ -1283,7 +1284,8 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                                 }
                             }}
                         >
-                            Track
+                            
+                            {tt("Track")}
                         </Button>
                     </Col>
                 </Row>
@@ -1320,7 +1322,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
             <>
                 <Row justify='start'>
                     <Col>
-                        <Text className='cvat-text-color'>Model</Text>
+                        <Text className='cvat-text-color'>{tt("Model")}</Text>
                     </Col>
                 </Row>
                 <Row align='middle' justify='space-between'>
@@ -1328,7 +1330,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                         <Select
                             style={{ width: '100%' }}
                             defaultValue={interactors.length ? `${interactors[0].id}` : undefined}
-                            placeholder='Select a model'
+                            placeholder={tt("Select a model")}
                             onChange={this.setActiveInteractor}
                             dropdownRender={(menu) => (
                                 <ModelSelectorDropdownContent>{menu}</ModelSelectorDropdownContent>
@@ -1372,7 +1374,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                                 this.setState({ convertMasksToPolygons: checked });
                             }}
                         />
-                        <Text>Convert masks to polygons</Text>
+                        <Text>{tt("Convert masks to polygons")}</Text>
                     </div>
                     {renderStartWithBox && (
                         <div>
@@ -1383,7 +1385,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                                     this.setState({ startInteractingWithBox: value });
                                 }}
                             />
-                            <Text>Start with a bounding box</Text>
+                            <Text>{tt("Start with a bounding box")}</Text>
                         </div>
                     )}
                 </div>
@@ -1421,7 +1423,8 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                                 }
                             }}
                         >
-                            Add visual prompts
+                            
+                            {tt("Add visual prompts")}
                         </Button>
                     </Col>
                 </Row>
@@ -1515,7 +1518,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                     } catch (error: any) {
                         notification.error({
                             description: <CVATMarkdown>{error.message}</CVATMarkdown>,
-                            message: 'Detection error occurred',
+                            message: tt("Detection error occurred"),
                             duration: null,
                         });
                     } finally {
@@ -1532,7 +1535,8 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                 <Row justify='start'>
                     <Col>
                         <Text className='cvat-text-color' strong>
-                            AI assistance
+                            
+                            {tt("AI assistance")}
                         </Text>
                     </Col>
                 </Row>
@@ -1615,14 +1619,14 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
 
         const detectionContent: JSX.Element | null = showDetectionContent ? (
             <Modal
-                title='Making a server request'
+                title={tt("Making a server request")}
                 zIndex={Number.MAX_SAFE_INTEGER}
                 open
                 destroyOnClose
                 closable={false}
                 footer={[]}
             >
-                <Text>Waiting for a server response..</Text>
+                <Text>{tt("Waiting for a server response..")}</Text>
                 <LoadingOutlined style={{ marginLeft: '10px' }} />
             </Modal>
         ) : null;

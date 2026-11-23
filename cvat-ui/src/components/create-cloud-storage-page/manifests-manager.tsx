@@ -14,6 +14,7 @@ import Row from 'antd/lib/row';
 import Alert from 'antd/lib/alert';
 import Tooltip from 'antd/lib/tooltip';
 import config from 'config';
+import { tt } from 'i18n';
 
 interface Props {
     form: any;
@@ -59,8 +60,9 @@ export default function ManifestsManager(props: Props): JSX.Element {
                 className='cvat-manifests-manager-form-item'
                 label={(
                     <>
-                        Manifests
-                        <Tooltip title='Click to open guide'>
+                        
+                        {tt("Manifests")}
+                        <Tooltip title={tt("Click to open guide")}>
                             <Button
                                 type='link'
                                 target='_blank'
@@ -99,7 +101,7 @@ export default function ManifestsManager(props: Props): JSX.Element {
                                                 initialValue={field.name}
                                             >
                                                 <Input
-                                                    placeholder='manifest.jsonl'
+                                                    placeholder={tt("manifest.jsonl")}
                                                     className='cvat-cloud-storage-manifest-field'
                                                     onChange={(event) => onChangeManifestPath(event.target.value, idx)}
                                                 />
@@ -127,7 +129,8 @@ export default function ManifestsManager(props: Props): JSX.Element {
             <Row justify='start'>
                 <Col>
                     <Button onClick={onAddManifestItem} className='cvat-add-manifest-button'>
-                        Add manifest
+                        
+                        {tt("Add manifest")}
                         <PlusCircleOutlined />
                     </Button>
                 </Col>
@@ -138,7 +141,7 @@ export default function ManifestsManager(props: Props): JSX.Element {
                         <Alert
                             showIcon
                             type='info'
-                            message='We highly recommend attaching a manifest file to reduce the number of requests to the bucket'
+                            message={tt("We highly recommend attaching a manifest file to reduce the number of requests to the bucket")}
                         />
                     </Col>
                 </Row>

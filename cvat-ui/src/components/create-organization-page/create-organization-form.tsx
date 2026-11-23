@@ -14,6 +14,7 @@ import { useForm } from 'antd/lib/form/Form';
 
 import { createOrganizationAsync } from 'actions/organization-actions';
 import validationPatterns from 'utils/validation-patterns';
+import { tt } from 'i18n';
 
 function CreateOrganizationForm(): JSX.Element {
     const [form] = useForm<Store>();
@@ -54,7 +55,7 @@ function CreateOrganizationForm(): JSX.Element {
             <Form.Item
                 hasFeedback
                 name='slug'
-                label='Short name'
+                label={tt("Short name")}
                 rules={[
                     { required: true, message: 'Short name is a required field' },
                     { max: MAX_SLUG_LEN, message: `Short name must not exceed ${MAX_SLUG_LEN} characters` },
@@ -66,28 +67,29 @@ function CreateOrganizationForm(): JSX.Element {
             <Form.Item
                 hasFeedback
                 name='name'
-                label='Full name'
+                label={tt("Full name")}
                 rules={[{ max: MAX_NAME_LEN, message: `Full name must not exceed ${MAX_NAME_LEN} characters` }]}
             >
                 <Input />
             </Form.Item>
-            <Form.Item hasFeedback name='description' label='Description'>
+            <Form.Item hasFeedback name='description' label={tt("Description")}>
                 <Input.TextArea rows={3} />
             </Form.Item>
-            <Form.Item hasFeedback name='email' label='Email' rules={[{ type: 'email', message: 'The input is not a valid E-mail' }]}>
-                <Input autoComplete='email' placeholder='support@organization.com' />
+            <Form.Item hasFeedback name='email' label={tt("Email")} rules={[{ type: 'email', message: 'The input is not a valid E-mail' }]}>
+                <Input autoComplete='email' placeholder={tt("support@organization.com")} />
             </Form.Item>
-            <Form.Item hasFeedback name='phoneNumber' label='Phone number' rules={[{ ...validationPatterns.validatePhoneNumber }]}>
+            <Form.Item hasFeedback name='phoneNumber' label={tt("Phone number")} rules={[{ ...validationPatterns.validatePhoneNumber }]}>
                 <Input autoComplete='phoneNumber' placeholder='+44 5555 555555' />
             </Form.Item>
-            <Form.Item hasFeedback name='location' label='Location'>
-                <Input autoComplete='location' placeholder='Country, State/Province, Address, Postal code' />
+            <Form.Item hasFeedback name='location' label={tt("Location")}>
+                <Input autoComplete='location' placeholder={tt("Country, State/Province, Address, Postal code")} />
             </Form.Item>
             <Form.Item>
                 <Space className='cvat-create-organization-form-buttons-block' align='end'>
-                    <Button className='cvat-cancel-new-organization-button' onClick={() => history.goBack()}>Cancel</Button>
+                    <Button className='cvat-cancel-new-organization-button' onClick={() => history.goBack()}>{tt("Cancel")}</Button>
                     <Button className='cvat-submit-new-organization-button' loading={creating} disabled={creating} htmlType='submit' type='primary'>
-                        Submit
+                        
+                        {tt("Submit")}
                     </Button>
                 </Space>
             </Form.Item>

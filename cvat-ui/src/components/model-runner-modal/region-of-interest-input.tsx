@@ -16,6 +16,7 @@ import { type Canvas, convertShapesForInteractor, InteractionResult } from 'cvat
 import CVATTooltip from 'components/common/cvat-tooltip';
 import { RectangleIcon } from 'icons';
 import { clamp } from 'utils/math';
+import { tt } from 'i18n';
 
 type RegionOfInterest = [number, number, number, number];
 
@@ -167,7 +168,7 @@ function RegionOfInterestInputComponent(props: Props): JSX.Element {
                 const drawnInput = getInputFromRegionOfInterest(clamped);
                 if (!isValidRegionOfInterestInput(drawnInput)) {
                     notification.error({
-                        message: 'Region of interest must have positive width and height',
+                        message: tt("Region of interest must have positive width and height"),
                     });
                 } else {
                     updateInput(clamped);
@@ -215,8 +216,8 @@ function RegionOfInterestInputComponent(props: Props): JSX.Element {
     return (
         <div className='cvat-automatic-annotation-region-of-interest-container'>
             <div>
-                <Text>Region of interest</Text>
-                <CVATTooltip title='Defines area of the image where the model will be applied'>
+                <Text>{tt("Region of interest")}</Text>
+                <CVATTooltip title={tt("Defines area of the image where the model will be applied")}>
                     <QuestionCircleOutlined className='cvat-info-circle-icon' />
                 </CVATTooltip>
             </div>
@@ -248,7 +249,7 @@ function RegionOfInterestInputComponent(props: Props): JSX.Element {
                 <Col>
                     <InputNumber
                         name='width'
-                        placeholder='width'
+                        placeholder={tt("width")}
                         precision={0}
                         value={input.width}
                         className={isWidthInvalid ? 'cvat-errored-region-of-interest-value' : defaultClassList}
@@ -260,7 +261,7 @@ function RegionOfInterestInputComponent(props: Props): JSX.Element {
                 <Col>
                     <InputNumber
                         name='height'
-                        placeholder='height'
+                        placeholder={tt("height")}
                         precision={0}
                         value={input.height}
                         className={isHeightInvalid ? 'cvat-errored-region-of-interest-value' : defaultClassList}
@@ -271,13 +272,13 @@ function RegionOfInterestInputComponent(props: Props): JSX.Element {
                 </Col>
                 {canvasInstance && (
                     <Col>
-                        <CVATTooltip title='Draw a region of interest'>
+                        <CVATTooltip title={tt("Draw a region of interest")}>
                             <Button icon={<Icon component={RectangleIcon} />} onClick={startDrawing} />
                         </CVATTooltip>
                     </Col>
                 )}
                 <Col>
-                    <Button type='link' onClick={() => updateInput(null)}>Clear</Button>
+                    <Button type='link' onClick={() => updateInput(null)}>{tt("Clear")}</Button>
                 </Col>
             </Row>
         </div>

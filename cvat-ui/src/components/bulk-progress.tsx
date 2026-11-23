@@ -12,6 +12,7 @@ import { CombinedState } from 'reducers';
 import { resetErrors } from 'actions/notification-actions';
 import { makeBulkOperationAsync, bulkActions } from 'actions/bulk-actions';
 import CVATMarkdown from './common/cvat-markdown';
+import { tt } from 'i18n';
 
 export default function BulkProgress(): JSX.Element | null {
     const dispatch = useDispatch();
@@ -41,7 +42,8 @@ export default function BulkProgress(): JSX.Element | null {
             <>
                 {remainingItemsCount > 0 ? (
                     <>
-                        Some items failed to process. You can retry the operation for the remaining
+                        
+                        {tt("Some items failed to process. You can retry the operation for the remaining")}
                         {` ${remainingItemsCount} items.`}
                     </>
                 ) : (
@@ -58,7 +60,8 @@ export default function BulkProgress(): JSX.Element | null {
                                 handleRetry();
                             }}
                         >
-                            Retry
+                            
+                            {tt("Retry")}
                         </Button>
                     </>
                 )}
@@ -89,7 +92,8 @@ export default function BulkProgress(): JSX.Element | null {
                 onClick={() => dispatch(bulkActions.cancelBulkAction())}
                 type='primary'
             >
-                Cancel
+                
+                {tt("Cancel")}
             </Button>
         </div>
     );

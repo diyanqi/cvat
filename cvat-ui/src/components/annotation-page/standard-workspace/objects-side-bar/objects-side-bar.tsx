@@ -20,6 +20,7 @@ import { collapseSidebar as collapseSidebarAction } from 'actions/annotation-act
 import AppearanceBlock from 'components/annotation-page/appearance-block';
 import IssuesListComponent from 'components/annotation-page/standard-workspace/objects-side-bar/issues-list';
 import { OBJECTS_SIDEBAR_OPEN_EVENT, OBJECTS_SIDEBAR_OPEN_Z_LAYER_EVENT } from 'utils/objects-sidebar';
+import { tt } from 'i18n';
 
 interface OwnProps {
     objectsList: JSX.Element;
@@ -117,7 +118,7 @@ function ObjectsSideBar(props: StateToProps & DispatchToProps & OwnProps): JSX.E
                 className='cvat-objects-sidebar-sider'
                 onClick={collapse}
             >
-                {sidebarCollapsed ? <MenuFoldOutlined title='Show' /> : <MenuUnfoldOutlined title='Hide' />}
+                {sidebarCollapsed ? <MenuFoldOutlined title={tt("Show")} /> : <MenuUnfoldOutlined title={tt("Hide")} />}
             </span>
 
             <Tabs

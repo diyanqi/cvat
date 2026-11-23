@@ -28,6 +28,7 @@ import { ShortcutScope } from 'utils/enums';
 import { subKeyMap } from 'utils/component-subkeymap';
 import { Chapter } from 'cvat-core/src/frames';
 import { usePlugins } from 'utils/hooks';
+import { tt } from 'i18n';
 
 interface Props {
     startFrame: number;
@@ -128,9 +129,9 @@ function PlayerNavigation(props: Props): JSX.Element {
             switchNavigationBlocked(true);
             Modal.confirm({
                 title: `Do you want to delete frame #${frameNumber}?`,
-                content: 'The frame will not be visible in navigation and exported datasets, but it still can be restored with all the annotations.',
+                content: tt("The frame will not be visible in navigation and exported datasets, but it still can be restored with all the annotations."),
                 className: 'cvat-modal-delete-frame',
-                okText: 'Delete',
+                okText: tt("Delete"),
                 okType: 'danger',
                 onOk: () => {
                     switchNavigationBlocked(false);
@@ -150,7 +151,7 @@ function PlayerNavigation(props: Props): JSX.Element {
                 onDeleteFrame();
             } else {
                 message.warning({
-                    content: 'Frames cannot be deleted in replica jobs, use the parent annotation job',
+                    content: tt("Frames cannot be deleted in replica jobs, use the parent annotation job"),
                     className: 'cvat-replica-frame-deletion-warning',
                 });
             }
@@ -199,7 +200,7 @@ function PlayerNavigation(props: Props): JSX.Element {
             />
         </CVATTooltip>
     ) : (
-        <CVATTooltip title='Restore the frame'>
+        <CVATTooltip title={tt("Restore the frame")}>
             <Icon
                 style={deleteFrameIconStyle}
                 className='cvat-player-restore-frame'
@@ -254,10 +255,10 @@ function PlayerNavigation(props: Props): JSX.Element {
                         </CVATTooltip>
                     </Col>
                     <Col className='cvat-player-frame-actions' offset={1}>
-                        <CVATTooltip title='Copy frame filename'>
+                        <CVATTooltip title={tt("Copy frame filename")}>
                             <CopyOutlined className='cvat-player-copy-frame-name-icon' onClick={onCopyFilenameIconClick} />
                         </CVATTooltip>
-                        <CVATTooltip title='Create frame URL'>
+                        <CVATTooltip title={tt("Create frame URL")}>
                             <LinkOutlined className='cvat-player-frame-url-icon' onClick={onURLIconClick} />
                         </CVATTooltip>
                         { frameDeletionAvailable && deleteFrameIcon }

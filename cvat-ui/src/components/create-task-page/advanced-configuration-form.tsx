@@ -24,6 +24,7 @@ import TargetStorageField from 'components/storage/target-storage-field';
 import {
     getCore, Storage, StorageData, StorageLocation,
 } from 'cvat-core-wrapper';
+import { tt } from 'i18n';
 
 const core = getCore();
 
@@ -272,12 +273,12 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
     private renderCopyDataCheckbox(): JSX.Element {
         return (
             <Form.Item
-                help='If you have a low data transfer rate over the network you can copy data into CVAT to speed up work'
+                help={tt("If you have a low data transfer rate over the network you can copy data into CVAT to speed up work")}
                 name='copyData'
                 valuePropName='checked'
             >
                 <Checkbox>
-                    <Text className='cvat-text-color'>Copy data into CVAT</Text>
+                    <Text className='cvat-text-color'>{tt("Copy data into CVAT")}</Text>
                 </Checkbox>
             </Form.Item>
         );
@@ -288,7 +289,7 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
 
         return (
             <Form.Item
-                label='Sorting method'
+                label={tt("Sorting method")}
                 name='sortingMethod'
                 rules={[
                     {
@@ -296,17 +297,19 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
                         message: 'The field is required.',
                     },
                 ]}
-                help='Specify how to sort images. It is not relevant for videos.'
+                help={tt("Specify how to sort images. It is not relevant for videos.")}
             >
                 <Radio.Group buttonStyle='solid' onChange={(e) => onChangeSortingMethod(e.target.value)}>
                     <Radio.Button value={SortingMethod.LEXICOGRAPHICAL} key={SortingMethod.LEXICOGRAPHICAL}>
-                        Lexicographical
+                        
+                        {tt("Lexicographical")}
                     </Radio.Button>
-                    <Radio.Button value={SortingMethod.NATURAL} key={SortingMethod.NATURAL}>Natural</Radio.Button>
+                    <Radio.Button value={SortingMethod.NATURAL} key={SortingMethod.NATURAL}>{tt("Natural")}</Radio.Button>
                     <Radio.Button value={SortingMethod.PREDEFINED} key={SortingMethod.PREDEFINED}>
-                        Predefined
+                        
+                        {tt("Predefined")}
                     </Radio.Button>
-                    <Radio.Button value={SortingMethod.RANDOM} key={SortingMethod.RANDOM}>Random</Radio.Button>
+                    <Radio.Button value={SortingMethod.RANDOM} key={SortingMethod.RANDOM}>{tt("Random")}</Radio.Button>
                 </Radio.Group>
             </Form.Item>
         );
@@ -314,9 +317,9 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
 
     private renderImageQuality(): JSX.Element {
         return (
-            <CVATTooltip title='Defines images compression level'>
+            <CVATTooltip title={tt("Defines images compression level")}>
                 <Form.Item
-                    label='Image quality'
+                    label={tt("Image quality")}
                     name='imageQuality'
                     rules={[
                         {
@@ -334,9 +337,9 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
 
     private renderOverlap(): JSX.Element {
         return (
-            <CVATTooltip title='Defines a number of intersected frames between different segments'>
+            <CVATTooltip title={tt("Defines a number of intersected frames between different segments")}>
                 <Form.Item
-                    label='Overlap size'
+                    label={tt("Overlap size")}
                     name='overlapSize'
                     dependencies={['segmentSize']}
                     rules={[{ validator: isInteger({ min: 0 }) }, validateOverlapSize]}
@@ -349,8 +352,8 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
 
     private renderSegmentSize(): JSX.Element {
         return (
-            <CVATTooltip title='Defines a number of frames in a segment'>
-                <Form.Item label='Segment size' name='segmentSize' rules={[{ validator: isInteger({ min: 1 }) }]}>
+            <CVATTooltip title={tt("Defines a number of frames in a segment")}>
+                <Form.Item label={tt("Segment size")} name='segmentSize' rules={[{ validator: isInteger({ min: 1 }) }]}>
                     <Input size='large' type='number' min={1} />
                 </Form.Item>
             </CVATTooltip>
@@ -359,7 +362,7 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
 
     private renderStartFrame(): JSX.Element {
         return (
-            <Form.Item label='Start frame' name='startFrame' rules={[{ validator: isInteger({ min: 0 }) }]}>
+            <Form.Item label={tt("Start frame")} name='startFrame' rules={[{ validator: isInteger({ min: 0 }) }]}>
                 <Input size='large' type='number' min={0} step={1} />
             </Form.Item>
         );
@@ -368,7 +371,7 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
     private renderStopFrame(): JSX.Element {
         return (
             <Form.Item
-                label='Stop frame'
+                label={tt("Stop frame")}
                 name='stopFrame'
                 dependencies={['startFrame']}
                 rules={[{ validator: isInteger({ min: 0 }) }, validateStopFrame]}
@@ -380,7 +383,7 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
 
     private renderFrameStep(): JSX.Element {
         return (
-            <Form.Item label='Frame step' name='frameStep' rules={[{ validator: isInteger({ min: 1 }) }]}>
+            <Form.Item label={tt("Frame step")} name='frameStep' rules={[{ validator: isInteger({ min: 1 }) }]}>
                 <Input size='large' type='number' min={1} step={1} />
             </Form.Item>
         );
@@ -391,7 +394,7 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
             <Form.Item
                 hasFeedback
                 name='bugTracker'
-                label='Issue tracker'
+                label={tt("Issue tracker")}
                 extra='Attach issue tracker where the task is described'
                 rules={[{ validator: validateURL }]}
             >
@@ -410,8 +413,8 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
                 >
                     <Switch />
                 </Form.Item>
-                <Text className='cvat-text-color'>Prefer zip chunks</Text>
-                <Tooltip title='ZIP chunks have better quality, but they require more disk space and time to download. Relevant for video only'>
+                <Text className='cvat-text-color'>{tt("Prefer zip chunks")}</Text>
+                <Tooltip title={tt("ZIP chunks have better quality, but they require more disk space and time to download. Relevant for video only")}>
                     <QuestionCircleOutlined style={{ opacity: 0.5 }} />
                 </Tooltip>
             </Space>
@@ -428,8 +431,8 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
                 >
                     <Switch defaultChecked />
                 </Form.Item>
-                <Text className='cvat-text-color'>Use cache</Text>
-                <Tooltip title='Using cache to store data.'>
+                <Text className='cvat-text-color'>{tt("Use cache")}</Text>
+                <Tooltip title={tt("Using cache to store data.")}>
                     <QuestionCircleOutlined style={{ opacity: 0.5 }} />
                 </Tooltip>
             </Space>
@@ -441,22 +444,27 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
             <CVATTooltip
                 title={(
                     <>
-                        Defines a number of frames to be packed in a chunk when send from client to server. Server
-                        defines automatically if empty.
+                        
+                        {tt("Defines a number of frames to be packed in a chunk when send from client to server. Server defines automatically if empty.")}
                         <br />
-                        Recommended values:
+                        
+                        {tt("Recommended values:")}
                         <br />
-                        1080p or less: 36
+                        
+                        {tt("1080p or less: 36")}
                         <br />
-                        2k or less: 8 - 16
+                        
+                        {tt("2k or less: 8 - 16")}
                         <br />
-                        4k or less: 4 - 8
+                        
+                        {tt("4k or less: 4 - 8")}
                         <br />
-                        More: 1 - 4
+                        
+                        {tt("More: 1 - 4")}
                     </>
                 )}
             >
-                <Form.Item label='Chunk size' name='dataChunkSize' rules={[{ validator: isInteger({ min: 1 }) }]}>
+                <Form.Item label={tt("Chunk size")} name='dataChunkSize' rules={[{ validator: isInteger({ min: 1 }) }]}>
                     <Input size='large' type='number' />
                 </Form.Item>
             </CVATTooltip>
@@ -466,7 +474,7 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
     private renderInitialReplicas(): JSX.Element {
         return (
             <Form.Item
-                label='Initial replicas'
+                label={tt("Initial replicas")}
                 name='initialReplicas'
                 rules={[{ validator: isInteger({ min: 0 }) }]}
             >

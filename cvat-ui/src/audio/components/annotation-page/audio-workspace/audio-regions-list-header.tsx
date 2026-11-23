@@ -14,6 +14,7 @@ import {
 import CVATTooltip from 'components/common/cvat-tooltip';
 
 import { AudioRegionsOrdering } from './utils/audio-interval';
+import { tt } from 'i18n';
 
 interface Props {
     count: number;
@@ -83,7 +84,7 @@ function AudioRegionsListHeader(props: Props): JSX.Element {
                 </Col>
             </Row>
             <Row className='cvat-audio-regions-list-ordering' align='middle'>
-                <Text>Sort by</Text>
+                <Text>{tt("Sort by")}</Text>
                 <Select
                     size='small'
                     className='cvat-audio-regions-list-ordering-selector'

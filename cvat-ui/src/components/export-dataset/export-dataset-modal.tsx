@@ -31,6 +31,7 @@ import {
     Storage, StorageData, StorageLocation, Task,
     DimensionType,
 } from 'cvat-core-wrapper';
+import { tt } from 'i18n';
 
 type FormValues = {
     selectedFormat: string | undefined;
@@ -320,10 +321,10 @@ function ExportDatasetModal(props: Readonly<StateToProps>): JSX.Element {
             >
                 <Form.Item
                     name='selectedFormat'
-                    label={<Text strong>Export format</Text>}
+                    label={<Text strong>{tt("Export format")}</Text>}
                     rules={[{ required: true, message: 'Format must be selected' }]}
                 >
-                    <Select virtual={false} placeholder='Select dataset format' className='cvat-modal-export-select'>
+                    <Select virtual={false} placeholder={tt("Select dataset format")} className='cvat-modal-export-select'>
                         {sortedDumpers
                             .filter(
                                 (dumper: Dumper): boolean => dumper.dimension === instance?.dimension ||
@@ -353,15 +354,15 @@ function ExportDatasetModal(props: Readonly<StateToProps>): JSX.Element {
                         >
                             <Switch className='cvat-modal-export-save-images' />
                         </Form.Item>
-                        <Text strong>Save images</Text>
+                        <Text strong>{tt("Save images")}</Text>
                     </Space>
                 }
                 {isBulkMode ? (
-                    <Form.Item label={<Text strong>Name template</Text>} required>
+                    <Form.Item label={<Text strong>{tt("Name template")}</Text>} required>
                         <Input
                             value={nameTemplate}
                             onChange={(e) => setNameTemplate(e.target.value)}
-                            placeholder='dataset_{{id}}'
+                            placeholder={tt("dataset_{{id}}")}
                             suffix={exportExtension}
                             className='cvat-modal-export-filename-input'
                         />
@@ -373,16 +374,17 @@ function ExportDatasetModal(props: Readonly<StateToProps>): JSX.Element {
                                     />
                                 )}
                             >
-                                When forming the dataset name, a template is used.
+                                
+                                {tt("When forming the dataset name, a template is used.")}
                                 {' '}
                                 <QuestionCircleOutlined />
                             </Tooltip>
                         </Text>
                     </Form.Item>
                 ) : (
-                    <Form.Item label={<Text strong>Custom name</Text>} name='customName'>
+                    <Form.Item label={<Text strong>{tt("Custom name")}</Text>} name='customName'>
                         <Input
-                            placeholder='Custom name for a dataset'
+                            placeholder={tt("Custom name for a dataset")}
                             suffix={exportExtension}
                             className='cvat-modal-export-filename-input'
                         />

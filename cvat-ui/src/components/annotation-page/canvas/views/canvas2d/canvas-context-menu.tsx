@@ -18,6 +18,7 @@ import {
     AnnotationConflict, ObjectState, ShapeType, QualityConflict,
 } from 'cvat-core-wrapper';
 import SelectionContextMenu from './selection-context-menu';
+import { tt } from 'i18n';
 
 interface Props {
     workspace: Workspace;
@@ -59,7 +60,8 @@ function ReviewContextMenu({
     return (
         <Menu onClick={onClick} selectable={false} className='cvat-canvas-context-menu' style={{ top, left }}>
             <Menu.Item className='cvat-context-menu-item' key={ReviewContextMenuKeys.OPEN_ISSUE}>
-                Open an issue ...
+                
+                {tt("Open an issue ...")}
             </Menu.Item>
             {conflict ? (
                 <Menu.Item
@@ -70,14 +72,16 @@ function ReviewContextMenu({
                 </Menu.Item>
             ) : null}
             <Menu.Item className='cvat-context-menu-item' key={ReviewContextMenuKeys.QUICK_ISSUE_POSITION}>
-                Quick issue: incorrect position
+                
+                {tt("Quick issue: incorrect position")}
             </Menu.Item>
             <Menu.Item className='cvat-context-menu-item' key={ReviewContextMenuKeys.QUICK_ISSUE_ATTRIBUTE}>
-                Quick issue: incorrect attribute
+                
+                {tt("Quick issue: incorrect attribute")}
             </Menu.Item>
             {latestComments.length ? (
                 <Menu.SubMenu
-                    title='Quick issue ...'
+                    title={tt("Quick issue ...")}
                     className='cvat-context-menu-item'
                     key={ReviewContextMenuKeys.QUICK_ISSUE_FROM_LATEST}
                 >
@@ -98,7 +102,8 @@ function ReviewContextMenu({
                     className='cvat-context-menu-item cvat-quick-copy-object'
                     key={ReviewContextMenuKeys.COPY_OBJECT}
                 >
-                    Copy annotation
+                    
+                    {tt("Copy annotation")}
                 </Menu.Item>
             ) : null}
         </Menu>

@@ -19,6 +19,7 @@ import { ShortcutScope } from 'utils/enums';
 import { registerComponentShortcuts } from 'actions/shortcuts-actions';
 import { subKeyMap } from 'utils/component-subkeymap';
 import { useSelector } from 'react-redux';
+import { tt } from 'i18n';
 
 export interface Props {
     activeControl: ActiveControl;
@@ -153,12 +154,12 @@ function IntervalRegionControl(props: Props): JSX.Element {
         <div className='cvat-audio-interval-region-popover-content'>
             <Row justify='start'>
                 <Col>
-                    <Text className='cvat-text-color' strong>Audio interval</Text>
+                    <Text className='cvat-text-color' strong>{tt("Audio interval")}</Text>
                 </Col>
             </Row>
             <Row justify='start' className='cvat-audio-interval-popover-label-row'>
                 <Col>
-                    <Text className='cvat-text-color'>Label</Text>
+                    <Text className='cvat-text-color'>{tt("Label")}</Text>
                 </Col>
             </Row>
             <Row justify='center'>

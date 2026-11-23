@@ -21,6 +21,7 @@ import { ResourceFilterHOC, defaultVisibility } from 'components/resource-sortin
 import { generateCSV, downloadCSV as triggerCSVDownload } from 'utils/csv-writer';
 import { useScopedState } from 'utils/scoped-state';
 import CVATTooltip from './cvat-tooltip';
+import { tt } from 'i18n';
 
 type Props = TableProps & {
     stateKey?: string;
@@ -288,7 +289,7 @@ function CVATTable(props: Props): JSX.Element {
                             >
                                 <Input.Search
                                     className='cvat-table-search-bar'
-                                    placeholder='Search ..'
+                                    placeholder={tt("Search ..")}
                                     value={searchInput}
                                     onChange={(event) => setSearchInput(event.target.value)}
                                     onSearch={setSearchPhrase}
@@ -397,7 +398,7 @@ function CVATTable(props: Props): JSX.Element {
                                     <div className='cvat-table-columns-settings-menu'>
                                         <Input
                                             size='small'
-                                            placeholder='Search'
+                                            placeholder={tt("Search")}
                                             prefix={<SearchOutlined />}
                                             onChange={(event) => setColumnSearchPhrase(event.target.value)}
                                             value={columnSearchPhrase}

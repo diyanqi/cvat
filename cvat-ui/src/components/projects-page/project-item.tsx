@@ -19,6 +19,7 @@ import { Project } from 'cvat-core-wrapper';
 import { useCardHeightHOC, usePlugins, useContextMenuClick } from 'utils/hooks';
 import Preview from 'components/common/preview';
 import ProjectActionsComponent from './actions-menu';
+import { tt } from 'i18n';
 
 interface Props {
     projectInstance: Project;
@@ -102,7 +103,8 @@ export default function ProjectItemComponent(props: Props): JSX.Element {
                             {ownerName && (
                                 <>
                                     <Text type='secondary'>
-                                        Created
+                                        
+                                        {tt("Created")}
                                         {ownerName ? ` by ${ownerName}` : ''}
                                     </Text>
                                     <br />

@@ -18,6 +18,7 @@ import {
     intervalEndSeconds,
     intervalStartSeconds,
 } from './utils/audio-interval';
+import { tt } from 'i18n';
 
 interface Props {
     clientID: number;
@@ -80,7 +81,7 @@ function AudioIntervalHeader({
             labels={labelsForSelector}
             value={labelID}
             disabled={locked}
-            tooltip='Change current label'
+            tooltip={tt("Change current label")}
             onChange={(label: Label) => {
                 if (label.id != null) {
                     onChangeLabel(label.id);

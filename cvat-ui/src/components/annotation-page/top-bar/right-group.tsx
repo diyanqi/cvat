@@ -20,6 +20,7 @@ import { Workspace } from 'reducers';
 
 import MDEditor from '@uiw/react-md-editor';
 import rehypeSanitize from 'rehype-sanitize';
+import { tt } from 'i18n';
 
 interface Props {
     showStatistics(): void;
@@ -67,7 +68,7 @@ function RightGroup(props: Props): JSX.Element {
             }
         }).catch((error: unknown) => {
             notification.error({
-                message: 'Could not receive annotation guide',
+                message: tt("Could not receive annotation guide"),
                 description: error instanceof Error ? error.message : 'Unknown error',
             });
         });
@@ -121,7 +122,8 @@ function RightGroup(props: Props): JSX.Element {
                 }}
             >
                 <Icon component={FullscreenIcon} />
-                Fullscreen
+                
+                {tt("Fullscreen")}
             </Button>
             { jobInstance.guideId !== null && (
                 <Button
@@ -130,7 +132,8 @@ function RightGroup(props: Props): JSX.Element {
                     onClick={openGuide}
                 >
                     <Icon component={GuideIcon} />
-                    Guide
+                    
+                    {tt("Guide")}
                 </Button>
             )}
             <Button
@@ -139,7 +142,8 @@ function RightGroup(props: Props): JSX.Element {
                 onClick={showStatistics}
             >
                 <InfoCircleOutlined />
-                Info
+                
+                {tt("Info")}
             </Button>
             <Button
                 type='link'
@@ -149,7 +153,8 @@ function RightGroup(props: Props): JSX.Element {
                 onClick={showFilters}
             >
                 <Icon component={FilterIcon} />
-                Filters
+                
+                {tt("Filters")}
             </Button>
             <div>
                 <Select

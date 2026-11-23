@@ -57,14 +57,16 @@ import {
     SUPPORTED_SIMILARITY_METRICS,
     validateJsonLogic,
 } from './quality-requirement-form-utils';
+import { tt } from 'i18n';
 
 const targetMetricTooltip = (
     <div>
-        <div>Micro calculates one score from all annotations.</div>
-        <div>Macro mean averages the scores of active labels.</div>
-        <div>Worst label uses the lowest active-label score.</div>
+        <div>{tt("Micro calculates one score from all annotations.")}</div>
+        <div>{tt("Macro mean averages the scores of active labels.")}</div>
+        <div>{tt("Worst label uses the lowest active-label score.")}</div>
         <a href={config.QUALITY_TARGET_METRICS_GUIDE_URL} target='_blank' rel='noopener noreferrer'>
-            View metric formulas in the documentation
+            
+            {tt("View metric formulas in the documentation")}
         </a>
     </div>
 );
@@ -369,7 +371,7 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
         return (
             <Space size={4} className='cvat-quality-requirement-overridden-label'>
                 <span>{label}</span>
-                <CVATTooltip title='Revert to inherited value'>
+                <CVATTooltip title={tt("Revert to inherited value")}>
                     <Button
                         type='link'
                         size='small'
@@ -571,7 +573,7 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
             <>
                 <Divider />
                 <Row className='cvat-quality-requirement-form-section-title'>
-                    <Text strong>Shape comparison</Text>
+                    <Text strong>{tt("Shape comparison")}</Text>
                 </Row>
                 <Row gutter={16}>
                     <Col span={12}>
@@ -680,8 +682,8 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
             <Row justify='end' className='cvat-quality-settings-save-btn cvat-quality-requirement-form-actions'>
                 <Col>
                     <Space>
-                        <Button onClick={onCancel} disabled={submitting}>Cancel</Button>
-                        <Button type='primary' htmlType='submit' loading={submitting}>Save</Button>
+                        <Button onClick={onCancel} disabled={submitting}>{tt("Cancel")}</Button>
+                        <Button type='primary' htmlType='submit' loading={submitting}>{tt("Save")}</Button>
                     </Space>
                 </Col>
             </Row>
@@ -692,7 +694,7 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
             </Row>
             <Form.Item
                 name='name'
-                label='Name'
+                label={tt("Name")}
                 rules={[{
                     required: true,
                     message: 'This field is required',
@@ -712,11 +714,11 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                     },
                 }]}
             >
-                <Input placeholder='Sample requirement name' />
+                <Input placeholder={tt("Sample requirement name")} />
             </Form.Item>
             <Form.Item
                 name='parentRequirement'
-                label='Parent requirement'
+                label={tt("Parent requirement")}
                 rules={[
                     ...(parentRequirementRequired ? [{
                         required: true,
@@ -726,7 +728,7 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
             >
                 <Select
                     disabled
-                    placeholder='Parent requirement'
+                    placeholder={tt("Parent requirement")}
                     onChange={(value: number | null) => {
                         const nextValue = value ?? null;
                         form.setFieldsValue({ parentRequirement: nextValue });
@@ -744,7 +746,7 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                 <Col span={12}>
                     <Form.Item
                         name='annotationType'
-                        label='Target'
+                        label={tt("Target")}
                         rules={[{ required: true, message: 'This field is required' }]}
                     >
                         <Select disabled>
@@ -758,7 +760,7 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                 </Col>
                 <Col span={12}>
                     <Form.Item
-                        label='Filter'
+                        label={tt("Filter")}
                     >
                         <div className='cvat-quality-requirement-filter-control'>
                             <Form.Item
@@ -784,7 +786,8 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                                             markTouchedFields({ filter: '' });
                                         }}
                                     >
-                                        Clear filters
+                                        
+                                        {tt("Clear filters")}
                                     </Button>
                                 )}
                             </Form.Item>
@@ -823,7 +826,7 @@ export default function QualityRequirementForm(props: Readonly<QualityRequiremen
                 </Col>
                 <Col span={12}>
                     <Form.Item name='enabled' valuePropName='checked'>
-                        <Checkbox>Enabled</Checkbox>
+                        <Checkbox>{tt("Enabled")}</Checkbox>
                     </Form.Item>
                 </Col>
             </Row>

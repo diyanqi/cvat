@@ -22,6 +22,7 @@ import { CombinedState } from 'reducers';
 import openCVWrapper from 'utils/opencv-wrapper/opencv-wrapper';
 import { getObjectStateByClientID } from 'utils/objects-sidebar';
 import { ThunkDispatch } from 'utils/redux';
+import { tt } from 'i18n';
 
 interface StateToProps {
     objectState: ObjectState | null;
@@ -247,7 +248,7 @@ function usePolySimplifySession(props: SessionProps): SessionControls {
                 }
             } catch (error: unknown) {
                 notification.error({
-                    message: 'Could not initialize simplification',
+                    message: tt("Could not initialize simplification"),
                     description: <CVATMarkdown>{error instanceof Error ? error.message : String(error)}</CVATMarkdown>,
                     duration: null,
                 });

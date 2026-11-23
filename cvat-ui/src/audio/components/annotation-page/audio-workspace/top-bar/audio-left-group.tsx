@@ -18,6 +18,7 @@ import { subKeyMap } from 'utils/component-subkeymap';
 import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
 import AudioSaveAnnotationsButton from './audio-save-annotations-button';
 import AudioRemoveAnnotationsConfirm from './audio-remove-annotations-confirm';
+import { tt } from 'i18n';
 
 interface Props {
     saving: boolean;
@@ -85,7 +86,7 @@ function AudioLeftGroup(props: Props): JSX.Element {
                     closable={false}
                     footer={[]}
                 >
-                    <Text>CVAT is saving your annotations, please wait </Text>
+                    <Text>{tt("CVAT is saving your annotations, please wait")} </Text>
                     <LoadingOutlined />
                 </Modal>
             )}
@@ -100,7 +101,7 @@ function AudioLeftGroup(props: Props): JSX.Element {
                         onClick={onUndoClick}
                     >
                         <Icon component={UndoIcon} />
-                        <span>Undo</span>
+                        <span>{tt("Undo")}</span>
                     </Button>
                 </CVATTooltip>
                 <CVATTooltip overlay={`Redo: ${redoAction} ${redoShortcut}`}>
@@ -111,7 +112,8 @@ function AudioLeftGroup(props: Props): JSX.Element {
                         onClick={onRedoClick}
                     >
                         <Icon component={RedoIcon} />
-                        Redo
+                        
+                        {tt("Redo")}
                     </Button>
                 </CVATTooltip>
             </Col>

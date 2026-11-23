@@ -19,6 +19,7 @@ import { getCore, AnnotationGuide } from 'cvat-core-wrapper';
 import CVATLoadingSpinner from 'components/common/loading-spinner';
 import GoBackButton from 'components/common/go-back-button';
 import dimensions from 'utils/dimensions';
+import { tt } from 'i18n';
 
 const core = getCore();
 const confirmationMessage = 'You have unsaved changes, please confirm leaving this page.';
@@ -121,10 +122,10 @@ function AnnotationGuidePage(): JSX.Element {
             updatedGuide.save().then((result: AnnotationGuide) => {
                 updateValue(result.markdown);
                 updateGuide(result);
-                notification.info({ message: 'Annotation guide was saved successfully' });
+                notification.info({ message: tt("Annotation guide was saved successfully") });
             }).catch((error: unknown) => {
                 notification.error({
-                    message: 'Could not save guide on the server',
+                    message: tt("Could not save guide on the server"),
                     description: error instanceof Error ? error.message : '',
                 });
             }).finally(() => {
@@ -171,7 +172,7 @@ function AnnotationGuidePage(): JSX.Element {
                         updateValue(computeNewValue());
                     } catch (error: any) {
                         notification.error({
-                            message: 'Could not create a server asset',
+                            message: tt("Could not create a server asset"),
                             description: error.toString(),
                         });
                     } finally {
@@ -233,7 +234,8 @@ function AnnotationGuidePage(): JSX.Element {
                         disabled={fetching || !guide?.id || !hasUnsavedChanges}
                         onClick={() => submit(value)}
                     >
-                        Submit
+                        
+                        {tt("Submit")}
                     </Button>
                 </Space>
             </Col>

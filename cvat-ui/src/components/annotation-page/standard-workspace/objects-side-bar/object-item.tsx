@@ -15,6 +15,7 @@ import { isMultiSelectObjectModifierPressed } from 'utils/multi-selection';
 import type { OrientationAngle } from 'utils/change-object-orientation';
 import ObjectItemElementComponent from './object-item-element';
 import ItemBasics from './object-item-basics';
+import { tt } from 'i18n';
 
 const INTERACTIVE_ELEMENT_SELECTOR = 'a, button, input, textarea, [role="button"], .ant-select, .anticon';
 
@@ -246,7 +247,7 @@ function ObjectItemComponent(props: Props): JSX.Element {
                         onChange={(keys): void => onPartsExpandedChange?.(clientID, keys.includes('elements'))}
                         items={[{
                             key: 'elements',
-                            label: <Text style={{ fontSize: 10 }} type='secondary'>PARTS</Text>,
+                            label: <Text style={{ fontSize: 10 }} type='secondary'>{tt("PARTS")}</Text>,
                             children: elements.map((element: number) => (
                                 <ObjectItemElementComponent
                                     key={element}

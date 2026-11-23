@@ -15,6 +15,7 @@ import { CombinedState } from 'reducers';
 import { switchAutomaticBordering, switchSnapToPoint } from 'actions/settings-actions';
 import CVATTooltip from 'components/common/cvat-tooltip';
 import withVisibilityHandling from './handle-popover-visibility';
+import { tt } from 'i18n';
 
 const CustomPopover = withVisibilityHandling(Popover, 'snap-tools-control');
 
@@ -33,7 +34,8 @@ function SnapToolsControlComponent(): JSX.Element {
             <Row justify='start'>
                 <Col>
                     <Text className='cvat-text-color' strong>
-                        Snap Tools
+                        
+                        {tt("Snap Tools")}
                     </Text>
                 </Col>
             </Row>
@@ -80,7 +82,7 @@ function SnapToolsControlComponent(): JSX.Element {
             overlayClassName='cvat-snap-tools-control-popover'
             content={popoverContent}
         >
-            <CVATTooltip title='Snap tools' placement='right'>
+            <CVATTooltip title={tt("Snap tools")} placement='right'>
                 <Icon
                     className={`cvat-snap-tools-control ${isAnySnapEnabled ? 'cvat-snap-tools-active' : ''}`}
                     component={SnapToolsIcon}

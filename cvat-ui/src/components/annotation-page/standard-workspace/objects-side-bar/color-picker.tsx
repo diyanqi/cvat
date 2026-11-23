@@ -13,6 +13,7 @@ import { SketchPicker } from 'react-color';
 
 import { getCore } from 'cvat-core-wrapper';
 import CVATTooltip from 'components/common/cvat-tooltip';
+import { tt } from 'i18n';
 
 const core = getCore();
 
@@ -78,7 +79,8 @@ function ColorPicker(props: Props, ref: React.Ref<any>): JSX.Element {
                                         changeVisible(false);
                                     }}
                                 >
-                                    Reset
+                                    
+                                    {tt("Reset")}
                                 </Button>
                             )}
                         </Col>
@@ -89,7 +91,8 @@ function ColorPicker(props: Props, ref: React.Ref<any>): JSX.Element {
                                     changeVisible(false);
                                 }}
                             >
-                                Cancel
+                                
+                                {tt("Cancel")}
                             </Button>
                         </Col>
                         <Col span={6}>
@@ -101,7 +104,8 @@ function ColorPicker(props: Props, ref: React.Ref<any>): JSX.Element {
                                     changeVisible(false);
                                 }}
                             >
-                                Ok
+                                
+                                {tt("Ok")}
                             </Button>
                         </Col>
                     </Row>
@@ -110,10 +114,10 @@ function ColorPicker(props: Props, ref: React.Ref<any>): JSX.Element {
             title={(
                 <Row justify='space-between' align='middle'>
                     <Col span={12}>
-                        <Text strong>Select color</Text>
+                        <Text strong>{tt("Select color")}</Text>
                     </Col>
                     <Col span={4}>
-                        <CVATTooltip title='Close'>
+                        <CVATTooltip title={tt("Close")}>
                             <Button
                                 className='cvat-color-picker-close-button'
                                 type='link'

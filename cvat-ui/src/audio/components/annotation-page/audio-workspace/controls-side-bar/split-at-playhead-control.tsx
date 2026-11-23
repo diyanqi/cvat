@@ -26,6 +26,7 @@ import { ShortcutScope } from 'utils/enums';
 import { subKeyMap } from 'utils/component-subkeymap';
 import { formatMilliseconds } from 'audio/utils/format-audio-time';
 import { isAudioIntervalSplittableAtPlaybackPosition } from 'audio/utils/audio-interval';
+import { tt } from 'i18n';
 
 export interface Props {
     shortcut: string;
@@ -111,7 +112,7 @@ function SplitAtPlayheadControl({ shortcut }: Props): JSX.Element {
         <div>
             <Row className='cvat-audio-split-popover-title'>
                 <Col>
-                    <Text strong>Choose interval to split</Text>
+                    <Text strong>{tt("Choose interval to split")}</Text>
                 </Col>
             </Row>
             <Row className='cvat-audio-split-popover-options'>

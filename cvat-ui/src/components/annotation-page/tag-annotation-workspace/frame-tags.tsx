@@ -16,6 +16,7 @@ import {
 import { CombinedState } from 'reducers';
 import { AnnotationConflict, ObjectState, ObjectType } from 'cvat-core-wrapper';
 import { filterAnnotations } from 'utils/filter-annotations';
+import { tt } from 'i18n';
 
 function FrameTags(): JSX.Element {
     const dispatch = useDispatch();
@@ -79,7 +80,8 @@ function FrameTags(): JSX.Element {
                         >
                             {tag.label.name}
                             {' '}
-                            (GT)
+                            
+                            {tt("(GT)")}
                         </Tag>
                     ))}
             </div>

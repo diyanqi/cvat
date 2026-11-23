@@ -14,6 +14,7 @@ import Text from 'antd/lib/typography/Text';
 
 import CVATTooltip from 'components/common/cvat-tooltip';
 import { layerDragID } from './index';
+import { tt } from 'i18n';
 
 interface LayerHeaderProps {
     zOrder: number;
@@ -81,7 +82,7 @@ function LayerHeader(props: LayerHeaderProps): JSX.Element {
                         onClick={(): void => selectLayer(zOrder)}
                     />
                 </CVATTooltip>
-                <CVATTooltip title='Drag layer'>
+                <CVATTooltip title={tt("Drag layer")}>
                     <Button
                         {...attributes}
                         {...listeners}

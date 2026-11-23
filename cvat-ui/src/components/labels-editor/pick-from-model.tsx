@@ -13,6 +13,7 @@ import { PlusCircleOutlined } from '@ant-design/icons';
 import { CombinedState } from 'reducers';
 import { LabelType, MLModel } from 'cvat-core-wrapper';
 import { LabelOptColor } from './common';
+import { tt } from 'i18n';
 
 interface Props {
     labelNames: string[];
@@ -40,7 +41,7 @@ function PickFromModelComponent(props: Props): JSX.Element {
             { models.length ? (
                 <>
                     <div>
-                        <Text>Select a model to pick labels:</Text>
+                        <Text>{tt("Select a model to pick labels:")}</Text>
                     </div>
                     <Select
                         onSelect={(id: string): void => {
@@ -57,15 +58,16 @@ function PickFromModelComponent(props: Props): JSX.Element {
                         style={{ width: '150px' }}
                         onClick={onCancel}
                     >
-                        Done
+                        
+                        {tt("Done")}
                     </Button>
                 </>
 
             ) : (
                 <Empty description={(
                     <>
-                        <Text>No deployed models found</Text>
-                        <Button type='primary' onClick={onCancel}>Cancel</Button>
+                        <Text>{tt("No deployed models found")}</Text>
+                        <Button type='primary' onClick={onCancel}>{tt("Cancel")}</Button>
                     </>
                 )}
                 />
@@ -73,7 +75,7 @@ function PickFromModelComponent(props: Props): JSX.Element {
 
             <div className='cvat-label-constructor-pick-from-model-list'>
                 { !!selectedModel && !labels.length && (
-                    <Empty description='Labels not found in the specified model' />
+                    <Empty description={tt("Labels not found in the specified model")} />
                 )}
                 {labels.map((label) => (
                     <Button

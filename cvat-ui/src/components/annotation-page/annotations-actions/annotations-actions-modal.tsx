@@ -33,6 +33,7 @@ import { fetchAnnotationsAsync } from 'actions/annotation-actions';
 import { clamp } from 'utils/math';
 import CVATTooltip from 'components/common/cvat-tooltip';
 import CVATMarkdown from 'components/common/cvat-markdown';
+import { tt } from 'i18n';
 
 const core = getCore();
 
@@ -373,12 +374,12 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                 destroyOnClose
                 afterClose={onClose}
                 className='cvat-action-runner-content'
-                okText='Close'
+                okText={tt("Close")}
                 cancelButtonProps={{ style: { display: 'none' } }}
                 onOk={() => dispatch(reducerActions.setVisible(false))}
             >
                 <Alert
-                    message='Annotation actions are not available for audio jobs'
+                    message={tt("Annotation actions are not available for audio jobs")}
                     type='info'
                     showIcon
                 />
@@ -410,17 +411,18 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                                 </Text>
                             ) : (
                                 <div>
-                                    <Text>Actions allow executing certain algorithms on </Text>
+                                    <Text>{tt("Actions allow executing certain algorithms on")} </Text>
                                     <Text strong>
                                         <a
                                             target='_blank'
                                             rel='noopener noreferrer'
                                             href={config.FILTERS_GUIDE_URL}
                                         >
-                                            filtered
+                                            
+                                            {tt("filtered")}
                                         </a>
                                     </Text>
-                                    <Text> annotations. </Text>
+                                    <Text>  {tt("annotations.")} </Text>
                                 </div>
                             )
                         )}
@@ -432,7 +434,7 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                 <Col span={24} className='cvat-action-runner-list'>
                     <Row>
                         <Col span={24}>
-                            <Text strong className='cvat-text-color'>Select action</Text>
+                            <Text strong className='cvat-text-color'>{tt("Select action")}</Text>
                             <hr />
                         </Col>
                         <Col span={24}>
@@ -481,11 +483,11 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                         <Col span={24} className='cvat-action-runner-frames'>
                             <Row>
                                 <Col span={24}>
-                                    <Text strong>Specify frames to apply the action </Text>
+                                    <Text strong>{tt("Specify frames to apply the action")} </Text>
                                     <hr />
                                 </Col>
                                 <Col span={24}>
-                                    <Text> Starting from frame </Text>
+                                    <Text>  {tt("Starting from frame")} </Text>
                                     <InputNumber
                                         value={frameFrom}
                                         min={jobInstance.startFrame}
@@ -503,7 +505,7 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                                             }
                                         }}
                                     />
-                                    <Text> up to frame </Text>
+                                    <Text>  {tt("up to frame")} </Text>
                                     <InputNumber
                                         value={frameTo}
                                         min={frameFrom}
@@ -529,7 +531,7 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                                 <Col span={24} className='cvat-action-runner-frames-predefined'>
                                     <Row>
                                         <Col span={24}>
-                                            <Text strong>Or choose one of predefined options </Text>
+                                            <Text strong>{tt("Or choose one of predefined options")} </Text>
                                             <hr />
                                         </Col>
                                         <Col span={24}>
@@ -540,7 +542,8 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                                                     dispatch(reducerActions.updateFrameTo(current));
                                                 }}
                                             >
-                                                Current frame
+                                                
+                                                {tt("Current frame")}
                                             </Button>
                                             <Button
                                                 onClick={() => {
@@ -548,7 +551,8 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                                                     dispatch(reducerActions.updateFrameTo(jobInstance.stopFrame));
                                                 }}
                                             >
-                                                All frames
+                                                
+                                                {tt("All frames")}
                                             </Button>
                                             <Button
                                                 onClick={() => {
@@ -557,7 +561,8 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                                                     dispatch(reducerActions.updateFrameTo(jobInstance.stopFrame));
                                                 }}
                                             >
-                                                From current
+                                                
+                                                {tt("From current")}
                                             </Button>
                                             <Button
                                                 onClick={() => {
@@ -566,7 +571,8 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                                                     dispatch(reducerActions.updateFrameTo(current));
                                                 }}
                                             >
-                                                Up to current
+                                                
+                                                {tt("Up to current")}
                                             </Button>
                                         </Col>
                                     </Row>
@@ -580,7 +586,7 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                     <Col span={24} className='cvat-action-runner-action-parameters'>
                         <Row>
                             <Col span={24}>
-                                <Text strong>Setup action parameters </Text>
+                                <Text strong>{tt("Setup action parameters")} </Text>
                                 <hr />
                             </Col>
                             {Object.entries(activeAction.parameters)
@@ -730,7 +736,8 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                             }
                         }}
                     >
-                        Run
+                        
+                        {tt("Run")}
                     </Button>
                 </Col>
             </Row>

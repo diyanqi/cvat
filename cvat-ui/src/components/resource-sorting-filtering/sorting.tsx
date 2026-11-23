@@ -13,6 +13,7 @@ import Popover from 'antd/lib/popover';
 import Radio from 'antd/lib/radio';
 
 import CVATTooltip from 'components/common/cvat-tooltip';
+import { tt } from 'i18n';
 
 interface Props {
     sortingFields: string[];
@@ -205,7 +206,8 @@ function SortingModalComponent(props: Props): JSX.Element {
                 type='default'
                 onClick={() => onVisibleChange(!visible)}
             >
-                Sort by
+                
+                {tt("Sort by")}
                 <OrderedListOutlined />
             </Button>
         </Popover>

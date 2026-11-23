@@ -10,6 +10,7 @@ import Text from 'antd/lib/typography/Text';
 import { Row, Col } from 'antd/lib/grid';
 
 import patterns from 'utils/validation-patterns';
+import { tt } from 'i18n';
 
 interface Props {
     instance: any;
@@ -31,7 +32,7 @@ export default function BugTrackerEditorComponent(props: Props): JSX.Element {
             if (!shown) {
                 Modal.error({
                     title: `Could not update the ${instanceType} ${instance.id}`,
-                    content: 'Issue tracker is expected to be URL',
+                    content: tt("Issue tracker is expected to be URL"),
                     onOk: () => {
                         shown = false;
                     },
@@ -51,7 +52,8 @@ export default function BugTrackerEditorComponent(props: Props): JSX.Element {
             <Row className='cvat-issue-tracker'>
                 <Col>
                     <Text strong className='cvat-text-color'>
-                        Issue Tracker
+                        
+                        {tt("Issue Tracker")}
                     </Text>
                     <Text editable={{ onChange: onChangeValue }} className='cvat-issue-tracker-value'>
                         {bugTracker}
@@ -63,7 +65,8 @@ export default function BugTrackerEditorComponent(props: Props): JSX.Element {
                         }}
                         className='cvat-open-bug-tracker-button'
                     >
-                        Open the issue
+                        
+                        {tt("Open the issue")}
                     </Button>
                 </Col>
             </Row>
@@ -74,7 +77,8 @@ export default function BugTrackerEditorComponent(props: Props): JSX.Element {
         <Row className='cvat-issue-tracker'>
             <Col>
                 <Text strong className='cvat-text-color'>
-                    Issue Tracker
+                    
+                    {tt("Issue Tracker")}
                 </Text>
                 <Text
                     className='cvat-issue-tracker-value'

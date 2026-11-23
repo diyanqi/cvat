@@ -15,6 +15,7 @@ import { selectionActions } from 'actions/selection-actions';
 import { getOrganizationMembersAsync } from 'actions/organization-actions';
 import TopBarComponent from './top-bar';
 import MembersList from './members-list';
+import { tt } from 'i18n';
 
 function OrganizationPage(): JSX.Element | null {
     const dispatch = useDispatch();
@@ -76,7 +77,7 @@ function OrganizationPage(): JSX.Element | null {
     return (
         <div className='cvat-organization-page'>
             {!organization ? (
-                <Empty description='You are not in an organization' />
+                <Empty description={tt("You are not in an organization")} />
             ) : (
                 <>
                     <TopBarComponent

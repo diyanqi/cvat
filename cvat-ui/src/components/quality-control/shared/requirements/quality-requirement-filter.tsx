@@ -20,6 +20,7 @@ import Modal from 'antd/lib/modal';
 import Popover from 'antd/lib/popover';
 import Text from 'antd/lib/typography/Text';
 import { Label } from 'cvat-core-wrapper';
+import { tt } from 'i18n';
 
 const { FieldDropdown } = AntdWidgets;
 
@@ -680,14 +681,15 @@ export default function QualityRequirementFilter(props: Readonly<Props>): JSX.El
                         size='small'
                         className='cvat-quality-requirement-filter-recent-button'
                     >
-                        Recent
+                        
+                        {tt("Recent")}
                         <DownOutlined />
                     </Button>
                 </Popover>
             ) : null}
             {parentFilterTree ? (
                 <div className='cvat-quality-requirement-filter-section'>
-                    <Text>Parent filter</Text>
+                    <Text>{tt("Parent filter")}</Text>
                     <div className='cvat-quality-requirement-filter-readonly-builder'>
                         <Query
                             {...readonlyConfig}
@@ -699,7 +701,7 @@ export default function QualityRequirementFilter(props: Readonly<Props>): JSX.El
                 </div>
             ) : null}
             {parentFilterTree ? (
-                <Text className='cvat-quality-requirement-filter-section-title'>Current filter</Text>
+                <Text className='cvat-quality-requirement-filter-section-title'>{tt("Current filter")}</Text>
             ) : null}
             <Query
                 {...config}
@@ -716,7 +718,7 @@ export default function QualityRequirementFilter(props: Readonly<Props>): JSX.El
                 className='cvat-quality-requirement-filter-input'
                 readOnly
                 disabled={disabled}
-                placeholder='Filter'
+                placeholder={tt("Filter")}
                 value={preview}
                 onClick={showBuilder}
                 suffix={(
@@ -742,13 +744,15 @@ export default function QualityRequirementFilter(props: Readonly<Props>): JSX.El
                         disabled={!QbUtils.queryString(draftTree, config)}
                         onClick={() => setDraftTree(createDefaultTree())}
                     >
-                        Reset
+                        
+                        {tt("Reset")}
                     </Button>,
                     <Button
                         key='cancel'
                         onClick={() => setVisible(false)}
                     >
-                        Cancel
+                        
+                        {tt("Cancel")}
                     </Button>,
                     <Button
                         key='apply'
@@ -756,7 +760,8 @@ export default function QualityRequirementFilter(props: Readonly<Props>): JSX.El
                         disabled={!QbUtils.isValidTree(draftTree, config)}
                         onClick={applyFilter}
                     >
-                        Apply
+                        
+                        {tt("Apply")}
                     </Button>,
                 ]}
             >

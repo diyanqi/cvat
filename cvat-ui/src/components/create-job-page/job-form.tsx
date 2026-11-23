@@ -19,6 +19,7 @@ import CVATTooltip from 'components/common/cvat-tooltip';
 import { JobType, MediaType } from 'cvat-core/src/enums';
 import { Task } from 'cvat-core-wrapper';
 import { createJobAsync } from 'actions/jobs-actions';
+import { tt } from 'i18n';
 
 export enum FrameSelectionMethod {
     RANDOM = 'random_uniform',
@@ -141,7 +142,7 @@ function JobForm(props: Props): JSX.Element {
         <Col key={JobFormSection.JOB_TYPE}>
             <Form.Item
                 name='type'
-                label='Job type'
+                label={tt("Job type")}
                 rules={[{ required: true, message: 'Please, specify Job type' }]}
             >
                 <Select
@@ -149,7 +150,8 @@ function JobForm(props: Props): JSX.Element {
                     className='cvat-select-job-type'
                 >
                     <Select.Option value={JobType.GROUND_TRUTH}>
-                        Ground truth
+                        
+                        {tt("Ground truth")}
                     </Select.Option>
                 </Select>
             </Form.Item>
@@ -160,7 +162,7 @@ function JobForm(props: Props): JSX.Element {
         <Col key={JobFormSection.FRAME_SELECTION}>
             <Form.Item
                 name='frameSelectionMethod'
-                label='Frame selection method'
+                label={tt("Frame selection method")}
                 rules={[{ required: true, message: 'Please, specify frame selection method' }]}
             >
                 <Select
@@ -169,10 +171,12 @@ function JobForm(props: Props): JSX.Element {
                     onChange={setFrameSelectionMethod}
                 >
                     <Select.Option value={FrameSelectionMethod.RANDOM}>
-                        Random
+                        
+                        {tt("Random")}
                     </Select.Option>
                     <Select.Option value={FrameSelectionMethod.RANDOM_PER_JOB}>
-                        Random per job
+                        
+                        {tt("Random per job")}
                     </Select.Option>
                 </Select>
             </Form.Item>
@@ -214,7 +218,8 @@ function JobForm(props: Props): JSX.Element {
                                 name='frameCount'
                                 label={(
                                     <Space>
-                                        Frame count
+                                        
+                                        {tt("Frame count")}
                                         <CVATTooltip title={description}>
                                             <QuestionCircleOutlined
                                                 style={{ opacity: 0.5 }}
@@ -238,7 +243,7 @@ function JobForm(props: Props): JSX.Element {
                 <Col>
                     <Form.Item
                         name='randomSeed'
-                        label='Seed'
+                        label={tt("Seed")}
                     >
                         <InputNumber
                             className='cvat-input-seed'
@@ -284,7 +289,8 @@ function JobForm(props: Props): JSX.Element {
                             loading={fetching}
                             disabled={fetching}
                         >
-                            Submit
+                            
+                            {tt("Submit")}
                         </Button>
                     </Col>
                 </Row>

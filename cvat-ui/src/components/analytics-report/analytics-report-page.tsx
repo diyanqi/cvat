@@ -20,6 +20,7 @@ import CVATLoadingSpinner from 'components/common/loading-spinner';
 import AnalyticsReportContent from './analytics-report-content';
 import AnalyticsPageHeader from './analytics-page-header';
 import { TimePeriod } from '.';
+import { tt } from 'i18n';
 
 const core = getCore();
 
@@ -89,7 +90,7 @@ function AnalyticsReportPage(): JSX.Element {
             }
         } catch (error: unknown) {
             notification.error({
-                message: 'Could not export events for the target resource',
+                message: tt("Could not export events for the target resource"),
                 description: error instanceof Error ? error.message : '',
             });
         } finally {
@@ -122,7 +123,7 @@ function AnalyticsReportPage(): JSX.Element {
                 setResource(_resource[0]);
             }).catch((error: unknown) => {
                 notification.error({
-                    message: 'Could not receive the target resource from the server',
+                    message: tt("Could not receive the target resource from the server"),
                     description: error instanceof Error ? error.message : '',
                 });
             }).finally(() => {

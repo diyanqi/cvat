@@ -24,6 +24,7 @@ import UserSelector from 'components/task-page/user-selector';
 import { JobStageSelector, JobStateSelector } from 'components/job-item/job-selectors';
 import { makeKey } from 'reducers/consensus-reducer';
 import JobActionsItems from './actions-menu-items';
+import { tt } from 'i18n';
 
 interface Props {
     jobInstance: Job;
@@ -97,8 +98,8 @@ function JobActionsComponent(
 
     const onMergeConsensusJob = useCallback(() => {
         Modal.confirm({
-            title: 'The replica jobs will be merged',
-            content: 'Existing annotations in the parent job will be updated. Continue?',
+            title: tt("The replica jobs will be merged"),
+            content: tt("Existing annotations in the parent job will be updated. Continue?"),
             className: 'cvat-modal-confirm-consensus-merge-job',
             onOk: () => {
                 dispatch(mergeConsensusJobsAsync(jobInstance));
@@ -107,7 +108,7 @@ function JobActionsComponent(
                 type: 'primary',
                 danger: true,
             },
-            okText: 'Merge',
+            okText: tt("Merge"),
         });
     }, [jobInstance]);
 

@@ -19,6 +19,7 @@ import StatesOrderingSelector from 'components/annotation-page/standard-workspac
 import CVATTooltip from 'components/common/cvat-tooltip';
 import { StatesOrdering, Workspace } from 'reducers';
 import { ShowGroundTruthIcon } from 'icons';
+import { tt } from 'i18n';
 
 interface Props {
     workspace: Workspace;
@@ -76,7 +77,7 @@ function GTSwitcher(props: Props): JSX.Element {
     } = props;
     return (
         <Col span={3}>
-            <CVATTooltip title='Show Ground truth annotations and conflicts'>
+            <CVATTooltip title={tt("Show Ground truth annotations and conflicts")}>
                 <Icon
                     className={
                         `cvat-objects-sidebar-show-ground-truth ${showGroundTruth ? 'cvat-objects-sidebar-show-ground-truth-active' : ''}`
@@ -93,7 +94,7 @@ function CollapseAllSwitcher(props: Props): JSX.Element {
     const { statesCollapsed, expandAllStates, collapseAllStates } = props;
     return (
         <Col span={3}>
-            <CVATTooltip title='Expand/collapse all'>
+            <CVATTooltip title={tt("Expand/collapse all")}>
                 {statesCollapsed ? (
                     <CaretDownOutlined onClick={expandAllStates} />
                 ) : (

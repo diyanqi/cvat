@@ -30,6 +30,7 @@ import AttributeEditor from './attribute-editor';
 import AttributeSwitcher from './attribute-switcher';
 import ObjectBasicsEditor from './object-basics-editor';
 import ObjectSwitcher from './object-switcher';
+import { tt } from 'i18n';
 
 interface StateToProps {
     activatedStateID: number | null;
@@ -323,7 +324,7 @@ function AttributeAnnotationSidebar(props: StateToProps & DispatchToProps): JSX.
                     className='cvat-objects-sidebar-sider'
                     onClick={collapse}
                 >
-                    {sidebarCollapsed ? <MenuFoldOutlined title='Show' /> : <MenuUnfoldOutlined title='Hide' />}
+                    {sidebarCollapsed ? <MenuFoldOutlined title={tt("Show")} /> : <MenuUnfoldOutlined title={tt("Hide")} />}
                 </span>
                 <GlobalHotKeys keyMap={subKeyMap(componentShortcuts, keyMap)} handlers={handlers} />
                 <div className='cvat-sidebar-collapse-button-spacer' />
@@ -373,7 +374,7 @@ function AttributeAnnotationSidebar(props: StateToProps & DispatchToProps): JSX.
                     </>
                 ) : (
                     <div className='attribute-annotations-sidebar-not-found-wrapper'>
-                        <Text strong>No attributes found</Text>
+                        <Text strong>{tt("No attributes found")}</Text>
                     </div>
                 )}
 
@@ -389,11 +390,11 @@ function AttributeAnnotationSidebar(props: StateToProps & DispatchToProps): JSX.
                 className='cvat-objects-sidebar-sider'
                 onClick={collapse}
             >
-                {sidebarCollapsed ? <MenuFoldOutlined title='Show' /> : <MenuUnfoldOutlined title='Hide' />}
+                {sidebarCollapsed ? <MenuFoldOutlined title={tt("Show")} /> : <MenuUnfoldOutlined title={tt("Hide")} />}
             </span>
             <div className='cvat-sidebar-collapse-button-spacer' />
             <div className='attribute-annotations-sidebar-not-found-wrapper'>
-                <Text strong>No objects found</Text>
+                <Text strong>{tt("No objects found")}</Text>
             </div>
         </Layout.Sider>
     );

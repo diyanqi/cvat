@@ -37,6 +37,7 @@ import CVATTooltip from 'components/common/cvat-tooltip';
 import { useUpdateEffect } from 'utils/hooks';
 import { shallowEqual } from 'utils/redux';
 import defaultLayout, { ItemLayout, ViewType } from './canvas-layout.conf';
+import { tt } from 'i18n';
 
 const ReactGridLayout = WidthProvider(RGL);
 
@@ -64,7 +65,7 @@ const ViewFabric = (itemLayout: ItemLayout): JSX.Element => {
             component = <TopViewComponent />;
             break;
         default:
-            component = <div> Undefined view </div>;
+            component = <div>  {tt("Undefined view")} </div>;
     }
 
     return component;
@@ -226,7 +227,7 @@ function CanvasLayout({ type }: { type?: DimensionType }): JSX.Element {
     const showCommonSetups = Boolean(relatedFiles) || children.length > 1;
     const commonSetups = (
         <div className='cvat-grid-layout-common-setups'>
-            <CVATTooltip title='Fit views'>
+            <CVATTooltip title={tt("Fit views")}>
                 <PicCenterOutlined
                     onClick={() => {
                         setLayoutConfig(fitLayout(type as DimensionType, layoutConfig));
@@ -234,7 +235,7 @@ function CanvasLayout({ type }: { type?: DimensionType }): JSX.Element {
                     }}
                 />
             </CVATTooltip>
-            <CVATTooltip title='Add context image'>
+            <CVATTooltip title={tt("Add context image")}>
                 <PlusOutlined
                     style={{
                         pointerEvents: !relatedFiles ? 'none' : undefined,
@@ -273,7 +274,7 @@ function CanvasLayout({ type }: { type?: DimensionType }): JSX.Element {
                     }}
                 />
             </CVATTooltip>
-            <CVATTooltip title='Reload layout'>
+            <CVATTooltip title={tt("Reload layout")}>
                 <ReloadOutlined onClick={() => {
                     setLayoutConfig([...getLayout()]);
                     window.dispatchEvent(new Event('resize'));

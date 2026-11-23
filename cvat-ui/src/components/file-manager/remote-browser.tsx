@@ -26,6 +26,7 @@ import { getCore, CloudStorage } from 'cvat-core-wrapper';
 import config from 'config';
 import { RemoteFileType } from 'reducers';
 import { useIsMounted } from 'utils/hooks';
+import { tt } from 'i18n';
 
 interface Node {
     children: Node[];
@@ -203,7 +204,7 @@ function RemoteBrowser(props: Props): JSX.Element {
             } catch (error: any) {
                 if (isRelevant()) {
                     notification.error({
-                        message: 'Storage content fetching failed',
+                        message: tt("Storage content fetching failed"),
                         description: error.toString(),
                     });
                 }
@@ -330,11 +331,13 @@ function RemoteBrowser(props: Props): JSX.Element {
             <>
                 <Empty />
                 <Paragraph className='cvat-remote-browser-empty'>
-                    Please, be sure you had
+                    
+                    {tt("Please, be sure you had")}
                     <Text strong>
-                        <a target='_blank' rel='noopener noreferrer' href={SHARE_MOUNT_GUIDE_URL}> mounted </a>
+                        <a target='_blank' rel='noopener noreferrer' href={SHARE_MOUNT_GUIDE_URL}>  {tt("mounted")} </a>
                     </Text>
-                    share before you built CVAT and the shared storage contains files
+                    
+                    {tt("share before you built CVAT and the shared storage contains files")}
                 </Paragraph>
             </>
         );
@@ -369,7 +372,7 @@ function RemoteBrowser(props: Props): JSX.Element {
                             </CVATTooltip>
                         )}
                         disabled={isFetching}
-                        placeholder='Search by prefix'
+                        placeholder={tt("Search by prefix")}
                         value={curSearchString}
                         onBlur={() => resetDataSource()}
                         onPressEnter={() => resetDataSource()}
@@ -379,7 +382,7 @@ function RemoteBrowser(props: Props): JSX.Element {
                     />
                 </Col>
                 <Col>
-                    <CVATTooltip title='Refresh'>
+                    <CVATTooltip title={tt("Refresh")}>
                         <Button
                             disabled={isFetching}
                             onClick={() => {
@@ -403,7 +406,8 @@ function RemoteBrowser(props: Props): JSX.Element {
                             message={(
                                 <>
                                     <Text>
-                                        There is no intersection between the specified prefix and the default one
+                                        
+                                        {tt("There is no intersection between the specified prefix and the default one")}
                                     </Text>
                                     <Text strong>{` "${defaultPrefix}". `}</Text>
                                 </>

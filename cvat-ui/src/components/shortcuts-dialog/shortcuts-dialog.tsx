@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { getApplicationKeyMap } from 'utils/mousetrap-react';
 import { shortcutsActions } from 'actions/shortcuts-actions';
 import { CombinedState } from 'reducers';
+import { tt } from 'i18n';
 
 interface StateToProps {
     visible: boolean;
@@ -82,7 +83,7 @@ function ShortcutsDialog(props: StateToProps & DispatchToProps): JSX.Element | n
 
     return (
         <Modal
-            title='Active list of shortcuts'
+            title={tt("Active list of shortcuts")}
             open={visible}
             closable={false}
             width={800}

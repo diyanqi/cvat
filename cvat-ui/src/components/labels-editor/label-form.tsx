@@ -25,6 +25,7 @@ import config from 'config';
 import {
     equalArrayHead, idGenerator, LabelOptColor, SkeletonConfiguration, validateNumberAttributeValues,
 } from './common';
+import { tt } from 'i18n';
 
 export enum AttributeType {
     SELECT = 'SELECT',
@@ -176,7 +177,7 @@ export default class LabelForm extends React.Component<Props> {
                     },
                 ]}
             >
-                <Input className='cvat-attribute-name-input' placeholder='Name' />
+                <Input className='cvat-attribute-name-input' placeholder={tt("Name")} />
             </Form.Item>
         );
     }
@@ -186,7 +187,7 @@ export default class LabelForm extends React.Component<Props> {
         const locked = attr.id as number >= 0;
 
         return (
-            <CVATTooltip title='An HTML element representing the attribute'>
+            <CVATTooltip title={tt("An HTML element representing the attribute")}>
                 <Form.Item name={[key, 'type']}>
                     <Select
                         className='cvat-attribute-type-input'
@@ -206,19 +207,24 @@ export default class LabelForm extends React.Component<Props> {
                         }}
                     >
                         <Select.Option value={AttributeType.SELECT} className='cvat-attribute-type-input-select'>
-                            Select
+                            
+                            {tt("Select")}
                         </Select.Option>
                         <Select.Option value={AttributeType.RADIO} className='cvat-attribute-type-input-radio'>
-                            Radio
+                            
+                            {tt("Radio")}
                         </Select.Option>
                         <Select.Option value={AttributeType.CHECKBOX} className='cvat-attribute-type-input-checkbox'>
-                            Checkbox
+                            
+                            {tt("Checkbox")}
                         </Select.Option>
                         <Select.Option value={AttributeType.TEXT} className='cvat-attribute-type-input-text'>
-                            Text
+                            
+                            {tt("Text")}
                         </Select.Option>
                         <Select.Option value={AttributeType.NUMBER} className='cvat-attribute-type-input-number'>
-                            Number
+                            
+                            {tt("Number")}
                         </Select.Option>
                     </Select>
                 </Form.Item>
@@ -248,7 +254,7 @@ export default class LabelForm extends React.Component<Props> {
         };
 
         return (
-            <CVATTooltip title='Press enter to add a new value'>
+            <CVATTooltip title={tt("Press enter to add a new value")}>
                 <Form.Item
                     name={[key, 'values']}
                     rules={[
@@ -264,7 +270,7 @@ export default class LabelForm extends React.Component<Props> {
                     <Select
                         className='cvat-attribute-values-input'
                         mode='tags'
-                        placeholder='Attribute values'
+                        placeholder={tt("Attribute values")}
                         dropdownStyle={{ display: 'none' }}
                         tagRender={(props) => {
                             const attrs = this.formRef.current?.getFieldValue('attributes');
@@ -312,7 +318,7 @@ export default class LabelForm extends React.Component<Props> {
         const { key } = fieldInstance;
 
         return (
-            <CVATTooltip title='Specify a default value'>
+            <CVATTooltip title={tt("Specify a default value")}>
                 <Form.Item
                     rules={[
                         {
@@ -322,8 +328,8 @@ export default class LabelForm extends React.Component<Props> {
                     name={[key, 'values']}
                 >
                     <Select className='cvat-attribute-values-input'>
-                        <Select.Option value='false'>false</Select.Option>
-                        <Select.Option value='true'>true</Select.Option>
+                        <Select.Option value='false'>{tt("false")}</Select.Option>
+                        <Select.Option value='true'>{tt("true")}</Select.Option>
                     </Select>
                 </Form.Item>
             </CVATTooltip>
@@ -359,7 +365,7 @@ export default class LabelForm extends React.Component<Props> {
                     },
                 ]}
             >
-                <Input className='cvat-attribute-values-input' disabled={locked} placeholder='min;max;step' />
+                <Input className='cvat-attribute-values-input' disabled={locked} placeholder={tt("min;max;step")} />
             </Form.Item>
         );
     }
@@ -369,7 +375,7 @@ export default class LabelForm extends React.Component<Props> {
 
         return (
             <Form.Item name={[key, 'values']}>
-                <Input.TextArea className='cvat-attribute-values-input' placeholder='Default value' />
+                <Input.TextArea className='cvat-attribute-values-input' placeholder={tt("Default value")} />
             </Form.Item>
         );
     }
@@ -379,13 +385,14 @@ export default class LabelForm extends React.Component<Props> {
         const locked = attr.id as number >= 0;
 
         return (
-            <CVATTooltip title='Can this attribute be changed frame to frame?'>
+            <CVATTooltip title={tt("Can this attribute be changed frame to frame?")}>
                 <Form.Item
                     name={[key, 'mutable']}
                     valuePropName='checked'
                 >
                     <Checkbox className='cvat-attribute-mutable-checkbox' disabled={locked}>
-                        Mutable
+                        
+                        {tt("Mutable")}
                     </Checkbox>
                 </Form.Item>
             </CVATTooltip>
@@ -396,7 +403,7 @@ export default class LabelForm extends React.Component<Props> {
         const { key } = fieldInstance;
 
         return (
-            <CVATTooltip title='Delete the attribute'>
+            <CVATTooltip title={tt("Delete the attribute")}>
                 <Form.Item>
                     <Button
                         type='link'
@@ -496,7 +503,7 @@ export default class LabelForm extends React.Component<Props> {
             >
                 <Input
                     ref={this.inputNameRef}
-                    placeholder='Label name'
+                    placeholder={tt("Label name")}
                     className='cvat-label-name-input'
                     onKeyUp={(event): void => {
                         if (event.key === 'Escape' || event.key === 'Esc' || event.keyCode === 27) {
@@ -531,7 +538,8 @@ export default class LabelForm extends React.Component<Props> {
                             className='cvat-label-type-option-skeleton'
                             value='skeleton'
                         >
-                            Skeleton
+                            
+                            {tt("Skeleton")}
                         </Select.Option>
                     ) : types.map((type: string): JSX.Element => (
                         <Select.Option className={`cvat-label-type-option-${type}`} key={type} value={type}>
@@ -547,7 +555,8 @@ export default class LabelForm extends React.Component<Props> {
         return (
             <Form.Item>
                 <Button onClick={this.addAttribute} className='cvat-new-attribute-button'>
-                    Add an attribute
+                    
+                    {tt("Add an attribute")}
                     <PlusCircleOutlined />
                 </Button>
             </Form.Item>
@@ -577,7 +586,7 @@ export default class LabelForm extends React.Component<Props> {
         const { onCancel } = this.props;
 
         return (
-            <CVATTooltip title='Do not save the label and return'>
+            <CVATTooltip title={tt("Do not save the label and return")}>
                 <Button
                     className='cvat-cancel-new-label-button'
                     type='primary'
@@ -587,7 +596,8 @@ export default class LabelForm extends React.Component<Props> {
                         onCancel();
                     }}
                 >
-                    Cancel
+                    
+                    {tt("Cancel")}
                 </Button>
             </CVATTooltip>
         );
@@ -599,7 +609,7 @@ export default class LabelForm extends React.Component<Props> {
                 {() => (
                     <Form.Item name='color'>
                         <ColorPicker placement='bottom'>
-                            <CVATTooltip title='Change color of the label'>
+                            <CVATTooltip title={tt("Change color of the label")}>
                                 <Button type='default' className='cvat-change-task-label-color-button'>
                                     <Badge
                                         className='cvat-change-task-label-color-badge'

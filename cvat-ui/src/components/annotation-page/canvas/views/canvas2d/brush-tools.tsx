@@ -32,6 +32,7 @@ import GlobalHotKeys from 'utils/mousetrap-react';
 import { subKeyMap } from 'utils/component-subkeymap';
 import { registerComponentShortcuts } from 'actions/shortcuts-actions';
 import useDraggable from './draggable-hoc';
+import { tt } from 'i18n';
 
 const DraggableArea = (
     <div className='cvat-brush-tools-draggable-area'>
@@ -143,8 +144,8 @@ function BrushTools(): React.ReactPortal | null {
 
     getCore().config.removeUnderlyingMaskPixels.onEmptyMaskOccurrence = () => {
         notification.warning({
-            message: 'Some objects were deleted',
-            description: 'As a result of removing the underlying pixels, some masks became empty and were subsequently deleted.',
+            message: tt("Some objects were deleted"),
+            description: tt("As a result of removing the underlying pixels, some masks became empty and were subsequently deleted."),
             className: 'cvat-empty-masks-notification',
             duration: null,
         });
@@ -352,7 +353,7 @@ function BrushTools(): React.ReactPortal | null {
                 />
             </CVATTooltip>
             { ['brush', 'eraser'].includes(currentTool) ? (
-                <CVATTooltip title='Brush size [Hold Alt + Right Mouse Click + Drag Left/Right]'>
+                <CVATTooltip title={tt("Brush size [Hold Alt + Right Mouse Click + Drag Left/Right]")}>
                     <InputNumber
                         className='cvat-brush-tools-brush-size'
                         value={brushSize}
@@ -367,8 +368,8 @@ function BrushTools(): React.ReactPortal | null {
             ) : null}
             { ['brush', 'eraser'].includes(currentTool) ? (
                 <Select value={brushForm} onChange={(value: 'circle' | 'square') => setBrushForm(value)}>
-                    <Select.Option value='circle'>Circle</Select.Option>
-                    <Select.Option value='square'>Square</Select.Option>
+                    <Select.Option value='circle'>{tt("Circle")}</Select.Option>
+                    <Select.Option value='square'>{tt("Square")}</Select.Option>
                 </Select>
             ) : null}
             <Button

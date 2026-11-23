@@ -6,6 +6,7 @@ import React, { useCallback } from 'react';
 import Button from 'antd/lib/button';
 import { useDispatch } from 'react-redux';
 import { selectionActions } from 'actions/selection-actions';
+import { tt } from 'i18n';
 
 interface ResourceSelectionInfoProps {
     selectedCount: number;
@@ -32,7 +33,8 @@ export function ResourceSelectionInfo(
                 size='small'
                 type='link'
             >
-                Select all
+                
+                {tt("Select all")}
             </Button>
         );
     } else if (selectedCount > 0) {
@@ -44,7 +46,8 @@ export function ResourceSelectionInfo(
                 size='small'
                 type='link'
             >
-                Deselect
+                
+                {tt("Deselect")}
             </Button>
         );
     }

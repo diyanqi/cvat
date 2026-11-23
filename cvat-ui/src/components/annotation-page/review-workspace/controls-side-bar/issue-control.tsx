@@ -15,6 +15,7 @@ import { ShortcutScope } from 'utils/enums';
 import { registerComponentShortcuts } from 'actions/shortcuts-actions';
 import { subKeyMap } from 'utils/component-subkeymap';
 import { useSelector } from 'react-redux';
+import { tt } from 'i18n';
 
 interface Props {
     canvasInstance: Canvas;
@@ -68,7 +69,7 @@ function CreateIssueControl(props: Props): JSX.Element {
                     keyMap={subKeyMap(componentShortcuts, keyMap)}
                     handlers={handlers}
                 />
-                <CVATTooltip title='Open an issue' placement='right'>
+                <CVATTooltip title={tt("Open an issue")} placement='right'>
                     <Icon
                         component={IssueIcon}
                         className={

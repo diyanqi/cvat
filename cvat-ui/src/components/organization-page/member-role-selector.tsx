@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from 'antd/lib/select';
 import { handleDropdownKeyDown } from 'utils/dropdown-utils';
+import { tt } from 'i18n';
 
 export interface MemberRoleSelectorProps {
     value: string | null;
@@ -25,10 +26,10 @@ export default function MemberRoleSelector(props: Readonly<MemberRoleSelectorPro
             disabled={disabled || value === 'owner'}
             onKeyDown={handleDropdownKeyDown}
             className='cvat-organization-member-role-selector'
-            placeholder='Select role'
+            placeholder={tt("Select role")}
         >
             {value === 'owner' ? (
-                <Select.Option value='owner'>Owner</Select.Option>
+                <Select.Option value='owner'>{tt("Owner")}</Select.Option>
             ) : (
                 roleOptions.filter((option) => option.value !== 'owner').map((option) => (
                     <Select.Option key={option.value} value={option.value}>{option.label}</Select.Option>

@@ -24,6 +24,7 @@ import Preview from 'components/common/preview';
 import { useContextMenuClick } from 'utils/hooks';
 import CloudStorageActionsMenu from './cloud-storage-actions-menu';
 import Status from './cloud-storage-status';
+import { tt } from 'i18n';
 
 interface Props {
     cloudStorage: CombinedState['cloudStorages']['current'][number];
@@ -132,17 +133,17 @@ export default function CloudStorageItemComponent(props: Readonly<Props>): JSX.E
                 description={(
                     <>
                         <Paragraph>
-                            <Text type='secondary'>Provider: </Text>
+                            <Text type='secondary'>{tt("Provider:")} </Text>
                             <Text>{providerType}</Text>
                         </Paragraph>
                         <Paragraph>
-                            <Text type='secondary'>Created </Text>
+                            <Text type='secondary'>{tt("Created")} </Text>
                             {owner ? <Text type='secondary'>{`by ${owner.username}`}</Text> : null}
-                            <Text type='secondary'> on </Text>
+                            <Text type='secondary'>  {tt("on")} </Text>
                             <Text type='secondary'>{dayjs(createdDate).format('MMMM Do YYYY')}</Text>
                         </Paragraph>
                         <Paragraph>
-                            <Text type='secondary'>Last updated </Text>
+                            <Text type='secondary'>{tt("Last updated")} </Text>
                             <Text type='secondary'>{dayjs(updatedDate).fromNow()}</Text>
                         </Paragraph>
                         <Status cloudStorage={cloudStorage} />

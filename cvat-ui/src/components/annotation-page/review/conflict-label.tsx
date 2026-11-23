@@ -9,6 +9,7 @@ import Icon from '@ant-design/icons';
 import CVATTooltip from 'components/common/cvat-tooltip';
 import { ConflictIcon } from 'icons';
 import { ConflictSeverity, QualityConflict } from 'cvat-core-wrapper';
+import { tt } from 'i18n';
 
 interface Props {
     top: number;
@@ -42,7 +43,7 @@ export default function ConflictLabel(props: Props): ReactPortal {
                     <div>{text}</div>
                     {showRequirements && !!conflict.requirements.length && (
                         <div className='cvat-conflict-tooltip-requirements'>
-                            <div>Requirements:</div>
+                            <div>{tt("Requirements:")}</div>
                             {conflict.requirements.slice(0, MAX_TOOLTIP_REQUIREMENTS).map((requirement) => (
                                 <div
                                     key={requirement.id}

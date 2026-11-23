@@ -9,6 +9,7 @@ import List from 'antd/lib/list';
 import CvatTooltip from 'components/common/cvat-tooltip';
 import { Chapter } from 'cvat-core/src/frames';
 import { ChapterMenuIcon } from 'icons';
+import { tt } from 'i18n';
 
 interface Props {
     chapters: Chapter[];
@@ -49,7 +50,8 @@ function ChapterMenu(props: Readonly<Props>): JSX.Element {
                                     {chapter.metadata.title}
                                 </strong>
                                 <div>
-                                    Frames
+                                    
+                                    {tt("Frames")}
                                     {' '}
                                     {chapter.start}
                                     -
@@ -68,12 +70,12 @@ function ChapterMenu(props: Readonly<Props>): JSX.Element {
         <Popover
             trigger='click'
             content={content}
-            title='Chapters'
+            title={tt("Chapters")}
             placement='bottom'
             className='cvat-player-chapter-menu'
         >
 
-            <CvatTooltip title='Select chapter'>
+            <CvatTooltip title={tt("Select chapter")}>
                 <Icon
                     className='cvat-player-chapters-menu-button'
                     component={ChapterMenuIcon}

@@ -7,6 +7,7 @@ import Divider from 'antd/lib/divider';
 import { ExportOutlined, PlusOutlined } from '@ant-design/icons';
 
 import './styles.scss';
+import { tt } from 'i18n';
 
 export default function ModelSelectorDropdownContent({ children }: { children?: React.ReactNode }): JSX.Element {
     return (
@@ -20,7 +21,7 @@ export default function ModelSelectorDropdownContent({ children }: { children?: 
                 className='cvat-model-selector-add-model'
             >
                 <PlusOutlined />
-                <span>Add your own model</span>
+                <span>{tt("Add your own model")}</span>
                 <ExportOutlined className='cvat-model-selector-external-link' />
             </a>
         </>

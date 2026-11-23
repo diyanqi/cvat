@@ -47,6 +47,7 @@ import ProjectTopBar from './top-bar';
 import {
     localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues, config,
 } from './project-tasks-filter-configuration';
+import { tt } from 'i18n';
 
 const core = getCore();
 
@@ -104,7 +105,7 @@ export default function ProjectPageComponent(): JSX.Element {
                 }).catch((error: Error) => {
                     if (mounted.current) {
                         notification.error({
-                            message: 'Could not receive the requested project from the server',
+                            message: tt("Could not receive the requested project from the server"),
                             description: error.toString(),
                         });
                     }
@@ -115,7 +116,7 @@ export default function ProjectPageComponent(): JSX.Element {
                 });
         } else {
             notification.error({
-                message: 'Could not receive the requested project from the server',
+                message: tt("Could not receive the requested project from the server"),
                 description: `Requested project id "${id}" is not valid`,
             });
             setFetchingProject(false);
@@ -242,7 +243,7 @@ export default function ProjectPageComponent(): JSX.Element {
             )}
         </BulkWrapper>
     ) : (
-        <Empty description='No tasks found' />
+        <Empty description={tt("No tasks found")} />
     );
 
     return (
@@ -279,7 +280,7 @@ export default function ProjectPageComponent(): JSX.Element {
                                     }}
                                     defaultValue={tasksQuery.search ?? ''}
                                     className='cvat-project-page-tasks-search-bar'
-                                    placeholder='Search ...'
+                                    placeholder={tt("Search ...")}
                                 />
                                 <ResourceSelectionInfo
                                     selectedCount={selectedCount}
@@ -347,7 +348,8 @@ export default function ProjectPageComponent(): JSX.Element {
                                                 className='cvat-create-task-button'
                                                 onClick={() => history.push(`/tasks/create?projectId=${id}`)}
                                             >
-                                                Create a new task
+                                                
+                                                {tt("Create a new task")}
                                             </Button>
                                             <Button
                                                 type='primary'
@@ -355,7 +357,8 @@ export default function ProjectPageComponent(): JSX.Element {
                                                 className='cvat-create-multi-tasks-button'
                                                 onClick={() => history.push(`/tasks/create?projectId=${id}&many=true`)}
                                             >
-                                                Create multi tasks
+                                                
+                                                {tt("Create multi tasks")}
                                             </Button>
                                         </>
                                     ) : null}
@@ -366,7 +369,8 @@ export default function ProjectPageComponent(): JSX.Element {
                                             className='cvat-create-audio-task-button'
                                             onClick={() => history.push(`/tasks/create?projectId=${id}&type=audio`)}
                                         >
-                                            Create a new audio task
+                                            
+                                            {tt("Create a new audio task")}
                                         </Button>
                                     ) : null}
                                 </CvatDropdownMenuPaper>

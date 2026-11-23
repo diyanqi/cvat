@@ -26,6 +26,7 @@ import Typography from 'antd/lib/typography';
 import { CombinedState } from 'reducers';
 import { Label } from 'cvat-core-wrapper';
 import { changeAnnotationsFilters, fetchAnnotationsAsync, showFilters } from 'actions/annotation-actions';
+import { tt } from 'i18n';
 
 const { FieldDropdown } = AntdWidgets;
 
@@ -460,14 +461,16 @@ function FiltersModalComponent(): JSX.Element {
                     onClick={() => applyFilters([])}
                     className='cvat-filters-modal-clear-button'
                 >
-                    Clear filters
+                    
+                    {tt("Clear filters")}
                 </Button>,
                 <Button
                     key='cancel'
                     onClick={() => dispatch(showFilters(false))}
                     className='cvat-filters-modal-cancel-button'
                 >
-                    Cancel
+                    
+                    {tt("Cancel")}
                 </Button>,
                 <Button
                     key='submit'
@@ -476,7 +479,8 @@ function FiltersModalComponent(): JSX.Element {
                     onClick={confirmModal}
                     className='cvat-filters-modal-submit-button'
                 >
-                    Submit
+                    
+                    {tt("Submit")}
                 </Button>,
             ]}
         >
@@ -494,7 +498,8 @@ function FiltersModalComponent(): JSX.Element {
                     content={menu}
                 >
                     <Button type='text' className='cvat-filters-modal-recently-used-button'>
-                        Recently used
+                        
+                        {tt("Recently used")}
                         {' '}
                         <DownOutlined />
                     </Button>
@@ -502,7 +507,7 @@ function FiltersModalComponent(): JSX.Element {
             </div>
             {!!config.fields && (
                 <>
-                    <Typography.Text strong>Objects</Typography.Text>
+                    <Typography.Text strong>{tt("Objects")}</Typography.Text>
                     <Query
                         {...config}
                         value={immutableTree as ImmutableTree}
@@ -513,7 +518,7 @@ function FiltersModalComponent(): JSX.Element {
             )}
             {!!keypointConfig.fields && (
                 <>
-                    <Typography.Text strong>Elements</Typography.Text>
+                    <Typography.Text strong>{tt("Elements")}</Typography.Text>
                     <Query
                         {...keypointConfig}
                         value={keypointImmutableTree as ImmutableTree}

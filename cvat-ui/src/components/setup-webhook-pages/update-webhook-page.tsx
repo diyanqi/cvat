@@ -13,6 +13,7 @@ import { useHistory, useParams } from 'react-router';
 import { CombinedState } from 'reducers';
 import { getCore } from 'cvat-core-wrapper';
 import SetupWebhookContent from './setup-webhook-content';
+import { tt } from 'i18n';
 
 interface ParamType {
     id: string;
@@ -35,7 +36,7 @@ function UpdateWebhookPage(): JSX.Element {
                 }
             }).catch((error: unknown) => {
                 notification.error({
-                    message: 'Failed to fetch the webhook',
+                    message: tt("Failed to fetch the webhook"),
                     description: error instanceof Error ? error.message : 'Unknown error',
                 });
             });
@@ -50,7 +51,8 @@ function UpdateWebhookPage(): JSX.Element {
                 <Col md={20} lg={16} xl={14} xxl={9}>
                     <Button className='cvat-webhooks-go-back' onClick={() => history.goBack()} type='link' size='large'>
                         <LeftOutlined />
-                        Back to webhooks
+                        
+                        {tt("Back to webhooks")}
                     </Button>
                 </Col>
             </Row>

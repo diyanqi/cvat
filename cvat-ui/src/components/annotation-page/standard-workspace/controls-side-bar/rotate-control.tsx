@@ -11,6 +11,7 @@ import { RotateIcon } from 'icons';
 import { Rotation } from 'reducers';
 import CVATTooltip from 'components/common/cvat-tooltip';
 import withVisibilityHandling from './handle-popover-visibility';
+import { tt } from 'i18n';
 
 export interface Props {
     clockwiseShortcut: string;
@@ -44,7 +45,7 @@ function RotateControl(props: Props): JSX.Element {
                 </>
             )}
         >
-            <CVATTooltip title='Rotate the image' placement='right'>
+            <CVATTooltip title={tt("Rotate the image")} placement='right'>
                 <Icon className='cvat-rotate-canvas-control' component={RotateIcon} />
             </CVATTooltip>
         </CustomPopover>

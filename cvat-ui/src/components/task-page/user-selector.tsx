@@ -13,6 +13,7 @@ import { User, getCore, ServerError } from 'cvat-core-wrapper';
 import { getCVATStore } from 'cvat-store';
 import { handleDropdownKeyDown } from 'utils/dropdown-utils';
 import { useUpdateEffect } from 'utils/hooks';
+import { tt } from 'i18n';
 
 const core = getCore();
 
@@ -160,7 +161,7 @@ export default function UserSelector(props: Readonly<Props>): JSX.Element {
         <Autocomplete
             ref={autocompleteRef}
             value={searchPhrase}
-            placeholder='Select a user'
+            placeholder={tt("Select a user")}
             onSearch={setSearchPhrase}
             onSelect={handleSelect}
             onBlur={onBlur}

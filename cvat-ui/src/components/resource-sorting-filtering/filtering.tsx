@@ -20,6 +20,7 @@ import { useSelector } from 'react-redux';
 import { CombinedState } from 'reducers';
 import { User } from 'cvat-core-wrapper';
 import { useScopedState } from 'utils/scoped-state';
+import { tt } from 'i18n';
 
 interface ResourceFilterProps {
     stateKey?: string;
@@ -302,7 +303,8 @@ export default function ResourceFilterHOC(
                                 type='default'
                                 onClick={() => onPredefinedVisibleChange(!predefinedVisible)}
                             >
-                                Quick filters
+                                
+                                {tt("Quick filters")}
                                 { appliedFilter.predefined ?
                                     <FilterFilled /> :
                                     <FilterOutlined />}
@@ -363,7 +365,8 @@ export default function ResourceFilterHOC(
                                             () => onRecentVisibleChange(!recentVisible)
                                         }
                                     >
-                                        Recent
+                                        
+                                        {tt("Recent")}
                                         <DownOutlined />
                                     </Button>
                                 </Popover>
@@ -391,7 +394,8 @@ export default function ResourceFilterHOC(
                                         });
                                     }}
                                 >
-                                    Reset
+                                    
+                                    {tt("Reset")}
                                 </Button>
                                 <Button
                                     className='cvat-apply-filters-button'
@@ -412,7 +416,8 @@ export default function ResourceFilterHOC(
                                         });
                                     }}
                                 >
-                                    Apply
+                                    
+                                    {tt("Apply")}
                                 </Button>
                             </Space>
                         </div>
@@ -424,7 +429,8 @@ export default function ResourceFilterHOC(
                         type='default'
                         onClick={() => onBuilderVisibleChange(!builderVisible)}
                     >
-                        Filter
+                        
+                        {tt("Filter")}
                         { appliedFilter.built || appliedFilter.recent ?
                             <FilterFilled /> :
                             <FilterOutlined />}
@@ -437,7 +443,8 @@ export default function ResourceFilterHOC(
                     type='link'
                     onClick={() => { setAppliedFilter({ ...defaultAppliedFilter }); }}
                 >
-                    Clear filters
+                    
+                    {tt("Clear filters")}
                 </Button>
             </div>
         );

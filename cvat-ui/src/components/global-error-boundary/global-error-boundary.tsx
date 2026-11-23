@@ -17,6 +17,7 @@ import { resetAfterErrorAsync } from 'actions/boundaries-actions';
 import { CombinedState } from 'reducers';
 import { logError } from 'cvat-logger';
 import config from 'config';
+import { tt } from 'i18n';
 
 interface OwnProps {
     children: JSX.Element;
@@ -106,13 +107,13 @@ class GlobalErrorBoundary extends React.PureComponent<Props, State> {
                 <div className='cvat-global-boundary'>
                     <Result
                         status='error'
-                        title='Oops, something went wrong'
-                        subTitle='More likely there are some issues with the tool'
+                        title={tt("Oops, something went wrong")}
+                        subTitle={tt("More likely there are some issues with the tool")}
                     >
                         <div>
                             <Paragraph>
-                                <Paragraph strong>What has happened?</Paragraph>
-                                <Paragraph>Program error has just occurred</Paragraph>
+                                <Paragraph strong>{tt("What has happened?")}</Paragraph>
+                                <Paragraph>{tt("Program error has just occurred")}</Paragraph>
                                 <Collapse
                                     accordion
                                     defaultActiveKey={['errorMessage']}
@@ -133,25 +134,27 @@ class GlobalErrorBoundary extends React.PureComponent<Props, State> {
                             </Paragraph>
 
                             <Paragraph>
-                                <Text strong>What should I do?</Text>
+                                <Text strong>{tt("What should I do?")}</Text>
                             </Paragraph>
                             <ul>
                                 <li>
-                                    Notify an administrator or submit the issue directly on
-                                    <a href={config.GITHUB_URL}> GitHub. </a>
-                                    Please, provide also:
+                                    
+                                    {tt("Notify an administrator or submit the issue directly on")}
+                                    <a href={config.GITHUB_URL}>  {tt("GitHub.")} </a>
+                                    
+                                    {tt("Please, provide also:")}
                                     <ul>
-                                        <li>Full error message above</li>
-                                        <li>Steps to reproduce the issue</li>
-                                        <li>Your operating system and browser version</li>
-                                        <li>CVAT version</li>
+                                        <li>{tt("Full error message above")}</li>
+                                        <li>{tt("Steps to reproduce the issue")}</li>
+                                        <li>{tt("Your operating system and browser version")}</li>
+                                        <li>{tt("CVAT version")}</li>
                                         <ul>
                                             <li>
-                                                <Text strong>Server: </Text>
+                                                <Text strong>{tt("Server:")} </Text>
                                                 {serverVersion}
                                             </li>
                                             <li>
-                                                <Text strong>UI: </Text>
+                                                <Text strong>{tt("UI:")} </Text>
                                                 {uiVersion}
                                             </li>
                                         </ul>
@@ -159,19 +162,23 @@ class GlobalErrorBoundary extends React.PureComponent<Props, State> {
                                 </li>
                                 {job ? (
                                     <li>
-                                        Press
+                                        
+                                        {tt("Press")}
                                         {/* eslint-disable-next-line */}
-                                        <a onClick={restoreGlobalState}> here </a>
-                                        if you wish CVAT tried to restore your annotation progress or
+                                        <a onClick={restoreGlobalState}>  {tt("here")} </a>
+                                        
+                                        {tt("if you wish CVAT tried to restore your annotation progress or")}
                                         {/* eslint-disable-next-line */}
-                                        <a onClick={() => window.location.reload()}> update </a>
-                                        the page
+                                        <a onClick={() => window.location.reload()}>  {tt("update")} </a>
+                                        
+                                        {tt("the page")}
                                     </li>
                                 ) : (
                                     <li>
                                         {/* eslint-disable-next-line */}
-                                        <a onClick={() => window.location.reload()}>Update </a>
-                                        the page
+                                        <a onClick={() => window.location.reload()}>{tt("Update")} </a>
+                                        
+                                        {tt("the page")}
                                     </li>
                                 )}
                             </ul>

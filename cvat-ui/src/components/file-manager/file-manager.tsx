@@ -15,6 +15,7 @@ import { CloudStorage } from 'cvat-core-wrapper';
 import CloudStorageTab from './cloud-storages-tab';
 import LocalFiles from './local-files';
 import RemoteBrowser, { RemoteFile } from './remote-browser';
+import { tt } from 'i18n';
 
 export interface Files {
     local: File[];
@@ -172,7 +173,7 @@ export class FileManager extends React.PureComponent<Props, State> {
             children: (
                 <Input.TextArea
                     className='cvat-file-selector-remote'
-                    placeholder='Enter one URL per line'
+                    placeholder={tt("Enter one URL per line")}
                     rows={6}
                     value={[...files.remote].join('\n')}
                     onChange={(event: React.ChangeEvent<HTMLTextAreaElement>): void => {

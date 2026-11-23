@@ -47,6 +47,7 @@ import {
 import DraggableObjectItem from './drag-and-drop/draggable-object-item';
 import LayerInsertDropArea from './drag-and-drop/layer-insert-drop-area';
 import LayerSection from './drag-and-drop/layer-section';
+import { tt } from 'i18n';
 
 interface PendingScrollTarget {
     itemID: string;
@@ -476,7 +477,7 @@ function ObjectListComponent(props: Props): JSX.Element {
 
         return (
             <div className='cvat-objects-sidebar-z-layer-mark cvat-objects-sidebar-z-layer-mark-dragging'>
-                <Text strong>Layer {zOrder}</Text>
+                <Text strong>{tt("Layer")} {zOrder}</Text>
                 <span className='cvat-objects-sidebar-z-layer-visibility-indicator'>
                     {visible ? <EyeOutlined /> : <EyeInvisibleOutlined />}
                 </span>
@@ -617,8 +618,8 @@ function ObjectListComponent(props: Props): JSX.Element {
                 {layerOrdering ? (
                     <div className='cvat-objects-sidebar-z-layers-panel'>
                         <div className='cvat-objects-sidebar-z-layers-title'>
-                            <Text strong>Layer stack</Text>
-                            <CVATTooltip title='Compact layers'>
+                            <Text strong>{tt("Layer stack")}</Text>
+                            <CVATTooltip title={tt("Compact layers")}>
                                 <Button
                                     className='cvat-objects-sidebar-z-layers-compact-button'
                                     type='text'

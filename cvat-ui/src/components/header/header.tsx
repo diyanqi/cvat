@@ -47,6 +47,7 @@ import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
 import { ShortcutScope } from 'utils/enums';
 import { subKeyMap } from 'utils/component-subkeymap';
 import SettingsModal from './settings-modal/settings-modal';
+import { tt } from 'i18n';
 
 interface StateToProps {
     user: any;
@@ -214,21 +215,24 @@ function HeaderComponent(props: Props): JSX.Element {
     aboutLinks.push([(
         <Col key='changelog'>
             <a href={CHANGELOG_URL} target='_blank' rel='noopener noreferrer'>
-                What&apos;s new?
+                
+                {tt("What&apos;s new?")}
             </a>
         </Col>
     ), 0]);
     aboutLinks.push([(
         <Col key='license'>
             <a href={LICENSE_URL} target='_blank' rel='noopener noreferrer'>
-                MIT License
+                
+                {tt("MIT License")}
             </a>
         </Col>
     ), 10]);
     aboutLinks.push([(
         <Col key='discord'>
             <a href={DISCORD_URL} target='_blank' rel='noopener noreferrer'>
-                Find us on Discord
+                
+                {tt("Find us on Discord")}
             </a>
         </Col>
     ), 20]);
@@ -244,11 +248,11 @@ function HeaderComponent(props: Props): JSX.Element {
                 <div>
                     <p>{`${about.server.description}`}</p>
                     <p>
-                        <Text strong>Server version:</Text>
+                        <Text strong>{tt("Server version:")}</Text>
                         <Text type='secondary'>{` ${about.server.version}`}</Text>
                     </p>
                     <p>
-                        <Text strong>UI version:</Text>
+                        <Text strong>{tt("UI version:")}</Text>
                         <Text type='secondary'>{` ${about.packageVersion.ui}`}</Text>
                     </p>
                     <Row justify='space-around'>
@@ -497,7 +501,7 @@ function HeaderComponent(props: Props): JSX.Element {
             </div>
             <div className='cvat-right-header'>
                 <LanguageSwitcher />
-                <CVATTooltip overlay='Click to open repository'>
+                <CVATTooltip overlay={tt("Click to open repository")}>
                     <Button
                         icon={<GithubOutlined />}
                         size='large'
@@ -510,7 +514,7 @@ function HeaderComponent(props: Props): JSX.Element {
                         }}
                     />
                 </CVATTooltip>
-                <CVATTooltip overlay='Click to open guide'>
+                <CVATTooltip overlay={tt("Click to open guide")}>
                     <Button
                         icon={<QuestionCircleOutlined />}
                         size='large'

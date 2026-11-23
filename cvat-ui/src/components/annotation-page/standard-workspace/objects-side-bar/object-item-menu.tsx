@@ -21,6 +21,7 @@ import type { OrientationAngle } from 'utils/change-object-orientation';
 import {
     DimensionType, Job, ObjectType, ShapeType,
 } from 'cvat-core-wrapper';
+import { tt } from 'i18n';
 
 interface Props {
     locked: boolean;
@@ -93,7 +94,8 @@ function CreateURLItem(props: ItemProps): JSX.Element {
             icon={<LinkOutlined />}
             onClick={createURL}
         >
-            Create object URL
+            
+            {tt("Create object URL")}
         </Button>
     );
 }
@@ -109,7 +111,8 @@ function MakeCopyItem(props: ItemProps): JSX.Element {
                 icon={<CopyOutlined />}
                 onClick={copy}
             >
-                Make a copy
+                
+                {tt("Make a copy")}
             </Button>
         </CVATTooltip>
     );
@@ -119,14 +122,15 @@ function EditMaskItem(props: ItemProps): JSX.Element {
     const { toolProps } = props;
     const { edit } = toolProps;
     return (
-        <CVATTooltip title='Shift + Double click'>
+        <CVATTooltip title={tt("Shift + Double click")}>
             <Button
                 type='link'
                 icon={<EditOutlined />}
                 onClick={edit}
                 className='cvat-object-item-menu-edit-object'
             >
-                Edit
+                
+                {tt("Edit")}
             </Button>
         </CVATTooltip>
     );
@@ -143,7 +147,8 @@ function SliceItem(props: ItemProps): JSX.Element {
                 onClick={slice}
                 className='cvat-object-item-menu-slice-object'
             >
-                Slice
+                
+                {tt("Slice")}
             </Button>
         </CVATTooltip>
     );
@@ -153,14 +158,15 @@ function SimplifyItem(props: ItemProps): JSX.Element {
     const { toolProps } = props;
     const { simplify } = toolProps;
     return (
-        <CVATTooltip title='Reduce the number of polygon points'>
+        <CVATTooltip title={tt("Reduce the number of polygon points")}>
             <Button
                 type='link'
                 icon={<Icon component={SimplifyIcon} />}
                 onClick={simplify}
                 className='cvat-object-item-menu-simplify-object'
             >
-                Simplify
+                
+                {tt("Simplify")}
             </Button>
         </CVATTooltip>
     );
@@ -177,7 +183,8 @@ function PropagateItem(props: ItemProps): JSX.Element {
                 onClick={propagate}
                 className='cvat-object-item-menu-propagate-item'
             >
-                Propagate
+                
+                {tt("Propagate")}
             </Button>
         </CVATTooltip>
     );
@@ -193,7 +200,8 @@ function SwitchOrientationItem(props: ItemProps): JSX.Element {
             onClick={switchOrientation}
             className='cvat-object-item-menu-switch-orientation'
         >
-            Switch orientation
+            
+            {tt("Switch orientation")}
         </Button>
     );
 }
@@ -221,7 +229,8 @@ function OrientationItem(): JSX.Element {
             icon={<RetweetOutlined />}
             className='cvat-object-item-menu-orientation'
         >
-            Orientation
+            
+            {tt("Orientation")}
         </Button>
     );
 }
@@ -236,7 +245,8 @@ function ResetPerspectiveItem(props: ItemProps): JSX.Element {
             className='cvat-object-item-menu-reset-perspective'
         >
             <Icon component={ResetPerspectiveIcon} />
-            Reset perspective
+            
+            {tt("Reset perspective")}
         </Button>
     );
 }
@@ -252,7 +262,8 @@ function ToBackgroundItem(props: ItemProps): JSX.Element {
                 className='cvat-object-item-menu-to-layer-background'
             >
                 <Icon component={BackgroundIcon} />
-                To background
+                
+                {tt("To background")}
             </Button>
         </CVATTooltip>
     );
@@ -269,7 +280,8 @@ function ToForegroundItem(props: ItemProps): JSX.Element {
                 className='cvat-object-item-menu-to-layer-foreground'
             >
                 <Icon component={ForegroundIcon} />
-                To foreground
+                
+                {tt("To foreground")}
             </Button>
         </CVATTooltip>
     );
@@ -286,7 +298,8 @@ function ToOneLayerBackwardItem(props: Readonly<ItemProps>): JSX.Element {
                 className='cvat-object-item-menu-to-one-layer-backward'
             >
                 <Icon component={OneLayerBackwardIcon} />
-                To one layer backward
+                
+                {tt("To one layer backward")}
             </Button>
         </CVATTooltip>
     );
@@ -303,7 +316,8 @@ function ToOneLayerForwardItem(props: Readonly<ItemProps>): JSX.Element {
                 className='cvat-object-item-menu-to-one-layer-forward'
             >
                 <Icon component={OneLayerForwardIcon} />
-                To one layer forward
+                
+                {tt("To one layer forward")}
             </Button>
         </CVATTooltip>
     );
@@ -323,7 +337,8 @@ function ToLayerItem(props: Readonly<ItemProps>): JSX.Element {
             }}
             className='cvat-object-item-menu-move-to-layer'
         >
-            Move to layer ...
+            
+            {tt("Move to layer ...")}
         </Button>
     );
 }
@@ -353,7 +368,8 @@ function RemoveItem(props: ItemProps): JSX.Element {
                 onClick={remove}
                 className='cvat-object-item-menu-remove-object'
             >
-                Remove
+                
+                {tt("Remove")}
             </Button>
         </CVATTooltip>
     );
@@ -370,7 +386,8 @@ function RunAnnotationActionItem(props: ItemProps): JSX.Element {
                 onClick={runAnnotationAction}
                 className='cvat-object-item-menu-remove-object'
             >
-                Run annotation action
+                
+                {tt("Run annotation action")}
             </Button>
         </CVATTooltip>
     );

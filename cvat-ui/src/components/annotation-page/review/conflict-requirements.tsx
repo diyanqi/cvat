@@ -10,6 +10,7 @@ import Text from 'antd/lib/typography/Text';
 import CVATTooltip from 'components/common/cvat-tooltip';
 import { Job, QualityConflictRequirement } from 'cvat-core-wrapper';
 import { CombinedState } from 'reducers';
+import { tt } from 'i18n';
 
 interface Props {
     job: Job | null;
@@ -29,7 +30,7 @@ export default function ConflictRequirements(props: Readonly<Props>): JSX.Elemen
 
     return (
         <div className='cvat-conflict-requirements'>
-            <Text type='secondary'>Requirements:</Text>
+            <Text type='secondary'>{tt("Requirements:")}</Text>
             <div className='cvat-conflict-requirement-list'>
                 {visibleRequirements.map((requirement) => (
                     <CVATTooltip key={requirement.id} title={requirement.name}>

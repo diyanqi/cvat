@@ -27,6 +27,7 @@ import ProjectsCSVExportButton from './projects-csv-export-button';
 import {
     localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues, config,
 } from './projects-filter-configuration';
+import { tt } from 'i18n';
 
 const FilteringComponent = ResourceFilterHOC(
     config, localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues,
@@ -127,7 +128,8 @@ function TopBarComponent(props: Readonly<Props>): JSX.Element {
                                     icon={importing ? <LoadingOutlined /> : <UploadOutlined />}
                                     onClick={() => dispatch(importActions.openImportBackupModal('project'))}
                                 >
-                                    Create from backup
+                                    
+                                    {tt("Create from backup")}
                                 </Button>
                             </div>
                         )}

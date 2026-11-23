@@ -19,6 +19,7 @@ import StatusMessage from 'components/requests-page/request-status';
 import { useContextMenuClick, useIsMounted } from 'utils/hooks';
 import AutomaticAnnotationProgress from './automatic-annotation-progress';
 import TaskActionsComponent from './actions-menu';
+import { tt } from 'i18n';
 
 export interface TaskItemProps {
     taskInstance: any;
@@ -230,7 +231,8 @@ function TaskItemComponent(props: TaskItemProps): JSX.Element {
                                 size='large'
                                 ghost
                             >
-                                Open
+                                
+                                {tt("Open")}
                             </Button>
                         </Link>
                     </Col>
@@ -241,7 +243,7 @@ function TaskItemComponent(props: TaskItemProps): JSX.Element {
                             onClick={handleContextMenuClick}
                             className='cvat-task-item-actions-button cvat-actions-menu-button'
                         >
-                            <Text className='cvat-text-color'>Actions</Text>
+                            <Text className='cvat-text-color'>{tt("Actions")}</Text>
                             <MoreOutlined className='cvat-menu-icon' />
                         </div>
                     </Col>

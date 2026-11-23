@@ -6,6 +6,7 @@
 import React from 'react';
 import config from 'config';
 import Location from './location';
+import { tt } from 'i18n';
 
 interface Props {
     selectedRegion: any;
@@ -26,7 +27,7 @@ export default function S3Region(props: Props): JSX.Element {
             internalCommonProps={internalCommonProps}
             values={config.DEFAULT_AWS_REGIONS}
             name='region'
-            label='Region'
+            label={tt("Region")}
             href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions'
         />
     );

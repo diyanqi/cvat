@@ -15,6 +15,7 @@ import { CombinedState } from 'reducers';
 import { Storage, Task } from 'cvat-core-wrapper';
 import { cloudStoragesActions } from 'actions/cloud-storage-actions';
 import CVATTooltip from 'components/common/cvat-tooltip';
+import { tt } from 'i18n';
 
 function SelectCSUpdatingSchemeModal(): JSX.Element | null {
     const {
@@ -57,15 +58,14 @@ function SelectCSUpdatingSchemeModal(): JSX.Element | null {
                         title={(
                             <>
                                 <div>
-                                    <strong>Move & Detach</strong>
-                                    : Transfer and unlink from a cloud storage.
+                                    <strong>{tt("Move & Detach")}</strong>
+                                    
+                                    {tt(": Transfer and unlink from a cloud storage.")}
                                 </div>
                                 <div>
-                                    <strong>Move & Auto Match</strong>
-                                    : Transfer and attempt to auto-link with a similar cloud storage
-                                    in the target workspace. A similar cloud storage is defined
-                                    by comparing the whole cloud storage configuration except credentials
-                                    and owner.
+                                    <strong>{tt("Move & Auto Match")}</strong>
+                                    
+                                    {tt(": Transfer and attempt to auto-link with a similar cloud storage in the target workspace. A similar cloud storage is defined by comparing the whole cloud storage configuration except credentials and owner.")}
                                 </div>
                             </>
                         )}
@@ -79,7 +79,8 @@ function SelectCSUpdatingSchemeModal(): JSX.Element | null {
             open
             footer={[
                 <Button key='cancel' onClick={() => closeModal()}>
-                    Cancel
+                    
+                    {tt("Cancel")}
                 </Button>,
                 <Button
                     key='move_and_detach'
@@ -101,7 +102,8 @@ function SelectCSUpdatingSchemeModal(): JSX.Element | null {
                         onUpdate();
                     }}
                 >
-                    Move & detach
+                    
+                    {tt("Move & detach")}
                 </Button>,
                 // do not show option "move and auto match" when only data storage is linked
                 (
@@ -117,7 +119,8 @@ function SelectCSUpdatingSchemeModal(): JSX.Element | null {
                             onUpdate();
                         }}
                     >
-                        Move & Auto match
+                        
+                        {tt("Move & Auto match")}
                     </Button>
                 ),
             ]}
@@ -137,7 +140,8 @@ function SelectCSUpdatingSchemeModal(): JSX.Element | null {
             }
 
             <p>
-                Please choose how you would like the transfer to be done.
+                
+                {tt("Please choose how you would like the transfer to be done.")}
             </p>
         </Modal>
     );

@@ -9,6 +9,7 @@ import InputNumber from 'antd/lib/input-number';
 import Collapse from 'antd/lib/collapse';
 
 import type { RemoveAnnotationsConfirmProps } from 'components/annotation-page/top-bar/remove-annotations-confirm';
+import { tt } from 'i18n';
 
 type TimeValue = {
     minutes?: number;
@@ -41,7 +42,7 @@ function AudioTimeInput({
             <Text className='cvat-audio-remove-annotations-time-label'>{`${label}:`}</Text>
             <InputNumber
                 min={0}
-                placeholder='min'
+                placeholder={tt("min")}
                 className='cvat-audio-remove-annotations-time-input'
                 value={value.minutes}
                 onChange={(minutes) => onChange({ ...value, minutes: minutes ?? undefined })}
@@ -50,7 +51,7 @@ function AudioTimeInput({
             <InputNumber
                 min={0}
                 max={59}
-                placeholder='sec'
+                placeholder={tt("sec")}
                 className='cvat-audio-remove-annotations-time-input'
                 value={value.seconds}
                 onChange={(seconds) => onChange({ ...value, seconds: seconds ?? undefined })}
@@ -89,13 +90,13 @@ function AudioRemoveAnnotationsConfirm(props: RemoveAnnotationsConfirmProps): JS
         <Modal
             destroyOnClose
             open={open}
-            title='Remove Audio Annotations'
+            title={tt("Remove Audio Annotations")}
             className='cvat-modal-confirm-remove-annotation cvat-modal-confirm-remove-audio-annotation'
             okButtonProps={{
                 type: 'primary',
                 danger: true,
             }}
-            okText='Remove'
+            okText={tt("Remove")}
             onCancel={onClose}
             onOk={() => {
                 const from = timeToMilliseconds(removeFrom);
@@ -109,10 +110,10 @@ function AudioRemoveAnnotationsConfirm(props: RemoveAnnotationsConfirmProps): JS
             }}
         >
             <div>
-                <Text>You are about to remove audio intervals from this job. </Text>
-                <Text>Without a range, all audio intervals will be removed. </Text>
-                <Text>To remove intervals only in a time span, set the range below. </Text>
-                <Text>Changes take effect only when you save the job.</Text>
+                <Text>{tt("You are about to remove audio intervals from this job.")} </Text>
+                <Text>{tt("Without a range, all audio intervals will be removed.")} </Text>
+                <Text>{tt("To remove intervals only in a time span, set the range below.")} </Text>
+                <Text>{tt("Changes take effect only when you save the job.")}</Text>
                 <br />
                 <br />
                 <br />
@@ -120,10 +121,10 @@ function AudioRemoveAnnotationsConfirm(props: RemoveAnnotationsConfirmProps): JS
                     bordered={false}
                     items={[{
                         key: 1,
-                        label: <Text>Select Time Range</Text>,
+                        label: <Text>{tt("Select Time Range")}</Text>,
                         children: (
                             <div className='cvat-audio-remove-annotations-time-range'>
-                                <AudioTimeInput label='From' value={removeFrom} onChange={setRemoveFrom} />
+                                <AudioTimeInput label={tt("From")} value={removeFrom} onChange={setRemoveFrom} />
                                 <AudioTimeInput label='To' value={removeUpTo} onChange={setRemoveUpTo} />
                             </div>
                         ),

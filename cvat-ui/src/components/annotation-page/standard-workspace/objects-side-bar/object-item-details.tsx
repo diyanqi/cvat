@@ -13,6 +13,7 @@ import CVATTooltip from 'components/common/cvat-tooltip';
 
 import { Source } from 'cvat-core-wrapper';
 import ItemAttribute from './object-item-attribute';
+import { tt } from 'i18n';
 
 interface Props {
     readonly: boolean;
@@ -118,7 +119,7 @@ function ItemAttributesComponent(props: Props): JSX.Element | null {
 
     const scoreTag = withScore ? (
         <CVATTooltip
-            title='Consensus score'
+            title={tt("Consensus score")}
             align={{
                 ...baseTooltipAlign,
                 targetOffset: ['25%', '40%'],
@@ -131,7 +132,7 @@ function ItemAttributesComponent(props: Props): JSX.Element | null {
     ) : null;
     const votesTag = withVotes ? (
         <CVATTooltip
-            title='Number of votes'
+            title={tt("Number of votes")}
             align={{
                 ...baseTooltipAlign,
                 targetOffset: ['40%', '40%'],

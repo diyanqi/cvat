@@ -11,6 +11,7 @@ import Icon, {
 
 import { ColorizeIcon } from 'icons';
 import { ColorBy } from 'reducers';
+import { tt } from 'i18n';
 
 interface Props {
     serverID: number | undefined;
@@ -32,7 +33,8 @@ function CreateURLItem({ onCreateURL, serverID }: Pick<Props, 'onCreateURL' | 's
             icon={<LinkOutlined />}
             onClick={onCreateURL}
         >
-            Copy interval URL
+            
+            {tt("Copy interval URL")}
         </Button>
     );
 }
@@ -45,7 +47,8 @@ function MakeCopyItem({ onCopy }: Pick<Props, 'onCopy'>): JSX.Element {
             icon={<CopyOutlined />}
             onClick={onCopy}
         >
-            Duplicate interval
+            
+            {tt("Duplicate interval")}
         </Button>
     );
 }
@@ -59,7 +62,8 @@ function RemoveItem({ onRemove, locked }: Pick<Props, 'onRemove' | 'locked'>): J
             onClick={onRemove}
             className='cvat-audio-region-menu-remove'
         >
-            Delete interval
+            
+            {tt("Delete interval")}
         </Button>
     );
 }
@@ -95,7 +99,7 @@ export default function AudioRegionItemMenu(props: Props): MenuProps {
     items.push(
         {
             key: MenuKeys.FIT_INTERVAL,
-            label: <Button type='link' icon={<ArrowsAltOutlined />} onClick={props.onFitInterval}>Fit interval</Button>,
+            label: <Button type='link' icon={<ArrowsAltOutlined />} onClick={props.onFitInterval}>{tt("Fit interval")}</Button>,
         },
         { type: 'divider' },
         {

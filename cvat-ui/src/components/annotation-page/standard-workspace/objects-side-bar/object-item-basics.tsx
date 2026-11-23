@@ -21,6 +21,7 @@ import type { OrientationAngle } from 'utils/change-object-orientation';
 import { ObjectType, ShapeType } from 'cvat-core-wrapper';
 import ItemMenu from './object-item-menu';
 import ColorPicker from './color-picker';
+import { tt } from 'i18n';
 
 interface LayerPickerProps {
     children: React.ReactNode;
@@ -69,17 +70,18 @@ export function LayerPicker(props: LayerPickerProps): JSX.Element {
                         type='primary'
                         onClick={submitLayer}
                     >
-                        OK
+                        
+                        {tt("OK")}
                     </Button>
                 </div>
             )}
             title={(
                 <Row justify='space-between' align='middle'>
                     <Col span={14}>
-                        <Text strong>Move to layer</Text>
+                        <Text strong>{tt("Move to layer")}</Text>
                     </Col>
                     <Col span={4}>
-                        <CVATTooltip title='Close'>
+                        <CVATTooltip title={tt("Close")}>
                             <Button
                                 className='cvat-object-item-menu-to-layer-close-button'
                                 type='link'
@@ -296,7 +298,7 @@ function ItemTopComponent(props: Props): JSX.Element {
         <Row align='middle'>
             <Col span={10}>
                 <Text style={{ fontSize: 12 }}>{clientID}</Text>
-                {isGroundTruth ? <Text style={{ fontSize: 12 }}>&nbsp;GT</Text> : null}
+                {isGroundTruth ? <Text style={{ fontSize: 12 }}>{tt("&nbsp;GT")}</Text> : null}
                 <br />
                 <Text
                     type='secondary'
@@ -313,7 +315,7 @@ function ItemTopComponent(props: Props): JSX.Element {
                     labels={labels}
                     value={labelID}
                     onChange={changeLabel}
-                    tooltip='Change current label'
+                    tooltip={tt("Change current label")}
                     className='cvat-objects-sidebar-state-item-label-selector'
                     popupClassName='cvat-objects-sidebar-state-item-label-dropdown'
                     popupMatchSelectWidth={false}

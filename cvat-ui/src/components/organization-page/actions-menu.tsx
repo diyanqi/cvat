@@ -20,6 +20,7 @@ import { makeBulkOperationAsync } from 'actions/bulk-actions';
 import { removeOrganizationMemberAsync } from 'actions/organization-actions';
 import { resendInvitationAsync } from 'actions/invitations-actions';
 import MemberRoleSelector from './member-role-selector';
+import { tt } from 'i18n';
 
 export interface MemberActionsMenuProps {
     membershipInstance: Membership;
@@ -177,8 +178,8 @@ function MemberActionsMenu(props: Readonly<MemberActionsMenuProps>): JSX.Element
                         Modal.confirm({
                             className: 'cvat-modal-organization-member-remove',
                             title: `You are removing "${username}" from this organization`,
-                            content: 'The person will not have access to the organization data anymore. Continue?',
-                            okText: 'Yes, remove',
+                            content: tt("The person will not have access to the organization data anymore. Continue?"),
+                            okText: tt("Yes, remove"),
                             okButtonProps: {
                                 danger: true,
                             },

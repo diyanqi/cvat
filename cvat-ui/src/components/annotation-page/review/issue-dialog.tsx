@@ -20,6 +20,7 @@ import CVATTooltip from 'components/common/cvat-tooltip';
 import { Issue, Comment as CommentModel } from 'cvat-core-wrapper';
 import { deleteIssueAsync } from 'actions/review-actions';
 import { useDialogPositioning } from './use-dialog-positioning';
+import { tt } from 'i18n';
 
 interface Props {
     issue: Issue;
@@ -109,7 +110,7 @@ export default function IssueDialog(props: Props): JSX.Element {
                 type: 'primary',
             },
             autoFocusButton: 'cancel',
-            okText: 'Delete',
+            okText: tt("Delete"),
         });
     }, [id, collapse, dispatch]);
 
@@ -136,11 +137,13 @@ export default function IssueDialog(props: Props): JSX.Element {
 
     const resolveButton = resolved ? (
         <Button loading={isFetching} className='cvat-issue-dialog-reopen-button' type='primary' onClick={reopen}>
-            Reopen
+            
+            {tt("Reopen")}
         </Button>
     ) : (
         <Button loading={isFetching} className='cvat-issue-dialog-resolve-button' type='primary' onClick={resolve}>
-            Resolve
+            
+            {tt("Resolve")}
         </Button>
     );
 
@@ -155,7 +158,7 @@ export default function IssueDialog(props: Props): JSX.Element {
                     <Text strong>{typeof id === 'number' ? `Issue #${id}` : 'Issue'}</Text>
                 </Col>
                 <Col>
-                    <CVATTooltip title='Collapse the chat'>
+                    <CVATTooltip title={tt("Collapse the chat")}>
                         <CloseOutlined onClick={collapse} />
                     </CVATTooltip>
                 </Col>
@@ -163,14 +166,14 @@ export default function IssueDialog(props: Props): JSX.Element {
             <Row className='cvat-issue-dialog-chat' justify='start'>
                 {
                     lines.length > 0 ? <Col style={{ display: 'block' }}>{lines}</Col> : (
-                        <Col>No comments found</Col>
+                        <Col>{tt("No comments found")}</Col>
                     )
                 }
             </Row>
             <Row className='cvat-issue-dialog-input' justify='start'>
                 <Col span={24}>
                     <Input
-                        placeholder='Type a comment here..'
+                        placeholder={tt("Type a comment here..")}
                         value={currentText}
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                             setCurrentText(event.target.value);
@@ -187,7 +190,8 @@ export default function IssueDialog(props: Props): JSX.Element {
             <Row className='cvat-issue-dialog-footer' justify='space-between'>
                 <Col>
                     <Button type='link' className='cvat-issue-dialog-remove-button' danger onClick={onDeleteIssue}>
-                        Remove
+                        
+                        {tt("Remove")}
                     </Button>
                 </Col>
                 <Col>
@@ -202,7 +206,8 @@ export default function IssueDialog(props: Props): JSX.Element {
                                 setCurrentText('');
                             }}
                         >
-                            Comment
+                            
+                            {tt("Comment")}
                         </Button>
                     ) : (
                         resolveButton

@@ -25,6 +25,7 @@ import { ConflictSeverity, QualityConflict, Issue } from 'cvat-core-wrapper';
 import { changeShowGroundTruth } from 'actions/settings-actions';
 import { ShowGroundTruthIcon } from 'icons';
 import ConflictRequirements from '../../review/conflict-requirements';
+import { tt } from 'i18n';
 
 export default function IssuesListComponent(): JSX.Element {
     const dispatch = useDispatch();
@@ -109,17 +110,17 @@ export default function IssuesListComponent(): JSX.Element {
                     <Col span={24}>
                         <Row className='cvat-objects-sidebar-issues-toolbar' justify='space-around' align='middle'>
                             <Col>
-                                <CVATTooltip title='Find the previous frame with issues'>
+                                <CVATTooltip title={tt("Find the previous frame with issues")}>
                                     <LeftOutlined className='cvat-issues-sidebar-previous-frame' {...dynamicLeftProps} />
                                 </CVATTooltip>
                             </Col>
                             <Col>
-                                <CVATTooltip title='Find the next frame with issues'>
+                                <CVATTooltip title={tt("Find the next frame with issues")}>
                                     <RightOutlined className='cvat-issues-sidebar-next-frame' {...dynamicRightProps} />
                                 </CVATTooltip>
                             </Col>
                             <Col>
-                                <CVATTooltip title='Show/hide all issues'>
+                                <CVATTooltip title={tt("Show/hide all issues")}>
                                     {issuesHidden ? (
                                         <EyeInvisibleFilled
                                             className='cvat-issues-sidebar-hidden-issues'
@@ -134,7 +135,7 @@ export default function IssuesListComponent(): JSX.Element {
                                 </CVATTooltip>
                             </Col>
                             <Col>
-                                <CVATTooltip title='Show/hide resolved issues'>
+                                <CVATTooltip title={tt("Show/hide resolved issues")}>
                                     { issuesResolvedHidden ? (
                                         <CheckCircleFilled
                                             className='cvat-issues-sidebar-hidden-resolved-status'
@@ -156,7 +157,7 @@ export default function IssuesListComponent(): JSX.Element {
                             {
                                 workspace === Workspace.REVIEW ? (
                                     <Col>
-                                        <CVATTooltip title='Show Ground truth annotations and conflicts'>
+                                        <CVATTooltip title={tt("Show Ground truth annotations and conflicts")}>
                                             <Icon
                                                 className={
                                                     `cvat-objects-sidebar-show-ground-truth ${showGroundTruth ? 'cvat-objects-sidebar-show-ground-truth-active' : ''}`

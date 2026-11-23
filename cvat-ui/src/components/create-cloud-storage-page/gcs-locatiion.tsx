@@ -6,6 +6,7 @@
 import React from 'react';
 import config from 'config';
 import Location from './location';
+import { tt } from 'i18n';
 
 interface Props {
     selectedRegion: any;
@@ -26,7 +27,7 @@ export default function GCSLocation(props: Props): JSX.Element {
             internalCommonProps={internalCommonProps}
             values={config.DEFAULT_GOOGLE_CLOUD_STORAGE_LOCATIONS}
             name='location'
-            label='Location'
+            label={tt("Location")}
             href='https://cloud.google.com/storage/docs/locations#available-locations'
         />
     );

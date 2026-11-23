@@ -5,6 +5,7 @@
 import React from 'react';
 import Button from 'antd/lib/button';
 import CVATMarkdown from 'components/common/cvat-markdown';
+import { tt } from 'i18n';
 
 const FORCE_MESSAGE_FLAG = 'force';
 
@@ -54,7 +55,8 @@ export default class CanvasTipsComponent extends React.PureComponent<{}, State> 
                             className='cvat-canvas-hints-hide-button'
                             type='link'
                         >
-                            Hide
+                            
+                            {tt("Hide")}
                         </Button>
                     )}
                 </div>

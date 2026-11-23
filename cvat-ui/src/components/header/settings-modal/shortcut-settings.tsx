@@ -24,6 +24,7 @@ import { shortcutsActions } from 'actions/shortcuts-actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { CombinedState } from 'reducers';
 import MultipleShortcutsDisplay from './multiple-shortcuts-display';
+import { tt } from 'i18n';
 
 interface Props {
     keyMap: KeyMap;
@@ -43,8 +44,8 @@ function ShortcutsSettingsComponent(props: Props): JSX.Element {
 
     const onRestoreDefaults = useCallback(() => {
         Modal.confirm({
-            title: 'Are you sure you want to restore defaults?',
-            okText: 'Yes',
+            title: tt("Are you sure you want to restore defaults?"),
+            okText: tt("Yes"),
             className: 'cvat-shortcuts-settings-restore-modal',
             cancelText: 'No',
             onOk: () => {
@@ -136,12 +137,12 @@ function ShortcutsSettingsComponent(props: Props): JSX.Element {
                     <Flex gap={4}>
                         <Search
                             size='large'
-                            placeholder='Search for a shortcut here...'
+                            placeholder={tt("Search for a shortcut here...")}
                             allowClear
                             onChange={onSearchChange}
                             className='cvat-shortcuts-settings-search'
                         />
-                        <Button size='large' onClick={onRestoreDefaults} className='cvat-shortcuts-settings-restore'>Restore Defaults</Button>
+                        <Button size='large' onClick={onRestoreDefaults} className='cvat-shortcuts-settings-restore'>{tt("Restore Defaults")}</Button>
                     </Flex>
                 </Col>
             </Row>

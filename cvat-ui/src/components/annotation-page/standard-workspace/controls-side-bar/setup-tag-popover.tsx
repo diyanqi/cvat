@@ -11,6 +11,7 @@ import type { Label } from 'cvat-core-wrapper';
 import LabelSelector from 'components/label-selector/label-selector';
 import { PlusOutlined } from '@ant-design/icons';
 import CVATTooltip from 'components/common/cvat-tooltip';
+import { tt } from 'i18n';
 
 interface Props {
     labels: Label[];
@@ -30,13 +31,14 @@ function SetupTagPopover(props: Props): JSX.Element {
             <Row justify='start'>
                 <Col>
                     <Text className='cvat-text-color' strong>
-                        Setup tag
+                        
+                        {tt("Setup tag")}
                     </Text>
                 </Col>
             </Row>
             <Row justify='start'>
                 <Col>
-                    <Text className='cvat-text-color'>Label</Text>
+                    <Text className='cvat-text-color'>{tt("Label")}</Text>
                 </Col>
             </Row>
             <Row justify='start'>

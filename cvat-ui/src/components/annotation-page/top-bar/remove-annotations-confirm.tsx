@@ -10,6 +10,7 @@ import Checkbox from 'antd/lib/checkbox';
 import Collapse from 'antd/lib/collapse';
 
 import CVATTooltip from 'components/common/cvat-tooltip';
+import { tt } from 'i18n';
 
 export interface RemoveAnnotationsConfirmProps {
     open: boolean;
@@ -41,13 +42,13 @@ function RemoveAnnotationsConfirm(props: RemoveAnnotationsConfirmProps): JSX.Ele
         <Modal
             destroyOnClose
             open={open}
-            title='Remove Annotations'
+            title={tt("Remove Annotations")}
             className='cvat-modal-confirm-remove-annotation'
             okButtonProps={{
                 type: 'primary',
                 danger: true,
             }}
-            okText='Remove'
+            okText={tt("Remove")}
             onCancel={onClose}
             onOk={() => {
                 onRemove(removeFrom, removeUpTo, removeOnlyKeyframes);
@@ -55,9 +56,9 @@ function RemoveAnnotationsConfirm(props: RemoveAnnotationsConfirmProps): JSX.Ele
             }}
         >
             <div>
-                <Text>You are about to remove all annotations from every frame. </Text>
-                <Text>If you want to remove them from certain frames only, select a range below. </Text>
-                <Text>Changes take effect only when you save the job.</Text>
+                <Text>{tt("You are about to remove all annotations from every frame.")} </Text>
+                <Text>{tt("If you want to remove them from certain frames only, select a range below.")} </Text>
+                <Text>{tt("Changes take effect only when you save the job.")}</Text>
                 <br />
                 <br />
                 <br />
@@ -65,10 +66,10 @@ function RemoveAnnotationsConfirm(props: RemoveAnnotationsConfirmProps): JSX.Ele
                     bordered={false}
                     items={[{
                         key: 1,
-                        label: <Text>Select Range</Text>,
+                        label: <Text>{tt("Select Range")}</Text>,
                         children: (
                             <>
-                                <Text>From: </Text>
+                                <Text>{tt("From:")} </Text>
                                 <InputNumber
                                     min={0}
                                     max={stopFrame}
@@ -76,7 +77,7 @@ function RemoveAnnotationsConfirm(props: RemoveAnnotationsConfirmProps): JSX.Ele
                                         setRemoveFrom(value ?? undefined);
                                     }}
                                 />
-                                <Text>  To: </Text>
+                                <Text>    {tt("To:")} </Text>
                                 <InputNumber
                                     min={0}
                                     max={stopFrame}
@@ -84,7 +85,7 @@ function RemoveAnnotationsConfirm(props: RemoveAnnotationsConfirmProps): JSX.Ele
                                         setRemoveUpTo(value ?? undefined);
                                     }}
                                 />
-                                <CVATTooltip title='Applicable only for annotations in range'>
+                                <CVATTooltip title={tt("Applicable only for annotations in range")}>
                                     <br />
                                     <br />
                                     <Checkbox
@@ -93,7 +94,8 @@ function RemoveAnnotationsConfirm(props: RemoveAnnotationsConfirmProps): JSX.Ele
                                             setRemoveOnlyKeyframes(check.target.checked);
                                         }}
                                     >
-                                        Delete only keyframes for tracks
+                                        
+                                        {tt("Delete only keyframes for tracks")}
                                     </Checkbox>
                                 </CVATTooltip>
                             </>

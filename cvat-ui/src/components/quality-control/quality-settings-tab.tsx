@@ -22,6 +22,7 @@ import {
     QUALITY_REQUIREMENTS_ENABLED_FIELD,
     requirementToSaveFields,
 } from './shared/requirements/quality-requirements-utils';
+import { tt } from 'i18n';
 
 export type UpdateSettingsData = Record<number, { settings: QualitySettings, fields: QualitySettingsSaveFields }>;
 
@@ -114,8 +115,8 @@ function QualitySettingsTab(props: Readonly<Props>): JSX.Element | null {
         header = (
             <div className='cvat-quality-control-settings-header'>
                 <Switch checked={settings?.inherit} onChange={onInheritChange} />
-                <Text>Use</Text>
-                <Link to={`/projects/${instance.projectId}/quality-control#settings`}>&nbsp;project settings</Link>
+                <Text>{tt("Use")}</Text>
+                <Link to={`/projects/${instance.projectId}/quality-control#settings`}>{tt("&nbsp;project settings")}</Link>
             </div>
         );
     } else if (instance instanceof Project && nonInheritedChildSettings.length !== 0) {
@@ -135,16 +136,17 @@ function QualitySettingsTab(props: Readonly<Props>): JSX.Element | null {
                             danger
                             onClick={() => {
                                 Modal.confirm({
-                                    title: 'Are you sure you want to force project settings?',
+                                    title: tt("Are you sure you want to force project settings?"),
                                     icon: <ExclamationCircleFilled />,
-                                    content: 'This action will override own settings in all tasks.',
-                                    okText: 'Yes',
+                                    content: tt("This action will override own settings in all tasks."),
+                                    okText: tt("Yes"),
                                     cancelText: 'No',
                                     onOk: onChildInheritChange,
                                 });
                             }}
                         >
-                            Force project settings
+                            
+                            {tt("Force project settings")}
                         </Button>
                     )}
                 />
@@ -159,7 +161,8 @@ function QualitySettingsTab(props: Readonly<Props>): JSX.Element | null {
                     <Row justify='end' className='cvat-quality-settings-save-btn'>
                         <Col>
                             <Button onClick={onSave} type='primary' disabled={inherited}>
-                                Save
+                                
+                                {tt("Save")}
                             </Button>
                         </Col>
                     </Row>

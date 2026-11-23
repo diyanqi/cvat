@@ -22,6 +22,7 @@ import ThresholdPolicyInput, { thresholdValueError } from './threshold-policy-in
 import {
     EditableThresholdPolicy, EditableLinearThresholdPolicy, ThresholdCoordinates,
 } from './threshold-policy-editor-types';
+import { tt } from 'i18n';
 
 interface Props {
     value?: SimilarityThresholdPolicy;
@@ -253,16 +254,17 @@ export default function ThresholdPolicyEditor(props: Readonly<Props>): JSX.Eleme
         <div className='cvat-threshold-policy-editor'>
             <div className='cvat-threshold-policy-controls'>
                 <label htmlFor={`${controlID}-mode`}>
-                    Mode
+                    
+                    {tt("Mode")}
                     <Select id={`${controlID}-mode`} value={policy.mode} onChange={changeMode} disabled={disabled}>
-                        <Select.Option value='constant'>Constant</Select.Option>
-                        <Select.Option value='linear'>Linear interpolation</Select.Option>
+                        <Select.Option value='constant'>{tt("Constant")}</Select.Option>
+                        <Select.Option value='linear'>{tt("Linear interpolation")}</Select.Option>
                     </Select>
                 </label>
                 {policy.mode === 'constant' && (
                     <div>
-                        <label htmlFor={`${controlID}-constant`}>IoU threshold (%)</label>
-                        <ThresholdPolicyInput id={`${controlID}-constant`} label='IoU threshold (%)'
+                        <label htmlFor={`${controlID}-constant`}>{tt("IoU threshold (%)")}</label>
+                        <ThresholdPolicyInput id={`${controlID}-constant`} label={tt("IoU threshold (%)")}
                             value={policy.value} percentage error={thresholdValueError(policy.value)}
                             disabled={disabled}
                             onCommit={finishNumericEdit}
@@ -278,7 +280,8 @@ export default function ThresholdPolicyEditor(props: Readonly<Props>): JSX.Eleme
                     'No changes to undo in this curve editor.'}>
                     <span className='cvat-threshold-policy-undo'>
                         <Button disabled={disabled || !history.length} icon={<UndoOutlined />} onClick={undo}>
-                            Undo
+                            
+                            {tt("Undo")}
                         </Button>
                     </span>
                 </CVATTooltip>

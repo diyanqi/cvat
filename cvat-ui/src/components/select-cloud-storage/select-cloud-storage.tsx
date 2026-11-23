@@ -11,6 +11,7 @@ import { debounce } from 'lodash';
 import { AzureProvider, GoogleCloudProvider, S3Provider } from 'icons';
 import { ProviderType } from 'utils/enums';
 import { getCore, CloudStorage } from 'cvat-core-wrapper';
+import { tt } from 'i18n';
 
 export interface Props {
     searchPhrase: string;
@@ -27,7 +28,7 @@ async function searchCloudStorages(filter: Record<string, string>): Promise<Clou
         return data;
     } catch (error) {
         notification.error({
-            message: 'Could not fetch a list of cloud storages',
+            message: tt("Could not fetch a list of cloud storages"),
             description: error.toString(),
         });
     }
@@ -102,7 +103,7 @@ function SelectCloudStorage(props: Props): JSX.Element {
             <AutoComplete
                 onBlur={onBlur}
                 value={searchPhrase}
-                placeholder='Search...'
+                placeholder={tt("Search...")}
                 showSearch
                 onSearch={(phrase: string) => {
                     setSearchPhrase(phrase);

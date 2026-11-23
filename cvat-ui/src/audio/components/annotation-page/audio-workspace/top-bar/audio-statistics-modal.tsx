@@ -13,6 +13,7 @@ import Text from 'antd/lib/typography/Text';
 import { CombinedState, Workspace } from 'reducers';
 import { showStatistics } from 'actions/annotation-actions';
 import { formatMilliseconds } from 'audio/utils/format-audio-time';
+import { tt } from 'i18n';
 
 interface StateToProps {
     visible: boolean;
@@ -121,23 +122,23 @@ function AudioStatisticsModalComponent(props: StateToProps & DispatchToProps): J
 
     const columns = [
         {
-            title: <Text strong>Label</Text>,
+            title: <Text strong>{tt("Label")}</Text>,
             dataIndex: 'label',
             key: 'label',
             render: (text: string) => <Text strong>{text}</Text>,
         },
         {
-            title: <Text strong>Regions</Text>,
+            title: <Text strong>{tt("Regions")}</Text>,
             dataIndex: 'count',
             key: 'count',
         },
         {
-            title: <Text strong>Total duration</Text>,
+            title: <Text strong>{tt("Total duration")}</Text>,
             dataIndex: 'totalDuration',
             key: 'totalDuration',
         },
         {
-            title: <Text strong>Coverage</Text>,
+            title: <Text strong>{tt("Coverage")}</Text>,
             dataIndex: 'coverage',
             key: 'coverage',
         },
@@ -148,36 +149,36 @@ function AudioStatisticsModalComponent(props: StateToProps & DispatchToProps): J
             <div className='cvat-job-info-modal-window'>
                 <Row justify='start'>
                     <Col>
-                        <Text className='cvat-text'>Overview</Text>
+                        <Text className='cvat-text'>{tt("Overview")}</Text>
                     </Col>
                 </Row>
                 <Row justify='start'>
                     <Col span={6}>
-                        <Text strong className='cvat-text'>Assignee</Text>
+                        <Text strong className='cvat-text'>{tt("Assignee")}</Text>
                         <Text className='cvat-text'>{assignee}</Text>
                     </Col>
                     <Col span={6}>
-                        <Text strong className='cvat-text'>Duration</Text>
+                        <Text strong className='cvat-text'>{tt("Duration")}</Text>
                         <Text className='cvat-text'>
                             {duration > 0 ? formatMilliseconds(duration * 1000) : '—'}
                         </Text>
                     </Col>
                     <Col span={6}>
-                        <Text strong className='cvat-text'>Regions</Text>
+                        <Text strong className='cvat-text'>{tt("Regions")}</Text>
                         <Text className='cvat-text'>{data.total.interval.count}</Text>
                     </Col>
                 </Row>
                 {!!bugTracker && (
                     <Row justify='start' className='cvat-job-info-bug-tracker'>
                         <Col>
-                            <Text strong className='cvat-text'>Bug tracker</Text>
+                            <Text strong className='cvat-text'>{tt("Bug tracker")}</Text>
                             <a href={bugTracker}>{bugTracker}</a>
                         </Col>
                     </Row>
                 )}
                 <Row justify='space-around' className='cvat-job-info-statistics'>
                     <Col span={24}>
-                        <Text className='cvat-text'>Annotations statistics</Text>
+                        <Text className='cvat-text'>{tt("Annotations statistics")}</Text>
                         <Table
                             scroll={{ y: 400 }}
                             bordered

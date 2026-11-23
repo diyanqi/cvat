@@ -11,6 +11,7 @@ import Button from 'antd/lib/button';
 import Collapse from 'antd/lib/collapse';
 import Text from 'antd/lib/typography/Text';
 import List from 'antd/lib/list';
+import { tt } from 'i18n';
 
 interface Props {
     tasks: any[];
@@ -66,7 +67,8 @@ export default function MultiTasksProgress(props: Props): JSX.Element {
                     {percent === 100 ? (
                         <Row className='cvat-create-multi-tasks-state'>
                             <Col>
-                                Finished
+                                
+                                {tt("Finished")}
                             </Col>
                         </Row>
                     ) : null}
@@ -105,7 +107,7 @@ export default function MultiTasksProgress(props: Props): JSX.Element {
                                 }}
                                 items={[{
                                     key: 'appearance',
-                                    label: <Text strong> Failed files </Text>,
+                                    label: <Text strong>  {tt("Failed files")} </Text>,
                                     children: (
                                         <List
                                             size='small'
@@ -127,7 +129,8 @@ export default function MultiTasksProgress(props: Props): JSX.Element {
                                             disabled={!countFailed}
                                             onClick={onRetryFailedTasks}
                                         >
-                                            Retry failed tasks
+                                            
+                                            {tt("Retry failed tasks")}
                                         </Button>
                                     </Col>
                                     {
@@ -138,7 +141,8 @@ export default function MultiTasksProgress(props: Props): JSX.Element {
                                                     disabled={!countCancelled}
                                                     onClick={onRetryCancelledTasks}
                                                 >
-                                                    Retry cancelled tasks
+                                                    
+                                                    {tt("Retry cancelled tasks")}
                                                 </Button>
                                             </Col>
                                         ) : null
@@ -149,7 +153,8 @@ export default function MultiTasksProgress(props: Props): JSX.Element {
                                             type='primary'
                                             onClick={onOk}
                                         >
-                                            Ok
+                                            
+                                            {tt("Ok")}
                                         </Button>
                                     </Col>
                                 </>
@@ -160,7 +165,8 @@ export default function MultiTasksProgress(props: Props): JSX.Element {
                                         onClick={onCancel}
                                         disabled={!countPending}
                                     >
-                                        Cancel pending tasks
+                                        
+                                        {tt("Cancel pending tasks")}
                                     </Button>
                                 </Col>
                             )}

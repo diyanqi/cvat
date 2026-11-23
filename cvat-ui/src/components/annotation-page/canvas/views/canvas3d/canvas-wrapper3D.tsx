@@ -47,6 +47,7 @@ import { ShortcutScope } from 'utils/enums';
 import { registerComponentShortcuts } from 'actions/shortcuts-actions';
 import { subKeyMap } from 'utils/component-subkeymap';
 import { scrollAndExpandState } from 'utils/objects-sidebar';
+import { tt } from 'i18n';
 
 const cvat = getCore();
 
@@ -519,7 +520,7 @@ export const TopViewComponent = React.memo(
         return (
             <div className='cvat-canvas3d-orthographic-view cvat-canvas3d-topview'>
                 {!canvasIsReady && <Spinner />}
-                <div className='cvat-canvas3d-header'>Top</div>
+                <div className='cvat-canvas3d-header'>{tt("Top")}</div>
                 <div
                     className='cvat-canvas3d-fullsize'
                     ref={ref}
@@ -546,7 +547,7 @@ export const SideViewComponent = React.memo(
         return (
             <div className='cvat-canvas3d-orthographic-view cvat-canvas3d-sideview'>
                 {!canvasIsReady && <Spinner />}
-                <div className='cvat-canvas3d-header'>Side</div>
+                <div className='cvat-canvas3d-header'>{tt("Side")}</div>
                 <div
                     className='cvat-canvas3d-fullsize'
                     ref={ref}
@@ -573,7 +574,7 @@ export const FrontViewComponent = React.memo(
         return (
             <div className='cvat-canvas3d-orthographic-view cvat-canvas3d-frontview'>
                 {!canvasIsReady && <Spinner />}
-                <div className='cvat-canvas3d-header'>Front</div>
+                <div className='cvat-canvas3d-header'>{tt("Front")}</div>
                 <div
                     className='cvat-canvas3d-fullsize'
                     ref={ref}

@@ -7,6 +7,7 @@ import Select from 'antd/lib/select';
 import { JobStage, JobState } from 'cvat-core-wrapper';
 import { handleDropdownKeyDown } from 'utils/dropdown-utils';
 import { JobStageLabel, JobStateLabel } from './job-status-visuals';
+import { tt } from 'i18n';
 
 interface JobStateSelectorProps {
     value: JobState | null;
@@ -21,7 +22,7 @@ export function JobStateSelector({ value, onSelect }: Readonly<JobStateSelectorP
             value={value}
             onChange={onSelect}
             onKeyDown={handleDropdownKeyDown}
-            placeholder='Select a state'
+            placeholder={tt("Select a state")}
         >
             <Select.Option value={JobState.NEW} title={JobState.NEW}>
                 <JobStateLabel state={JobState.NEW} />
@@ -52,7 +53,7 @@ export function JobStageSelector({ value, onSelect }: Readonly<JobStageSelectorP
             value={value}
             onChange={onSelect}
             onKeyDown={handleDropdownKeyDown}
-            placeholder='Select a stage'
+            placeholder={tt("Select a stage")}
         >
             <Select.Option value={JobStage.ANNOTATION} title={JobStage.ANNOTATION}>
                 <JobStageLabel stage={JobStage.ANNOTATION} />

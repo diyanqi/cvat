@@ -11,6 +11,7 @@ import Form, { FormInstance } from 'antd/lib/form';
 import Button from 'antd/lib/button';
 import CVATTooltip from 'components/common/cvat-tooltip';
 import { ConsensusSettings } from 'cvat-core-wrapper';
+import { tt } from 'i18n';
 
 interface Props {
     form: FormInstance;
@@ -56,12 +57,13 @@ export default function ConsensusSettingsForm(props: Readonly<Props>): JSX.Eleme
             <Row justify='end' className='cvat-consensus-settings-save-btn'>
                 <Col>
                     <Button onClick={onSave} type='primary'>
-                        Save
+                        
+                        {tt("Save")}
                     </Button>
                 </Col>
             </Row>
             <Row className='cvat-consensus-settings-title'>
-                <Text strong>Shape comparison</Text>
+                <Text strong>{tt("Shape comparison")}</Text>
                 <CVATTooltip
                     title={shapeComparisonTooltip}
                     className='cvat-settings-tooltip'
@@ -74,7 +76,7 @@ export default function ConsensusSettingsForm(props: Readonly<Props>): JSX.Eleme
                 <Col span={6}>
                     <Form.Item
                         name='iouThreshold'
-                        label='Min Overlap (%)'
+                        label={tt("Min Overlap (%)")}
                         rules={[{ required: true, message: 'This field is required' }]}
                     >
                         <InputNumber min={0} max={100} precision={0} />

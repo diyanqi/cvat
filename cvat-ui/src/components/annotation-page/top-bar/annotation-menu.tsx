@@ -27,6 +27,7 @@ import { exportActions } from 'actions/export-actions';
 import { importActions } from 'actions/import-actions';
 import { updateJobAsync } from 'actions/jobs-actions';
 import RemoveAnnotationsConfirm, { RemoveAnnotationsConfirmProps } from './remove-annotations-confirm';
+import { tt } from 'i18n';
 
 export enum Actions {
     LOAD_JOB_ANNO = 'load_job_anno',
@@ -85,16 +86,16 @@ function AnnotationMenuComponent(props: Props): JSX.Element {
 
     const changeState = useCallback((state: JobState) => {
         dispatch(updateJobAsync(jobInstance, { state })).then(() => {
-            message.info('Job state updated', 2);
+            message.info(tt("Job state updated"), 2);
         });
     }, [jobInstance]);
 
     const changeJobState = useCallback((state: JobState) => () => {
         Modal.confirm({
-            title: 'Would you like to update current job state?',
+            title: tt("Would you like to update current job state?"),
             content: `Job state will be switched to "${state}"`,
-            okText: 'Continue',
-            cancelText: 'Cancel',
+            okText: tt("Continue"),
+            cancelText: tt("Cancel"),
             className: 'cvat-modal-content-change-job-state',
             onOk: () => changeState(state),
         });
@@ -171,10 +172,10 @@ function AnnotationMenuComponent(props: Props): JSX.Element {
         label: 'Finish the job',
         onClick: () => {
             Modal.confirm({
-                title: 'Would you like to finish the job?',
-                content: 'It will save annotations and set the job state to "completed"',
-                okText: 'Continue',
-                cancelText: 'Cancel',
+                title: tt("Would you like to finish the job?"),
+                content: tt("It will save annotations and set the job state to \"completed\""),
+                okText: tt("Continue"),
+                cancelText: tt("Cancel"),
                 className: 'cvat-modal-content-finish-job',
                 onOk: finishJob,
             });
@@ -212,7 +213,8 @@ function AnnotationMenuComponent(props: Props): JSX.Element {
             >
                 <Button type='link' className='cvat-annotation-header-menu-button cvat-annotation-header-button'>
                     <Icon component={MainMenuIcon} />
-                    Menu
+                    
+                    {tt("Menu")}
                 </Button>
             </Dropdown>
         </>

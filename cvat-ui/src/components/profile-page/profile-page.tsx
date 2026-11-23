@@ -21,6 +21,7 @@ import SecurityContent from './security-content/security-content';
 import PrivacyConsentCard from './profile-content/privacy-consent-card';
 
 import './styles.scss';
+import { tt } from 'i18n';
 
 const { Title } = Typography;
 const supportedTabs = ['profile', 'security', 'privacy-consent'];
@@ -38,17 +39,17 @@ function ProfilePageComponent(): JSX.Element {
         {
             key: 'profile',
             icon: <UserOutlined />,
-            label: <Text className='cvat-profile-page-menu-item-profile'>Profile</Text>,
+            label: <Text className='cvat-profile-page-menu-item-profile'>{tt("Profile")}</Text>,
         },
         {
             key: 'security',
             icon: <LockOutlined />,
-            label: <Text className='cvat-profile-page-menu-item-security'>Security</Text>,
+            label: <Text className='cvat-profile-page-menu-item-security'>{tt("Security")}</Text>,
         },
         {
             key: 'privacy-consent',
             icon: <BellOutlined />,
-            label: <Text className='cvat-profile-page-menu-item-privacy-consent'>Privacy & consent</Text>,
+            label: <Text className='cvat-profile-page-menu-item-privacy-consent'>{tt("Privacy & consent")}</Text>,
         },
     ];
 

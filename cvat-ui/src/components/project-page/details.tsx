@@ -16,6 +16,7 @@ import UserSelector from 'components/task-page/user-selector';
 import MdGuideControl from 'components/md-guide/md-guide-control';
 import { CombinedState } from 'reducers';
 import { usePlugins } from 'utils/hooks';
+import { tt } from 'i18n';
 
 const core = getCore();
 
@@ -75,7 +76,7 @@ export default function DetailsComponent(props: DetailsComponentProps): JSX.Elem
                     />
                 </Col>
                 <Col>
-                    <Text type='secondary'>Assigned to</Text>
+                    <Text type='secondary'>{tt("Assigned to")}</Text>
                     <UserSelector
                         value={project.assignee}
                         onSelect={(user) => {

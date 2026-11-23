@@ -5,8 +5,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import en from './locales/en.json';
-import zhCN from './locales/zh-CN.json';
+import zhAll from './locales/zh-all.json';
 
 export type AppLanguage = 'en' | 'zh-CN';
 
@@ -31,25 +30,42 @@ export function getInitialLanguage(): AppLanguage {
 
 i18n.use(initReactI18next).init({
     resources: {
-        en: { translation: en },
-        'zh-CN': { translation: zhCN },
+        'zh-CN': { translation: zhAll },
     },
     lng: getInitialLanguage(),
-    fallbackLng: 'en',
+    fallbackLng: false,
+    // English source strings are used as translation keys. They contain dots,
+    // colons and braces, so key/namespace separators must be disabled.
+    keySeparator: false,
+    nsSeparator: false,
     interpolation: {
         escapeValue: false,
     },
     returnEmptyString: false,
 });
 
+// Translation helper that does not require a React hook. It is used by the
+// bulk-localized components; the language switch reloads the page so every
+// string is rendered again with the new language.
+export function tt(key: string): string {
+    const value = i18n.t(key);
+    return typeof value === 'string' ? value : key;
+}
+
 export function changeLanguage(language: AppLanguage): void {
-    i18n.changeLanguage(language);
     try {
         localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
     } catch (error) {
         // ignore storage errors
     }
     document.documentElement.setAttribute('lang', language);
+    if (normalizeLanguage(i18n.language) === language) {
+        i18n.changeLanguage(language);
+        return;
+    }
+    // Full reload guarantees that every statically translated string is
+    // re-evaluated in the newly selected language.
+    window.location.reload();
 }
 
 export function currentLanguage(): AppLanguage {

@@ -14,6 +14,7 @@ import { Webhook } from 'cvat-core-wrapper';
 import { CombinedState } from 'reducers';
 import { deleteWebhookAsync } from 'actions/webhooks-actions';
 import { makeBulkOperationAsync } from 'actions/bulk-actions';
+import { tt } from 'i18n';
 
 interface WebhookActionsMenuProps {
     webhookInstance: Webhook;
@@ -64,14 +65,14 @@ export default function WebhookActionsMenu(props: Readonly<WebhookActionsMenuPro
             onClick: isBulk ? () => {
                 Modal.confirm({
                     title: `Are you sure you want to remove ${selectedIds.length} webhooks?`,
-                    content: 'They will stop notifying the specified URLs about listed events',
+                    content: tt("They will stop notifying the specified URLs about listed events"),
                     className: 'cvat-modal-confirm-remove-webhook',
                     onOk: () => onDelete(),
                 });
             } : () => {
                 Modal.confirm({
-                    title: 'Are you sure you want to remove the hook?',
-                    content: 'It will stop notificating the specified URL about listed events',
+                    title: tt("Are you sure you want to remove the hook?"),
+                    content: tt("It will stop notificating the specified URL about listed events"),
                     className: 'cvat-modal-confirm-remove-webhook',
                     onOk: onDelete,
                 });

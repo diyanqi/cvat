@@ -13,6 +13,7 @@ import Modal from 'antd/lib/modal';
 import Badge from 'antd/lib/badge';
 
 import { Invitation } from 'cvat-core/src/organization';
+import { tt } from 'i18n';
 
 interface Props {
     invitation: Invitation;
@@ -38,9 +39,9 @@ function InvitationItem(props: Props): JSX.Element {
             >
                 {owner}
             </Text>
-            <Text>&nbsp;has invited you to join the&nbsp;</Text>
+            <Text>{tt("&nbsp;has invited you to join the&nbsp;")}</Text>
             <Text strong>{slug}</Text>
-            <Text>&nbsp;organization&nbsp;</Text>
+            <Text>{tt("&nbsp;organization&nbsp;")}</Text>
         </>
     );
 
@@ -50,7 +51,7 @@ function InvitationItem(props: Props): JSX.Element {
                 style={{ visibility: expired ? 'visible' : 'hidden' }}
                 className='cvat-invitation-item-ribbon'
                 placement='start'
-                text='Expired'
+                text={tt("Expired")}
                 color='gray'
             >
                 <Card className={`cvat-invitation-item ${declined ? 'cvat-invitation-item-declined' : ''}`}>
@@ -66,7 +67,8 @@ function InvitationItem(props: Props): JSX.Element {
                                     onAccept(key);
                                 }}
                             >
-                                Accept
+                                
+                                {tt("Accept")}
                             </Button>
                             {
                                 expired ? (
@@ -79,7 +81,8 @@ function InvitationItem(props: Props): JSX.Element {
                                             });
                                         }}
                                     >
-                                        Remove
+                                        
+                                        {tt("Remove")}
                                     </Button>
                                 ) : (
                                     <Button
@@ -90,10 +93,11 @@ function InvitationItem(props: Props): JSX.Element {
                                                 title: (
                                                     <>
                                                         <Text>
-                                                            Would you like to decline the invitation to the&nbsp;
+                                                            
+                                                            {tt("Would you like to decline the invitation to the&nbsp;")}
                                                         </Text>
                                                         <Text strong>{slug}</Text>
-                                                        <Text>&nbsp;organization&nbsp;</Text>
+                                                        <Text>{tt("&nbsp;organization&nbsp;")}</Text>
                                                     </>
                                                 ),
                                                 className: 'cvat-invitation-decline-modal',
@@ -102,12 +106,13 @@ function InvitationItem(props: Props): JSX.Element {
                                                         setDeclined(true);
                                                     });
                                                 },
-                                                okText: 'Decline',
+                                                okText: tt("Decline"),
                                                 okButtonProps: { danger: true },
                                             });
                                         }}
                                     >
-                                        Decline
+                                        
+                                        {tt("Decline")}
                                     </Button>
                                 )
                             }

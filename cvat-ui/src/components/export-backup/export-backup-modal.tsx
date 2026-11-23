@@ -27,6 +27,7 @@ import {
 import CVATMarkdown from 'components/common/cvat-markdown';
 import TargetStorageField from 'components/storage/target-storage-field';
 import NameTemplateTooltip from 'components/common/cvat-name-template-tooltip';
+import { tt } from 'i18n';
 
 const core = getCore();
 
@@ -254,11 +255,11 @@ function ExportBackupModal(): JSX.Element {
                 onFinish={handleExport}
             >
                 {isBulkMode ? (
-                    <Form.Item label={<Text strong>Name template</Text>} required>
+                    <Form.Item label={<Text strong>{tt("Name template")}</Text>} required>
                         <Input
                             value={nameTemplate}
                             onChange={(e) => setNameTemplate(e.target.value)}
-                            placeholder='backup_{{id}}'
+                            placeholder={tt("backup_{{id}}")}
                             suffix='.zip'
                             className='cvat-modal-export-filename-input'
                         />
@@ -270,16 +271,17 @@ function ExportBackupModal(): JSX.Element {
                                     />
                                 )}
                             >
-                                When forming the backup name, a template is used.
+                                
+                                {tt("When forming the backup name, a template is used.")}
                                 {' '}
                                 <QuestionCircleOutlined />
                             </Tooltip>
                         </Text>
                     </Form.Item>
                 ) : (
-                    <Form.Item label={<Text strong>Custom name</Text>} name='customName'>
+                    <Form.Item label={<Text strong>{tt("Custom name")}</Text>} name='customName'>
                         <Input
-                            placeholder='Custom name for a backup file'
+                            placeholder={tt("Custom name for a backup file")}
                             suffix='.zip'
                             className='cvat-modal-export-filename-input'
                         />
@@ -304,8 +306,8 @@ function ExportBackupModal(): JSX.Element {
                             checked={lightweight}
                             onChange={setLightweight}
                         />
-                        <Text strong>Use lightweight backup whenever possible</Text>
-                        <Tooltip title='If a task uses media from a cloud storage, its possible to make a backup without including media. The task restored from a lightweight backup has to be manually connected to the cloud storage.'>
+                        <Text strong>{tt("Use lightweight backup whenever possible")}</Text>
+                        <Tooltip title={tt("If a task uses media from a cloud storage, its possible to make a backup without including media. The task restored from a lightweight backup has to be manually connected to the cloud storage.")}>
                             <QuestionCircleOutlined />
                         </Tooltip>
                     </Space>

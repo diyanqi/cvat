@@ -62,7 +62,7 @@ function cancelCurrentCanvasOp(state: CombinedState): void {
 function makeMessage(label: Label, labelType: State['labelType'], pointsCount: number): JSX.Element {
     let readableShape = '';
     if (labelType === LabelType.POINTS) {
-        readableShape = pointsCount === 1 ? tt("one point") : `${pointsCount} points`;
+        readableShape = pointsCount === 1 ? tt("one point") : `${pointsCount} 个点`;
     } else if (labelType === LabelType.ELLIPSE) {
         readableShape = tt("an ellipse");
     } else {

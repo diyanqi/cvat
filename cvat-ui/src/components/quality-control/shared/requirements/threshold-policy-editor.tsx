@@ -166,7 +166,7 @@ export default function ThresholdPolicyEditor(props: Readonly<Props>): JSX.Eleme
     const changeMode = (mode: 'constant' | 'linear'): void => {
         numericEdit.current = null;
         setSelected(null);
-        const action = `return to ${policy.mode === 'constant' ? 'constant' : tt("linear interpolation")} mode`;
+        const action = `返回${policy.mode === 'constant' ? '恒定' : tt('linear interpolation')}模式`;
         if (mode === 'constant') emit(drafts.current.constant, action);
         else {
             const threshold = policy.mode === 'constant' && valid ? policy.value : DEFAULT_POLICY.value;
@@ -184,9 +184,9 @@ export default function ThresholdPolicyEditor(props: Readonly<Props>): JSX.Eleme
         const points = policy.points.map((point) => (
             point.id === id ? { ...point, [field]: number === null ? NaN : number } : point
         ));
-        updateNumber({ ...policy, points }, `change ${field === 'x' ? tt("GT area") : 'IoU'} of point ${
+        updateNumber({ ...policy, points }, `更改第 ${
             policy.points.findIndex((point) => point.id === id) + 1
-        }`);
+        } 个点的${field === 'x' ? tt('GT area') : 'IoU'}`);
         setSelected(id);
     };
     const addPoint = (point: ThresholdCoordinates): void => {

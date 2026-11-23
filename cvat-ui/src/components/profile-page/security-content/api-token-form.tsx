@@ -57,7 +57,7 @@ function ApiTokenForm({
     };
 
     const initialValues = {
-        name: token?.name || (tokenCount === 0 ? tt("New token") : `New token ${tokenCount + 1}`),
+        name: token?.name || (tokenCount === 0 ? tt("New token") : `${tt("New token")} ${tokenCount + 1}`),
         expirationDate: getInitialExpirationDate(),
         isReadOnly: token?.readOnly || false,
     };

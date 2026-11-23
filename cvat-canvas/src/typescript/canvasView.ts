@@ -1429,7 +1429,7 @@ export class CanvasViewImpl implements CanvasView, Listener {
 
         if (!rotationPoint.children.length) {
             const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
-            title.textContent = 'Hold Shift to snap angle';
+            title.textContent = '按住 Shift 吸附角度';
             rotationPoint.appendChild(title);
         }
     }
@@ -2721,7 +2721,7 @@ export class CanvasViewImpl implements CanvasView, Listener {
                     canvasContext.strokeStyle = 'white';
                     canvasContext.strokeText('IMAGE REMOVED', width / 2, height / 2);
                     canvasContext.fillStyle = 'black';
-                    canvasContext.fillText('IMAGE REMOVED', width / 2, height / 2);
+                    canvasContext.fillText('图像已移除', width / 2, height / 2);
                 } else if (this.background.classList.contains('cvat_canvas_removed_image')) {
                     this.background.classList.remove('cvat_canvas_removed_image');
                 }
@@ -4368,7 +4368,7 @@ export class CanvasViewImpl implements CanvasView, Listener {
 
         const title = this.selectedObjectsLabel.querySelector('.cvat_canvas_selected_objects_label_title');
         if (title) {
-            title.textContent = `SELECTION (${this.selectedObjects.length})`;
+            title.textContent = `已选择 (${this.selectedObjects.length})`;
         }
         this.selectedObjectsLabel.title = '';
         this.updateSelectedObjectsLabelPosition();

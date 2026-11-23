@@ -1901,5 +1901,9 @@
   "pages.createProject": "新建项目",
   "pages.createTask": "新建任务",
   "pages.createAudioTask": "新建音频任务",
-  "pages.createMultiTasks": "批量新建任务"
+  "pages.createMultiTasks": "批量新建任务",
+  "Cancelled": "已取消",
+  "Queued": "排队中",
+  "Failed": "失败",
+  "Download": "下载"
 }

@@ -26,6 +26,22 @@ import { CombinedState } from 'reducers';
 import MultipleShortcutsDisplay from './multiple-shortcuts-display';
 import { tt } from 'i18n';
 
+const SCOPE_LABEL: Record<string, string> = {
+    [ShortcutScope.GENERAL]: '通用',
+    [ShortcutScope.ANNOTATION_PAGE]: '标注页',
+    [ShortcutScope.OBJECTS_SIDEBAR]: '对象侧边栏',
+    [ShortcutScope.STANDARD_WORKSPACE]: '标准工作区',
+    [ShortcutScope.STANDARD_WORKSPACE_CONTROLS]: '标准工作区控件',
+    [ShortcutScope.ATTRIBUTE_ANNOTATION_WORKSPACE]: '属性标注工作区',
+    [ShortcutScope.SINGLE_SHAPE_ANNOTATION_WORKSPACE]: '单形状标注工作区',
+    [ShortcutScope.TAG_ANNOTATION_WORKSPACE]: '标签标注工作区',
+    [ShortcutScope.REVIEW_WORKSPACE_CONTROLS]: '审核工作区控件',
+    [ShortcutScope['3D_ANNOTATION_WORKSPACE']]: '3D 标注工作区',
+    [ShortcutScope['3D_ANNOTATION_WORKSPACE_CONTROLS']]: '3D 标注工作区控件',
+    [ShortcutScope.AUDIO_WORKSPACE_CONTROLS]: '音频工作区控件',
+    [ShortcutScope.LABELS_EDITOR]: '标签编辑器',
+};
+
 interface Props {
     keyMap: KeyMap;
     onKeySequenceUpdate(shortcutID: string, updatedSequence: string[]): void;
@@ -80,13 +96,7 @@ function ShortcutsSettingsComponent(props: Props): JSX.Element {
                 return null;
             }
 
-            let scopeTitle = scope.split('_').join(' ');
-            const firstAlphaIndex = scopeTitle.search(/[a-zA-Z]/);
-            if (firstAlphaIndex !== -1) {
-                scopeTitle = scopeTitle.slice(0, firstAlphaIndex) +
-                scopeTitle.charAt(firstAlphaIndex).toUpperCase() +
-                scopeTitle.slice(firstAlphaIndex + 1).toLowerCase();
-            }
+            const scopeTitle = SCOPE_LABEL[scope] ?? scope;
             return {
                 label: <span className='cvat-shortcuts-settings-label'>{scopeTitle}</span>,
                 key: scope,

@@ -91,6 +91,7 @@ import ServerUnavailableComponent from './server-unavailable/server-unavailable'
 import GitHubStarModal from './github-star-prompt/github-star-modal';
 import { localizeText } from 'i18n/localize';
 import { tt } from 'i18n';
+import 'i18n/query-builder-locale';
 
 interface CVATAppProps {
     loadFormats: () => void;

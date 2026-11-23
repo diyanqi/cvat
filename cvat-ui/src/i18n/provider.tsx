@@ -22,7 +22,7 @@ export default function LocaleProvider({ children }: { children: React.ReactNode
     }, [language]);
 
     return (
-        <ConfigProvider locale={language === 'zh-CN' ? zhCN : enUS}>
+        <ConfigProvider locale={language === 'zh-CN' ? zhCN : enUS} autoInsertSpaceInButton={false}>
             {children}
         </ConfigProvider>
     );

@@ -1,0 +1,57 @@
+name: build-cvat-arm64
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Image tag to push"
+        default: "v2.83.0-zh1"
+        required: true
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04-arm
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - image: cvat-server
+            dockerfile: Dockerfile
+            scope: server
+          - image: cvat-ui
+            dockerfile: Dockerfile.ui
+            scope: ui
+    steps:
+      - name: Checkout source (this fork)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push ${{ matrix.image }}
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}
+          platforms: linux/arm64
+          push: true
+          provenance: false
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/${{ matrix.image }}:${{ inputs.tag }}
+          build-args: |
+            CVAT_CONFIGURATION=production
+          cache-from: type=gha,scope=${{ matrix.scope }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.scope }}

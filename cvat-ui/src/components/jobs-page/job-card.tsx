@@ -95,7 +95,7 @@ function JobCardComponent(props: Readonly<Props>): JSX.Element {
                         {` ${job.id}`}
                     </div>
                     {tag && <div className='cvat-job-page-list-item-type'>{tag}</div>}
-                    <div className='cvat-job-page-list-item-dimension'>{({ '2D': '二维', '3D': '三维' } as Record<string, string>)[job.dimension] ?? job.dimension.toUpperCase()}</div>
+                    <div className='cvat-job-page-list-item-dimension'>{({ '2d': '二维', '3d': '三维' } as Record<string, string>)[job.dimension] ?? job.dimension.toUpperCase()}</div>
                     <div className='cvat-job-page-list-item-status'>
                         <JobStageStateBadges stage={job.stage} state={job.state} />
                     </div>

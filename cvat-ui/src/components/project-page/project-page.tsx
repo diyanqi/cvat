@@ -48,6 +48,7 @@ import {
     localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues, config,
 } from './project-tasks-filter-configuration';
 import { tt } from 'i18n';
+import { localizeText } from 'i18n/localize';
 
 const core = getCore();
 
@@ -106,7 +107,7 @@ export default function ProjectPageComponent(): JSX.Element {
                     if (mounted.current) {
                         notification.error({
                             message: tt("Could not receive the requested project from the server"),
-                            description: error.toString(),
+                            description: localizeText(error.toString()),
                         });
                     }
                 }).finally(() => {

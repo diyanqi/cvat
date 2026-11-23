@@ -58,6 +58,12 @@ const RULES: Rule[] = [
     // ------------------------------------------------------------------
     [/^Not found\.?$/i, '未找到。'],
     [/^(?:Error: )?No (.+) matches the given query\.?$/i, '未找到匹配的$1。'],
+    [/^(?:Error: )?No Project matches the given query\.?$/i, '未找到该项目。'],
+    [/^(?:Error: )?No Task matches the given query\.?$/i, '未找到该任务。'],
+    [/^(?:Error: )?No Job matches the given query\.?$/i, '未找到该作业。'],
+    [/^(?:Error: )?No Organization matches the given query\.?$/i, '未找到该组织。'],
+    [/^(?:Error: )?No User matches the given query\.?$/i, '未找到该用户。'],
+    [/^Invalid token\.?$/i, '令牌无效。'],
     [/^Permission denied\.?$/i, '权限被拒绝。'],
     [/^Invalid value\.?$/i, '值无效。'],
     [/^This field is required\.?$/i, '此字段为必填项。'],
